@@ -1,0 +1,33 @@
+{
+  "name": "merchantapi",
+  "version": "1.0.0",
+  "description": "Miva Merchant JSON API SDK",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mivaecommerce/api-sdk-node.git"
+  },
+  "keywords": [
+    "miva",
+    "merchant",
+    "api",
+    "sdk"
+  ],
+  "license": "proprietary",
+  "bugs": {
+    "url": "https://github.com/mivaecommerce/api-sdk-node/issues"
+  },
+  "homepage": "https://github.com/mivaecommerce/api-sdk-node",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "request": "^2.88.0"
+  }
+}
