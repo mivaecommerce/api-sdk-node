@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: requests.js 72035 2018-12-17 18:56:37Z gidriss $
+ * $Id$
  */
 
 const util                  = require('./util');
@@ -16,7 +16,7 @@ const { ListQueryRequest }  = require('./listquery');
 /** @module Request */
 
 /** 
- * Handles API Request AvailabilityGroupBusinessAccount_Update_Assigned.
+ * Handles API Request AvailabilityGroupBusinessAccount_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccount_update_assigned
  */
 class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
@@ -25,9 +25,10 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
-  constructor(client = null, availabilityGroup = null) {
+  constructor(client, availabilityGroup = null) {
     super(client);
     this.function = 'AvailabilityGroupBusinessAccount_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.availabilityGroupId = null;
     this.editAvailabilityGroup = null;
     this.availabilityGroupName = null;
@@ -192,7 +193,7 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request AvailabilityGroupCustomer_Update_Assigned.
+ * Handles API Request AvailabilityGroupCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomer_update_assigned
  */
 class AvailabilityGroupCustomerUpdateAssigned extends Request {
@@ -201,9 +202,10 @@ class AvailabilityGroupCustomerUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
-  constructor(client = null, availabilityGroup = null) {
+  constructor(client, availabilityGroup = null) {
     super(client);
     this.function = 'AvailabilityGroupCustomer_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.availabilityGroupId = null;
     this.editAvailabilityGroup = null;
     this.availabilityGroupName = null;
@@ -389,7 +391,7 @@ class AvailabilityGroupCustomerUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request AvailabilityGroupList_Load_Query.
+ * Handles API Request AvailabilityGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygrouplist_load_query
  */
 class AvailabilityGroupListLoadQuery extends ListQueryRequest {
@@ -397,9 +399,10 @@ class AvailabilityGroupListLoadQuery extends ListQueryRequest {
    * AvailabilityGroupListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'AvailabilityGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -423,7 +426,7 @@ class AvailabilityGroupListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request AvailabilityGroupPaymentMethod_Update_Assigned.
+ * Handles API Request AvailabilityGroupPaymentMethod_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygrouppaymentmethod_update_assigned
  */
 class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
@@ -432,9 +435,10 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
-  constructor(client = null, availabilityGroup = null) {
+  constructor(client, availabilityGroup = null) {
     super(client);
     this.function = 'AvailabilityGroupPaymentMethod_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.availabilityGroupId = null;
     this.editAvailabilityGroup = null;
     this.availabilityGroupName = null;
@@ -618,7 +622,7 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request AvailabilityGroupProduct_Update_Assigned.
+ * Handles API Request AvailabilityGroupProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupproduct_update_assigned
  */
 class AvailabilityGroupProductUpdateAssigned extends Request {
@@ -627,9 +631,10 @@ class AvailabilityGroupProductUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
-  constructor(client = null, availabilityGroup = null) {
+  constructor(client, availabilityGroup = null) {
     super(client);
     this.function = 'AvailabilityGroupProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.availabilityGroupId = null;
     this.editAvailabilityGroup = null;
     this.availabilityGroupName = null;
@@ -834,7 +839,7 @@ class AvailabilityGroupProductUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request AvailabilityGroupShippingMethod_Update_Assigned.
+ * Handles API Request AvailabilityGroupShippingMethod_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethod_update_assigned
  */
 class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
@@ -843,9 +848,10 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
-  constructor(client = null, availabilityGroup = null) {
+  constructor(client, availabilityGroup = null) {
     super(client);
     this.function = 'AvailabilityGroupShippingMethod_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.availabilityGroupId = null;
     this.editAvailabilityGroup = null;
     this.availabilityGroupName = null;
@@ -1006,7 +1012,7 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request CategoryList_Load_Parent.
+ * Handles API Request CategoryList_Load_Parent. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categorylist_load_parent
  */
 class CategoryListLoadParent extends Request {
@@ -1015,9 +1021,10 @@ class CategoryListLoadParent extends Request {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'CategoryList_Load_Parent';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.parentId = null;
 
     if (util.isInstanceOf(category, models.Category)) {
@@ -1073,7 +1080,7 @@ const CATEGORY_SHOW_ALL = 'All';
 const CATEGORY_SHOW_ACTIVE = 'Active';
 
 /** 
- * Handles API Request CategoryList_Load_Query.
+ * Handles API Request CategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categorylist_load_query
  */
 class CategoryListLoadQuery extends ListQueryRequest {
@@ -1081,9 +1088,10 @@ class CategoryListLoadQuery extends ListQueryRequest {
    * CategoryListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'CategoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -1149,7 +1157,7 @@ class CategoryListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request CategoryProduct_Update_Assigned.
+ * Handles API Request CategoryProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryproduct_update_assigned
  */
 class CategoryProductUpdateAssigned extends Request {
@@ -1158,9 +1166,10 @@ class CategoryProductUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'CategoryProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.categoryId = null;
     this.editCategory = null;
     this.categoryCode = null;
@@ -1365,7 +1374,7 @@ class CategoryProductUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request Category_Insert.
+ * Handles API Request Category_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_insert
  */
 class CategoryInsert extends Request {
@@ -1374,9 +1383,10 @@ class CategoryInsert extends Request {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'Category_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.categoryCode = null;
     this.categoryName = null;
     this.categoryActive = null;
@@ -1578,7 +1588,7 @@ class CategoryInsert extends Request {
 }
 
 /** 
- * Handles API Request Category_Delete.
+ * Handles API Request Category_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_delete
  */
 class CategoryDelete extends Request {
@@ -1587,9 +1597,10 @@ class CategoryDelete extends Request {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'Category_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.categoryId = null;
     this.editCategory = null;
     this.categoryCode = null;
@@ -1687,7 +1698,7 @@ class CategoryDelete extends Request {
 }
 
 /** 
- * Handles API Request Category_Update.
+ * Handles API Request Category_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_update
  */
 class CategoryUpdate extends Request {
@@ -1696,9 +1707,10 @@ class CategoryUpdate extends Request {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'Category_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.categoryId = null;
     this.categoryCode = null;
     this.editCategory = null;
@@ -1955,7 +1967,7 @@ class CategoryUpdate extends Request {
 }
 
 /** 
- * Handles API Request CouponList_Delete.
+ * Handles API Request CouponList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponlist_delete
  */
 class CouponListDelete extends Request {
@@ -1963,9 +1975,10 @@ class CouponListDelete extends Request {
    * CouponListDelete Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'CouponList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.couponIds = [];
   }
 
@@ -2030,7 +2043,7 @@ class CouponListDelete extends Request {
 }
 
 /** 
- * Handles API Request CouponList_Load_Query.
+ * Handles API Request CouponList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponlist_load_query
  */
 class CouponListLoadQuery extends ListQueryRequest {
@@ -2038,9 +2051,10 @@ class CouponListLoadQuery extends ListQueryRequest {
    * CouponListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'CouponList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -2080,7 +2094,7 @@ class CouponListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request CouponPriceGroup_Update_Assigned.
+ * Handles API Request CouponPriceGroup_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponpricegroup_update_assigned
  */
 class CouponPriceGroupUpdateAssigned extends Request {
@@ -2089,9 +2103,10 @@ class CouponPriceGroupUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?Coupon} coupon
    */
-  constructor(client = null, coupon = null) {
+  constructor(client, coupon = null) {
     super(client);
     this.function = 'CouponPriceGroup_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.couponId = null;
     this.editCoupon = null;
     this.couponCode = null;
@@ -2254,7 +2269,7 @@ class CouponPriceGroupUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request Coupon_Insert.
+ * Handles API Request Coupon_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/coupon_insert
  */
 class CouponInsert extends Request {
@@ -2263,9 +2278,10 @@ class CouponInsert extends Request {
    * @param {?Client} client
    * @param {?Coupon} coupon
    */
-  constructor(client = null, coupon = null) {
+  constructor(client, coupon = null) {
     super(client);
     this.function = 'Coupon_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.code = null;
     this.description = null;
     this.customerScope = null;
@@ -2516,7 +2532,7 @@ class CouponInsert extends Request {
 }
 
 /** 
- * Handles API Request Coupon_Update.
+ * Handles API Request Coupon_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/coupon_update
  */
 class CouponUpdate extends Request {
@@ -2525,9 +2541,10 @@ class CouponUpdate extends Request {
    * @param {?Client} client
    * @param {?Coupon} coupon
    */
-  constructor(client = null, coupon = null) {
+  constructor(client, coupon = null) {
     super(client);
     this.function = 'Coupon_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.couponId = null;
     this.couponCode = null;
     this.editCoupon = null;
@@ -2831,7 +2848,7 @@ class CouponUpdate extends Request {
 }
 
 /** 
- * Handles API Request CustomerList_Load_Query.
+ * Handles API Request CustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerlist_load_query
  */
 class CustomerListLoadQuery extends ListQueryRequest {
@@ -2839,9 +2856,10 @@ class CustomerListLoadQuery extends ListQueryRequest {
    * CustomerListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'CustomerList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -2927,7 +2945,7 @@ class CustomerListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request Customer_Delete.
+ * Handles API Request Customer_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_delete
  */
 class CustomerDelete extends Request {
@@ -2936,9 +2954,10 @@ class CustomerDelete extends Request {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'Customer_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerId = null;
     this.customerLogin = null;
     this.editCustomer = null;
@@ -3036,7 +3055,7 @@ class CustomerDelete extends Request {
 }
 
 /** 
- * Handles API Request Customer_Insert.
+ * Handles API Request Customer_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_insert
  */
 class CustomerInsert extends Request {
@@ -3045,9 +3064,10 @@ class CustomerInsert extends Request {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'Customer_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerLogin = null;
     this.customerPasswordEmail = null;
     this.customerPassword = null;
@@ -3822,7 +3842,7 @@ class CustomerInsert extends Request {
 }
 
 /** 
- * Handles API Request Customer_Update.
+ * Handles API Request Customer_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_update
  */
 class CustomerUpdate extends Request {
@@ -3831,9 +3851,10 @@ class CustomerUpdate extends Request {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'Customer_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerId = null;
     this.editCustomer = null;
     this.customerLogin = null;
@@ -4664,7 +4685,7 @@ class CustomerUpdate extends Request {
 }
 
 /** 
- * Handles API Request CustomerPaymentCard_Register.
+ * Handles API Request CustomerPaymentCard_Register. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerpaymentcard_register
  */
 class CustomerPaymentCardRegister extends Request {
@@ -4673,9 +4694,10 @@ class CustomerPaymentCardRegister extends Request {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'CustomerPaymentCard_Register';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerId = null;
     this.editCustomer = null;
     this.customerLogin = null;
@@ -5049,7 +5071,7 @@ class CustomerPaymentCardRegister extends Request {
 }
 
 /** 
- * Handles API Request Module.
+ * Handles API Request Module. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/module
  */
 class Module extends Request {
@@ -5057,9 +5079,10 @@ class Module extends Request {
    * Module Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'Module';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.moduleCode = null;
     this.moduleFunction = null;
     this.module_fields = {};
@@ -5159,7 +5182,7 @@ class Module extends Request {
 }
 
 /** 
- * Handles API Request NoteList_Load_Query.
+ * Handles API Request NoteList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/notelist_load_query
  */
 class NoteListLoadQuery extends ListQueryRequest {
@@ -5167,9 +5190,10 @@ class NoteListLoadQuery extends ListQueryRequest {
    * NoteListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'NoteList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -5207,7 +5231,7 @@ class NoteListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request Note_Delete.
+ * Handles API Request Note_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_delete
  */
 class NoteDelete extends Request {
@@ -5216,9 +5240,10 @@ class NoteDelete extends Request {
    * @param {?Client} client
    * @param {?Note} note
    */
-  constructor(client = null, note = null) {
+  constructor(client, note = null) {
     super(client);
     this.function = 'Note_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.noteId = null;
 
     if (util.isInstanceOf(note, models.Note)) {
@@ -5268,7 +5293,7 @@ class NoteDelete extends Request {
 }
 
 /** 
- * Handles API Request Note_Insert.
+ * Handles API Request Note_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_insert
  */
 class NoteInsert extends Request {
@@ -5276,9 +5301,10 @@ class NoteInsert extends Request {
    * NoteInsert Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'Note_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.noteText = null;
     this.customerId = null;
     this.accountId = null;
@@ -5393,7 +5419,7 @@ class NoteInsert extends Request {
 }
 
 /** 
- * Handles API Request Note_Update.
+ * Handles API Request Note_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_update
  */
 class NoteUpdate extends Request {
@@ -5402,9 +5428,10 @@ class NoteUpdate extends Request {
    * @param {?Client} client
    * @param {?Note} note
    */
-  constructor(client = null, note = null) {
+  constructor(client, note = null) {
     super(client);
     this.function = 'Note_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.noteId = null;
     this.noteText = null;
 
@@ -5476,7 +5503,7 @@ class NoteUpdate extends Request {
 }
 
 /** 
- * Handles API Request OrderCustomFieldList_Load.
+ * Handles API Request OrderCustomFieldList_Load. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercustomfieldlist_load
  */
 class OrderCustomFieldListLoad extends Request {
@@ -5484,9 +5511,10 @@ class OrderCustomFieldListLoad extends Request {
    * OrderCustomFieldListLoad Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'OrderCustomFieldList_Load';
+    this.scope = Request.REQUEST_SCOPE_STORE;
   }
 
   /**
@@ -5500,7 +5528,7 @@ class OrderCustomFieldListLoad extends Request {
 }
 
 /** 
- * Handles API Request OrderCustomFields_Update.
+ * Handles API Request OrderCustomFields_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercustomfields_update
  */
 class OrderCustomFieldsUpdate extends Request {
@@ -5509,9 +5537,10 @@ class OrderCustomFieldsUpdate extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderCustomFields_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.customFieldValues = new models.CustomFieldValues();
 
@@ -5596,7 +5625,7 @@ class OrderCustomFieldsUpdate extends Request {
 }
 
 /** 
- * Handles API Request OrderItemList_BackOrder.
+ * Handles API Request OrderItemList_BackOrder. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_backorder
  */
 class OrderItemListBackOrder extends Request {
@@ -5605,9 +5634,10 @@ class OrderItemListBackOrder extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderItemList_BackOrder';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.lineIds = [];
     this.dateInStock = null;
@@ -5729,7 +5759,7 @@ class OrderItemListBackOrder extends Request {
 }
 
 /** 
- * Handles API Request OrderItemList_Cancel.
+ * Handles API Request OrderItemList_Cancel. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_cancel
  */
 class OrderItemListCancel extends Request {
@@ -5738,9 +5768,10 @@ class OrderItemListCancel extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderItemList_Cancel';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.lineIds = [];
     this.reason = null;
@@ -5853,7 +5884,7 @@ class OrderItemListCancel extends Request {
 }
 
 /** 
- * Handles API Request OrderItemList_CreateShipment.
+ * Handles API Request OrderItemList_CreateShipment. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_createshipment
  */
 class OrderItemListCreateShipment extends Request {
@@ -5862,9 +5893,10 @@ class OrderItemListCreateShipment extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderItemList_CreateShipment';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.lineIds = [];
 
@@ -5954,7 +5986,7 @@ class OrderItemListCreateShipment extends Request {
 }
 
 /** 
- * Handles API Request OrderItemList_Delete.
+ * Handles API Request OrderItemList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_delete
  */
 class OrderItemListDelete extends Request {
@@ -5963,9 +5995,10 @@ class OrderItemListDelete extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderItemList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.lineIds = [];
 
@@ -6055,7 +6088,7 @@ class OrderItemListDelete extends Request {
 }
 
 /** 
- * Handles API Request OrderItem_Add.
+ * Handles API Request OrderItem_Add. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitem_add
  */
 class OrderItemAdd extends Request {
@@ -6064,9 +6097,10 @@ class OrderItemAdd extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'OrderItem_Add';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.code = null;
     this.name = null;
@@ -6367,7 +6401,7 @@ class OrderItemAdd extends Request {
 }
 
 /** 
- * Handles API Request OrderItem_Update.
+ * Handles API Request OrderItem_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitem_update
  */
 class OrderItemUpdate extends Request {
@@ -6376,13 +6410,14 @@ class OrderItemUpdate extends Request {
    * @param {?Client} client
    * @param {?OrderItem} orderItem
    */
-  constructor(client = null, orderItem = null) {
+  constructor(client, orderItem = null) {
     super(client);
     var i;
     var l;
     var options;
     var attribute;
     this.function = 'OrderItem_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.lineId = null;
     this.code = null;
@@ -6732,7 +6767,7 @@ const PAY_STATUS_FILTER_CAPTURED_NOT_SHIPPED = 'capt_not_ship';
 const PAY_STATUS_FILTER_SHIPPED_NOT_CAPTURED = 'ship_not_capt';
 
 /** 
- * Handles API Request OrderList_Load_Query.
+ * Handles API Request OrderList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderlist_load_query
  */
 class OrderListLoadQuery extends ListQueryRequest {
@@ -6740,9 +6775,10 @@ class OrderListLoadQuery extends ListQueryRequest {
    * OrderListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'OrderList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -6960,7 +6996,7 @@ class OrderListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request OrderPayment_Capture.
+ * Handles API Request OrderPayment_Capture. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_capture
  */
 class OrderPaymentCapture extends Request {
@@ -6969,9 +7005,10 @@ class OrderPaymentCapture extends Request {
    * @param {?Client} client
    * @param {?OrderPayment} orderPayment
    */
-  constructor(client = null, orderPayment = null) {
+  constructor(client, orderPayment = null) {
     super(client);
     this.function = 'OrderPayment_Capture';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderPaymentId = null;
     this.amount = null;
 
@@ -7044,7 +7081,7 @@ class OrderPaymentCapture extends Request {
 }
 
 /** 
- * Handles API Request OrderPayment_Refund.
+ * Handles API Request OrderPayment_Refund. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_refund
  */
 class OrderPaymentRefund extends Request {
@@ -7053,9 +7090,10 @@ class OrderPaymentRefund extends Request {
    * @param {?Client} client
    * @param {?OrderPayment} orderPayment
    */
-  constructor(client = null, orderPayment = null) {
+  constructor(client, orderPayment = null) {
     super(client);
     this.function = 'OrderPayment_Refund';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderPaymentId = null;
     this.amount = null;
 
@@ -7128,7 +7166,7 @@ class OrderPaymentRefund extends Request {
 }
 
 /** 
- * Handles API Request OrderPayment_VOID.
+ * Handles API Request OrderPayment_VOID. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_void
  */
 class OrderPaymentVoid extends Request {
@@ -7137,9 +7175,10 @@ class OrderPaymentVoid extends Request {
    * @param {?Client} client
    * @param {?OrderPayment} orderPayment
    */
-  constructor(client = null, orderPayment = null) {
+  constructor(client, orderPayment = null) {
     super(client);
     this.function = 'OrderPayment_VOID';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderPaymentId = null;
     this.amount = null;
 
@@ -7212,7 +7251,7 @@ class OrderPaymentVoid extends Request {
 }
 
 /** 
- * Handles API Request OrderShipmentList_Update.
+ * Handles API Request OrderShipmentList_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordershipmentlist_update
  */
 class OrderShipmentListUpdate extends Request {
@@ -7220,9 +7259,10 @@ class OrderShipmentListUpdate extends Request {
    * OrderShipmentListUpdate Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'OrderShipmentList_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.shipmentUpdates = [];
   }
 
@@ -7341,7 +7381,7 @@ class OrderShipmentListUpdate extends Request {
 }
 
 /** 
- * Handles API Request Order_Create.
+ * Handles API Request Order_Create. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_create
  */
 class OrderCreate extends Request {
@@ -7350,9 +7390,10 @@ class OrderCreate extends Request {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'Order_Create';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerLogin = null;
     this.customerId = null;
     this.shipFirstName = null;
@@ -8411,7 +8452,7 @@ class OrderCreate extends Request {
 }
 
 /** 
- * Handles API Request Order_Delete.
+ * Handles API Request Order_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_delete
  */
 class OrderDelete extends Request {
@@ -8420,9 +8461,10 @@ class OrderDelete extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'Order_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
 
     if (util.isInstanceOf(order, models.Order)) {
@@ -8472,7 +8514,7 @@ class OrderDelete extends Request {
 }
 
 /** 
- * Handles API Request Order_Update_Customer_Information.
+ * Handles API Request Order_Update_Customer_Information. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_update_customer_information
  */
 class OrderUpdateCustomerInformation extends Request {
@@ -8481,9 +8523,10 @@ class OrderUpdateCustomerInformation extends Request {
    * @param {?Client} client
    * @param {?Order} order
    */
-  constructor(client = null, order = null) {
+  constructor(client, order = null) {
     super(client);
     this.function = 'Order_Update_Customer_Information';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.orderId = null;
     this.customerId = null;
     this.shipResidential = null;
@@ -9131,7 +9174,7 @@ class OrderUpdateCustomerInformation extends Request {
 }
 
 /** 
- * Handles API Request PriceGroupCustomer_Update_Assigned.
+ * Handles API Request PriceGroupCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupcustomer_update_assigned
  */
 class PriceGroupCustomerUpdateAssigned extends Request {
@@ -9140,9 +9183,10 @@ class PriceGroupCustomerUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?PriceGroup} priceGroup
    */
-  constructor(client = null, priceGroup = null) {
+  constructor(client, priceGroup = null) {
     super(client);
     this.function = 'PriceGroupCustomer_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.priceGroupId = null;
     this.priceGroupName = null;
     this.editCustomer = null;
@@ -9307,7 +9351,7 @@ class PriceGroupCustomerUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request PriceGroupList_Load_Query.
+ * Handles API Request PriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegrouplist_load_query
  */
 class PriceGroupListLoadQuery extends ListQueryRequest {
@@ -9315,9 +9359,10 @@ class PriceGroupListLoadQuery extends ListQueryRequest {
    * PriceGroupListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'PriceGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -9389,7 +9434,7 @@ class PriceGroupListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request PriceGroupProduct_Update_Assigned.
+ * Handles API Request PriceGroupProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupproduct_update_assigned
  */
 class PriceGroupProductUpdateAssigned extends Request {
@@ -9398,9 +9443,10 @@ class PriceGroupProductUpdateAssigned extends Request {
    * @param {?Client} client
    * @param {?PriceGroup} priceGroup
    */
-  constructor(client = null, priceGroup = null) {
+  constructor(client, priceGroup = null) {
     super(client);
     this.function = 'PriceGroupProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.priceGroupId = null;
     this.priceGroupName = null;
     this.editProduct = null;
@@ -9594,7 +9640,7 @@ class PriceGroupProductUpdateAssigned extends Request {
 }
 
 /** 
- * Handles API Request ProductImage_Add.
+ * Handles API Request ProductImage_Add. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productimage_add
  */
 class ProductImageAdd extends Request {
@@ -9603,9 +9649,10 @@ class ProductImageAdd extends Request {
    * @param {?Client} client
    * @param {?Product} product
    */
-  constructor(client = null, product = null) {
+  constructor(client, product = null) {
     super(client);
     this.function = 'ProductImage_Add';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productCode = null;
     this.productId = null;
     this.editProduct = null;
@@ -9768,7 +9815,7 @@ class ProductImageAdd extends Request {
 }
 
 /** 
- * Handles API Request ProductImage_Delete.
+ * Handles API Request ProductImage_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productimage_delete
  */
 class ProductImageDelete extends Request {
@@ -9777,9 +9824,10 @@ class ProductImageDelete extends Request {
    * @param {?Client} client
    * @param {?ProductImageData} productImageData
    */
-  constructor(client = null, productImageData = null) {
+  constructor(client, productImageData = null) {
     super(client);
     this.function = 'ProductImage_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productImageId = null;
 
     if (util.isInstanceOf(productImageData, models.ProductImageData)) {
@@ -9829,7 +9877,7 @@ class ProductImageDelete extends Request {
 }
 
 /** 
- * Handles API Request ProductList_Adjust_Inventory.
+ * Handles API Request ProductList_Adjust_Inventory. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productlist_adjust_inventory
  */
 class ProductListAdjustInventory extends Request {
@@ -9837,9 +9885,10 @@ class ProductListAdjustInventory extends Request {
    * ProductListAdjustInventory Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'ProductList_Adjust_Inventory';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.inventoryAdjustments = [];
   }
 
@@ -9966,7 +10015,7 @@ const PRODUCT_SHOW_UNCATEGORIZED = 'Uncategorized';
 const PRODUCT_SHOW_ACTIVE = 'Active';
 
 /** 
- * Handles API Request ProductList_Load_Query.
+ * Handles API Request ProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productlist_load_query
  */
 class ProductListLoadQuery extends ListQueryRequest {
@@ -9974,9 +10023,10 @@ class ProductListLoadQuery extends ListQueryRequest {
    * ProductListLoadQuery Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'ProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'id',
@@ -10081,7 +10131,7 @@ class ProductListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request ProductVariantList_Load_Product.
+ * Handles API Request ProductVariantList_Load_Product. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariantlist_load_product
  */
 class ProductVariantListLoadProduct extends Request {
@@ -10090,9 +10140,10 @@ class ProductVariantListLoadProduct extends Request {
    * @param {?Client} client
    * @param {?Product} product
    */
-  constructor(client = null, product = null) {
+  constructor(client, product = null) {
     super(client);
     this.function = 'ProductVariantList_Load_Product';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productId = null;
     this.productCode = null;
     this.editProduct = null;
@@ -10426,7 +10477,7 @@ class ProductVariantListLoadProduct extends Request {
 }
 
 /** 
- * Handles API Request Product_Insert.
+ * Handles API Request Product_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_insert
  */
 class ProductInsert extends Request {
@@ -10435,9 +10486,10 @@ class ProductInsert extends Request {
    * @param {?Client} client
    * @param {?Product} product
    */
-  constructor(client = null, product = null) {
+  constructor(client, product = null) {
     super(client);
     this.function = 'Product_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productCode = null;
     this.productSku = null;
     this.productName = null;
@@ -10854,7 +10906,7 @@ class ProductInsert extends Request {
 }
 
 /** 
- * Handles API Request Product_Delete.
+ * Handles API Request Product_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_delete
  */
 class ProductDelete extends Request {
@@ -10863,9 +10915,10 @@ class ProductDelete extends Request {
    * @param {?Client} client
    * @param {?Product} product
    */
-  constructor(client = null, product = null) {
+  constructor(client, product = null) {
     super(client);
     this.function = 'Product_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productCode = null;
     this.productId = null;
     this.editProduct = null;
@@ -10986,7 +11039,7 @@ class ProductDelete extends Request {
 }
 
 /** 
- * Handles API Request Product_Update.
+ * Handles API Request Product_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_update
  */
 class ProductUpdate extends Request {
@@ -10995,9 +11048,10 @@ class ProductUpdate extends Request {
    * @param {?Client} client
    * @param {?Product} product
    */
-  constructor(client = null, product = null) {
+  constructor(client, product = null) {
     super(client);
     this.function = 'Product_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.productId = null;
     this.productCode = null;
     this.editProduct = null;
@@ -11470,7 +11524,7 @@ class ProductUpdate extends Request {
 }
 
 /** 
- * Handles API Request Provision_Domain.
+ * Handles API Request Provision_Domain. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/provision_domain
  */
 class ProvisionDomain extends Request {
@@ -11478,9 +11532,10 @@ class ProvisionDomain extends Request {
    * ProvisionDomain Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'Provision_Domain';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
     this.xml = null;
   }
 
@@ -11526,7 +11581,7 @@ class ProvisionDomain extends Request {
 }
 
 /** 
- * Handles API Request Provision_Store.
+ * Handles API Request Provision_Store. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/provision_store
  */
 class ProvisionStore extends Request {
@@ -11534,9 +11589,10 @@ class ProvisionStore extends Request {
    * ProvisionStore Constructor.
    * @param {?Client} client
    */
-  constructor(client = null) {
+  constructor(client) {
     super(client);
     this.function = 'Provision_Store';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.xml = null;
   }
 
@@ -11582,7 +11638,7 @@ class ProvisionStore extends Request {
 }
 
 /** 
- * Handles API Request CustomerAddressList_Load_Query.
+ * Handles API Request CustomerAddressList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddresslist_load_query
  */
 class CustomerAddressListLoadQuery extends ListQueryRequest {
@@ -11591,9 +11647,10 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'CustomerAddressList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
       'cust_id',
@@ -11730,7 +11787,421 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request CategoryProductList_Load_Query.
+ * Handles API Request PrintQueueList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/printqueuelist_load_query
+ */
+class PrintQueueListLoadQuery extends ListQueryRequest {
+  /**
+   * PrintQueueListLoadQuery Constructor.
+   * @param {?Client} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'PrintQueueList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'descrip'
+    ];
+
+    this.availableSortFields = [
+      'descrip'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PrintQueueListLoadQuery(this, data);
+  }
+}
+
+/** 
+ * Handles API Request PrintQueueJobList_Load_Query. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/printqueuejoblist_load_query
+ */
+class PrintQueueJobListLoadQuery extends ListQueryRequest {
+  /**
+   * PrintQueueJobListLoadQuery Constructor.
+   * @param {?Client} client
+   * @param {?PrintQueue} printQueue
+   */
+  constructor(client, printQueue = null) {
+    super(client);
+    this.function = 'PrintQueueJobList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+
+    this.availableSearchFields = [
+      'id',
+      'queue_id',
+      'store_id',
+      'user_id',
+      'descrip',
+      'job_fmt',
+      'job_data',
+      'dt_created'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'queue_id',
+      'store_id',
+      'user_id',
+      'descrip',
+      'job_fmt',
+      'job_data',
+      'dt_created'
+    ];
+
+    this.availableOnDemandColumns = [
+      'job_data'
+    ];
+    this.printQueueId = null;
+    this.editPrintQueue = null;
+    this.printQueueDescription = null;
+
+    if (util.isInstanceOf(printQueue, models.PrintQueue)) {
+      if (printQueue.getId()) {
+        this.setPrintQueueId(printQueue.getId());
+      } else if (printQueue.getDescription()) {
+        this.setEditPrintQueue(printQueue.getDescription());
+      }
+    }
+  }
+
+  /**
+   * Get PrintQueue_ID.
+   * @returns {number}
+   */
+  getPrintQueueId() {
+    return this.printQueueId;
+  }
+
+  /**
+   * Get Edit_PrintQueue.
+   * @returns {string}
+   */
+  getEditPrintQueue() {
+    return this.editPrintQueue;
+  }
+
+  /**
+   * Get PrintQueue_Description.
+   * @returns {string}
+   */
+  getPrintQueueDescription() {
+    return this.printQueueDescription;
+  }
+
+  /**
+   * Set PrintQueue_ID.
+   * @param {number} printQueueId
+   * @returns {PrintQueueJobListLoadQuery}
+   */
+  setPrintQueueId(printQueueId) {
+    this.printQueueId = printQueueId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PrintQueue.
+   * @param {string} editPrintQueue
+   * @returns {PrintQueueJobListLoadQuery}
+   */
+  setEditPrintQueue(editPrintQueue) {
+    this.editPrintQueue = editPrintQueue;
+    return this;
+  }
+
+  /**
+   * Set PrintQueue_Description.
+   * @param {string} printQueueDescription
+   * @returns {PrintQueueJobListLoadQuery}
+   */
+  setPrintQueueDescription(printQueueDescription) {
+    this.printQueueDescription = printQueueDescription;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.printQueueId)) {
+      data['PrintQueue_ID'] = this.printQueueId;
+    } else if (!util.isNullOrUndefined(this.editPrintQueue)) {
+      data['Edit_PrintQueue'] = this.editPrintQueue;
+    } else if (!util.isNullOrUndefined(this.printQueueDescription)) {
+      data['PrintQueue_Description'] = this.printQueueDescription;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PrintQueueJobListLoadQuery(this, data);
+  }
+}
+
+/** 
+ * Handles API Request PrintQueueJob_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_delete
+ */
+class PrintQueueJobDelete extends Request {
+  /**
+   * PrintQueueJobDelete Constructor.
+   * @param {?Client} client
+   * @param {?PrintQueueJob} printQueueJob
+   */
+  constructor(client, printQueueJob = null) {
+    super(client);
+    this.function = 'PrintQueueJob_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.printQueueJobId = null;
+
+    if (util.isInstanceOf(printQueueJob, models.PrintQueueJob)) {
+      if (printQueueJob.getId()) {
+        this.setPrintQueueJobId(printQueueJob.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PrintQueueJob_ID.
+   * @returns {number}
+   */
+  getPrintQueueJobId() {
+    return this.printQueueJobId;
+  }
+
+  /**
+   * Set PrintQueueJob_ID.
+   * @param {number} printQueueJobId
+   * @returns {PrintQueueJobDelete}
+   */
+  setPrintQueueJobId(printQueueJobId) {
+    this.printQueueJobId = printQueueJobId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.printQueueJobId)) {
+      data['PrintQueueJob_ID'] = this.printQueueJobId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PrintQueueJobDelete(this, data);
+  }
+}
+
+/** 
+ * Handles API Request PrintQueueJob_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_insert
+ */
+class PrintQueueJobInsert extends Request {
+  /**
+   * PrintQueueJobInsert Constructor.
+   * @param {?Client} client
+   * @param {?PrintQueue} printQueue
+   */
+  constructor(client, printQueue = null) {
+    super(client);
+    this.function = 'PrintQueueJob_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.printQueueId = null;
+    this.editPrintQueue = null;
+    this.printQueueDescription = null;
+    this.printQueueJobDescription = null;
+    this.printQueueJobFormat = null;
+    this.printQueueJobData = null;
+
+    if (util.isInstanceOf(printQueue, models.PrintQueue)) {
+      if (printQueue.getId()) {
+        this.setPrintQueueId(printQueue.getId());
+      } else if (printQueue.getDescription()) {
+        this.setEditPrintQueue(printQueue.getDescription());
+      }
+    }
+  }
+
+  /**
+   * Get PrintQueue_ID.
+   * @returns {number}
+   */
+  getPrintQueueId() {
+    return this.printQueueId;
+  }
+
+  /**
+   * Get Edit_PrintQueue.
+   * @returns {string}
+   */
+  getEditPrintQueue() {
+    return this.editPrintQueue;
+  }
+
+  /**
+   * Get PrintQueue_Description.
+   * @returns {string}
+   */
+  getPrintQueueDescription() {
+    return this.printQueueDescription;
+  }
+
+  /**
+   * Get PrintQueueJob_Description.
+   * @returns {string}
+   */
+  getPrintQueueJobDescription() {
+    return this.printQueueJobDescription;
+  }
+
+  /**
+   * Get PrintQueueJob_Format.
+   * @returns {string}
+   */
+  getPrintQueueJobFormat() {
+    return this.printQueueJobFormat;
+  }
+
+  /**
+   * Get PrintQueueJob_Data.
+   * @returns {string}
+   */
+  getPrintQueueJobData() {
+    return this.printQueueJobData;
+  }
+
+  /**
+   * Set PrintQueue_ID.
+   * @param {number} printQueueId
+   * @returns {PrintQueueJobInsert}
+   */
+  setPrintQueueId(printQueueId) {
+    this.printQueueId = printQueueId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PrintQueue.
+   * @param {string} editPrintQueue
+   * @returns {PrintQueueJobInsert}
+   */
+  setEditPrintQueue(editPrintQueue) {
+    this.editPrintQueue = editPrintQueue;
+    return this;
+  }
+
+  /**
+   * Set PrintQueue_Description.
+   * @param {string} printQueueDescription
+   * @returns {PrintQueueJobInsert}
+   */
+  setPrintQueueDescription(printQueueDescription) {
+    this.printQueueDescription = printQueueDescription;
+    return this;
+  }
+
+  /**
+   * Set PrintQueueJob_Description.
+   * @param {string} printQueueJobDescription
+   * @returns {PrintQueueJobInsert}
+   */
+  setPrintQueueJobDescription(printQueueJobDescription) {
+    this.printQueueJobDescription = printQueueJobDescription;
+    return this;
+  }
+
+  /**
+   * Set PrintQueueJob_Format.
+   * @param {string} printQueueJobFormat
+   * @returns {PrintQueueJobInsert}
+   */
+  setPrintQueueJobFormat(printQueueJobFormat) {
+    this.printQueueJobFormat = printQueueJobFormat;
+    return this;
+  }
+
+  /**
+   * Set PrintQueueJob_Data.
+   * @param {string} printQueueJobData
+   * @returns {PrintQueueJobInsert}
+   */
+  setPrintQueueJobData(printQueueJobData) {
+    this.printQueueJobData = printQueueJobData;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.printQueueId)) {
+      data['PrintQueue_ID'] = this.printQueueId;
+    } else if (!util.isNullOrUndefined(this.editPrintQueue)) {
+      data['Edit_PrintQueue'] = this.editPrintQueue;
+    } else if (!util.isNullOrUndefined(this.printQueueDescription)) {
+      data['PrintQueue_Description'] = this.printQueueDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.printQueueJobDescription)) {
+      data['PrintQueueJob_Description'] = this.printQueueJobDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.printQueueJobFormat)) {
+      data['PrintQueueJob_Format'] = this.printQueueJobFormat;
+    }
+
+    if (!util.isNullOrUndefined(this.printQueueJobData)) {
+      data['PrintQueueJob_Data'] = this.printQueueJobData;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PrintQueueJobInsert(this, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
 class CategoryProductListLoadQuery extends ProductListLoadQuery {
@@ -11739,9 +12210,10 @@ class CategoryProductListLoadQuery extends ProductListLoadQuery {
    * @param {?Client} client
    * @param {?Category} category
    */
-  constructor(client = null, category = null) {
+  constructor(client, category = null) {
     super(client);
     this.function = 'CategoryProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.categoryId = null;
     this.categoryCode = null;
     this.editCategory = null;
@@ -11885,7 +12357,7 @@ class CategoryProductListLoadQuery extends ProductListLoadQuery {
 }
 
 /** 
- * Handles API Request CouponPriceGroupList_Load_Query.
+ * Handles API Request CouponPriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponpricegrouplist_load_query
  */
 class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
@@ -11894,9 +12366,10 @@ class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
    * @param {?Client} client
    * @param {?Coupon} coupon
    */
-  constructor(client = null, coupon = null) {
+  constructor(client, coupon = null) {
     super(client);
     this.function = 'CouponPriceGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.couponId = null;
     this.editCoupon = null;
     this.couponCode = null;
@@ -12040,7 +12513,7 @@ class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
 }
 
 /** 
- * Handles API Request PriceGroupProductList_Load_Query.
+ * Handles API Request PriceGroupProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupproductlist_load_query
  */
 class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
@@ -12049,9 +12522,10 @@ class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
    * @param {?Client} client
    * @param {?PriceGroup} priceGroup
    */
-  constructor(client = null, priceGroup = null) {
+  constructor(client, priceGroup = null) {
     super(client);
     this.function = 'PriceGroupProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.priceGroupId = null;
     this.priceGroupName = null;
     this.assigned = null;
@@ -12174,7 +12648,7 @@ class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
 }
 
 /** 
- * Handles API Request CustomerPriceGroupList_Load_Query.
+ * Handles API Request CustomerPriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerpricegrouplist_load_query
  */
 class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
@@ -12183,9 +12657,10 @@ class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
    * @param {?Client} client
    * @param {?Customer} customer
    */
-  constructor(client = null, customer = null) {
+  constructor(client, customer = null) {
     super(client);
     this.function = 'CustomerPriceGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
     this.customerId = null;
     this.editCustomer = null;
     this.customerLogin = null;
@@ -12328,7 +12803,168 @@ class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   }
 }
 
+/** 
+ * This class is a utility to create custom requests.
+ */
+class RequestBuilder extends Request
+{
+  /**
+   * RequestBuilder Constructor.
+   * @param {?Client} client
+   * @param {string} apiFunction
+   * @param {?Object} data
+   */
+  constructor(client, apiFunction, data = {}) {
+    super(client);
+    this.setScope(Request.REQUEST_SCOPE_STORE);
+    this.setFunction(apiFunction);
+
+    if (util.isObject(data)) {
+      this.data = data;
+    }
+  }
+
+  /**
+   * Set the api function name to call.
+   * @param {string} apiFunction
+   * @returns {RequestBuilder}
+   */
+  setFunction(apiFunction) {
+    this.function = apiFunction;
+    return this;
+  }
+
+  /**
+   * Set the request scope. Use store or domain.
+   * @param {string} apiFunction
+   * @throws Error
+   * @returns {RequestBuilder}
+   */
+  setScope(scope) {
+    if (!util.isString(scope)) {
+      throw new Error(util.format('Expected a string but got %s', typeof scope));
+    }
+
+    scope = scope.toLowerCase();
+
+    if (scope != Request.REQUEST_SCOPE_DOMAIN && scope != Request.REQUEST_SCOPE_STORE) {
+      throw new Error('Invalid Request Scope Value');
+    }
+
+    this.scope = scope;
+    return this;
+  }
+
+  /**
+   * Set a field value.
+   * @param {string} field
+   * @param {*} value
+   * @returns {RequestBuilder}
+   */
+  set(field, value) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function') {
+      return this.setFunction(value);
+    } else if (nameLower == 'store_code') {
+      return this.setStoreCode(value);
+    }
+
+    this.data[field] = value;
+
+    return this;
+  }
+
+  /**
+   * Get a defined field value or defaultValue if it does not exist.
+   * @param {string} field
+   * @param {*} defaultValue
+   * @returns {*}
+   */
+  get(field, defaultValue = null) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function') {
+      return this.getFunction();
+    } else if (nameLower == 'store_code') {
+      return this.getStoreCode();
+    }
+
+    return field in this.data ?
+      this.data[field] : defaultValue;
+  }
+
+  /**
+   * Check if a field is defined in the request data.
+   * @param {string} field
+   * @returns {bool}
+   */
+  has(field) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function' || nameLower == 'store_code') {
+      return true;
+    }
+
+    return field in this.data;
+  }
+
+  /**
+   * Remove a field from the request data.
+   * @param {string} field
+   * @returns {RequestBuilder}
+   */
+  remove(field) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function' || nameLower == 'store_code') {
+      return this;
+    }
+
+    if (field in this.data) {
+      delete this.data[field];
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {    
+    return Object.assign(super.toObject(), this.data);
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.RequestBuilder(this, data);
+  }
+}
+
 module.exports = {
+  RequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
   AvailabilityGroupListLoadQuery,
@@ -12386,6 +13022,10 @@ module.exports = {
   ProvisionDomain,
   ProvisionStore,
   CustomerAddressListLoadQuery,
+  PrintQueueListLoadQuery,
+  PrintQueueJobListLoadQuery,
+  PrintQueueJobDelete,
+  PrintQueueJobInsert,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupProductListLoadQuery,

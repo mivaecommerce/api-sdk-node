@@ -278,11 +278,10 @@ class CouponListDelete extends Response {
    * @returns {number}
    */
   getProcessed() {
-
     if (!util.isNullOrUndefined(this.data['processed'])) {
       return this.data['processed'];
     }
-    
+
     return 0;
   }
 }
@@ -351,6 +350,18 @@ class CouponInsert extends Response {
    */
   constructor(request, data = {}) {
     super(request, data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['id'])) {
+      return this.data['data']['id'];
+    }
+
+    return 0;
   }
 }
 
@@ -433,6 +444,21 @@ class CustomerInsert extends Response {
    */
   constructor(request, data = {}) {
     super(request, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Customer(this.data['data']);
+  }
+
+  /**
+   * Get customer.
+   * @returns {?Customer}
+   */
+  getCustomer() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -1306,6 +1332,122 @@ class CustomerAddressListLoadQuery extends ListQueryResponse {
 }
 
 /** 
+ * API Response for PrintQueueList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/printqueuelist_load_query
+ */
+class PrintQueueListLoadQuery extends ListQueryResponse {
+  /**
+   * PrintQueueListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PrintQueue(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get printQueues.
+   * @returns {PrintQueue[]}
+   */
+  getPrintQueues() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PrintQueueJobList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/printqueuejoblist_load_query
+ */
+class PrintQueueJobListLoadQuery extends ListQueryResponse {
+  /**
+   * PrintQueueJobListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PrintQueueJob(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get printQueueJobs.
+   * @returns {PrintQueueJob[]}
+   */
+  getPrintQueueJobs() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PrintQueueJob_Delete.
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_delete
+ */
+class PrintQueueJobDelete extends Response {
+  /**
+   * PrintQueueJobDelete Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+  }
+}
+
+/** 
+ * API Response for PrintQueueJob_Insert.
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_insert
+ */
+class PrintQueueJobInsert extends Response {
+  /**
+   * PrintQueueJobInsert Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['id'])) {
+      return this.data['data']['id'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
  * API Response for CategoryProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
@@ -1453,7 +1595,22 @@ class CustomerPriceGroupListLoadQuery extends ListQueryResponse {
   }
 }
 
+/** 
+ * Response for RequestBuilder.
+ */
+class RequestBuilder extends Response {
+  /**
+   * RequestBuilder Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+  }
+}
+
 module.exports = {
+  RequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
   AvailabilityGroupListLoadQuery,
@@ -1511,6 +1668,10 @@ module.exports = {
   ProvisionDomain,
   ProvisionStore,
   CustomerAddressListLoadQuery,
+  PrintQueueListLoadQuery,
+  PrintQueueJobListLoadQuery,
+  PrintQueueJobDelete,
+  PrintQueueJobInsert,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupProductListLoadQuery,

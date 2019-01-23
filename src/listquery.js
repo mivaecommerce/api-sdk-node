@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: listquery.js 72033 2018-12-17 18:52:05Z gidriss $
+ * $Id: listquery.js 72815 2019-01-23 00:00:04Z gidriss $
  */
 
 const { Request, Response } = require('./abstract');
@@ -1238,42 +1238,40 @@ class FilterExpression {
     var ret = [];
 
     for (i = 0, l = this.expressions.length; i < l; i++) {
-      entry = {};
+        entry = {};
 
       if (util.isInstanceOf(this.expressions[i]['entry'], FilterExpression)) {
+        entry = {
+          name  : this.expressions[i]['type'],
+          value : this.expressions[i]['entry'].toArray()
+        };
+      } else {
         if (this.isChild()) {
           entry = {
-            field     : this.expressions[i]['type'],
-            operator  : 'SUBWHERE',
-            value     : this.expressions[i]['entry'].toArray()
-          };
-        } else {
-          entry = {
-            name  : this.expressions[i]['type'],
-            value : this.expressions[i]['entry'].toArray()
-          };
-        }
-      } else {
-          if (this.isChild()) {
-            entry = {
-              field     : this.expressions[i]['entry'].getLeft(),
-              operator  : this.expressions[i]['entry'].getOperator(),
-              value     : util.isArray(this.expressions[i]['entry'].getRight()) ?
-                this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
-            };
-          } else {
-            entry = {
-              name  : this.expressions[i]['type'],
-              value : [
+              field: this.expressions[i]['type'],
+              operator: 'SUBWHERE',
+              value: [
                 {
                   field     : this.expressions[i]['entry'].getLeft(),
                   operator  : this.expressions[i]['entry'].getOperator(),
                   value     : util.isArray(this.expressions[i]['entry'].getRight()) ?
                     this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
-                }
+                },
               ]
-            };
-          }
+          };
+        } else {
+          entry = {
+            name  : this.expressions[i]['type'],
+            value : [
+              {
+                field     : this.expressions[i]['entry'].getLeft(),
+                operator  : this.expressions[i]['entry'].getOperator(),
+                value     : util.isArray(this.expressions[i]['entry'].getRight()) ?
+                  this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
+              }
+            ]
+          };
+        }
       }
 
       ret.push(entry);

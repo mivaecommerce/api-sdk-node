@@ -4,12 +4,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: abstract.js 71977 2018-12-13 22:32:26Z gidriss $
+ * $Id: abstract.js 72467 2019-01-08 23:00:09Z gidriss $
  */
 
 const util = require('./util');
 
 /** @module Abstract */
+
+/** CATEGORY_SHOW constants. */
+/** @ignore */
+const REQUEST_SCOPE_STORE = 'store';
+/** @ignore */
+const REQUEST_SCOPE_DOMAIN = 'domain';
 
 /** Abstract data model */
 class Model {
@@ -76,6 +82,27 @@ class Request {
   constructor(client = null) {
     this.client    = client;
     this.storeCode = null;
+    this.scope     = REQUEST_SCOPE_STORE;
+  }
+  
+  /**
+   * Constant REQUEST_SCOPE_STORE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get REQUEST_SCOPE_STORE() {
+    return REQUEST_SCOPE_STORE;
+  }
+
+  /**
+   * Constant REQUEST_SCOPE_DOMAIN
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get REQUEST_SCOPE_DOMAIN() {
+    return REQUEST_SCOPE_DOMAIN;
   }
 
   /**
@@ -109,6 +136,14 @@ class Request {
   }
 
   /**
+   * Get the scope of request.
+   * @returns {string}
+   */
+  getScope() {
+    return this.scope;
+  }
+
+  /**
    * Return the assigned client.
    * @returns {?Client}
    */
@@ -133,7 +168,7 @@ class Request {
   toObject() {
     var ret = {};
 
-    if (!util.isNullOrUndefined(this.storeCode)) {
+    if (this.scope == REQUEST_SCOPE_STORE && !util.isNullOrUndefined(this.storeCode)) {
       ret['Store_Code'] = this.storeCode;
     }
 

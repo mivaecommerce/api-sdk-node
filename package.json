@@ -1,6 +1,6 @@
 {
   "name": "merchantapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Miva Merchant JSON API SDK",
   "main": "./src/index.js",
   "scripts": {

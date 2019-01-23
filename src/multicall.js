@@ -382,6 +382,10 @@ class MultiCallResponse extends Response {
     this.data      = data;
     this.responses = [];
 
+    if (!this.isSuccess()) {
+      return;
+    }
+
     for (gi = 0, gl = requests.length; gi < gl; gi++) {
       if (util.isNullOrUndefined(this.data[gi])) {
         throw new Error(util.format('Unexpected Response. Expected response for request %d.', gi));

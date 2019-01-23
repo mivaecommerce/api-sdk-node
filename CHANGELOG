@@ -1,0 +1,18 @@
+v1.1.0
+	- Bug 29368: Fixed FilterExpression not building correct SUBQUERY entries.
+	- Bug 29373: Added RequestBuilder to allow custom request objects to be constructed.
+	- Corrected class documentation link in readme
+	- Bug 29398: Added the following API functions introduced in Miva Merchant 9.13.00:
+		- PrintQueueList_Load_Query (Scope: Store)
+		- PrintQueueJobList_Load_Query (Scope: Domain)
+		- PrintQueueJob_Insert (Scope: Store)
+		- PrintQueueJob_Delete (Scope: Store)
+	- Added scope variable to Request.
+		- Added Constant Request.REQUEST_SCOPE_STORE
+		- Added Constant Request.REQUEST_SCOPE_DOMAIN
+	- Fixed MultiCallResponse constructor throwing an exception when the response was not successful.
+	- Added model DiscountModuleCapabilities for model PriceGroup
+	- Customer_Insert response now returns a Customer model.
+	- Coupon_Insert response now returns a the created coupon id.
+v1.0.0
+	- Initial Release

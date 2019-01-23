@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: client.js 72014 2018-12-13 23:53:31Z gidriss $
+ * $Id: client.js 72557 2019-01-11 21:43:41Z gidriss $
  */
 
 const http      = require('http');
@@ -13,7 +13,7 @@ const crypto    = require('crypto');
 const util      = require('./util');
 const abstract  = require('./abstract');
 const requests  = require('./requests');
-const { MultiCallRequest } = require('./multicall');
+const { MultiCallRequest, MultiCallOperation } = require('./multicall');
 
 /** @module Client */
 
@@ -45,7 +45,7 @@ class Client {
     this.options = Object.assign({
       require_timestamps: true,
       signing_key_digest: 'sha256',
-      default_store_code: '',
+      default_store_code: null,
     }, options);
   }
 
@@ -186,7 +186,7 @@ class Client {
    * Send a Request object with callback.
    * @param {Request} request
    * @param {Client~sendCallback} callback
-   * @throws {Error} when invalid Request object or invalid callback
+   * @throws {Error} When an invalid callback is supplied
    * @returns {void}
    */
   send(request, callback) {
@@ -195,6 +195,10 @@ class Client {
     var l;
     var i2;
     var l2;
+    var mrequests;
+    var orequests;
+
+    var defaultStore = this.getOption('default_store_code');
 
     if (!util.isFunction(callback)) {
       throw new Error('Expecting a function callback');
@@ -202,34 +206,43 @@ class Client {
       callback(new Error('Expecting instance of Request'), null);
     }
 
-    data = request.toObject();
+    if (util.isInstanceOf(request, MultiCallRequest)) {
+      mrequests = request.getRequests();
 
-    if (!util.isInstanceOf(request, MultiCallRequest)) {
-      if (!util.isObject(data)) {
-        throw new Error(util.format('Expected an Object but but a %s', typeof data));
-      }
+      for (i = 0, l = mrequests.length; i < l; i++) {
+        if (util.isInstanceOf(mrequests[i], MultiCallOperation)) {
+          orequests = mrequests[i].getRequests();
 
-      data['Function'] = request.getFunction();
-
-      if (util.isNullOrUndefined(data['Store_Code']) && !util.isNullOrUndefined(this.options.default_store_code)) {
-        data['Store_Code'] = this.options.default_store_code
-      }
-    } else {
-      if (!util.isUndefined(data['Operations']) && util.isArray(data['Operations'])) {
-        for (i = 0, l = data['Operations'].length; i < l; i++) {
-          if (util.isNullOrUndefined(data['Operations'][i]['Store_Code'])) {
-            data['Operations'][i]['Store_Code'] = this.options.default_store_code;
-          }
-
-          if (!util.isUndefined(data['Operations'][i]['Iterations']) && util.isArray(data['Operations'][i]['Iterations'])) {
-            for (i2 = 0, l2 = data['Operations'][i]['Iterations'].length; i2 < l2; i2++) {
-              if (util.isNullOrUndefined(data['Operations'][i]['Iterations'][i2]['Store_Code'])) {
-                data['Operations'][i]['Iterations'][i2]['Store_Code'] = this.options.default_store_code;
-              }
+          for (i2 = 0, l2 = orequests.length; i2 < l2; i2++) {
+            if (orequests[i2].getScope() == abstract.Request.REQUEST_SCOPE_STORE &&
+                !util.isNullOrUndefined(orequests[i2].getStoreCode()) &&
+                !util.isNullOrUndefined(defaultStore) &&
+                orequests[i2].getScope() != defaultStore) {
+              orequests[i2].setStoreCode(defaultStore);
             }
+          }
+        } else {
+          if (mrequests[i].getScope() == abstract.Request.REQUEST_SCOPE_STORE &&
+            util.isNullOrUndefined(mrequests[i].getStoreCode()) &&
+            !util.isNullOrUndefined(defaultStore)) {
+            mrequests[i].setStoreCode(defaultStore);
           }
         }
       }
+
+      data = request.toObject();
+    } else {
+      if (request.getScope() == abstract.Request.REQUEST_SCOPE_STORE &&
+          util.isNullOrUndefined(request.getStoreCode()) &&
+          !util.isNullOrUndefined(defaultStore)) {
+          request.setStoreCode(defaultStore);
+      }
+
+      data = Object.assign(request.toObject(), { Function: request.getFunction() });
+    }
+
+    if (!util.isObject(data)) {
+      callback(new Error(util.format('Expected an Object but but a %s', typeof data)), null);
     }
 
     if (this.options.require_timestamps) {
@@ -242,7 +255,12 @@ class Client {
       if (error) {
         callback(error, null);
       } else {
-        response = request.createResponse(json);
+        
+        try {
+          response = request.createResponse(json);
+        } catch(e) {
+          callback(e, null);
+        }
 
         if (!util.isInstanceOf(response, abstract.Response)) {
           callback(new Error('Request object did not return a Response object'), response);
@@ -279,7 +297,11 @@ class Client {
 
     body = JSON.stringify(data);
 
+    // Keep compatibility with Node version less than 10.9.0
     options = {
+      hostname: this.endpoint.hostname,
+      port: this.endpoint.port,
+      path: this.endpoint.pathname,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -288,7 +310,7 @@ class Client {
       }
     };
 
-    const request = proto.request(this.endpoint, options, function onPrepareResponse(response) {
+    const request = proto.request(options, function onPrepareResponse(response) {
       var json;
       var content  = '';
 

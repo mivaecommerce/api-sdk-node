@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: multicall_example.js 72034 2018-12-17 18:53:54Z gidriss $
+ * $Id: multicall_example.js 72612 2019-01-15 18:50:58Z gidriss $
  */
 
 const api   = require('merchantapi');
@@ -116,7 +116,7 @@ request.send(function(error, response) {
   	var responses = response.getResponses();
 
     for(var i = 0, l = responses.length; i < l; i++) {
-    	console.log(util.format('Response for %s', responses[i].getFunction()));
+    	console.log(util.format('Response for %s', responses[i].getRequest().getFunction()));
     	console.log(responses[i].getData());
     }
   }

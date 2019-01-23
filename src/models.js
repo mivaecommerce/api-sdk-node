@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id$
+ * $Id: models.js 72812 2019-01-22 23:57:29Z gidriss $
  */
 
 const util      = require('./util');
@@ -919,18 +919,18 @@ class Module extends Model {
   
   /**
    * Get refcount.
-   * @returns {string}
+   * @returns {number}
    */
   getReferenceCount() {
-    return this.getField('refcount');
+    return this.getField('refcount', 0);
   }
   
   /**
    * Get active.
-   * @returns {string}
+   * @returns {boolean}
    */
   getActive() {
-    return this.getField('active');
+    return this.getField('active', false);
   }
 }
 
@@ -1091,6 +1091,17 @@ class PriceGroup extends Model {
       }
     } else {
       this.module = {};
+    }
+
+    if (!util.isUndefined(this.capabilities)) {
+      if (!util.isInstanceOf(this.capabilities, DiscountModuleCapabilities) && util.isObject(this.capabilities)) {
+        this.capabilities = new DiscountModuleCapabilities(this.capabilities);
+      } else if (!util.isInstanceOf(this.capabilities, DiscountModuleCapabilities)) {
+        throw new Error(util.format('Expected DiscountModuleCapabilities or an Object but got %s',
+          typeof this.capabilities));
+      }
+    } else {
+      this.capabilities = {};
     }
   }
 
@@ -1304,10 +1315,10 @@ class PriceGroup extends Model {
   
   /**
    * Get capabilities.
-   * @returns {array}
+   * @returns {DiscountModuleCapabilities|*}
    */
   getCapabilities() {
-    return this.getField('capabilities', []);
+    return this.getField('capabilities', null);
   }
   
   /**
@@ -1513,15 +1524,6 @@ class PriceGroup extends Model {
   }
 
   /**
-   * Set capabilities.
-   * @param {Array} capabilities
-   * @returns {PriceGroup}
-   */
-  setCapabilities(capabilities) {
-    return this.setField('capabilities', capabilities);
-  }
-
-  /**
    * Set exclusion.
    * @param {boolean} exclusion
    * @returns {PriceGroup}
@@ -1558,7 +1560,71 @@ class PriceGroup extends Model {
       ret['module'] = ret['module'].toObject();
     }
 
+    if (util.isInstanceOf(ret['capabilities'], DiscountModuleCapabilities)) {
+      ret['capabilities'] = ret['capabilities'].toObject();
+    }
+
     return ret;
+  }
+}
+
+/** DiscountModuleCapabilities data model. */
+class DiscountModuleCapabilities extends Model {
+  /**
+   * DiscountModuleCapabilities Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get preitems.
+   * @returns {boolean}
+   */
+  getPreitems() {
+    return this.getField('preitems', false);
+  }
+  
+  /**
+   * Get items.
+   * @returns {boolean}
+   */
+  getItems() {
+    return this.getField('items', false);
+  }
+  
+  /**
+   * Get eligibility.
+   * @returns {string}
+   */
+  getEligibility() {
+    return this.getField('eligibility');
+  }
+  
+  /**
+   * Get basket.
+   * @returns {boolean}
+   */
+  getBasket() {
+    return this.getField('basket', false);
+  }
+  
+  /**
+   * Get shipping.
+   * @returns {boolean}
+   */
+  getShipping() {
+    return this.getField('shipping', false);
+  }
+  
+  /**
+   * Get qualifying.
+   * @returns {boolean}
+   */
+  getQualifying() {
+    return this.getField('qualifying', false);
   }
 }
 
@@ -8140,6 +8206,142 @@ class OrderPaymentTotal extends Model {
   }
 }
 
+/** PrintQueue data model. */
+class PrintQueue extends Model {
+  /**
+   * PrintQueue Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+}
+
+/** PrintQueueJob data model. */
+class PrintQueueJob extends Model {
+  /**
+   * PrintQueueJob Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get queue_id.
+   * @returns {number}
+   */
+  getQueueId() {
+    return this.getField('queue_id', 0);
+  }
+  
+  /**
+   * Get store_id.
+   * @returns {number}
+   */
+  getStoreId() {
+    return this.getField('store_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+  
+  /**
+   * Get job_fmt.
+   * @returns {string}
+   */
+  getJobFormat() {
+    return this.getField('job_fmt');
+  }
+  
+  /**
+   * Get job_data.
+   * @returns {string}
+   */
+  getJobData() {
+    return this.getField('job_data');
+  }
+  
+  /**
+   * Get dt_created.
+   * @returns {number}
+   */
+  getDateTimeCreated() {
+    return this.getField('dt_created', 0);
+  }
+  
+  /**
+   * Get printqueue_descrip.
+   * @returns {string}
+   */
+  getPrintQueueDescription() {
+    return this.getField('printqueue_descrip');
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get store_code.
+   * @returns {string}
+   */
+  getStoreCode() {
+    return this.getField('store_code');
+  }
+  
+  /**
+   * Get store_name.
+   * @returns {string}
+   */
+  getStoreName() {
+    return this.getField('store_name');
+  }
+}
+
 /** OrderNote data model. */
 class OrderNote extends Note {
   /**
@@ -8239,6 +8441,7 @@ module.exports = {
   Module,
   Note,
   PriceGroup,
+  DiscountModuleCapabilities,
   Product,
   RelatedProduct,
   ProductImageData,
@@ -8279,6 +8482,8 @@ module.exports = {
   CustomerAddress,
   OrderTotal,
   OrderPaymentTotal,
+  PrintQueue,
+  PrintQueueJob,
   OrderNote,
   CategoryProduct,
   CouponPriceGroup,
