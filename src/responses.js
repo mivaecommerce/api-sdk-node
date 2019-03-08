@@ -1448,6 +1448,166 @@ class PrintQueueJobInsert extends Response {
 }
 
 /** 
+ * API Response for PrintQueueJob_Status.
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_status
+ */
+class PrintQueueJobStatus extends Response {
+  /**
+   * PrintQueueJobStatus Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+  }
+
+  /**
+   * Get status.
+   * @returns {string}
+   */
+  getStatus() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['status'])) {
+      return this.data['data']['status'];
+    }
+
+    return null;
+  }
+}
+
+/** 
+ * API Response for PaymentMethodList_Load.
+ * @see https://docs.miva.com/json-api/functions/paymentmethodlist_load
+ */
+class PaymentMethodListLoad extends Response {
+  /**
+   * PaymentMethodListLoad Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.PaymentMethod(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get paymentMethods.
+   * @returns {PaymentMethod[]}
+   */
+  getPaymentMethods() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Order_Create_FromOrder.
+ * @see https://docs.miva.com/json-api/functions/order_create_fromorder
+ */
+class OrderCreateFromOrder extends Response {
+  /**
+   * OrderCreateFromOrder Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Order(this.data['data']);
+  }
+
+  /**
+   * Get order.
+   * @returns {?Order}
+   */
+  getOrder() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Order_Authorize.
+ * @see https://docs.miva.com/json-api/functions/order_authorize
+ */
+class OrderAuthorize extends Response {
+  /**
+   * OrderAuthorize Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.OrderPaymentAuthorize(this.data['data']);
+  }
+
+  /**
+   * Get orderPaymentAuthorize.
+   * @returns {?OrderPaymentAuthorize}
+   */
+  getOrderPaymentAuthorize() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for CustomerPaymentCardList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/customerpaymentcardlist_load_query
+ */
+class CustomerPaymentCardListLoadQuery extends ListQueryResponse {
+  /**
+   * CustomerPaymentCardListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.CustomerPaymentCard(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get customerPaymentCards.
+   * @returns {CustomerPaymentCard[]}
+   */
+  getCustomerPaymentCards() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
  * API Response for CategoryProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
@@ -1672,6 +1832,11 @@ module.exports = {
   PrintQueueJobListLoadQuery,
   PrintQueueJobDelete,
   PrintQueueJobInsert,
+  PrintQueueJobStatus,
+  PaymentMethodListLoad,
+  OrderCreateFromOrder,
+  OrderAuthorize,
+  CustomerPaymentCardListLoadQuery,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupProductListLoadQuery,

@@ -20,7 +20,7 @@ For additional documentation about the API visit `https://docs.miva.com/json-api
 To install the SDK simply add it to your project `package.json` in the `dependencies` section.
 
     "dependencies": {
-        "merchantapi" : "1.1.0"
+        "merchantapi" : "1.2.0"
     }
 
 Then run `npm install`

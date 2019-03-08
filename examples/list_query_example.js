@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: list_query_example.js 71961 2018-12-13 21:25:45Z gidriss $
+ * $Id: list_query_example.js 73559 2019-02-19 19:08:23Z gidriss $
  */
 
 const api   = require('merchantapi');
@@ -149,5 +149,15 @@ request.send(function(error, response){
       product.getId(),
       product.getCode(),
       product.getName()));
+
+
+    /*
+     * Custom Field Values can be accessed via the CustomFieldValues model object 
+     * @see CustomFieldValues
+     */
+
+    var myCustomField       = product.getCustomFieldValues().getValue('MyFieldCode');
+
+    var myModuleCustomField = product.getCustomFieldValues().getValue('MyModuleFieldCode', 'MyModule');
   });
 });

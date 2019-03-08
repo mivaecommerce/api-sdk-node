@@ -1,3 +1,14 @@
+v1.2.0
+	- Bug 30353: Renamed most fields in model ProductInventorySettings to be more human readable.
+	- Bug 30077: Added the following API functions introduced in Miva Merchant 9.13.00:
+		- Order_Create_FromOrder (Scope: Store)
+		- Order_Authorize (Scope: Store)
+		- PaymentMethodList_Load (Scope: Store)
+		- CustomerPaymentCardList_Load_Query (Scope: Store)
+		- PrintQueueJob_Status (Scope: Store)
+	- Method getProductinventorysettings in Product Model was renamed to getProductInventorySettings.
+	- Renamed fixed_dow and fixed_dom to fixed_day_of_week and fixed_day_of_month in ProductSubscriptionTerm model
+	- Renamed attr_id and attmpat_id to attribute_id and attribute_template_attribute_id in ProductVariantDimension model
 v1.1.0
 	- Bug 29368: Fixed FilterExpression not building correct SUBQUERY entries.
 	- Bug 29373: Added RequestBuilder to allow custom request objects to be constructed.

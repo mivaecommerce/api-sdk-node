@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id$
+ * $Id: requests.js 73889 2019-03-06 21:19:55Z gidriss $
  */
 
 const util                  = require('./util');
@@ -5085,7 +5085,7 @@ class Module extends Request {
     this.scope = Request.REQUEST_SCOPE_STORE;
     this.moduleCode = null;
     this.moduleFunction = null;
-    this.module_fields = {};
+    this.moduleFields = {};
   }
 
   /**
@@ -5102,6 +5102,14 @@ class Module extends Request {
    */
   getModuleFunction() {
     return this.moduleFunction;
+  }
+
+  /**
+   * Get Module_Fields.
+   * @returns {Object}
+   */
+  getModuleFields() {
+    return this.moduleFields;
   }
 
   /**
@@ -5125,48 +5133,39 @@ class Module extends Request {
   }
 
   /**
-   * Set a module field in its field object.
-   * @param {string} key
-   * @param {*} value
+   * Set Module_Fields.
+   * @param {Object} moduleFields
    * @returns {Module}
    */
-  setModuleField(key, value) {
-    this.module_fields[key] = value;
+  setModuleFields(moduleFields) {
+    this.moduleFields = moduleFields;
     return this;
   }
 
   /**
-   * Get a module field from its field object.
-   * @param {string} key
-   * @param {*} defaultValue
-   * @returns {*}
+   * Add custom data to the request.
+   *
+   * @param {string}
+   * @param {*}
+   * @returns {Module}
    */
-  getModuleField(key, defaultValue = null) {
-    return !util.isUndefined(this.module_fields[key]) ?
-      this.module_fields[key] : defaultValue;
+  setModuleField(field, value)
+  {
+      this.moduleFields[field] = value;
+      return this;
   }
-
-  /**
-   * Get the module field object.
-   * @returns {Object}
-   */
-  getModuleFields() {
-    return this.module_fields;
-  }
-
+    
   /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
    */
   toObject() {
-    var data = super.toObject();
+    var data = Object.assign(super.toObject(), this.getModuleFields());
 
     data['Module_Code'] = this.moduleCode;
 
     data['Module_Function'] = this.moduleFunction;
-
-    data = Object.assign(this.getModuleFields(), data);
 
     return data;
   }
@@ -11787,7 +11786,7 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request PrintQueueList_Load_Query. Scope: Store. 
+ * Handles API Request PrintQueueList_Load_Query. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/printqueuelist_load_query
  */
 class PrintQueueListLoadQuery extends ListQueryRequest {
@@ -11798,7 +11797,7 @@ class PrintQueueListLoadQuery extends ListQueryRequest {
   constructor(client) {
     super(client);
     this.function = 'PrintQueueList_Load_Query';
-    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
 
     this.availableSearchFields = [
       'descrip'
@@ -12197,6 +12196,517 @@ class PrintQueueJobInsert extends Request {
    */
   createResponse(data) {
     return new responses.PrintQueueJobInsert(this, data);
+  }
+}
+
+/** 
+ * Handles API Request PrintQueueJob_Status. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/printqueuejob_status
+ */
+class PrintQueueJobStatus extends Request {
+  /**
+   * PrintQueueJobStatus Constructor.
+   * @param {?Client} client
+   * @param {?PrintQueueJob} printQueueJob
+   */
+  constructor(client, printQueueJob = null) {
+    super(client);
+    this.function = 'PrintQueueJob_Status';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.printQueueJobId = null;
+
+    if (util.isInstanceOf(printQueueJob, models.PrintQueueJob)) {
+      if (printQueueJob.getId()) {
+        this.setPrintQueueJobId(printQueueJob.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PrintQueueJob_ID.
+   * @returns {number}
+   */
+  getPrintQueueJobId() {
+    return this.printQueueJobId;
+  }
+
+  /**
+   * Set PrintQueueJob_ID.
+   * @param {number} printQueueJobId
+   * @returns {PrintQueueJobStatus}
+   */
+  setPrintQueueJobId(printQueueJobId) {
+    this.printQueueJobId = printQueueJobId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.printQueueJobId)) {
+      data['PrintQueueJob_ID'] = this.printQueueJobId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PrintQueueJobStatus(this, data);
+  }
+}
+
+/** 
+ * Handles API Request PaymentMethodList_Load. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/paymentmethodlist_load
+ */
+class PaymentMethodListLoad extends Request {
+  /**
+   * PaymentMethodListLoad Constructor.
+   * @param {?Client} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'PaymentMethodList_Load';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      this.setOrderId(order.getId());
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {PaymentMethodListLoad}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.PaymentMethodListLoad(this, data);
+  }
+}
+
+/** 
+ * Handles API Request Order_Create_FromOrder. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/order_create_fromorder
+ */
+class OrderCreateFromOrder extends Request {
+  /**
+   * OrderCreateFromOrder Constructor.
+   * @param {?Client} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'Order_Create_FromOrder';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderCreateFromOrder}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.OrderCreateFromOrder(this, data);
+  }
+}
+
+/** 
+ * Handles API Request Order_Authorize. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/order_authorize
+ */
+class OrderAuthorize extends Request {
+  /**
+   * OrderAuthorize Constructor.
+   * @param {?Client} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'Order_Authorize';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.moduleId = null;
+    this.moduleData = null;
+    this.amount = null;
+    this.moduleFields = {};
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Module_ID.
+   * @returns {number}
+   */
+  getModuleId() {
+    return this.moduleId;
+  }
+
+  /**
+   * Get Module_Data.
+   * @returns {string}
+   */
+  getModuleData() {
+    return this.moduleData;
+  }
+
+  /**
+   * Get Amount.
+   * @returns {number}
+   */
+  getAmount() {
+    return this.amount;
+  }
+
+  /**
+   * Get Module_Fields.
+   * @returns {Object}
+   */
+  getModuleFields() {
+    return this.moduleFields;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderAuthorize}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Module_ID.
+   * @param {number} moduleId
+   * @returns {OrderAuthorize}
+   */
+  setModuleId(moduleId) {
+    this.moduleId = moduleId;
+    return this;
+  }
+
+  /**
+   * Set Module_Data.
+   * @param {string} moduleData
+   * @returns {OrderAuthorize}
+   */
+  setModuleData(moduleData) {
+    this.moduleData = moduleData;
+    return this;
+  }
+
+  /**
+   * Set Amount.
+   * @param {number} amount
+   * @returns {OrderAuthorize}
+   */
+  setAmount(amount) {
+    this.amount = amount;
+    return this;
+  }
+
+  /**
+   * Set Module_Fields.
+   * @param {Object} moduleFields
+   * @returns {OrderAuthorize}
+   */
+  setModuleFields(moduleFields) {
+    this.moduleFields = moduleFields;
+    return this;
+  }
+
+  /**
+   * Add custom data to the request.
+   *
+   * @param {string}
+   * @param {*}
+   * @returns {OrderAuthorize}
+   */
+  setModuleField(field, value)
+  {
+      this.moduleFields[field] = value;
+      return this;
+  }
+    
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = Object.assign(super.toObject(), this.getModuleFields());
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.moduleId)) {
+      data['Module_ID'] = this.moduleId;
+    }
+
+    if (!util.isNullOrUndefined(this.moduleData)) {
+      data['Module_Data'] = this.moduleData;
+    }
+
+    data['Amount'] = this.amount;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.OrderAuthorize(this, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerPaymentCardList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customerpaymentcardlist_load_query
+ */
+class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
+  /**
+   * CustomerPaymentCardListLoadQuery Constructor.
+   * @param {?Client} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerPaymentCardList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'fname',
+      'lname',
+      'exp_month',
+      'exp_year',
+      'lastfour',
+      'lastused',
+      'type',
+      'addr1',
+      'addr2',
+      'city',
+      'state',
+      'zip',
+      'cntry',
+      'refcount',
+      'mod_code',
+      'meth_code',
+      'id'
+    ];
+
+    this.availableSortFields = [
+      'fname',
+      'lname',
+      'expires',
+      'lastfour',
+      'lastused',
+      'type',
+      'addr1',
+      'addr2',
+      'city',
+      'state',
+      'zip',
+      'cntry',
+      'refcount',
+      'mod_code',
+      'meth_code',
+      'id'
+    ];
+
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setCustomerLogin(customer.getLogin());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerPaymentCardListLoadQuery}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerPaymentCardListLoadQuery}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerPaymentCardListLoadQuery}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(data) {
+    return new responses.CustomerPaymentCardListLoadQuery(this, data);
   }
 }
 
@@ -13026,6 +13536,11 @@ module.exports = {
   PrintQueueJobListLoadQuery,
   PrintQueueJobDelete,
   PrintQueueJobInsert,
+  PrintQueueJobStatus,
+  PaymentMethodListLoad,
+  OrderCreateFromOrder,
+  OrderAuthorize,
+  CustomerPaymentCardListLoadQuery,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupProductListLoadQuery,

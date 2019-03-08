@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: models.js 72812 2019-01-22 23:57:29Z gidriss $
+ * $Id$
  */
 
 const util      = require('./util');
@@ -1888,7 +1888,7 @@ class Product extends Model {
    * Get productinventorysettings.
    * @returns {ProductInventorySettings|*}
    */
-  getProductinventorysettings() {
+  getProductInventorySettings() {
     return this.getField('productinventorysettings', null);
   }
   
@@ -6489,7 +6489,7 @@ class ProductSubscriptionTerm extends Model {
    * Get fixed_dow.
    * @returns {number}
    */
-  getFixedDow() {
+  getFixedDayOfWeek() {
     return this.getField('fixed_dow', 0);
   }
   
@@ -6497,7 +6497,7 @@ class ProductSubscriptionTerm extends Model {
    * Get fixed_dom.
    * @returns {number}
    */
-  getFixedDom() {
+  getFixedDayOfMonth() {
     return this.getField('fixed_dom', 0);
   }
   
@@ -7135,7 +7135,7 @@ class ProductInventorySettings extends Model {
    * Get in_short.
    * @returns {string}
    */
-  getInShort() {
+  getInStockMessageShort() {
     return this.getField('in_short');
   }
   
@@ -7143,7 +7143,7 @@ class ProductInventorySettings extends Model {
    * Get in_long.
    * @returns {string}
    */
-  getInLong() {
+  getInStockMessageLong() {
     return this.getField('in_long');
   }
   
@@ -7151,7 +7151,7 @@ class ProductInventorySettings extends Model {
    * Get low_track.
    * @returns {string}
    */
-  getLowTrack() {
+  getTrackLowStockLevel() {
     return this.getField('low_track');
   }
   
@@ -7159,7 +7159,7 @@ class ProductInventorySettings extends Model {
    * Get low_level.
    * @returns {number}
    */
-  getLowLevel() {
+  getLowStockLevel() {
     return this.getField('low_level', 0);
   }
   
@@ -7167,7 +7167,7 @@ class ProductInventorySettings extends Model {
    * Get low_lvl_d.
    * @returns {boolean}
    */
-  getLowLvlD() {
+  getLowStockLevelDefault() {
     return this.getField('low_lvl_d', false);
   }
   
@@ -7175,7 +7175,7 @@ class ProductInventorySettings extends Model {
    * Get low_short.
    * @returns {string}
    */
-  getLowShort() {
+  getLowStockMessageShort() {
     return this.getField('low_short');
   }
   
@@ -7183,7 +7183,7 @@ class ProductInventorySettings extends Model {
    * Get low_long.
    * @returns {string}
    */
-  getLowLong() {
+  getLowStockMessageLong() {
     return this.getField('low_long');
   }
   
@@ -7191,7 +7191,7 @@ class ProductInventorySettings extends Model {
    * Get out_track.
    * @returns {string}
    */
-  getOutTrack() {
+  getTrackOutOfStockLevel() {
     return this.getField('out_track');
   }
   
@@ -7199,7 +7199,7 @@ class ProductInventorySettings extends Model {
    * Get out_hide.
    * @returns {string}
    */
-  getOutHide() {
+  getHideOutOfStock() {
     return this.getField('out_hide');
   }
   
@@ -7207,7 +7207,7 @@ class ProductInventorySettings extends Model {
    * Get out_level.
    * @returns {number}
    */
-  getOutLevel() {
+  getOutOfStockLevel() {
     return this.getField('out_level', 0);
   }
   
@@ -7215,7 +7215,7 @@ class ProductInventorySettings extends Model {
    * Get out_lvl_d.
    * @returns {boolean}
    */
-  getOutLvlD() {
+  getOutOfStockLevelDefault() {
     return this.getField('out_lvl_d', false);
   }
   
@@ -7223,7 +7223,7 @@ class ProductInventorySettings extends Model {
    * Get out_short.
    * @returns {string}
    */
-  getOutShort() {
+  getOutOfStockMessageShort() {
     return this.getField('out_short');
   }
   
@@ -7231,7 +7231,7 @@ class ProductInventorySettings extends Model {
    * Get out_long.
    * @returns {string}
    */
-  getOutLong() {
+  getOutOfStockMessageLong() {
     return this.getField('out_long');
   }
   
@@ -7239,7 +7239,7 @@ class ProductInventorySettings extends Model {
    * Get ltd_long.
    * @returns {string}
    */
-  getLtdLong() {
+  getLimitedStockMessage() {
     return this.getField('ltd_long');
   }
 }
@@ -7368,7 +7368,7 @@ class ProductVariantDimension extends Model {
    * Get attr_id.
    * @returns {number}
    */
-  getAttrId() {
+  getAttributeId() {
     return this.getField('attr_id', 0);
   }
   
@@ -7376,7 +7376,7 @@ class ProductVariantDimension extends Model {
    * Get attmpat_id.
    * @returns {number}
    */
-  getAttmpatId() {
+  getAttributeTemplateAttributeId() {
     return this.getField('attmpat_id', 0);
   }
   
@@ -8342,6 +8342,272 @@ class PrintQueueJob extends Model {
   }
 }
 
+/** PaymentMethod data model. */
+class PaymentMethod extends Model {
+  /**
+   * PaymentMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.paymentcard)) {
+      if (!util.isInstanceOf(this.paymentcard, CustomerPaymentCard) && util.isObject(this.paymentcard)) {
+        this.paymentcard = new CustomerPaymentCard(this.paymentcard);
+      } else if (!util.isInstanceOf(this.paymentcard, CustomerPaymentCard)) {
+        throw new Error(util.format('Expected CustomerPaymentCard or an Object but got %s',
+          typeof this.paymentcard));
+      }
+    } else {
+      this.paymentcard = {};
+    }
+
+    if (!util.isUndefined(this.orderpaymentcard)) {
+      if (!util.isInstanceOf(this.orderpaymentcard, OrderPaymentCard) && util.isObject(this.orderpaymentcard)) {
+        this.orderpaymentcard = new OrderPaymentCard(this.orderpaymentcard);
+      } else if (!util.isInstanceOf(this.orderpaymentcard, OrderPaymentCard)) {
+        throw new Error(util.format('Expected OrderPaymentCard or an Object but got %s',
+          typeof this.orderpaymentcard));
+      }
+    } else {
+      this.orderpaymentcard = {};
+    }
+
+    if (!util.isUndefined(this.paymentcardtype)) {
+      if (!util.isInstanceOf(this.paymentcardtype, PaymentCardType) && util.isObject(this.paymentcardtype)) {
+        this.paymentcardtype = new PaymentCardType(this.paymentcardtype);
+      } else if (!util.isInstanceOf(this.paymentcardtype, PaymentCardType)) {
+        throw new Error(util.format('Expected PaymentCardType or an Object but got %s',
+          typeof this.paymentcardtype));
+      }
+    } else {
+      this.paymentcardtype = {};
+    }
+  }
+
+  /**
+   * Get module_id.
+   * @returns {number}
+   */
+  getModuleId() {
+    return this.getField('module_id', 0);
+  }
+  
+  /**
+   * Get module_api.
+   * @returns {number}
+   */
+  getModuleApi() {
+    return this.getField('module_api', 0.00);
+  }
+  
+  /**
+   * Get method_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('method_code');
+  }
+  
+  /**
+   * Get method_name.
+   * @returns {string}
+   */
+  getMethodName() {
+    return this.getField('method_name');
+  }
+  
+  /**
+   * Get mivapay.
+   * @returns {boolean}
+   */
+  getMivapay() {
+    return this.getField('mivapay', false);
+  }
+  
+  /**
+   * Get paymentcard.
+   * @returns {CustomerPaymentCard|*}
+   */
+  getPaymentCard() {
+    return this.getField('paymentcard', null);
+  }
+  
+  /**
+   * Get orderpaymentcard.
+   * @returns {OrderPaymentCard|*}
+   */
+  getOrderPaymentCard() {
+    return this.getField('orderpaymentcard', null);
+  }
+  
+  /**
+   * Get paymentcardtype.
+   * @returns {PaymentCardType|*}
+   */
+  getPaymentCardType() {
+    return this.getField('paymentcardtype', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['paymentcard'], CustomerPaymentCard)) {
+      ret['paymentcard'] = ret['paymentcard'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['orderpaymentcard'], OrderPaymentCard)) {
+      ret['orderpaymentcard'] = ret['orderpaymentcard'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['paymentcardtype'], PaymentCardType)) {
+      ret['paymentcardtype'] = ret['paymentcardtype'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** PaymentCardType data model. */
+class PaymentCardType extends Model {
+  /**
+   * PaymentCardType Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get prefixes.
+   * @returns {string}
+   */
+  getPrefixes() {
+    return this.getField('prefixes');
+  }
+  
+  /**
+   * Get lengths.
+   * @returns {string}
+   */
+  getLengths() {
+    return this.getField('lengths');
+  }
+  
+  /**
+   * Get cvv.
+   * @returns {boolean}
+   */
+  getCvv() {
+    return this.getField('cvv', false);
+  }
+}
+
+/** OrderPaymentAuthorize data model. */
+class OrderPaymentAuthorize extends Model {
+  /**
+   * OrderPaymentAuthorize Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get valid.
+   * @returns {boolean}
+   */
+  getValid() {
+    return this.getField('valid', false);
+  }
+  
+  /**
+   * Get total_auth.
+   * @returns {number}
+   */
+  getTotalAuthorized() {
+    return this.getField('total_auth', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_auth.
+   * @returns {string}
+   */
+  getFormattedTotalAuthorized() {
+    return this.getField('formatted_total_auth');
+  }
+  
+  /**
+   * Get total_capt.
+   * @returns {number}
+   */
+  getTotalCaptured() {
+    return this.getField('total_capt', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_capt.
+   * @returns {string}
+   */
+  getFormattedTotalCaptured() {
+    return this.getField('formatted_total_capt');
+  }
+  
+  /**
+   * Get total_rfnd.
+   * @returns {number}
+   */
+  getTotalRefunded() {
+    return this.getField('total_rfnd', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_rfnd.
+   * @returns {string}
+   */
+  getFormattedTotalRefunded() {
+    return this.getField('formatted_total_rfnd');
+  }
+  
+  /**
+   * Get net_capt.
+   * @returns {number}
+   */
+  getNetCaptured() {
+    return this.getField('net_capt', 0.00);
+  }
+  
+  /**
+   * Get formatted_net_capt.
+   * @returns {string}
+   */
+  getFormattedNetCaptured() {
+    return this.getField('formatted_net_capt');
+  }
+}
+
 /** OrderNote data model. */
 class OrderNote extends Note {
   /**
@@ -8391,6 +8657,18 @@ class CouponPriceGroup extends PriceGroup {
    */
   getAssigned() {
     return this.getField('assigned', false);
+  }
+}
+
+/** OrderPaymentCard data model. */
+class OrderPaymentCard extends CustomerPaymentCard {
+  /**
+   * OrderPaymentCard Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
   }
 }
 
@@ -8484,9 +8762,13 @@ module.exports = {
   OrderPaymentTotal,
   PrintQueue,
   PrintQueueJob,
+  PaymentMethod,
+  PaymentCardType,
+  OrderPaymentAuthorize,
   OrderNote,
   CategoryProduct,
   CouponPriceGroup,
+  OrderPaymentCard,
   PriceGroupProduct,
   CustomerPriceGroup
 };
