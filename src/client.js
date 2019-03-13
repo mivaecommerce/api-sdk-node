@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: client.js 72557 2019-01-11 21:43:41Z gidriss $
+ * $Id: client.js 74093 2019-03-13 20:38:09Z gidriss $
  */
 
 const http      = require('http');
@@ -327,9 +327,9 @@ class Client {
         }
 
         callback(null, json);
-      }).on('error', function onResponseError(error) {
-        callback(error, null);
-      });
+      })
+    }).on('error', function onRequestError(error) {
+      callback(error, null);
     });
 
     request.write(body);

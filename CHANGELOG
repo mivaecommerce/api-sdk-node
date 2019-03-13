@@ -1,3 +1,5 @@
+v1.2.1
+	- Bug 30604: Added request error handling callback in Client.send()
 v1.2.0
 	- Bug 30353: Renamed most fields in model ProductInventorySettings to be more human readable.
 	- Bug 30077: Added the following API functions introduced in Miva Merchant 9.13.00:
