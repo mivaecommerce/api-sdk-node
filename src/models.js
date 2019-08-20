@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id$
+ * $Id: models.js 77410 2019-08-16 17:40:08Z gidriss $
  */
 
 const util      = require('./util');
@@ -847,6 +847,71 @@ class Coupon extends Model {
    */
   setActive(active) {
     return this.setField('active', active);
+  }
+}
+
+/** CustomFieldValues data model. */
+class CustomFieldValues extends Model {
+  /**
+   * CustomFieldValues Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get a value for a module by its code.
+   * @param {string} code
+   * @param {string} module
+   * @returns {*}
+   */
+  getValue(code, module = 'customfields') {
+    return this.hasValue(code, module) ?
+      this[module][code] : null;
+  }
+
+  /**
+   * Check if a value for code and module exists.
+   * @param {string} code
+   * @param {string} module
+   * @returns {boolean}
+   */
+  hasValue(code, module = 'customfields') {
+    return module in this && code in this[module];
+  }
+
+  /**
+   * Check if a specific module is defined.
+   * @param {string} module
+   * @returns {boolean}
+   */
+  hasModule(module) {
+    return module in this;
+  }
+
+  /**
+   * Get a specific modules custom field values.
+   * @param {string} module
+   * @returns {Object}
+   */
+  getModule(module) {
+      return this.hasModule(module) ? this[module] : {};
+  }
+  /**
+   * Add a custom field value.
+   * @param {string} field
+   * @param {*} value
+   * @param {string} module
+   * @returns {CustomFieldValues}
+   */
+  addValue(field, value, module = 'customfields') {
+    if (!this.hasModule(module)) {
+      this[module] = {}
+    }
+    this[module][field] = value;
+    return this;
   }
 }
 
@@ -2812,6 +2877,34 @@ class ProductOption extends Model {
   }
 }
 
+/** ProductShippingMethod data model. */
+class ProductShippingMethod extends Model {
+  /**
+   * ProductShippingMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get mod_code.
+   * @returns {string}
+   */
+  getModuleCode() {
+    return this.getField('mod_code');
+  }
+  
+  /**
+   * Get meth_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('meth_code');
+  }
+}
+
 /** ProductShippingRules data model. */
 class ProductShippingRules extends Model {
   /**
@@ -2925,19 +3018,19 @@ class ProductShippingRules extends Model {
 
   /**
    * Add a ProductShippingMethod.
-   * @param {ProductShippingMethod} methods
+   * @param {ProductShippingMethod} method
    * @returns {ProductShippingRules}
    */
-  addMethods(methods) {
-    if (!util.isInstanceOf(methods, ProductShippingMethod)) {
-      throw new Error(util.format('Expected instance of ProductShippingMethod but got %s', typeof methods));
+  addMethod(method) {
+    if (!util.isInstanceOf(method, ProductShippingMethod)) {
+      throw new Error(util.format('Expected instance of ProductShippingMethod but got %s', typeof method));
     }
 
     if (util.isUndefined(this['methods'])) {
       this['methods'] = [];
     }
 
-    this['methods'].push(methods);
+    this['methods'].push(method);
 
     return this;
   }
@@ -2959,34 +3052,6 @@ class ProductShippingRules extends Model {
     }
 
     return ret;
-  }
-}
-
-/** ProductShippingMethod data model. */
-class ProductShippingMethod extends Model {
-  /**
-   * ProductShippingMethod Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get mod_code.
-   * @returns {string}
-   */
-  getModuleCode() {
-    return this.getField('mod_code');
-  }
-  
-  /**
-   * Get meth_code.
-   * @returns {string}
-   */
-  getMethodCode() {
-    return this.getField('meth_code');
   }
 }
 
@@ -4806,6 +4871,127 @@ class OrderShipment extends Model {
   }
 }
 
+/** OrderItemOption data model. */
+class OrderItemOption extends Model {
+  /**
+   * OrderItemOption Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get attribute.
+   * @returns {string}
+   */
+  getAttribute() {
+    return this.getField('attribute');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Get weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.getField('weight', 0.00);
+  }
+  
+  /**
+   * Get retail.
+   * @returns {number}
+   */
+  getRetail() {
+    return this.getField('retail', 0.00);
+  }
+  
+  /**
+   * Get base_price.
+   * @returns {number}
+   */
+  getBasePrice() {
+    return this.getField('base_price', 0.00);
+  }
+  
+  /**
+   * Get price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.getField('price', 0.00);
+  }
+  
+  /**
+   * Set attribute.
+   * @param {string} attribute
+   * @returns {OrderItemOption}
+   */
+  setAttribute(attribute) {
+    return this.setField('attribute', attribute);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {OrderItemOption}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+
+  /**
+   * Set weight.
+   * @param {number} weight
+   * @returns {OrderItemOption}
+   */
+  setWeight(weight) {
+    return this.setField('weight', weight);
+  }
+
+  /**
+   * Set price.
+   * @param {number} price
+   * @returns {OrderItemOption}
+   */
+  setPrice(price) {
+    return this.setField('price', price);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = {};
+    
+    if (this.hasField('attribute')) {
+      ret['attr_code'] = this.getField('attribute');
+    }
+
+    if (this.hasField('value')) {
+      ret['opt_code_or_data'] = this.getField('value');
+    }
+
+    if (this.hasField('price')) {
+      ret['price'] = this.getField('price');
+    }
+
+    if (this.hasField('weight')) {
+      ret['weight'] = this.getField('weight');
+    }
+
+    return ret;
+  }
+}
+
 /** ORDER_ITEM_STATUS constants. */
 /** @ignore */
 const ORDER_ITEM_STATUS_PENDING = 0;
@@ -5405,127 +5591,6 @@ class OrderItem extends Model {
 
     if (util.isInstanceOf(ret['subscription'], OrderItemSubscription)) {
       ret['subscription'] = ret['subscription'].toObject();
-    }
-
-    return ret;
-  }
-}
-
-/** OrderItemOption data model. */
-class OrderItemOption extends Model {
-  /**
-   * OrderItemOption Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get attribute.
-   * @returns {string}
-   */
-  getAttribute() {
-    return this.getField('attribute');
-  }
-  
-  /**
-   * Get value.
-   * @returns {string}
-   */
-  getValue() {
-    return this.getField('value');
-  }
-  
-  /**
-   * Get weight.
-   * @returns {number}
-   */
-  getWeight() {
-    return this.getField('weight', 0.00);
-  }
-  
-  /**
-   * Get retail.
-   * @returns {number}
-   */
-  getRetail() {
-    return this.getField('retail', 0.00);
-  }
-  
-  /**
-   * Get base_price.
-   * @returns {number}
-   */
-  getBasePrice() {
-    return this.getField('base_price', 0.00);
-  }
-  
-  /**
-   * Get price.
-   * @returns {number}
-   */
-  getPrice() {
-    return this.getField('price', 0.00);
-  }
-  
-  /**
-   * Set attribute.
-   * @param {string} attribute
-   * @returns {OrderItemOption}
-   */
-  setAttribute(attribute) {
-    return this.setField('attribute', attribute);
-  }
-
-  /**
-   * Set value.
-   * @param {string} value
-   * @returns {OrderItemOption}
-   */
-  setValue(value) {
-    return this.setField('value', value);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {OrderItemOption}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
-  }
-
-  /**
-   * Set price.
-   * @param {number} price
-   * @returns {OrderItemOption}
-   */
-  setPrice(price) {
-    return this.setField('price', price);
-  }
-  
-  /**
-   * @override
-   */
-  toObject() {
-    var ret = {};
-    
-    if (this.hasField('attribute')) {
-      ret['attr_code'] = this.getField('attribute');
-    }
-
-    if (this.hasField('value')) {
-      ret['opt_code_or_data'] = this.getField('value');
-    }
-
-    if (this.hasField('price')) {
-      ret['price'] = this.getField('price');
-    }
-
-    if (this.hasField('weight')) {
-      ret['weight'] = this.getField('weight');
     }
 
     return ret;
@@ -6845,6 +6910,69 @@ class CustomerPaymentCard extends Model {
   }
 }
 
+/** OrderProductAttribute data model. */
+class OrderProductAttribute extends Model {
+  /**
+   * OrderProductAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get template_code.
+   * @returns {string}
+   */
+  getTemplateCode() {
+    return this.getField('template_code');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Set code.
+   * @param {string} code
+   * @returns {OrderProductAttribute}
+   */
+  setCode(code) {
+    return this.setField('code', code);
+  }
+
+  /**
+   * Set template_code.
+   * @param {string} templateCode
+   * @returns {OrderProductAttribute}
+   */
+  setTemplateCode(templateCode) {
+    return this.setField('template_code', templateCode);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {OrderProductAttribute}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+}
+
 /** OrderProduct data model. */
 class OrderProduct extends Model {
   /**
@@ -7049,69 +7177,6 @@ class OrderProduct extends Model {
   }
 }
 
-/** OrderProductAttribute data model. */
-class OrderProductAttribute extends Model {
-  /**
-   * OrderProductAttribute Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get code.
-   * @returns {string}
-   */
-  getCode() {
-    return this.getField('code');
-  }
-  
-  /**
-   * Get template_code.
-   * @returns {string}
-   */
-  getTemplateCode() {
-    return this.getField('template_code');
-  }
-  
-  /**
-   * Get value.
-   * @returns {string}
-   */
-  getValue() {
-    return this.getField('value');
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {OrderProductAttribute}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set template_code.
-   * @param {string} templateCode
-   * @returns {OrderProductAttribute}
-   */
-  setTemplateCode(templateCode) {
-    return this.setField('template_code', templateCode);
-  }
-
-  /**
-   * Set value.
-   * @param {string} value
-   * @returns {OrderProductAttribute}
-   */
-  setValue(value) {
-    return this.setField('value', value);
-  }
-}
-
 /** ProductInventorySettings data model. */
 class ProductInventorySettings extends Model {
   /**
@@ -7241,71 +7306,6 @@ class ProductInventorySettings extends Model {
    */
   getLimitedStockMessage() {
     return this.getField('ltd_long');
-  }
-}
-
-/** CustomFieldValues data model. */
-class CustomFieldValues extends Model {
-  /**
-   * CustomFieldValues Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get a value for a module by its code.
-   * @param {string} code
-   * @param {string} module
-   * @returns {*}
-   */
-  getValue(code, module = 'customfields') {
-    return this.hasValue(code, module) ?
-      this[module][code] : null;
-  }
-
-  /**
-   * Check if a value for code and module exists.
-   * @param {string} code
-   * @param {string} module
-   * @returns {boolean}
-   */
-  hasValue(code, module = 'customfields') {
-    return module in this && code in this[module];
-  }
-
-  /**
-   * Check if a specific module is defined.
-   * @param {string} module
-   * @returns {boolean}
-   */
-  hasModule(module) {
-    return module in this;
-  }
-
-  /**
-   * Get a specific modules custom field values.
-   * @param {string} module
-   * @returns {Object}
-   */
-  getModule(module) {
-      return this.hasModule(module) ? this[module] : {};
-  }
-  /**
-   * Add a custom field value.
-   * @param {string} field
-   * @param {*} value
-   * @param {string} module
-   * @returns {CustomFieldValues}
-   */
-  addValue(field, value, module = 'customfields') {
-    if (!this.hasModule(module)) {
-      this[module] = {}
-    }
-    this[module][field] = value;
-    return this;
   }
 }
 
@@ -8672,6 +8672,26 @@ class OrderPaymentCard extends CustomerPaymentCard {
   }
 }
 
+/** PriceGroupCustomer data model. */
+class PriceGroupCustomer extends Customer {
+  /**
+   * PriceGroupCustomer Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
 /** PriceGroupProduct data model. */
 class PriceGroupProduct extends Product {
   /**
@@ -8716,6 +8736,7 @@ module.exports = {
   AvailabilityGroup,
   Customer,
   Coupon,
+  CustomFieldValues,
   Module,
   Note,
   PriceGroup,
@@ -8725,15 +8746,15 @@ module.exports = {
   ProductImageData,
   ProductAttribute,
   ProductOption,
-  ProductShippingRules,
   ProductShippingMethod,
+  ProductShippingRules,
   Uri,
   ProductVariant,
   Category,
   Order,
   OrderShipment,
-  OrderItem,
   OrderItemOption,
+  OrderItem,
   OrderCharge,
   OrderCoupon,
   OrderItemDiscount,
@@ -8743,10 +8764,9 @@ module.exports = {
   ProductSubscriptionTerm,
   OrderCustomField,
   CustomerPaymentCard,
-  OrderProduct,
   OrderProductAttribute,
+  OrderProduct,
   ProductInventorySettings,
-  CustomFieldValues,
   ProductVariantPart,
   ProductVariantDimension,
   OrderItemSubscription,
@@ -8769,6 +8789,7 @@ module.exports = {
   CategoryProduct,
   CouponPriceGroup,
   OrderPaymentCard,
+  PriceGroupCustomer,
   PriceGroupProduct,
   CustomerPriceGroup
 };

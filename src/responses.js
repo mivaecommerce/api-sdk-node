@@ -1682,6 +1682,43 @@ class CouponPriceGroupListLoadQuery extends ListQueryResponse {
 }
 
 /** 
+ * API Response for PriceGroupCustomerList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupcustomerlist_load_query
+ */
+class PriceGroupCustomerListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupCustomerListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {Object} data
+   */
+  constructor(request, data = {}) {
+    super(request, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupCustomer(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupCustomers.
+   * @returns {PriceGroupCustomer[]}
+   */
+  getPriceGroupCustomers() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
  * API Response for PriceGroupProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupproductlist_load_query
  */
@@ -1839,6 +1876,7 @@ module.exports = {
   CustomerPaymentCardListLoadQuery,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
+  PriceGroupCustomerListLoadQuery,
   PriceGroupProductListLoadQuery,
   CustomerPriceGroupListLoadQuery
 };

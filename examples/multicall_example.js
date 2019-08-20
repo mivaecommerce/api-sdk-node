@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: multicall_example.js 72612 2019-01-15 18:50:58Z gidriss $
+ * $Id: multicall_example.js 76866 2019-07-15 19:51:00Z gidriss $
  */
 
 const api   = require('merchantapi');
@@ -13,12 +13,12 @@ const util  = require('util');
 /* Initialize a client */
 var client  = new api.Client('https://www.mystore.com/mm5/json.mvc', 'MyApiToken', 'MySigningKey', {});
 
-/* Create a ProductInsert request instance, passing client to the constructor */
-var request = new api.MultiCallRequest(client);
-
 /*
  * Create a MultiCallRequest and add Request objects to it
  */
+
+var request = new api.MultiCallRequest(client);
+
 request.addRequest(new api.requests.ProductListLoadQuery())
     .addRequest(new api.requests.CategoryListLoadQuery())
     .addRequest(new api.requests.PriceGroupListLoadQuery());

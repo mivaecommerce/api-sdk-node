@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: list_query_example.js 73559 2019-02-19 19:08:23Z gidriss $
+ * $Id: list_query_example.js 74181 2019-03-27 23:32:37Z gidriss $
  */
 
 const api   = require('merchantapi');
@@ -22,7 +22,7 @@ var client  = new api.Client('https://www.mystore.com/mm5/json.mvc', 'MyApiToken
  * @see FilterExpression in listquery.js
  */
 
-var request = new api.requests.ProductListLoadQuery();
+var request = new api.requests.ProductListLoadQuery(client);
 
 /*
  * Create a FilterExpression object for the request.

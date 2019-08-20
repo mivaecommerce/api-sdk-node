@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: version.js 74094 2019-03-13 20:43:25Z gidriss $
+ * $Id: version.js 77287 2019-08-07 21:12:42Z gidriss $
  */
 
 /** @module Version */
@@ -13,10 +13,10 @@
 const VERSION_MAJOR = 1;
 
 /** @ignore */
-const VERSION_MINOR = 2;
+const VERSION_MINOR = 3;
 
 /** @ignore */
-const VERSION_PATCH = 1;
+const VERSION_PATCH = 0;
 
 /** Holds version information */
 class Version {
@@ -53,7 +53,7 @@ class Version {
    * @const
    */
   static get VERSION_STRING() {
-    return '1.2.1';
+    return '1.3.0';
   }
 }
 
