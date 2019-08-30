@@ -32,7 +32,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * $Id: models.js 72812 2019-01-22 23:57:29Z gidriss $
+ * $Id: models.js 77410 2019-08-16 17:40:08Z gidriss $
  */
 
 const util      = require('./util');
@@ -875,6 +875,71 @@ class Coupon extends Model {
    */
   setActive(active) {
     return this.setField('active', active);
+  }
+}
+
+/** CustomFieldValues data model. */
+class CustomFieldValues extends Model {
+  /**
+   * CustomFieldValues Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get a value for a module by its code.
+   * @param {string} code
+   * @param {string} module
+   * @returns {*}
+   */
+  getValue(code, module = 'customfields') {
+    return this.hasValue(code, module) ?
+      this[module][code] : null;
+  }
+
+  /**
+   * Check if a value for code and module exists.
+   * @param {string} code
+   * @param {string} module
+   * @returns {boolean}
+   */
+  hasValue(code, module = 'customfields') {
+    return module in this &amp;&amp; code in this[module];
+  }
+
+  /**
+   * Check if a specific module is defined.
+   * @param {string} module
+   * @returns {boolean}
+   */
+  hasModule(module) {
+    return module in this;
+  }
+
+  /**
+   * Get a specific modules custom field values.
+   * @param {string} module
+   * @returns {Object}
+   */
+  getModule(module) {
+      return this.hasModule(module) ? this[module] : {};
+  }
+  /**
+   * Add a custom field value.
+   * @param {string} field
+   * @param {*} value
+   * @param {string} module
+   * @returns {CustomFieldValues}
+   */
+  addValue(field, value, module = 'customfields') {
+    if (!this.hasModule(module)) {
+      this[module] = {}
+    }
+    this[module][field] = value;
+    return this;
   }
 }
 
@@ -1916,7 +1981,7 @@ class Product extends Model {
    * Get productinventorysettings.
    * @returns {ProductInventorySettings|*}
    */
-  getProductinventorysettings() {
+  getProductInventorySettings() {
     return this.getField('productinventorysettings', null);
   }
   
@@ -2840,6 +2905,34 @@ class ProductOption extends Model {
   }
 }
 
+/** ProductShippingMethod data model. */
+class ProductShippingMethod extends Model {
+  /**
+   * ProductShippingMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get mod_code.
+   * @returns {string}
+   */
+  getModuleCode() {
+    return this.getField('mod_code');
+  }
+  
+  /**
+   * Get meth_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('meth_code');
+  }
+}
+
 /** ProductShippingRules data model. */
 class ProductShippingRules extends Model {
   /**
@@ -2953,19 +3046,19 @@ class ProductShippingRules extends Model {
 
   /**
    * Add a ProductShippingMethod.
-   * @param {ProductShippingMethod} methods
+   * @param {ProductShippingMethod} method
    * @returns {ProductShippingRules}
    */
-  addMethods(methods) {
-    if (!util.isInstanceOf(methods, ProductShippingMethod)) {
-      throw new Error(util.format('Expected instance of ProductShippingMethod but got %s', typeof methods));
+  addMethod(method) {
+    if (!util.isInstanceOf(method, ProductShippingMethod)) {
+      throw new Error(util.format('Expected instance of ProductShippingMethod but got %s', typeof method));
     }
 
     if (util.isUndefined(this['methods'])) {
       this['methods'] = [];
     }
 
-    this['methods'].push(methods);
+    this['methods'].push(method);
 
     return this;
   }
@@ -2987,34 +3080,6 @@ class ProductShippingRules extends Model {
     }
 
     return ret;
-  }
-}
-
-/** ProductShippingMethod data model. */
-class ProductShippingMethod extends Model {
-  /**
-   * ProductShippingMethod Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get mod_code.
-   * @returns {string}
-   */
-  getModuleCode() {
-    return this.getField('mod_code');
-  }
-  
-  /**
-   * Get meth_code.
-   * @returns {string}
-   */
-  getMethodCode() {
-    return this.getField('meth_code');
   }
 }
 
@@ -4834,6 +4899,127 @@ class OrderShipment extends Model {
   }
 }
 
+/** OrderItemOption data model. */
+class OrderItemOption extends Model {
+  /**
+   * OrderItemOption Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get attribute.
+   * @returns {string}
+   */
+  getAttribute() {
+    return this.getField('attribute');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Get weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.getField('weight', 0.00);
+  }
+  
+  /**
+   * Get retail.
+   * @returns {number}
+   */
+  getRetail() {
+    return this.getField('retail', 0.00);
+  }
+  
+  /**
+   * Get base_price.
+   * @returns {number}
+   */
+  getBasePrice() {
+    return this.getField('base_price', 0.00);
+  }
+  
+  /**
+   * Get price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.getField('price', 0.00);
+  }
+  
+  /**
+   * Set attribute.
+   * @param {string} attribute
+   * @returns {OrderItemOption}
+   */
+  setAttribute(attribute) {
+    return this.setField('attribute', attribute);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {OrderItemOption}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+
+  /**
+   * Set weight.
+   * @param {number} weight
+   * @returns {OrderItemOption}
+   */
+  setWeight(weight) {
+    return this.setField('weight', weight);
+  }
+
+  /**
+   * Set price.
+   * @param {number} price
+   * @returns {OrderItemOption}
+   */
+  setPrice(price) {
+    return this.setField('price', price);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = {};
+    
+    if (this.hasField('attribute')) {
+      ret['attr_code'] = this.getField('attribute');
+    }
+
+    if (this.hasField('value')) {
+      ret['opt_code_or_data'] = this.getField('value');
+    }
+
+    if (this.hasField('price')) {
+      ret['price'] = this.getField('price');
+    }
+
+    if (this.hasField('weight')) {
+      ret['weight'] = this.getField('weight');
+    }
+
+    return ret;
+  }
+}
+
 /** ORDER_ITEM_STATUS constants. */
 /** @ignore */
 const ORDER_ITEM_STATUS_PENDING = 0;
@@ -5433,127 +5619,6 @@ class OrderItem extends Model {
 
     if (util.isInstanceOf(ret['subscription'], OrderItemSubscription)) {
       ret['subscription'] = ret['subscription'].toObject();
-    }
-
-    return ret;
-  }
-}
-
-/** OrderItemOption data model. */
-class OrderItemOption extends Model {
-  /**
-   * OrderItemOption Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get attribute.
-   * @returns {string}
-   */
-  getAttribute() {
-    return this.getField('attribute');
-  }
-  
-  /**
-   * Get value.
-   * @returns {string}
-   */
-  getValue() {
-    return this.getField('value');
-  }
-  
-  /**
-   * Get weight.
-   * @returns {number}
-   */
-  getWeight() {
-    return this.getField('weight', 0.00);
-  }
-  
-  /**
-   * Get retail.
-   * @returns {number}
-   */
-  getRetail() {
-    return this.getField('retail', 0.00);
-  }
-  
-  /**
-   * Get base_price.
-   * @returns {number}
-   */
-  getBasePrice() {
-    return this.getField('base_price', 0.00);
-  }
-  
-  /**
-   * Get price.
-   * @returns {number}
-   */
-  getPrice() {
-    return this.getField('price', 0.00);
-  }
-  
-  /**
-   * Set attribute.
-   * @param {string} attribute
-   * @returns {OrderItemOption}
-   */
-  setAttribute(attribute) {
-    return this.setField('attribute', attribute);
-  }
-
-  /**
-   * Set value.
-   * @param {string} value
-   * @returns {OrderItemOption}
-   */
-  setValue(value) {
-    return this.setField('value', value);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {OrderItemOption}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
-  }
-
-  /**
-   * Set price.
-   * @param {number} price
-   * @returns {OrderItemOption}
-   */
-  setPrice(price) {
-    return this.setField('price', price);
-  }
-  
-  /**
-   * @override
-   */
-  toObject() {
-    var ret = {};
-    
-    if (this.hasField('attribute')) {
-      ret['attr_code'] = this.getField('attribute');
-    }
-
-    if (this.hasField('value')) {
-      ret['opt_code_or_data'] = this.getField('value');
-    }
-
-    if (this.hasField('price')) {
-      ret['price'] = this.getField('price');
-    }
-
-    if (this.hasField('weight')) {
-      ret['weight'] = this.getField('weight');
     }
 
     return ret;
@@ -6517,7 +6582,7 @@ class ProductSubscriptionTerm extends Model {
    * Get fixed_dow.
    * @returns {number}
    */
-  getFixedDow() {
+  getFixedDayOfWeek() {
     return this.getField('fixed_dow', 0);
   }
   
@@ -6525,7 +6590,7 @@ class ProductSubscriptionTerm extends Model {
    * Get fixed_dom.
    * @returns {number}
    */
-  getFixedDom() {
+  getFixedDayOfMonth() {
     return this.getField('fixed_dom', 0);
   }
   
@@ -6873,6 +6938,69 @@ class CustomerPaymentCard extends Model {
   }
 }
 
+/** OrderProductAttribute data model. */
+class OrderProductAttribute extends Model {
+  /**
+   * OrderProductAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get template_code.
+   * @returns {string}
+   */
+  getTemplateCode() {
+    return this.getField('template_code');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Set code.
+   * @param {string} code
+   * @returns {OrderProductAttribute}
+   */
+  setCode(code) {
+    return this.setField('code', code);
+  }
+
+  /**
+   * Set template_code.
+   * @param {string} templateCode
+   * @returns {OrderProductAttribute}
+   */
+  setTemplateCode(templateCode) {
+    return this.setField('template_code', templateCode);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {OrderProductAttribute}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+}
+
 /** OrderProduct data model. */
 class OrderProduct extends Model {
   /**
@@ -7077,69 +7205,6 @@ class OrderProduct extends Model {
   }
 }
 
-/** OrderProductAttribute data model. */
-class OrderProductAttribute extends Model {
-  /**
-   * OrderProductAttribute Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get code.
-   * @returns {string}
-   */
-  getCode() {
-    return this.getField('code');
-  }
-  
-  /**
-   * Get template_code.
-   * @returns {string}
-   */
-  getTemplateCode() {
-    return this.getField('template_code');
-  }
-  
-  /**
-   * Get value.
-   * @returns {string}
-   */
-  getValue() {
-    return this.getField('value');
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {OrderProductAttribute}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set template_code.
-   * @param {string} templateCode
-   * @returns {OrderProductAttribute}
-   */
-  setTemplateCode(templateCode) {
-    return this.setField('template_code', templateCode);
-  }
-
-  /**
-   * Set value.
-   * @param {string} value
-   * @returns {OrderProductAttribute}
-   */
-  setValue(value) {
-    return this.setField('value', value);
-  }
-}
-
 /** ProductInventorySettings data model. */
 class ProductInventorySettings extends Model {
   /**
@@ -7163,7 +7228,7 @@ class ProductInventorySettings extends Model {
    * Get in_short.
    * @returns {string}
    */
-  getInShort() {
+  getInStockMessageShort() {
     return this.getField('in_short');
   }
   
@@ -7171,7 +7236,7 @@ class ProductInventorySettings extends Model {
    * Get in_long.
    * @returns {string}
    */
-  getInLong() {
+  getInStockMessageLong() {
     return this.getField('in_long');
   }
   
@@ -7179,7 +7244,7 @@ class ProductInventorySettings extends Model {
    * Get low_track.
    * @returns {string}
    */
-  getLowTrack() {
+  getTrackLowStockLevel() {
     return this.getField('low_track');
   }
   
@@ -7187,7 +7252,7 @@ class ProductInventorySettings extends Model {
    * Get low_level.
    * @returns {number}
    */
-  getLowLevel() {
+  getLowStockLevel() {
     return this.getField('low_level', 0);
   }
   
@@ -7195,7 +7260,7 @@ class ProductInventorySettings extends Model {
    * Get low_lvl_d.
    * @returns {boolean}
    */
-  getLowLvlD() {
+  getLowStockLevelDefault() {
     return this.getField('low_lvl_d', false);
   }
   
@@ -7203,7 +7268,7 @@ class ProductInventorySettings extends Model {
    * Get low_short.
    * @returns {string}
    */
-  getLowShort() {
+  getLowStockMessageShort() {
     return this.getField('low_short');
   }
   
@@ -7211,7 +7276,7 @@ class ProductInventorySettings extends Model {
    * Get low_long.
    * @returns {string}
    */
-  getLowLong() {
+  getLowStockMessageLong() {
     return this.getField('low_long');
   }
   
@@ -7219,7 +7284,7 @@ class ProductInventorySettings extends Model {
    * Get out_track.
    * @returns {string}
    */
-  getOutTrack() {
+  getTrackOutOfStockLevel() {
     return this.getField('out_track');
   }
   
@@ -7227,7 +7292,7 @@ class ProductInventorySettings extends Model {
    * Get out_hide.
    * @returns {string}
    */
-  getOutHide() {
+  getHideOutOfStock() {
     return this.getField('out_hide');
   }
   
@@ -7235,7 +7300,7 @@ class ProductInventorySettings extends Model {
    * Get out_level.
    * @returns {number}
    */
-  getOutLevel() {
+  getOutOfStockLevel() {
     return this.getField('out_level', 0);
   }
   
@@ -7243,7 +7308,7 @@ class ProductInventorySettings extends Model {
    * Get out_lvl_d.
    * @returns {boolean}
    */
-  getOutLvlD() {
+  getOutOfStockLevelDefault() {
     return this.getField('out_lvl_d', false);
   }
   
@@ -7251,7 +7316,7 @@ class ProductInventorySettings extends Model {
    * Get out_short.
    * @returns {string}
    */
-  getOutShort() {
+  getOutOfStockMessageShort() {
     return this.getField('out_short');
   }
   
@@ -7259,7 +7324,7 @@ class ProductInventorySettings extends Model {
    * Get out_long.
    * @returns {string}
    */
-  getOutLong() {
+  getOutOfStockMessageLong() {
     return this.getField('out_long');
   }
   
@@ -7267,73 +7332,8 @@ class ProductInventorySettings extends Model {
    * Get ltd_long.
    * @returns {string}
    */
-  getLtdLong() {
+  getLimitedStockMessage() {
     return this.getField('ltd_long');
-  }
-}
-
-/** CustomFieldValues data model. */
-class CustomFieldValues extends Model {
-  /**
-   * CustomFieldValues Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get a value for a module by its code.
-   * @param {string} code
-   * @param {string} module
-   * @returns {*}
-   */
-  getValue(code, module = 'customfields') {
-    return this.hasValue(code, module) ?
-      this[module][code] : null;
-  }
-
-  /**
-   * Check if a value for code and module exists.
-   * @param {string} code
-   * @param {string} module
-   * @returns {boolean}
-   */
-  hasValue(code, module = 'customfields') {
-    return module in this &amp;&amp; code in this[module];
-  }
-
-  /**
-   * Check if a specific module is defined.
-   * @param {string} module
-   * @returns {boolean}
-   */
-  hasModule(module) {
-    return module in this;
-  }
-
-  /**
-   * Get a specific modules custom field values.
-   * @param {string} module
-   * @returns {Object}
-   */
-  getModule(module) {
-      return this.hasModule(module) ? this[module] : {};
-  }
-  /**
-   * Add a custom field value.
-   * @param {string} field
-   * @param {*} value
-   * @param {string} module
-   * @returns {CustomFieldValues}
-   */
-  addValue(field, value, module = 'customfields') {
-    if (!this.hasModule(module)) {
-      this[module] = {}
-    }
-    this[module][field] = value;
-    return this;
   }
 }
 
@@ -7396,7 +7396,7 @@ class ProductVariantDimension extends Model {
    * Get attr_id.
    * @returns {number}
    */
-  getAttrId() {
+  getAttributeId() {
     return this.getField('attr_id', 0);
   }
   
@@ -7404,7 +7404,7 @@ class ProductVariantDimension extends Model {
    * Get attmpat_id.
    * @returns {number}
    */
-  getAttmpatId() {
+  getAttributeTemplateAttributeId() {
     return this.getField('attmpat_id', 0);
   }
   
@@ -8370,6 +8370,272 @@ class PrintQueueJob extends Model {
   }
 }
 
+/** PaymentMethod data model. */
+class PaymentMethod extends Model {
+  /**
+   * PaymentMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.paymentcard)) {
+      if (!util.isInstanceOf(this.paymentcard, CustomerPaymentCard) &amp;&amp; util.isObject(this.paymentcard)) {
+        this.paymentcard = new CustomerPaymentCard(this.paymentcard);
+      } else if (!util.isInstanceOf(this.paymentcard, CustomerPaymentCard)) {
+        throw new Error(util.format('Expected CustomerPaymentCard or an Object but got %s',
+          typeof this.paymentcard));
+      }
+    } else {
+      this.paymentcard = {};
+    }
+
+    if (!util.isUndefined(this.orderpaymentcard)) {
+      if (!util.isInstanceOf(this.orderpaymentcard, OrderPaymentCard) &amp;&amp; util.isObject(this.orderpaymentcard)) {
+        this.orderpaymentcard = new OrderPaymentCard(this.orderpaymentcard);
+      } else if (!util.isInstanceOf(this.orderpaymentcard, OrderPaymentCard)) {
+        throw new Error(util.format('Expected OrderPaymentCard or an Object but got %s',
+          typeof this.orderpaymentcard));
+      }
+    } else {
+      this.orderpaymentcard = {};
+    }
+
+    if (!util.isUndefined(this.paymentcardtype)) {
+      if (!util.isInstanceOf(this.paymentcardtype, PaymentCardType) &amp;&amp; util.isObject(this.paymentcardtype)) {
+        this.paymentcardtype = new PaymentCardType(this.paymentcardtype);
+      } else if (!util.isInstanceOf(this.paymentcardtype, PaymentCardType)) {
+        throw new Error(util.format('Expected PaymentCardType or an Object but got %s',
+          typeof this.paymentcardtype));
+      }
+    } else {
+      this.paymentcardtype = {};
+    }
+  }
+
+  /**
+   * Get module_id.
+   * @returns {number}
+   */
+  getModuleId() {
+    return this.getField('module_id', 0);
+  }
+  
+  /**
+   * Get module_api.
+   * @returns {number}
+   */
+  getModuleApi() {
+    return this.getField('module_api', 0.00);
+  }
+  
+  /**
+   * Get method_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('method_code');
+  }
+  
+  /**
+   * Get method_name.
+   * @returns {string}
+   */
+  getMethodName() {
+    return this.getField('method_name');
+  }
+  
+  /**
+   * Get mivapay.
+   * @returns {boolean}
+   */
+  getMivapay() {
+    return this.getField('mivapay', false);
+  }
+  
+  /**
+   * Get paymentcard.
+   * @returns {CustomerPaymentCard|*}
+   */
+  getPaymentCard() {
+    return this.getField('paymentcard', null);
+  }
+  
+  /**
+   * Get orderpaymentcard.
+   * @returns {OrderPaymentCard|*}
+   */
+  getOrderPaymentCard() {
+    return this.getField('orderpaymentcard', null);
+  }
+  
+  /**
+   * Get paymentcardtype.
+   * @returns {PaymentCardType|*}
+   */
+  getPaymentCardType() {
+    return this.getField('paymentcardtype', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['paymentcard'], CustomerPaymentCard)) {
+      ret['paymentcard'] = ret['paymentcard'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['orderpaymentcard'], OrderPaymentCard)) {
+      ret['orderpaymentcard'] = ret['orderpaymentcard'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['paymentcardtype'], PaymentCardType)) {
+      ret['paymentcardtype'] = ret['paymentcardtype'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** PaymentCardType data model. */
+class PaymentCardType extends Model {
+  /**
+   * PaymentCardType Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get prefixes.
+   * @returns {string}
+   */
+  getPrefixes() {
+    return this.getField('prefixes');
+  }
+  
+  /**
+   * Get lengths.
+   * @returns {string}
+   */
+  getLengths() {
+    return this.getField('lengths');
+  }
+  
+  /**
+   * Get cvv.
+   * @returns {boolean}
+   */
+  getCvv() {
+    return this.getField('cvv', false);
+  }
+}
+
+/** OrderPaymentAuthorize data model. */
+class OrderPaymentAuthorize extends Model {
+  /**
+   * OrderPaymentAuthorize Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get valid.
+   * @returns {boolean}
+   */
+  getValid() {
+    return this.getField('valid', false);
+  }
+  
+  /**
+   * Get total_auth.
+   * @returns {number}
+   */
+  getTotalAuthorized() {
+    return this.getField('total_auth', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_auth.
+   * @returns {string}
+   */
+  getFormattedTotalAuthorized() {
+    return this.getField('formatted_total_auth');
+  }
+  
+  /**
+   * Get total_capt.
+   * @returns {number}
+   */
+  getTotalCaptured() {
+    return this.getField('total_capt', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_capt.
+   * @returns {string}
+   */
+  getFormattedTotalCaptured() {
+    return this.getField('formatted_total_capt');
+  }
+  
+  /**
+   * Get total_rfnd.
+   * @returns {number}
+   */
+  getTotalRefunded() {
+    return this.getField('total_rfnd', 0.00);
+  }
+  
+  /**
+   * Get formatted_total_rfnd.
+   * @returns {string}
+   */
+  getFormattedTotalRefunded() {
+    return this.getField('formatted_total_rfnd');
+  }
+  
+  /**
+   * Get net_capt.
+   * @returns {number}
+   */
+  getNetCaptured() {
+    return this.getField('net_capt', 0.00);
+  }
+  
+  /**
+   * Get formatted_net_capt.
+   * @returns {string}
+   */
+  getFormattedNetCaptured() {
+    return this.getField('formatted_net_capt');
+  }
+}
+
 /** OrderNote data model. */
 class OrderNote extends Note {
   /**
@@ -8406,6 +8672,38 @@ class CategoryProduct extends Product {
 class CouponPriceGroup extends PriceGroup {
   /**
    * CouponPriceGroup Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** OrderPaymentCard data model. */
+class OrderPaymentCard extends CustomerPaymentCard {
+  /**
+   * OrderPaymentCard Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** PriceGroupCustomer data model. */
+class PriceGroupCustomer extends Customer {
+  /**
+   * PriceGroupCustomer Constructor.
    * @param {Object} data
    * @returns {void}
    */
@@ -8466,6 +8764,7 @@ module.exports = {
   AvailabilityGroup,
   Customer,
   Coupon,
+  CustomFieldValues,
   Module,
   Note,
   PriceGroup,
@@ -8475,15 +8774,15 @@ module.exports = {
   ProductImageData,
   ProductAttribute,
   ProductOption,
-  ProductShippingRules,
   ProductShippingMethod,
+  ProductShippingRules,
   Uri,
   ProductVariant,
   Category,
   Order,
   OrderShipment,
-  OrderItem,
   OrderItemOption,
+  OrderItem,
   OrderCharge,
   OrderCoupon,
   OrderItemDiscount,
@@ -8493,10 +8792,9 @@ module.exports = {
   ProductSubscriptionTerm,
   OrderCustomField,
   CustomerPaymentCard,
-  OrderProduct,
   OrderProductAttribute,
+  OrderProduct,
   ProductInventorySettings,
-  CustomFieldValues,
   ProductVariantPart,
   ProductVariantDimension,
   OrderItemSubscription,
@@ -8512,9 +8810,14 @@ module.exports = {
   OrderPaymentTotal,
   PrintQueue,
   PrintQueueJob,
+  PaymentMethod,
+  PaymentCardType,
+  OrderPaymentAuthorize,
   OrderNote,
   CategoryProduct,
   CouponPriceGroup,
+  OrderPaymentCard,
+  PriceGroupCustomer,
   PriceGroupProduct,
   CustomerPriceGroup
 };
@@ -8528,13 +8831,13 @@ module.exports = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Abstract.html">Abstract</a></li><li><a href="module-Client.html">Client</a></li><li><a href="module-ListQuery.html">ListQuery</a></li><li><a href="module-Model.html">Model</a></li><li><a href="module-MultiCall.html">MultiCall</a></li><li><a href="module-Request.html">Request</a></li><li><a href="module-Response.html">Response</a></li><li><a href="module-Util.html">Util</a></li><li><a href="module-Version.html">Version</a></li></ul><h3>Classes</h3><ul><li><a href="module-Abstract-Model.html">Model</a></li><li><a href="module-Abstract-Request.html">Request</a></li><li><a href="module-Abstract-Response.html">Response</a></li><li><a href="module-Client-Client.html">Client</a></li><li><a href="module-ListQuery-FilterExpression.html">FilterExpression</a></li><li><a href="module-ListQuery-FilterExpressionEntry.html">FilterExpressionEntry</a></li><li><a href="module-ListQuery-ListQueryRequest.html">ListQueryRequest</a></li><li><a href="module-ListQuery-ListQueryResponse.html">ListQueryResponse</a></li><li><a href="module-Model-AvailabilityGroup.html">AvailabilityGroup</a></li><li><a href="module-Model-Category.html">Category</a></li><li><a href="module-Model-CategoryProduct.html">CategoryProduct</a></li><li><a href="module-Model-Coupon.html">Coupon</a></li><li><a href="module-Model-CouponPriceGroup.html">CouponPriceGroup</a></li><li><a href="module-Model-Customer.html">Customer</a></li><li><a href="module-Model-CustomerAddress.html">CustomerAddress</a></li><li><a href="module-Model-CustomerPaymentCard.html">CustomerPaymentCard</a></li><li><a href="module-Model-CustomerPriceGroup.html">CustomerPriceGroup</a></li><li><a href="module-Model-CustomFieldValues.html">CustomFieldValues</a></li><li><a href="module-Model-DiscountModuleCapabilities.html">DiscountModuleCapabilities</a></li><li><a href="module-Model-Module.html">Module</a></li><li><a href="module-Model-Note.html">Note</a></li><li><a href="module-Model-Order.html">Order</a></li><li><a href="module-Model-OrderCharge.html">OrderCharge</a></li><li><a href="module-Model-OrderCoupon.html">OrderCoupon</a></li><li><a href="module-Model-OrderCustomField.html">OrderCustomField</a></li><li><a href="module-Model-OrderDiscountTotal.html">OrderDiscountTotal</a></li><li><a href="module-Model-OrderItem.html">OrderItem</a></li><li><a href="module-Model-OrderItemAttribute.html">OrderItemAttribute</a></li><li><a href="module-Model-OrderItemDiscount.html">OrderItemDiscount</a></li><li><a href="module-Model-OrderItemOption.html">OrderItemOption</a></li><li><a href="module-Model-OrderItemSubscription.html">OrderItemSubscription</a></li><li><a href="module-Model-OrderNote.html">OrderNote</a></li><li><a href="module-Model-OrderPayment.html">OrderPayment</a></li><li><a href="module-Model-OrderPaymentTotal.html">OrderPaymentTotal</a></li><li><a href="module-Model-OrderProduct.html">OrderProduct</a></li><li><a href="module-Model-OrderProductAttribute.html">OrderProductAttribute</a></li><li><a href="module-Model-OrderShipment.html">OrderShipment</a></li><li><a href="module-Model-OrderShipmentUpdate.html">OrderShipmentUpdate</a></li><li><a href="module-Model-OrderTotal.html">OrderTotal</a></li><li><a href="module-Model-PriceGroup.html">PriceGroup</a></li><li><a href="module-Model-PriceGroupProduct.html">PriceGroupProduct</a></li><li><a href="module-Model-PrintQueue.html">PrintQueue</a></li><li><a href="module-Model-PrintQueueJob.html">PrintQueueJob</a></li><li><a href="module-Model-Product.html">Product</a></li><li><a href="module-Model-ProductAttribute.html">ProductAttribute</a></li><li><a href="module-Model-ProductImageData.html">ProductImageData</a></li><li><a href="module-Model-ProductInventoryAdjustment.html">ProductInventoryAdjustment</a></li><li><a href="module-Model-ProductInventorySettings.html">ProductInventorySettings</a></li><li><a href="module-Model-ProductOption.html">ProductOption</a></li><li><a href="module-Model-ProductShippingMethod.html">ProductShippingMethod</a></li><li><a href="module-Model-ProductShippingRules.html">ProductShippingRules</a></li><li><a href="module-Model-ProductSubscriptionTerm.html">ProductSubscriptionTerm</a></li><li><a href="module-Model-ProductVariant.html">ProductVariant</a></li><li><a href="module-Model-ProductVariantDimension.html">ProductVariantDimension</a></li><li><a href="module-Model-ProductVariantExclusion.html">ProductVariantExclusion</a></li><li><a href="module-Model-ProductVariantLimit.html">ProductVariantLimit</a></li><li><a href="module-Model-ProductVariantPart.html">ProductVariantPart</a></li><li><a href="module-Model-ProvisionMessage.html">ProvisionMessage</a></li><li><a href="module-Model-RelatedProduct.html">RelatedProduct</a></li><li><a href="module-Model-Subscription.html">Subscription</a></li><li><a href="module-Model-SubscriptionOption.html">SubscriptionOption</a></li><li><a href="module-Model-Uri.html">Uri</a></li><li><a href="module-MultiCall-MultiCallOperation.html">MultiCallOperation</a></li><li><a href="module-MultiCall-MultiCallRequest.html">MultiCallRequest</a></li><li><a href="module-MultiCall-MultiCallResponse.html">MultiCallResponse</a></li><li><a href="module-Request-AvailabilityGroupBusinessAccountUpdateAssigned.html">AvailabilityGroupBusinessAccountUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupCustomerUpdateAssigned.html">AvailabilityGroupCustomerUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupListLoadQuery.html">AvailabilityGroupListLoadQuery</a></li><li><a href="module-Request-AvailabilityGroupPaymentMethodUpdateAssigned.html">AvailabilityGroupPaymentMethodUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupProductUpdateAssigned.html">AvailabilityGroupProductUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupShippingMethodUpdateAssigned.html">AvailabilityGroupShippingMethodUpdateAssigned</a></li><li><a href="module-Request-CategoryDelete.html">CategoryDelete</a></li><li><a href="module-Request-CategoryInsert.html">CategoryInsert</a></li><li><a href="module-Request-CategoryListLoadParent.html">CategoryListLoadParent</a></li><li><a href="module-Request-CategoryListLoadQuery.html">CategoryListLoadQuery</a></li><li><a href="module-Request-CategoryProductListLoadQuery.html">CategoryProductListLoadQuery</a></li><li><a href="module-Request-CategoryProductUpdateAssigned.html">CategoryProductUpdateAssigned</a></li><li><a href="module-Request-CategoryUpdate.html">CategoryUpdate</a></li><li><a href="module-Request-CouponInsert.html">CouponInsert</a></li><li><a href="module-Request-CouponListDelete.html">CouponListDelete</a></li><li><a href="module-Request-CouponListLoadQuery.html">CouponListLoadQuery</a></li><li><a href="module-Request-CouponPriceGroupListLoadQuery.html">CouponPriceGroupListLoadQuery</a></li><li><a href="module-Request-CouponPriceGroupUpdateAssigned.html">CouponPriceGroupUpdateAssigned</a></li><li><a href="module-Request-CouponUpdate.html">CouponUpdate</a></li><li><a href="module-Request-CustomerAddressListLoadQuery.html">CustomerAddressListLoadQuery</a></li><li><a href="module-Request-CustomerDelete.html">CustomerDelete</a></li><li><a href="module-Request-CustomerInsert.html">CustomerInsert</a></li><li><a href="module-Request-CustomerListLoadQuery.html">CustomerListLoadQuery</a></li><li><a href="module-Request-CustomerPaymentCardRegister.html">CustomerPaymentCardRegister</a></li><li><a href="module-Request-CustomerPriceGroupListLoadQuery.html">CustomerPriceGroupListLoadQuery</a></li><li><a href="module-Request-CustomerUpdate.html">CustomerUpdate</a></li><li><a href="module-Request-Module.html">Module</a></li><li><a href="module-Request-NoteDelete.html">NoteDelete</a></li><li><a href="module-Request-NoteInsert.html">NoteInsert</a></li><li><a href="module-Request-NoteListLoadQuery.html">NoteListLoadQuery</a></li><li><a href="module-Request-NoteUpdate.html">NoteUpdate</a></li><li><a href="module-Request-OrderCreate.html">OrderCreate</a></li><li><a href="module-Request-OrderCustomFieldListLoad.html">OrderCustomFieldListLoad</a></li><li><a href="module-Request-OrderCustomFieldsUpdate.html">OrderCustomFieldsUpdate</a></li><li><a href="module-Request-OrderDelete.html">OrderDelete</a></li><li><a href="module-Request-OrderItemAdd.html">OrderItemAdd</a></li><li><a href="module-Request-OrderItemListBackOrder.html">OrderItemListBackOrder</a></li><li><a href="module-Request-OrderItemListCancel.html">OrderItemListCancel</a></li><li><a href="module-Request-OrderItemListCreateShipment.html">OrderItemListCreateShipment</a></li><li><a href="module-Request-OrderItemListDelete.html">OrderItemListDelete</a></li><li><a href="module-Request-OrderItemUpdate.html">OrderItemUpdate</a></li><li><a href="module-Request-OrderListLoadQuery.html">OrderListLoadQuery</a></li><li><a href="module-Request-OrderPaymentCapture.html">OrderPaymentCapture</a></li><li><a href="module-Request-OrderPaymentRefund.html">OrderPaymentRefund</a></li><li><a href="module-Request-OrderPaymentVoid.html">OrderPaymentVoid</a></li><li><a href="module-Request-OrderShipmentListUpdate.html">OrderShipmentListUpdate</a></li><li><a href="module-Request-OrderUpdateCustomerInformation.html">OrderUpdateCustomerInformation</a></li><li><a href="module-Request-PriceGroupCustomerUpdateAssigned.html">PriceGroupCustomerUpdateAssigned</a></li><li><a href="module-Request-PriceGroupListLoadQuery.html">PriceGroupListLoadQuery</a></li><li><a href="module-Request-PriceGroupProductListLoadQuery.html">PriceGroupProductListLoadQuery</a></li><li><a href="module-Request-PriceGroupProductUpdateAssigned.html">PriceGroupProductUpdateAssigned</a></li><li><a href="module-Request-PrintQueueJobDelete.html">PrintQueueJobDelete</a></li><li><a href="module-Request-PrintQueueJobInsert.html">PrintQueueJobInsert</a></li><li><a href="module-Request-PrintQueueJobListLoadQuery.html">PrintQueueJobListLoadQuery</a></li><li><a href="module-Request-PrintQueueListLoadQuery.html">PrintQueueListLoadQuery</a></li><li><a href="module-Request-ProductDelete.html">ProductDelete</a></li><li><a href="module-Request-ProductImageAdd.html">ProductImageAdd</a></li><li><a href="module-Request-ProductImageDelete.html">ProductImageDelete</a></li><li><a href="module-Request-ProductInsert.html">ProductInsert</a></li><li><a href="module-Request-ProductListAdjustInventory.html">ProductListAdjustInventory</a></li><li><a href="module-Request-ProductListLoadQuery.html">ProductListLoadQuery</a></li><li><a href="module-Request-ProductUpdate.html">ProductUpdate</a></li><li><a href="module-Request-ProductVariantListLoadProduct.html">ProductVariantListLoadProduct</a></li><li><a href="module-Request-ProvisionDomain.html">ProvisionDomain</a></li><li><a href="module-Request-ProvisionStore.html">ProvisionStore</a></li><li><a href="module-Request-RequestBuilder.html">RequestBuilder</a></li><li><a href="module-Response-AvailabilityGroupBusinessAccountUpdateAssigned.html">AvailabilityGroupBusinessAccountUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupCustomerUpdateAssigned.html">AvailabilityGroupCustomerUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupListLoadQuery.html">AvailabilityGroupListLoadQuery</a></li><li><a href="module-Response-AvailabilityGroupPaymentMethodUpdateAssigned.html">AvailabilityGroupPaymentMethodUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupProductUpdateAssigned.html">AvailabilityGroupProductUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupShippingMethodUpdateAssigned.html">AvailabilityGroupShippingMethodUpdateAssigned</a></li><li><a href="module-Response-CategoryDelete.html">CategoryDelete</a></li><li><a href="module-Response-CategoryInsert.html">CategoryInsert</a></li><li><a href="module-Response-CategoryListLoadParent.html">CategoryListLoadParent</a></li><li><a href="module-Response-CategoryListLoadQuery.html">CategoryListLoadQuery</a></li><li><a href="module-Response-CategoryProductListLoadQuery.html">CategoryProductListLoadQuery</a></li><li><a href="module-Response-CategoryProductUpdateAssigned.html">CategoryProductUpdateAssigned</a></li><li><a href="module-Response-CategoryUpdate.html">CategoryUpdate</a></li><li><a href="module-Response-CouponInsert.html">CouponInsert</a></li><li><a href="module-Response-CouponListDelete.html">CouponListDelete</a></li><li><a href="module-Response-CouponListLoadQuery.html">CouponListLoadQuery</a></li><li><a href="module-Response-CouponPriceGroupListLoadQuery.html">CouponPriceGroupListLoadQuery</a></li><li><a href="module-Response-CouponPriceGroupUpdateAssigned.html">CouponPriceGroupUpdateAssigned</a></li><li><a href="module-Response-CouponUpdate.html">CouponUpdate</a></li><li><a href="module-Response-CustomerAddressListLoadQuery.html">CustomerAddressListLoadQuery</a></li><li><a href="module-Response-CustomerDelete.html">CustomerDelete</a></li><li><a href="module-Response-CustomerInsert.html">CustomerInsert</a></li><li><a href="module-Response-CustomerListLoadQuery.html">CustomerListLoadQuery</a></li><li><a href="module-Response-CustomerPaymentCardRegister.html">CustomerPaymentCardRegister</a></li><li><a href="module-Response-CustomerPriceGroupListLoadQuery.html">CustomerPriceGroupListLoadQuery</a></li><li><a href="module-Response-CustomerUpdate.html">CustomerUpdate</a></li><li><a href="module-Response-Module.html">Module</a></li><li><a href="module-Response-NoteDelete.html">NoteDelete</a></li><li><a href="module-Response-NoteInsert.html">NoteInsert</a></li><li><a href="module-Response-NoteListLoadQuery.html">NoteListLoadQuery</a></li><li><a href="module-Response-NoteUpdate.html">NoteUpdate</a></li><li><a href="module-Response-OrderCreate.html">OrderCreate</a></li><li><a href="module-Response-OrderCustomFieldListLoad.html">OrderCustomFieldListLoad</a></li><li><a href="module-Response-OrderCustomFieldsUpdate.html">OrderCustomFieldsUpdate</a></li><li><a href="module-Response-OrderDelete.html">OrderDelete</a></li><li><a href="module-Response-OrderItemAdd.html">OrderItemAdd</a></li><li><a href="module-Response-OrderItemListBackOrder.html">OrderItemListBackOrder</a></li><li><a href="module-Response-OrderItemListCancel.html">OrderItemListCancel</a></li><li><a href="module-Response-OrderItemListCreateShipment.html">OrderItemListCreateShipment</a></li><li><a href="module-Response-OrderItemListDelete.html">OrderItemListDelete</a></li><li><a href="module-Response-OrderItemUpdate.html">OrderItemUpdate</a></li><li><a href="module-Response-OrderListLoadQuery.html">OrderListLoadQuery</a></li><li><a href="module-Response-OrderPaymentCapture.html">OrderPaymentCapture</a></li><li><a href="module-Response-OrderPaymentRefund.html">OrderPaymentRefund</a></li><li><a href="module-Response-OrderPaymentVoid.html">OrderPaymentVoid</a></li><li><a href="module-Response-OrderShipmentListUpdate.html">OrderShipmentListUpdate</a></li><li><a href="module-Response-OrderUpdateCustomerInformation.html">OrderUpdateCustomerInformation</a></li><li><a href="module-Response-PriceGroupCustomerUpdateAssigned.html">PriceGroupCustomerUpdateAssigned</a></li><li><a href="module-Response-PriceGroupListLoadQuery.html">PriceGroupListLoadQuery</a></li><li><a href="module-Response-PriceGroupProductListLoadQuery.html">PriceGroupProductListLoadQuery</a></li><li><a href="module-Response-PriceGroupProductUpdateAssigned.html">PriceGroupProductUpdateAssigned</a></li><li><a href="module-Response-PrintQueueJobDelete.html">PrintQueueJobDelete</a></li><li><a href="module-Response-PrintQueueJobInsert.html">PrintQueueJobInsert</a></li><li><a href="module-Response-PrintQueueJobListLoadQuery.html">PrintQueueJobListLoadQuery</a></li><li><a href="module-Response-PrintQueueListLoadQuery.html">PrintQueueListLoadQuery</a></li><li><a href="module-Response-ProductDelete.html">ProductDelete</a></li><li><a href="module-Response-ProductImageAdd.html">ProductImageAdd</a></li><li><a href="module-Response-ProductImageDelete.html">ProductImageDelete</a></li><li><a href="module-Response-ProductInsert.html">ProductInsert</a></li><li><a href="module-Response-ProductListAdjustInventory.html">ProductListAdjustInventory</a></li><li><a href="module-Response-ProductListLoadQuery.html">ProductListLoadQuery</a></li><li><a href="module-Response-ProductUpdate.html">ProductUpdate</a></li><li><a href="module-Response-ProductVariantListLoadProduct.html">ProductVariantListLoadProduct</a></li><li><a href="module-Response-ProvisionDomain.html">ProvisionDomain</a></li><li><a href="module-Response-ProvisionStore.html">ProvisionStore</a></li><li><a href="module-Response-RequestBuilder.html">RequestBuilder</a></li><li><a href="module-Version-Version.html">Version</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Abstract.html">Abstract</a></li><li><a href="module-Client.html">Client</a></li><li><a href="module-ListQuery.html">ListQuery</a></li><li><a href="module-Model.html">Model</a></li><li><a href="module-MultiCall.html">MultiCall</a></li><li><a href="module-Request.html">Request</a></li><li><a href="module-Response.html">Response</a></li><li><a href="module-Util.html">Util</a></li><li><a href="module-Version.html">Version</a></li></ul><h3>Classes</h3><ul><li><a href="module-Abstract-Model.html">Model</a></li><li><a href="module-Abstract-Request.html">Request</a></li><li><a href="module-Abstract-Response.html">Response</a></li><li><a href="module-Client-Client.html">Client</a></li><li><a href="module-ListQuery-FilterExpression.html">FilterExpression</a></li><li><a href="module-ListQuery-FilterExpressionEntry.html">FilterExpressionEntry</a></li><li><a href="module-ListQuery-ListQueryRequest.html">ListQueryRequest</a></li><li><a href="module-ListQuery-ListQueryResponse.html">ListQueryResponse</a></li><li><a href="module-Model-AvailabilityGroup.html">AvailabilityGroup</a></li><li><a href="module-Model-Category.html">Category</a></li><li><a href="module-Model-CategoryProduct.html">CategoryProduct</a></li><li><a href="module-Model-Coupon.html">Coupon</a></li><li><a href="module-Model-CouponPriceGroup.html">CouponPriceGroup</a></li><li><a href="module-Model-Customer.html">Customer</a></li><li><a href="module-Model-CustomerAddress.html">CustomerAddress</a></li><li><a href="module-Model-CustomerPaymentCard.html">CustomerPaymentCard</a></li><li><a href="module-Model-CustomerPriceGroup.html">CustomerPriceGroup</a></li><li><a href="module-Model-CustomFieldValues.html">CustomFieldValues</a></li><li><a href="module-Model-DiscountModuleCapabilities.html">DiscountModuleCapabilities</a></li><li><a href="module-Model-Module.html">Module</a></li><li><a href="module-Model-Note.html">Note</a></li><li><a href="module-Model-Order.html">Order</a></li><li><a href="module-Model-OrderCharge.html">OrderCharge</a></li><li><a href="module-Model-OrderCoupon.html">OrderCoupon</a></li><li><a href="module-Model-OrderCustomField.html">OrderCustomField</a></li><li><a href="module-Model-OrderDiscountTotal.html">OrderDiscountTotal</a></li><li><a href="module-Model-OrderItem.html">OrderItem</a></li><li><a href="module-Model-OrderItemAttribute.html">OrderItemAttribute</a></li><li><a href="module-Model-OrderItemDiscount.html">OrderItemDiscount</a></li><li><a href="module-Model-OrderItemOption.html">OrderItemOption</a></li><li><a href="module-Model-OrderItemSubscription.html">OrderItemSubscription</a></li><li><a href="module-Model-OrderNote.html">OrderNote</a></li><li><a href="module-Model-OrderPayment.html">OrderPayment</a></li><li><a href="module-Model-OrderPaymentAuthorize.html">OrderPaymentAuthorize</a></li><li><a href="module-Model-OrderPaymentCard.html">OrderPaymentCard</a></li><li><a href="module-Model-OrderPaymentTotal.html">OrderPaymentTotal</a></li><li><a href="module-Model-OrderProduct.html">OrderProduct</a></li><li><a href="module-Model-OrderProductAttribute.html">OrderProductAttribute</a></li><li><a href="module-Model-OrderShipment.html">OrderShipment</a></li><li><a href="module-Model-OrderShipmentUpdate.html">OrderShipmentUpdate</a></li><li><a href="module-Model-OrderTotal.html">OrderTotal</a></li><li><a href="module-Model-PaymentCardType.html">PaymentCardType</a></li><li><a href="module-Model-PaymentMethod.html">PaymentMethod</a></li><li><a href="module-Model-PriceGroup.html">PriceGroup</a></li><li><a href="module-Model-PriceGroupCustomer.html">PriceGroupCustomer</a></li><li><a href="module-Model-PriceGroupProduct.html">PriceGroupProduct</a></li><li><a href="module-Model-PrintQueue.html">PrintQueue</a></li><li><a href="module-Model-PrintQueueJob.html">PrintQueueJob</a></li><li><a href="module-Model-Product.html">Product</a></li><li><a href="module-Model-ProductAttribute.html">ProductAttribute</a></li><li><a href="module-Model-ProductImageData.html">ProductImageData</a></li><li><a href="module-Model-ProductInventoryAdjustment.html">ProductInventoryAdjustment</a></li><li><a href="module-Model-ProductInventorySettings.html">ProductInventorySettings</a></li><li><a href="module-Model-ProductOption.html">ProductOption</a></li><li><a href="module-Model-ProductShippingMethod.html">ProductShippingMethod</a></li><li><a href="module-Model-ProductShippingRules.html">ProductShippingRules</a></li><li><a href="module-Model-ProductSubscriptionTerm.html">ProductSubscriptionTerm</a></li><li><a href="module-Model-ProductVariant.html">ProductVariant</a></li><li><a href="module-Model-ProductVariantDimension.html">ProductVariantDimension</a></li><li><a href="module-Model-ProductVariantExclusion.html">ProductVariantExclusion</a></li><li><a href="module-Model-ProductVariantLimit.html">ProductVariantLimit</a></li><li><a href="module-Model-ProductVariantPart.html">ProductVariantPart</a></li><li><a href="module-Model-ProvisionMessage.html">ProvisionMessage</a></li><li><a href="module-Model-RelatedProduct.html">RelatedProduct</a></li><li><a href="module-Model-Subscription.html">Subscription</a></li><li><a href="module-Model-SubscriptionOption.html">SubscriptionOption</a></li><li><a href="module-Model-Uri.html">Uri</a></li><li><a href="module-MultiCall-MultiCallOperation.html">MultiCallOperation</a></li><li><a href="module-MultiCall-MultiCallRequest.html">MultiCallRequest</a></li><li><a href="module-MultiCall-MultiCallResponse.html">MultiCallResponse</a></li><li><a href="module-Request-AvailabilityGroupBusinessAccountUpdateAssigned.html">AvailabilityGroupBusinessAccountUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupCustomerUpdateAssigned.html">AvailabilityGroupCustomerUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupListLoadQuery.html">AvailabilityGroupListLoadQuery</a></li><li><a href="module-Request-AvailabilityGroupPaymentMethodUpdateAssigned.html">AvailabilityGroupPaymentMethodUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupProductUpdateAssigned.html">AvailabilityGroupProductUpdateAssigned</a></li><li><a href="module-Request-AvailabilityGroupShippingMethodUpdateAssigned.html">AvailabilityGroupShippingMethodUpdateAssigned</a></li><li><a href="module-Request-CategoryDelete.html">CategoryDelete</a></li><li><a href="module-Request-CategoryInsert.html">CategoryInsert</a></li><li><a href="module-Request-CategoryListLoadParent.html">CategoryListLoadParent</a></li><li><a href="module-Request-CategoryListLoadQuery.html">CategoryListLoadQuery</a></li><li><a href="module-Request-CategoryProductListLoadQuery.html">CategoryProductListLoadQuery</a></li><li><a href="module-Request-CategoryProductUpdateAssigned.html">CategoryProductUpdateAssigned</a></li><li><a href="module-Request-CategoryUpdate.html">CategoryUpdate</a></li><li><a href="module-Request-CouponInsert.html">CouponInsert</a></li><li><a href="module-Request-CouponListDelete.html">CouponListDelete</a></li><li><a href="module-Request-CouponListLoadQuery.html">CouponListLoadQuery</a></li><li><a href="module-Request-CouponPriceGroupListLoadQuery.html">CouponPriceGroupListLoadQuery</a></li><li><a href="module-Request-CouponPriceGroupUpdateAssigned.html">CouponPriceGroupUpdateAssigned</a></li><li><a href="module-Request-CouponUpdate.html">CouponUpdate</a></li><li><a href="module-Request-CustomerAddressListLoadQuery.html">CustomerAddressListLoadQuery</a></li><li><a href="module-Request-CustomerDelete.html">CustomerDelete</a></li><li><a href="module-Request-CustomerInsert.html">CustomerInsert</a></li><li><a href="module-Request-CustomerListLoadQuery.html">CustomerListLoadQuery</a></li><li><a href="module-Request-CustomerPaymentCardListLoadQuery.html">CustomerPaymentCardListLoadQuery</a></li><li><a href="module-Request-CustomerPaymentCardRegister.html">CustomerPaymentCardRegister</a></li><li><a href="module-Request-CustomerPriceGroupListLoadQuery.html">CustomerPriceGroupListLoadQuery</a></li><li><a href="module-Request-CustomerUpdate.html">CustomerUpdate</a></li><li><a href="module-Request-Module.html">Module</a></li><li><a href="module-Request-NoteDelete.html">NoteDelete</a></li><li><a href="module-Request-NoteInsert.html">NoteInsert</a></li><li><a href="module-Request-NoteListLoadQuery.html">NoteListLoadQuery</a></li><li><a href="module-Request-NoteUpdate.html">NoteUpdate</a></li><li><a href="module-Request-OrderAuthorize.html">OrderAuthorize</a></li><li><a href="module-Request-OrderCreate.html">OrderCreate</a></li><li><a href="module-Request-OrderCreateFromOrder.html">OrderCreateFromOrder</a></li><li><a href="module-Request-OrderCustomFieldListLoad.html">OrderCustomFieldListLoad</a></li><li><a href="module-Request-OrderCustomFieldsUpdate.html">OrderCustomFieldsUpdate</a></li><li><a href="module-Request-OrderDelete.html">OrderDelete</a></li><li><a href="module-Request-OrderItemAdd.html">OrderItemAdd</a></li><li><a href="module-Request-OrderItemListBackOrder.html">OrderItemListBackOrder</a></li><li><a href="module-Request-OrderItemListCancel.html">OrderItemListCancel</a></li><li><a href="module-Request-OrderItemListCreateShipment.html">OrderItemListCreateShipment</a></li><li><a href="module-Request-OrderItemListDelete.html">OrderItemListDelete</a></li><li><a href="module-Request-OrderItemUpdate.html">OrderItemUpdate</a></li><li><a href="module-Request-OrderListLoadQuery.html">OrderListLoadQuery</a></li><li><a href="module-Request-OrderPaymentCapture.html">OrderPaymentCapture</a></li><li><a href="module-Request-OrderPaymentRefund.html">OrderPaymentRefund</a></li><li><a href="module-Request-OrderPaymentVoid.html">OrderPaymentVoid</a></li><li><a href="module-Request-OrderShipmentListUpdate.html">OrderShipmentListUpdate</a></li><li><a href="module-Request-OrderUpdateCustomerInformation.html">OrderUpdateCustomerInformation</a></li><li><a href="module-Request-PaymentMethodListLoad.html">PaymentMethodListLoad</a></li><li><a href="module-Request-PriceGroupCustomerListLoadQuery.html">PriceGroupCustomerListLoadQuery</a></li><li><a href="module-Request-PriceGroupCustomerUpdateAssigned.html">PriceGroupCustomerUpdateAssigned</a></li><li><a href="module-Request-PriceGroupListLoadQuery.html">PriceGroupListLoadQuery</a></li><li><a href="module-Request-PriceGroupProductListLoadQuery.html">PriceGroupProductListLoadQuery</a></li><li><a href="module-Request-PriceGroupProductUpdateAssigned.html">PriceGroupProductUpdateAssigned</a></li><li><a href="module-Request-PrintQueueJobDelete.html">PrintQueueJobDelete</a></li><li><a href="module-Request-PrintQueueJobInsert.html">PrintQueueJobInsert</a></li><li><a href="module-Request-PrintQueueJobListLoadQuery.html">PrintQueueJobListLoadQuery</a></li><li><a href="module-Request-PrintQueueJobStatus.html">PrintQueueJobStatus</a></li><li><a href="module-Request-PrintQueueListLoadQuery.html">PrintQueueListLoadQuery</a></li><li><a href="module-Request-ProductDelete.html">ProductDelete</a></li><li><a href="module-Request-ProductImageAdd.html">ProductImageAdd</a></li><li><a href="module-Request-ProductImageDelete.html">ProductImageDelete</a></li><li><a href="module-Request-ProductInsert.html">ProductInsert</a></li><li><a href="module-Request-ProductListAdjustInventory.html">ProductListAdjustInventory</a></li><li><a href="module-Request-ProductListLoadQuery.html">ProductListLoadQuery</a></li><li><a href="module-Request-ProductUpdate.html">ProductUpdate</a></li><li><a href="module-Request-ProductVariantListLoadProduct.html">ProductVariantListLoadProduct</a></li><li><a href="module-Request-ProvisionDomain.html">ProvisionDomain</a></li><li><a href="module-Request-ProvisionStore.html">ProvisionStore</a></li><li><a href="module-Request-RequestBuilder.html">RequestBuilder</a></li><li><a href="module-Response-AvailabilityGroupBusinessAccountUpdateAssigned.html">AvailabilityGroupBusinessAccountUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupCustomerUpdateAssigned.html">AvailabilityGroupCustomerUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupListLoadQuery.html">AvailabilityGroupListLoadQuery</a></li><li><a href="module-Response-AvailabilityGroupPaymentMethodUpdateAssigned.html">AvailabilityGroupPaymentMethodUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupProductUpdateAssigned.html">AvailabilityGroupProductUpdateAssigned</a></li><li><a href="module-Response-AvailabilityGroupShippingMethodUpdateAssigned.html">AvailabilityGroupShippingMethodUpdateAssigned</a></li><li><a href="module-Response-CategoryDelete.html">CategoryDelete</a></li><li><a href="module-Response-CategoryInsert.html">CategoryInsert</a></li><li><a href="module-Response-CategoryListLoadParent.html">CategoryListLoadParent</a></li><li><a href="module-Response-CategoryListLoadQuery.html">CategoryListLoadQuery</a></li><li><a href="module-Response-CategoryProductListLoadQuery.html">CategoryProductListLoadQuery</a></li><li><a href="module-Response-CategoryProductUpdateAssigned.html">CategoryProductUpdateAssigned</a></li><li><a href="module-Response-CategoryUpdate.html">CategoryUpdate</a></li><li><a href="module-Response-CouponInsert.html">CouponInsert</a></li><li><a href="module-Response-CouponListDelete.html">CouponListDelete</a></li><li><a href="module-Response-CouponListLoadQuery.html">CouponListLoadQuery</a></li><li><a href="module-Response-CouponPriceGroupListLoadQuery.html">CouponPriceGroupListLoadQuery</a></li><li><a href="module-Response-CouponPriceGroupUpdateAssigned.html">CouponPriceGroupUpdateAssigned</a></li><li><a href="module-Response-CouponUpdate.html">CouponUpdate</a></li><li><a href="module-Response-CustomerAddressListLoadQuery.html">CustomerAddressListLoadQuery</a></li><li><a href="module-Response-CustomerDelete.html">CustomerDelete</a></li><li><a href="module-Response-CustomerInsert.html">CustomerInsert</a></li><li><a href="module-Response-CustomerListLoadQuery.html">CustomerListLoadQuery</a></li><li><a href="module-Response-CustomerPaymentCardListLoadQuery.html">CustomerPaymentCardListLoadQuery</a></li><li><a href="module-Response-CustomerPaymentCardRegister.html">CustomerPaymentCardRegister</a></li><li><a href="module-Response-CustomerPriceGroupListLoadQuery.html">CustomerPriceGroupListLoadQuery</a></li><li><a href="module-Response-CustomerUpdate.html">CustomerUpdate</a></li><li><a href="module-Response-Module.html">Module</a></li><li><a href="module-Response-NoteDelete.html">NoteDelete</a></li><li><a href="module-Response-NoteInsert.html">NoteInsert</a></li><li><a href="module-Response-NoteListLoadQuery.html">NoteListLoadQuery</a></li><li><a href="module-Response-NoteUpdate.html">NoteUpdate</a></li><li><a href="module-Response-OrderAuthorize.html">OrderAuthorize</a></li><li><a href="module-Response-OrderCreate.html">OrderCreate</a></li><li><a href="module-Response-OrderCreateFromOrder.html">OrderCreateFromOrder</a></li><li><a href="module-Response-OrderCustomFieldListLoad.html">OrderCustomFieldListLoad</a></li><li><a href="module-Response-OrderCustomFieldsUpdate.html">OrderCustomFieldsUpdate</a></li><li><a href="module-Response-OrderDelete.html">OrderDelete</a></li><li><a href="module-Response-OrderItemAdd.html">OrderItemAdd</a></li><li><a href="module-Response-OrderItemListBackOrder.html">OrderItemListBackOrder</a></li><li><a href="module-Response-OrderItemListCancel.html">OrderItemListCancel</a></li><li><a href="module-Response-OrderItemListCreateShipment.html">OrderItemListCreateShipment</a></li><li><a href="module-Response-OrderItemListDelete.html">OrderItemListDelete</a></li><li><a href="module-Response-OrderItemUpdate.html">OrderItemUpdate</a></li><li><a href="module-Response-OrderListLoadQuery.html">OrderListLoadQuery</a></li><li><a href="module-Response-OrderPaymentCapture.html">OrderPaymentCapture</a></li><li><a href="module-Response-OrderPaymentRefund.html">OrderPaymentRefund</a></li><li><a href="module-Response-OrderPaymentVoid.html">OrderPaymentVoid</a></li><li><a href="module-Response-OrderShipmentListUpdate.html">OrderShipmentListUpdate</a></li><li><a href="module-Response-OrderUpdateCustomerInformation.html">OrderUpdateCustomerInformation</a></li><li><a href="module-Response-PaymentMethodListLoad.html">PaymentMethodListLoad</a></li><li><a href="module-Response-PriceGroupCustomerListLoadQuery.html">PriceGroupCustomerListLoadQuery</a></li><li><a href="module-Response-PriceGroupCustomerUpdateAssigned.html">PriceGroupCustomerUpdateAssigned</a></li><li><a href="module-Response-PriceGroupListLoadQuery.html">PriceGroupListLoadQuery</a></li><li><a href="module-Response-PriceGroupProductListLoadQuery.html">PriceGroupProductListLoadQuery</a></li><li><a href="module-Response-PriceGroupProductUpdateAssigned.html">PriceGroupProductUpdateAssigned</a></li><li><a href="module-Response-PrintQueueJobDelete.html">PrintQueueJobDelete</a></li><li><a href="module-Response-PrintQueueJobInsert.html">PrintQueueJobInsert</a></li><li><a href="module-Response-PrintQueueJobListLoadQuery.html">PrintQueueJobListLoadQuery</a></li><li><a href="module-Response-PrintQueueJobStatus.html">PrintQueueJobStatus</a></li><li><a href="module-Response-PrintQueueListLoadQuery.html">PrintQueueListLoadQuery</a></li><li><a href="module-Response-ProductDelete.html">ProductDelete</a></li><li><a href="module-Response-ProductImageAdd.html">ProductImageAdd</a></li><li><a href="module-Response-ProductImageDelete.html">ProductImageDelete</a></li><li><a href="module-Response-ProductInsert.html">ProductInsert</a></li><li><a href="module-Response-ProductListAdjustInventory.html">ProductListAdjustInventory</a></li><li><a href="module-Response-ProductListLoadQuery.html">ProductListLoadQuery</a></li><li><a href="module-Response-ProductUpdate.html">ProductUpdate</a></li><li><a href="module-Response-ProductVariantListLoadProduct.html">ProductVariantListLoadProduct</a></li><li><a href="module-Response-ProvisionDomain.html">ProvisionDomain</a></li><li><a href="module-Response-ProvisionStore.html">ProvisionStore</a></li><li><a href="module-Response-RequestBuilder.html">RequestBuilder</a></li><li><a href="module-Version-Version.html">Version</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 23 2019 12:32:41 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Aug 30 2019 11:24:24 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
