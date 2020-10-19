@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: requests.js 77296 2019-08-07 22:09:12Z gidriss $
  */
 
 const util                  = require('./util');
@@ -22,7 +20,7 @@ const { ListQueryRequest }  = require('./listquery');
 class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
   /**
    * AvailabilityGroupBusinessAccountUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
   constructor(client, availabilityGroup = null) {
@@ -187,8 +185,8 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupBusinessAccountUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupBusinessAccountUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -199,7 +197,7 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
 class AvailabilityGroupCustomerUpdateAssigned extends Request {
   /**
    * AvailabilityGroupCustomerUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
   constructor(client, availabilityGroup = null) {
@@ -385,8 +383,8 @@ class AvailabilityGroupCustomerUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupCustomerUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupCustomerUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -397,7 +395,7 @@ class AvailabilityGroupCustomerUpdateAssigned extends Request {
 class AvailabilityGroupListLoadQuery extends ListQueryRequest {
   /**
    * AvailabilityGroupListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -420,8 +418,8 @@ class AvailabilityGroupListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -432,7 +430,7 @@ class AvailabilityGroupListLoadQuery extends ListQueryRequest {
 class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
   /**
    * AvailabilityGroupPaymentMethodUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
   constructor(client, availabilityGroup = null) {
@@ -616,8 +614,8 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupPaymentMethodUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupPaymentMethodUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -628,7 +626,7 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
 class AvailabilityGroupProductUpdateAssigned extends Request {
   /**
    * AvailabilityGroupProductUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
   constructor(client, availabilityGroup = null) {
@@ -833,8 +831,8 @@ class AvailabilityGroupProductUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupProductUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupProductUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -845,7 +843,7 @@ class AvailabilityGroupProductUpdateAssigned extends Request {
 class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
   /**
    * AvailabilityGroupShippingMethodUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?AvailabilityGroup} availabilityGroup
    */
   constructor(client, availabilityGroup = null) {
@@ -1006,8 +1004,8 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.AvailabilityGroupShippingMethodUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupShippingMethodUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -1018,7 +1016,7 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
 class CategoryListLoadParent extends Request {
   /**
    * CategoryListLoadParent Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -1068,8 +1066,8 @@ class CategoryListLoadParent extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryListLoadParent(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryListLoadParent(this, httpResponse, data);
   }
 }
 
@@ -1086,7 +1084,7 @@ const CATEGORY_SHOW_ACTIVE = 'Active';
 class CategoryListLoadQuery extends ListQueryRequest {
   /**
    * CategoryListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -1117,6 +1115,10 @@ class CategoryListLoadQuery extends ListQueryRequest {
       'dt_created',
       'dt_updated',
       'depth'
+    ];
+
+    this.availableOnDemandColumns = [
+      'uris'
     ];
 
     this.availableCustomFilters = {
@@ -1151,8 +1153,8 @@ class CategoryListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -1163,7 +1165,7 @@ class CategoryListLoadQuery extends ListQueryRequest {
 class CategoryProductUpdateAssigned extends Request {
   /**
    * CategoryProductUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -1368,8 +1370,8 @@ class CategoryProductUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryProductUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryProductUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -1380,7 +1382,7 @@ class CategoryProductUpdateAssigned extends Request {
 class CategoryInsert extends Request {
   /**
    * CategoryInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -1582,8 +1584,8 @@ class CategoryInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryInsert(this, httpResponse, data);
   }
 }
 
@@ -1594,7 +1596,7 @@ class CategoryInsert extends Request {
 class CategoryDelete extends Request {
   /**
    * CategoryDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -1692,8 +1694,8 @@ class CategoryDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryDelete(this, httpResponse, data);
   }
 }
 
@@ -1704,7 +1706,7 @@ class CategoryDelete extends Request {
 class CategoryUpdate extends Request {
   /**
    * CategoryUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -1961,8 +1963,8 @@ class CategoryUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryUpdate(this, httpResponse, data);
   }
 }
 
@@ -1973,7 +1975,7 @@ class CategoryUpdate extends Request {
 class CouponListDelete extends Request {
   /**
    * CouponListDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -2037,8 +2039,8 @@ class CouponListDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponListDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponListDelete(this, httpResponse, data);
   }
 }
 
@@ -2049,7 +2051,7 @@ class CouponListDelete extends Request {
 class CouponListLoadQuery extends ListQueryRequest {
   /**
    * CouponListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -2088,8 +2090,8 @@ class CouponListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -2100,7 +2102,7 @@ class CouponListLoadQuery extends ListQueryRequest {
 class CouponPriceGroupUpdateAssigned extends Request {
   /**
    * CouponPriceGroupUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Coupon} coupon
    */
   constructor(client, coupon = null) {
@@ -2263,8 +2265,8 @@ class CouponPriceGroupUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponPriceGroupUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponPriceGroupUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -2275,7 +2277,7 @@ class CouponPriceGroupUpdateAssigned extends Request {
 class CouponInsert extends Request {
   /**
    * CouponInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Coupon} coupon
    */
   constructor(client, coupon = null) {
@@ -2526,8 +2528,8 @@ class CouponInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponInsert(this, httpResponse, data);
   }
 }
 
@@ -2538,7 +2540,7 @@ class CouponInsert extends Request {
 class CouponUpdate extends Request {
   /**
    * CouponUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Coupon} coupon
    */
   constructor(client, coupon = null) {
@@ -2842,8 +2844,8 @@ class CouponUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponUpdate(this, httpResponse, data);
   }
 }
 
@@ -2854,7 +2856,7 @@ class CouponUpdate extends Request {
 class CustomerListLoadQuery extends ListQueryRequest {
   /**
    * CustomerListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -2939,8 +2941,8 @@ class CustomerListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -2951,7 +2953,7 @@ class CustomerListLoadQuery extends ListQueryRequest {
 class CustomerDelete extends Request {
   /**
    * CustomerDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -3049,8 +3051,8 @@ class CustomerDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerDelete(this, httpResponse, data);
   }
 }
 
@@ -3061,7 +3063,7 @@ class CustomerDelete extends Request {
 class CustomerInsert extends Request {
   /**
    * CustomerInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -3836,8 +3838,8 @@ class CustomerInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerInsert(this, httpResponse, data);
   }
 }
 
@@ -3848,7 +3850,7 @@ class CustomerInsert extends Request {
 class CustomerUpdate extends Request {
   /**
    * CustomerUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -4679,8 +4681,8 @@ class CustomerUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerUpdate(this, httpResponse, data);
   }
 }
 
@@ -4691,7 +4693,7 @@ class CustomerUpdate extends Request {
 class CustomerPaymentCardRegister extends Request {
   /**
    * CustomerPaymentCardRegister Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -5065,8 +5067,8 @@ class CustomerPaymentCardRegister extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerPaymentCardRegister(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerPaymentCardRegister(this, httpResponse, data);
   }
 }
 
@@ -5077,7 +5079,7 @@ class CustomerPaymentCardRegister extends Request {
 class Module extends Request {
   /**
    * Module Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -5175,8 +5177,8 @@ class Module extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.Module(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.Module(this, httpResponse, data);
   }
 }
 
@@ -5187,7 +5189,7 @@ class Module extends Request {
 class NoteListLoadQuery extends ListQueryRequest {
   /**
    * NoteListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -5224,8 +5226,8 @@ class NoteListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.NoteListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.NoteListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -5236,7 +5238,7 @@ class NoteListLoadQuery extends ListQueryRequest {
 class NoteDelete extends Request {
   /**
    * NoteDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Note} note
    */
   constructor(client, note = null) {
@@ -5286,8 +5288,8 @@ class NoteDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.NoteDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.NoteDelete(this, httpResponse, data);
   }
 }
 
@@ -5298,7 +5300,7 @@ class NoteDelete extends Request {
 class NoteInsert extends Request {
   /**
    * NoteInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -5412,8 +5414,8 @@ class NoteInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.NoteInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.NoteInsert(this, httpResponse, data);
   }
 }
 
@@ -5424,7 +5426,7 @@ class NoteInsert extends Request {
 class NoteUpdate extends Request {
   /**
    * NoteUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Note} note
    */
   constructor(client, note = null) {
@@ -5496,8 +5498,8 @@ class NoteUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.NoteUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.NoteUpdate(this, httpResponse, data);
   }
 }
 
@@ -5508,7 +5510,7 @@ class NoteUpdate extends Request {
 class OrderCustomFieldListLoad extends Request {
   /**
    * OrderCustomFieldListLoad Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -5521,8 +5523,8 @@ class OrderCustomFieldListLoad extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderCustomFieldListLoad(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderCustomFieldListLoad(this, httpResponse, data);
   }
 }
 
@@ -5533,7 +5535,7 @@ class OrderCustomFieldListLoad extends Request {
 class OrderCustomFieldsUpdate extends Request {
   /**
    * OrderCustomFieldsUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -5618,8 +5620,8 @@ class OrderCustomFieldsUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderCustomFieldsUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderCustomFieldsUpdate(this, httpResponse, data);
   }
 }
 
@@ -5630,7 +5632,7 @@ class OrderCustomFieldsUpdate extends Request {
 class OrderItemListBackOrder extends Request {
   /**
    * OrderItemListBackOrder Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -5752,8 +5754,8 @@ class OrderItemListBackOrder extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemListBackOrder(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListBackOrder(this, httpResponse, data);
   }
 }
 
@@ -5764,7 +5766,7 @@ class OrderItemListBackOrder extends Request {
 class OrderItemListCancel extends Request {
   /**
    * OrderItemListCancel Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -5877,8 +5879,8 @@ class OrderItemListCancel extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemListCancel(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListCancel(this, httpResponse, data);
   }
 }
 
@@ -5889,7 +5891,7 @@ class OrderItemListCancel extends Request {
 class OrderItemListCreateShipment extends Request {
   /**
    * OrderItemListCreateShipment Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -5979,8 +5981,8 @@ class OrderItemListCreateShipment extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemListCreateShipment(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListCreateShipment(this, httpResponse, data);
   }
 }
 
@@ -5991,7 +5993,7 @@ class OrderItemListCreateShipment extends Request {
 class OrderItemListDelete extends Request {
   /**
    * OrderItemListDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -6081,8 +6083,8 @@ class OrderItemListDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemListDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListDelete(this, httpResponse, data);
   }
 }
 
@@ -6093,7 +6095,7 @@ class OrderItemListDelete extends Request {
 class OrderItemAdd extends Request {
   /**
    * OrderItemAdd Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -6394,8 +6396,8 @@ class OrderItemAdd extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemAdd(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemAdd(this, httpResponse, data);
   }
 }
 
@@ -6406,7 +6408,7 @@ class OrderItemAdd extends Request {
 class OrderItemUpdate extends Request {
   /**
    * OrderItemUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?OrderItem} orderItem
    */
   constructor(client, orderItem = null) {
@@ -6750,8 +6752,8 @@ class OrderItemUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderItemUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemUpdate(this, httpResponse, data);
   }
 }
 
@@ -6772,7 +6774,7 @@ const PAY_STATUS_FILTER_SHIPPED_NOT_CAPTURED = 'ship_not_capt';
 class OrderListLoadQuery extends ListQueryRequest {
   /**
    * OrderListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -6989,8 +6991,8 @@ class OrderListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -7001,7 +7003,7 @@ class OrderListLoadQuery extends ListQueryRequest {
 class OrderPaymentCapture extends Request {
   /**
    * OrderPaymentCapture Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?OrderPayment} orderPayment
    */
   constructor(client, orderPayment = null) {
@@ -7074,8 +7076,8 @@ class OrderPaymentCapture extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderPaymentCapture(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderPaymentCapture(this, httpResponse, data);
   }
 }
 
@@ -7086,7 +7088,7 @@ class OrderPaymentCapture extends Request {
 class OrderPaymentRefund extends Request {
   /**
    * OrderPaymentRefund Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?OrderPayment} orderPayment
    */
   constructor(client, orderPayment = null) {
@@ -7159,8 +7161,8 @@ class OrderPaymentRefund extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderPaymentRefund(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderPaymentRefund(this, httpResponse, data);
   }
 }
 
@@ -7171,7 +7173,7 @@ class OrderPaymentRefund extends Request {
 class OrderPaymentVoid extends Request {
   /**
    * OrderPaymentVoid Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?OrderPayment} orderPayment
    */
   constructor(client, orderPayment = null) {
@@ -7244,8 +7246,8 @@ class OrderPaymentVoid extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderPaymentVoid(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderPaymentVoid(this, httpResponse, data);
   }
 }
 
@@ -7256,7 +7258,7 @@ class OrderPaymentVoid extends Request {
 class OrderShipmentListUpdate extends Request {
   /**
    * OrderShipmentListUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -7374,8 +7376,8 @@ class OrderShipmentListUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderShipmentListUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderShipmentListUpdate(this, httpResponse, data);
   }
 }
 
@@ -7386,7 +7388,7 @@ class OrderShipmentListUpdate extends Request {
 class OrderCreate extends Request {
   /**
    * OrderCreate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -8445,8 +8447,8 @@ class OrderCreate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderCreate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderCreate(this, httpResponse, data);
   }
 }
 
@@ -8457,7 +8459,7 @@ class OrderCreate extends Request {
 class OrderDelete extends Request {
   /**
    * OrderDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -8507,8 +8509,8 @@ class OrderDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderDelete(this, httpResponse, data);
   }
 }
 
@@ -8519,7 +8521,7 @@ class OrderDelete extends Request {
 class OrderUpdateCustomerInformation extends Request {
   /**
    * OrderUpdateCustomerInformation Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -9167,8 +9169,8 @@ class OrderUpdateCustomerInformation extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderUpdateCustomerInformation(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderUpdateCustomerInformation(this, httpResponse, data);
   }
 }
 
@@ -9179,7 +9181,7 @@ class OrderUpdateCustomerInformation extends Request {
 class PriceGroupCustomerUpdateAssigned extends Request {
   /**
    * PriceGroupCustomerUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PriceGroup} priceGroup
    */
   constructor(client, priceGroup = null) {
@@ -9344,8 +9346,8 @@ class PriceGroupCustomerUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PriceGroupCustomerUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupCustomerUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -9356,7 +9358,7 @@ class PriceGroupCustomerUpdateAssigned extends Request {
 class PriceGroupListLoadQuery extends ListQueryRequest {
   /**
    * PriceGroupListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -9427,8 +9429,8 @@ class PriceGroupListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PriceGroupListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -9439,7 +9441,7 @@ class PriceGroupListLoadQuery extends ListQueryRequest {
 class PriceGroupProductUpdateAssigned extends Request {
   /**
    * PriceGroupProductUpdateAssigned Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PriceGroup} priceGroup
    */
   constructor(client, priceGroup = null) {
@@ -9633,8 +9635,8 @@ class PriceGroupProductUpdateAssigned extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PriceGroupProductUpdateAssigned(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupProductUpdateAssigned(this, httpResponse, data);
   }
 }
 
@@ -9645,7 +9647,7 @@ class PriceGroupProductUpdateAssigned extends Request {
 class ProductImageAdd extends Request {
   /**
    * ProductImageAdd Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Product} product
    */
   constructor(client, product = null) {
@@ -9808,8 +9810,8 @@ class ProductImageAdd extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductImageAdd(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductImageAdd(this, httpResponse, data);
   }
 }
 
@@ -9820,7 +9822,7 @@ class ProductImageAdd extends Request {
 class ProductImageDelete extends Request {
   /**
    * ProductImageDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?ProductImageData} productImageData
    */
   constructor(client, productImageData = null) {
@@ -9870,8 +9872,8 @@ class ProductImageDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductImageDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductImageDelete(this, httpResponse, data);
   }
 }
 
@@ -9882,7 +9884,7 @@ class ProductImageDelete extends Request {
 class ProductListAdjustInventory extends Request {
   /**
    * ProductListAdjustInventory Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -10000,8 +10002,8 @@ class ProductListAdjustInventory extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductListAdjustInventory(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductListAdjustInventory(this, httpResponse, data);
   }
 }
 
@@ -10020,7 +10022,7 @@ const PRODUCT_SHOW_ACTIVE = 'Active';
 class ProductListLoadQuery extends ListQueryRequest {
   /**
    * ProductListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -10072,6 +10074,9 @@ class ProductListLoadQuery extends ListQueryRequest {
     this.availableOnDemandColumns = [
       'descrip',
       'catcount',
+      'cancat_code',
+      'page_code',
+      'product_inventory',
       'productinventorysettings',
       'attributes',
       'productimagedata',
@@ -10124,8 +10129,8 @@ class ProductListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -10136,7 +10141,7 @@ class ProductListLoadQuery extends ListQueryRequest {
 class ProductVariantListLoadProduct extends Request {
   /**
    * ProductVariantListLoadProduct Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Product} product
    */
   constructor(client, product = null) {
@@ -10470,8 +10475,8 @@ class ProductVariantListLoadProduct extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductVariantListLoadProduct(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantListLoadProduct(this, httpResponse, data);
   }
 }
 
@@ -10482,7 +10487,7 @@ class ProductVariantListLoadProduct extends Request {
 class ProductInsert extends Request {
   /**
    * ProductInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Product} product
    */
   constructor(client, product = null) {
@@ -10899,8 +10904,8 @@ class ProductInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductInsert(this, httpResponse, data);
   }
 }
 
@@ -10911,7 +10916,7 @@ class ProductInsert extends Request {
 class ProductDelete extends Request {
   /**
    * ProductDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Product} product
    */
   constructor(client, product = null) {
@@ -11032,8 +11037,8 @@ class ProductDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductDelete(this, httpResponse, data);
   }
 }
 
@@ -11044,7 +11049,7 @@ class ProductDelete extends Request {
 class ProductUpdate extends Request {
   /**
    * ProductUpdate Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Product} product
    */
   constructor(client, product = null) {
@@ -11517,8 +11522,8 @@ class ProductUpdate extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProductUpdate(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProductUpdate(this, httpResponse, data);
   }
 }
 
@@ -11529,7 +11534,7 @@ class ProductUpdate extends Request {
 class ProvisionDomain extends Request {
   /**
    * ProvisionDomain Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -11574,8 +11579,8 @@ class ProvisionDomain extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProvisionDomain(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProvisionDomain(this, httpResponse, data);
   }
 }
 
@@ -11586,7 +11591,7 @@ class ProvisionDomain extends Request {
 class ProvisionStore extends Request {
   /**
    * ProvisionStore Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -11631,8 +11636,8 @@ class ProvisionStore extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.ProvisionStore(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.ProvisionStore(this, httpResponse, data);
   }
 }
 
@@ -11643,7 +11648,7 @@ class ProvisionStore extends Request {
 class CustomerAddressListLoadQuery extends ListQueryRequest {
   /**
    * CustomerAddressListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -11780,8 +11785,8 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerAddressListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -11792,7 +11797,7 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
 class PrintQueueListLoadQuery extends ListQueryRequest {
   /**
    * PrintQueueListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    */
   constructor(client) {
     super(client);
@@ -11813,8 +11818,8 @@ class PrintQueueListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PrintQueueListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PrintQueueListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -11825,7 +11830,7 @@ class PrintQueueListLoadQuery extends ListQueryRequest {
 class PrintQueueJobListLoadQuery extends ListQueryRequest {
   /**
    * PrintQueueJobListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PrintQueue} printQueue
    */
   constructor(client, printQueue = null) {
@@ -11949,8 +11954,8 @@ class PrintQueueJobListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PrintQueueJobListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PrintQueueJobListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -11961,7 +11966,7 @@ class PrintQueueJobListLoadQuery extends ListQueryRequest {
 class PrintQueueJobDelete extends Request {
   /**
    * PrintQueueJobDelete Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PrintQueueJob} printQueueJob
    */
   constructor(client, printQueueJob = null) {
@@ -12015,8 +12020,8 @@ class PrintQueueJobDelete extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PrintQueueJobDelete(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PrintQueueJobDelete(this, httpResponse, data);
   }
 }
 
@@ -12027,7 +12032,7 @@ class PrintQueueJobDelete extends Request {
 class PrintQueueJobInsert extends Request {
   /**
    * PrintQueueJobInsert Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PrintQueue} printQueue
    */
   constructor(client, printQueue = null) {
@@ -12194,8 +12199,8 @@ class PrintQueueJobInsert extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PrintQueueJobInsert(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PrintQueueJobInsert(this, httpResponse, data);
   }
 }
 
@@ -12206,7 +12211,7 @@ class PrintQueueJobInsert extends Request {
 class PrintQueueJobStatus extends Request {
   /**
    * PrintQueueJobStatus Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PrintQueueJob} printQueueJob
    */
   constructor(client, printQueueJob = null) {
@@ -12260,8 +12265,8 @@ class PrintQueueJobStatus extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PrintQueueJobStatus(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PrintQueueJobStatus(this, httpResponse, data);
   }
 }
 
@@ -12272,7 +12277,7 @@ class PrintQueueJobStatus extends Request {
 class PaymentMethodListLoad extends Request {
   /**
    * PaymentMethodListLoad Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -12324,8 +12329,8 @@ class PaymentMethodListLoad extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PaymentMethodListLoad(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PaymentMethodListLoad(this, httpResponse, data);
   }
 }
 
@@ -12336,7 +12341,7 @@ class PaymentMethodListLoad extends Request {
 class OrderCreateFromOrder extends Request {
   /**
    * OrderCreateFromOrder Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -12390,8 +12395,8 @@ class OrderCreateFromOrder extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderCreateFromOrder(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderCreateFromOrder(this, httpResponse, data);
   }
 }
 
@@ -12402,7 +12407,7 @@ class OrderCreateFromOrder extends Request {
 class OrderAuthorize extends Request {
   /**
    * OrderAuthorize Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Order} order
    */
   constructor(client, order = null) {
@@ -12555,8 +12560,8 @@ class OrderAuthorize extends Request {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.OrderAuthorize(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.OrderAuthorize(this, httpResponse, data);
   }
 }
 
@@ -12567,7 +12572,7 @@ class OrderAuthorize extends Request {
 class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
   /**
    * CustomerPaymentCardListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -12705,8 +12710,3604 @@ class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerPaymentCardListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerPaymentCardListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Branch_Copy. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branch_copy
+ */
+class BranchCopy extends Request {
+  /**
+   * BranchCopy Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Branch_Copy';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.sourceBranchId = null;
+    this.destinationBranchId = null;
+    this.notes = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setSourceBranchId(branch.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Source_Branch_ID.
+   * @returns {number}
+   */
+  getSourceBranchId() {
+    return this.sourceBranchId;
+  }
+
+  /**
+   * Get Destination_Branch_ID.
+   * @returns {number}
+   */
+  getDestinationBranchId() {
+    return this.destinationBranchId;
+  }
+
+  /**
+   * Get Notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.notes;
+  }
+
+  /**
+   * Set Source_Branch_ID.
+   * @param {number} sourceBranchId
+   * @returns {BranchCopy}
+   */
+  setSourceBranchId(sourceBranchId) {
+    this.sourceBranchId = sourceBranchId;
+    return this;
+  }
+
+  /**
+   * Set Destination_Branch_ID.
+   * @param {number} destinationBranchId
+   * @returns {BranchCopy}
+   */
+  setDestinationBranchId(destinationBranchId) {
+    this.destinationBranchId = destinationBranchId;
+    return this;
+  }
+
+  /**
+   * Set Notes.
+   * @param {string} notes
+   * @returns {BranchCopy}
+   */
+  setNotes(notes) {
+    this.notes = notes;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.sourceBranchId)) {
+      data['Source_Branch_ID'] = this.sourceBranchId;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationBranchId)) {
+      data['Destination_Branch_ID'] = this.destinationBranchId;
+    }
+
+    if (!util.isNullOrUndefined(this.notes)) {
+      data['Notes'] = this.notes;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchCopy(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Branch_Create. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branch_create
+ */
+class BranchCreate extends Request {
+  /**
+   * BranchCreate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Branch_Create';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.parentBranchId = null;
+    this.name = null;
+    this.color = null;
+    this.changesetId = null;
+    this.tags = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setParentBranchId(branch.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Parent_Branch_ID.
+   * @returns {number}
+   */
+  getParentBranchId() {
+    return this.parentBranchId;
+  }
+
+  /**
+   * Get Name.
+   * @returns {string}
+   */
+  getName() {
+    return this.name;
+  }
+
+  /**
+   * Get Color.
+   * @returns {string}
+   */
+  getColor() {
+    return this.color;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Get Tags.
+   * @returns {string}
+   */
+  getTags() {
+    return this.tags;
+  }
+
+  /**
+   * Set Parent_Branch_ID.
+   * @param {number} parentBranchId
+   * @returns {BranchCreate}
+   */
+  setParentBranchId(parentBranchId) {
+    this.parentBranchId = parentBranchId;
+    return this;
+  }
+
+  /**
+   * Set Name.
+   * @param {string} name
+   * @returns {BranchCreate}
+   */
+  setName(name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Set Color.
+   * @param {string} color
+   * @returns {BranchCreate}
+   */
+  setColor(color) {
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchCreate}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Set Tags.
+   * @param {string} tags
+   * @returns {BranchCreate}
+   */
+  setTags(tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.parentBranchId)) {
+      data['Parent_Branch_ID'] = this.parentBranchId;
+    }
+
+    if (!util.isNullOrUndefined(this.name)) {
+      data['Name'] = this.name;
+    }
+
+    if (!util.isNullOrUndefined(this.color)) {
+      data['Color'] = this.color;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    if (!util.isNullOrUndefined(this.tags)) {
+      data['Tags'] = this.tags;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchCreate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Branch_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branch_delete
+ */
+class BranchDelete extends Request {
+  /**
+   * BranchDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Branch_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.branchId = null;
+    this.branchName = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchDelete}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchDelete}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Changeset_Create. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changeset_create
+ */
+class ChangesetCreate extends Request {
+  /**
+   * ChangesetCreate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Changeset_Create';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.notes = null;
+    this.tags = null;
+    this.templateChanges = [];
+    this.resourceGroupChanges = [];
+    this.CSSResourceChanges = [];
+    this.javaScriptResourceChanges = [];
+    this.propertyChanges = [];
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.notes;
+  }
+
+  /**
+   * Get Tags.
+   * @returns {string}
+   */
+  getTags() {
+    return this.tags;
+  }
+
+  /**
+   * Get Template_Changes.
+   * @returns {TemplateChange[]}
+   */
+  getTemplateChanges() {
+    return this.templateChanges;
+  }
+
+  /**
+   * Get ResourceGroup_Changes.
+   * @returns {ResourceGroupChange[]}
+   */
+  getResourceGroupChanges() {
+    return this.resourceGroupChanges;
+  }
+
+  /**
+   * Get CSSResource_Changes.
+   * @returns {CSSResourceChange[]}
+   */
+  getCSSResourceChanges() {
+    return this.CSSResourceChanges;
+  }
+
+  /**
+   * Get JavaScriptResource_Changes.
+   * @returns {JavaScriptResourceChange[]}
+   */
+  getJavaScriptResourceChanges() {
+    return this.javaScriptResourceChanges;
+  }
+
+  /**
+   * Get Property_Changes.
+   * @returns {PropertyChange[]}
+   */
+  getPropertyChanges() {
+    return this.propertyChanges;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {ChangesetCreate}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {ChangesetCreate}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {ChangesetCreate}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Notes.
+   * @param {string} notes
+   * @returns {ChangesetCreate}
+   */
+  setNotes(notes) {
+    this.notes = notes;
+    return this;
+  }
+
+  /**
+   * Set Tags.
+   * @param {string} tags
+   * @returns {ChangesetCreate}
+   */
+  setTags(tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  /**
+   * Set Template_Changes.
+   * @param {TemplateChange[]} templateChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setTemplateChanges(templateChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(templateChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof templateChanges));
+    }
+
+    for (i = 0, l = templateChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(templateChanges[i], models.TemplateChange) && util.isObject(templateChanges[i])) {
+        templateChanges[i] = new models.TemplateChange(templateChanges[i]);
+      } else if (!util.isInstanceOf(templateChanges[i], models.TemplateChange)) {
+        throw new Error(util.format('Expected instance of TemplateChange or an Object but got %s',
+          typeof templateChanges[i]));
+      }
+    }
+
+    this.templateChanges = templateChanges;
+    return this;
+  }
+
+  /**
+   * Set ResourceGroup_Changes.
+   * @param {ResourceGroupChange[]} resourceGroupChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setResourceGroupChanges(resourceGroupChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(resourceGroupChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof resourceGroupChanges));
+    }
+
+    for (i = 0, l = resourceGroupChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(resourceGroupChanges[i], models.ResourceGroupChange) && util.isObject(resourceGroupChanges[i])) {
+        resourceGroupChanges[i] = new models.ResourceGroupChange(resourceGroupChanges[i]);
+      } else if (!util.isInstanceOf(resourceGroupChanges[i], models.ResourceGroupChange)) {
+        throw new Error(util.format('Expected instance of ResourceGroupChange or an Object but got %s',
+          typeof resourceGroupChanges[i]));
+      }
+    }
+
+    this.resourceGroupChanges = resourceGroupChanges;
+    return this;
+  }
+
+  /**
+   * Set CSSResource_Changes.
+   * @param {CSSResourceChange[]} CSSResourceChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setCSSResourceChanges(CSSResourceChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(CSSResourceChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof CSSResourceChanges));
+    }
+
+    for (i = 0, l = CSSResourceChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(CSSResourceChanges[i], models.CSSResourceChange) && util.isObject(CSSResourceChanges[i])) {
+        CSSResourceChanges[i] = new models.CSSResourceChange(CSSResourceChanges[i]);
+      } else if (!util.isInstanceOf(CSSResourceChanges[i], models.CSSResourceChange)) {
+        throw new Error(util.format('Expected instance of CSSResourceChange or an Object but got %s',
+          typeof CSSResourceChanges[i]));
+      }
+    }
+
+    this.CSSResourceChanges = CSSResourceChanges;
+    return this;
+  }
+
+  /**
+   * Set JavaScriptResource_Changes.
+   * @param {JavaScriptResourceChange[]} javaScriptResourceChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setJavaScriptResourceChanges(javaScriptResourceChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(javaScriptResourceChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof javaScriptResourceChanges));
+    }
+
+    for (i = 0, l = javaScriptResourceChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(javaScriptResourceChanges[i], models.JavaScriptResourceChange) && util.isObject(javaScriptResourceChanges[i])) {
+        javaScriptResourceChanges[i] = new models.JavaScriptResourceChange(javaScriptResourceChanges[i]);
+      } else if (!util.isInstanceOf(javaScriptResourceChanges[i], models.JavaScriptResourceChange)) {
+        throw new Error(util.format('Expected instance of JavaScriptResourceChange or an Object but got %s',
+          typeof javaScriptResourceChanges[i]));
+      }
+    }
+
+    this.javaScriptResourceChanges = javaScriptResourceChanges;
+    return this;
+  }
+
+  /**
+   * Set Property_Changes.
+   * @param {PropertyChange[]} propertyChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setPropertyChanges(propertyChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(propertyChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof propertyChanges));
+    }
+
+    for (i = 0, l = propertyChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(propertyChanges[i], models.PropertyChange) && util.isObject(propertyChanges[i])) {
+        propertyChanges[i] = new models.PropertyChange(propertyChanges[i]);
+      } else if (!util.isInstanceOf(propertyChanges[i], models.PropertyChange)) {
+        throw new Error(util.format('Expected instance of PropertyChange or an Object but got %s',
+          typeof propertyChanges[i]));
+      }
+    }
+
+    this.propertyChanges = propertyChanges;
+    return this;
+  }
+
+  /**
+   * Add Template_Changes.
+   * @param {TemplateChange} templateChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addTemplateChange(templateChange) {
+    if (util.isInstanceOf(templateChange, models.TemplateChange)) {
+      this.templateChanges.push(templateChange);
+    } else if (util.isObject(templateChange)) {
+      this.templateChanges.push(new models.TemplateChange(templateChange));
+    } else {
+      throw new Error(util.format('Expected instance of TemplateChange or Object but got %s',
+        typeof templateChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many TemplateChange.
+   * @param {TemplateChange[]} templateChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addTemplateChanges(templateChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(templateChanges)) {
+      throw new Error(util.format('Expecting an array of TemplateChange but got %s',
+        typeof templateChanges));
+    }
+
+    for (i = 0, l = templateChanges.length; i < l; i++) {
+      if (util.isInstanceOf(templateChanges[i], models.TemplateChange)) {
+        this.templateChanges.push(templateChanges[i]);
+      } else if (util.isObject(templateChanges[i])) {
+        this.templateChanges.push(new models.TemplateChange(templateChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of TemplateChange or an array of Object but got %s',
+          typeof templateChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add ResourceGroup_Changes.
+   * @param {ResourceGroupChange} resourceGroupChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addResourceGroupChange(resourceGroupChange) {
+    if (util.isInstanceOf(resourceGroupChange, models.ResourceGroupChange)) {
+      this.resourceGroupChanges.push(resourceGroupChange);
+    } else if (util.isObject(resourceGroupChange)) {
+      this.resourceGroupChanges.push(new models.ResourceGroupChange(resourceGroupChange));
+    } else {
+      throw new Error(util.format('Expected instance of ResourceGroupChange or Object but got %s',
+        typeof resourceGroupChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many ResourceGroupChange.
+   * @param {ResourceGroupChange[]} resourceGroupChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addResourceGroupChanges(resourceGroupChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(resourceGroupChanges)) {
+      throw new Error(util.format('Expecting an array of ResourceGroupChange but got %s',
+        typeof resourceGroupChanges));
+    }
+
+    for (i = 0, l = resourceGroupChanges.length; i < l; i++) {
+      if (util.isInstanceOf(resourceGroupChanges[i], models.ResourceGroupChange)) {
+        this.resourceGroupChanges.push(resourceGroupChanges[i]);
+      } else if (util.isObject(resourceGroupChanges[i])) {
+        this.resourceGroupChanges.push(new models.ResourceGroupChange(resourceGroupChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of ResourceGroupChange or an array of Object but got %s',
+          typeof resourceGroupChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add CSSResource_Changes.
+   * @param {CSSResourceChange} CSSResourceChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addCSSResourceChange(CSSResourceChange) {
+    if (util.isInstanceOf(CSSResourceChange, models.CSSResourceChange)) {
+      this.CSSResourceChanges.push(CSSResourceChange);
+    } else if (util.isObject(CSSResourceChange)) {
+      this.CSSResourceChanges.push(new models.CSSResourceChange(CSSResourceChange));
+    } else {
+      throw new Error(util.format('Expected instance of CSSResourceChange or Object but got %s',
+        typeof CSSResourceChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many CSSResourceChange.
+   * @param {CSSResourceChange[]} CSSResourceChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addCSSResourceChanges(CSSResourceChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(CSSResourceChanges)) {
+      throw new Error(util.format('Expecting an array of CSSResourceChange but got %s',
+        typeof CSSResourceChanges));
+    }
+
+    for (i = 0, l = CSSResourceChanges.length; i < l; i++) {
+      if (util.isInstanceOf(CSSResourceChanges[i], models.CSSResourceChange)) {
+        this.CSSResourceChanges.push(CSSResourceChanges[i]);
+      } else if (util.isObject(CSSResourceChanges[i])) {
+        this.CSSResourceChanges.push(new models.CSSResourceChange(CSSResourceChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of CSSResourceChange or an array of Object but got %s',
+          typeof CSSResourceChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add JavaScriptResource_Changes.
+   * @param {JavaScriptResourceChange} javaScriptResourceChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addJavaScriptResourceChange(javaScriptResourceChange) {
+    if (util.isInstanceOf(javaScriptResourceChange, models.JavaScriptResourceChange)) {
+      this.javaScriptResourceChanges.push(javaScriptResourceChange);
+    } else if (util.isObject(javaScriptResourceChange)) {
+      this.javaScriptResourceChanges.push(new models.JavaScriptResourceChange(javaScriptResourceChange));
+    } else {
+      throw new Error(util.format('Expected instance of JavaScriptResourceChange or Object but got %s',
+        typeof javaScriptResourceChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many JavaScriptResourceChange.
+   * @param {JavaScriptResourceChange[]} javaScriptResourceChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addJavaScriptResourceChanges(javaScriptResourceChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(javaScriptResourceChanges)) {
+      throw new Error(util.format('Expecting an array of JavaScriptResourceChange but got %s',
+        typeof javaScriptResourceChanges));
+    }
+
+    for (i = 0, l = javaScriptResourceChanges.length; i < l; i++) {
+      if (util.isInstanceOf(javaScriptResourceChanges[i], models.JavaScriptResourceChange)) {
+        this.javaScriptResourceChanges.push(javaScriptResourceChanges[i]);
+      } else if (util.isObject(javaScriptResourceChanges[i])) {
+        this.javaScriptResourceChanges.push(new models.JavaScriptResourceChange(javaScriptResourceChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of JavaScriptResourceChange or an array of Object but got %s',
+          typeof javaScriptResourceChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add Property_Changes.
+   * @param {PropertyChange} propertyChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addPropertyChange(propertyChange) {
+    if (util.isInstanceOf(propertyChange, models.PropertyChange)) {
+      this.propertyChanges.push(propertyChange);
+    } else if (util.isObject(propertyChange)) {
+      this.propertyChanges.push(new models.PropertyChange(propertyChange));
+    } else {
+      throw new Error(util.format('Expected instance of PropertyChange or Object but got %s',
+        typeof propertyChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many PropertyChange.
+   * @param {PropertyChange[]} propertyChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addPropertyChanges(propertyChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(propertyChanges)) {
+      throw new Error(util.format('Expecting an array of PropertyChange but got %s',
+        typeof propertyChanges));
+    }
+
+    for (i = 0, l = propertyChanges.length; i < l; i++) {
+      if (util.isInstanceOf(propertyChanges[i], models.PropertyChange)) {
+        this.propertyChanges.push(propertyChanges[i]);
+      } else if (util.isObject(propertyChanges[i])) {
+        this.propertyChanges.push(new models.PropertyChange(propertyChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of PropertyChange or an array of Object but got %s',
+          typeof propertyChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.notes)) {
+      data['Notes'] = this.notes;
+    }
+
+    if (!util.isNullOrUndefined(this.tags)) {
+      data['Tags'] = this.tags;
+    }
+
+    if (util.isArray(this.templateChanges)) {
+      data['Template_Changes'] = [];
+
+      for (i = 0, l = this.templateChanges.length; i < l; i++) {
+        if (util.isObject(this.templateChanges[i])) {
+            data['Template_Changes'].push(this.templateChanges[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.resourceGroupChanges)) {
+      data['ResourceGroup_Changes'] = [];
+
+      for (i = 0, l = this.resourceGroupChanges.length; i < l; i++) {
+        if (util.isObject(this.resourceGroupChanges[i])) {
+            data['ResourceGroup_Changes'].push(this.resourceGroupChanges[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.CSSResourceChanges)) {
+      data['CSSResource_Changes'] = [];
+
+      for (i = 0, l = this.CSSResourceChanges.length; i < l; i++) {
+        if (util.isObject(this.CSSResourceChanges[i])) {
+            data['CSSResource_Changes'].push(this.CSSResourceChanges[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.javaScriptResourceChanges)) {
+      data['JavaScriptResource_Changes'] = [];
+
+      for (i = 0, l = this.javaScriptResourceChanges.length; i < l; i++) {
+        if (util.isObject(this.javaScriptResourceChanges[i])) {
+            data['JavaScriptResource_Changes'].push(this.javaScriptResourceChanges[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.propertyChanges)) {
+      data['Property_Changes'] = [];
+
+      for (i = 0, l = this.propertyChanges.length; i < l; i++) {
+        if (util.isObject(this.propertyChanges[i])) {
+            data['Property_Changes'].push(this.propertyChanges[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetCreate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetList_Merge. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetlist_merge
+ */
+class ChangesetListMerge extends Request {
+  /**
+   * ChangesetListMerge Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'ChangesetList_Merge';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.sourceChangesetIds = [];
+    this.destinationBranchId = null;
+    this.notes = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setDestinationBranchId(branch.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Source_Changeset_IDs.
+   * @returns {Array}
+   */
+  getSourceChangesetIds() {
+    return this.sourceChangesetIds;
+  }
+
+  /**
+   * Get Destination_Branch_ID.
+   * @returns {number}
+   */
+  getDestinationBranchId() {
+    return this.destinationBranchId;
+  }
+
+  /**
+   * Get Notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.notes;
+  }
+
+  /**
+   * Set Destination_Branch_ID.
+   * @param {number} destinationBranchId
+   * @returns {ChangesetListMerge}
+   */
+  setDestinationBranchId(destinationBranchId) {
+    this.destinationBranchId = destinationBranchId;
+    return this;
+  }
+
+  /**
+   * Set Notes.
+   * @param {string} notes
+   * @returns {ChangesetListMerge}
+   */
+  setNotes(notes) {
+    this.notes = notes;
+    return this;
+  }
+
+  /**
+   * Add Source_Changeset_IDs.
+   * @param {number} sourceChangesetId
+   * @returns {ChangesetListMerge}
+   */
+  addSourceChangesetID(sourceChangesetId) {
+    this.sourceChangesetIds.push(sourceChangesetId);
+    return this;
+  }
+
+  /**
+   * Add Changeset model.
+   * @param {Changeset} changeset
+   * @throws {Error}
+   * @returns {ChangesetListMerge}
+   */
+  addChangeset(changeset) {
+    if (!util.isInstanceOf(changeset, models.Changeset)) {
+      throw new Error(util.format('Expected instance of Changeset but got %s',
+        typeof changeset));
+    }
+
+    if (changeset.getId()) {
+      this.sourceChangesetIds.push(changeset.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.destinationBranchId)) {
+      data['Destination_Branch_ID'] = this.destinationBranchId;
+    }
+
+    data['Source_Changeset_IDs'] = this.sourceChangesetIds;
+
+    if (!util.isNullOrUndefined(this.notes)) {
+      data['Notes'] = this.notes;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetListMerge(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetChangeList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetchangelist_load_query
+ */
+class ChangesetChangeListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetChangeListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Changeset} changeset
+   */
+  constructor(client, changeset = null) {
+    super(client);
+    this.function = 'ChangesetChangeList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'item_type',
+      'item_id',
+      'item_version_id',
+      'item_identifier'
+    ];
+
+    this.availableSortFields = [
+      'item_type',
+      'item_id',
+      'item_version_id',
+      'item_identifier'
+    ];
+
+    this.changesetId = null;
+
+    if (util.isInstanceOf(changeset, models.Changeset)) {
+      this.setChangesetId(changeset.getId());
+    }
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ChangesetChangeListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Changeset_ID'] = this.getChangesetId();
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetChangeListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchlist_load_query
+ */
+class BranchListLoadQuery extends ListQueryRequest {
+  /**
+   * BranchListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BranchList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'immutable',
+      'branchkey',
+      'name',
+      'framework'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'immutable',
+      'branchkey',
+      'name',
+      'framework'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchTemplateVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchtemplateversionlist_load_query
+ */
+class BranchTemplateVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * BranchTemplateVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'BranchTemplateVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'templ_id',
+      'parent_id',
+      'item_id',
+      'prop_id',
+      'sync',
+      'filename',
+      'dtstamp',
+      'user_id',
+      'user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'templ_id',
+      'parent_id',
+      'item_id',
+      'prop_id',
+      'sync',
+      'filename',
+      'dtstamp',
+      'user_id',
+      'user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'notes',
+      'source',
+      'settings'
+    ];
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.changesetId = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchTemplateVersionListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchTemplateVersionListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchTemplateVersionListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchTemplateVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchTemplateVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchCSSResourceVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchcssresourceversionlist_load_query
+ */
+class BranchCSSResourceVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * BranchCSSResourceVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'BranchCSSResourceVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'source',
+      'linkedpages',
+      'linkedresources'
+    ];
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.changesetId = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchCSSResourceVersionListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchCSSResourceVersionListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchCSSResourceVersionListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchCSSResourceVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchCSSResourceVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchJavaScriptResourceVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchjavascriptresourceversionlist_load_query
+ */
+class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * BranchJavaScriptResourceVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'BranchJavaScriptResourceVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'source',
+      'linkedpages',
+      'linkedresources'
+    ];
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.changesetId = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchJavaScriptResourceVersionListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchJavaScriptResourceVersionListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchJavaScriptResourceVersionListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchJavaScriptResourceVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchJavaScriptResourceVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetlist_load_query
+ */
+class ChangesetListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'ChangesetList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'branch_id',
+      'user_id',
+      'user_name',
+      'dtstamp',
+      'notes',
+      'user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'branch_id',
+      'user_id',
+      'user_name',
+      'dtstamp',
+      'notes',
+      'user_name'
+    ];
+
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {ChangesetListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {ChangesetListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {ChangesetListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetTemplateVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesettemplateversionlist_load_query
+ */
+class ChangesetTemplateVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetTemplateVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Changeset} changeset
+   */
+  constructor(client, changeset = null) {
+    super(client);
+    this.function = 'ChangesetTemplateVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'templ_id',
+      'parent_id',
+      'item_id',
+      'prop_id',
+      'sync',
+      'filename',
+      'dtstamp',
+      'user_id',
+      'user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'templ_id',
+      'parent_id',
+      'item_id',
+      'prop_id',
+      'sync',
+      'filename',
+      'dtstamp',
+      'user_id',
+      'user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'notes',
+      'source',
+      'settings'
+    ];
+    this.changesetId = null;
+
+    if (util.isInstanceOf(changeset, models.Changeset)) {
+      if (changeset.getId()) {
+        this.setChangesetId(changeset.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ChangesetTemplateVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetTemplateVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetCSSResourceVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetcssresourceversionlist_load_query
+ */
+class ChangesetCSSResourceVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetCSSResourceVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Changeset} changeset
+   */
+  constructor(client, changeset = null) {
+    super(client);
+    this.function = 'ChangesetCSSResourceVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'source'
+    ];
+    this.changesetId = null;
+
+    if (util.isInstanceOf(changeset, models.Changeset)) {
+      this.setChangesetId(changeset.getId());
+    }
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ChangesetCSSResourceVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Changeset_ID'] = this.getChangesetId();
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetCSSResourceVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetJavaScriptResourceVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetjavascriptresourceversionlist_load_query
+ */
+class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetJavaScriptResourceVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Changeset} changeset
+   */
+  constructor(client, changeset = null) {
+    super(client);
+    this.function = 'ChangesetJavaScriptResourceVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'res_id',
+      'code',
+      'type',
+      'is_global',
+      'active',
+      'file',
+      'templ_id',
+      'user_id',
+      'user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'source'
+    ];
+    this.changesetId = null;
+
+    if (util.isInstanceOf(changeset, models.Changeset)) {
+      this.setChangesetId(changeset.getId());
+    }
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ChangesetJavaScriptResourceVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Changeset_ID'] = this.getChangesetId();
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetJavaScriptResourceVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerCreditHistoryList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customercredithistorylist_load_query
+ */
+class CustomerCreditHistoryListLoadQuery extends ListQueryRequest {
+  /**
+   * CustomerCreditHistoryListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerCreditHistoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'user_name',
+      'order_id',
+      'txref',
+      'descrip',
+      'amount',
+      'dtstamp',
+      'id'
+    ];
+
+    this.availableSortFields = [
+      'user_name',
+      'order_id',
+      'txref',
+      'descrip',
+      'amount',
+      'dtstamp',
+      'id'
+    ];
+
+    this.availableOnDemandColumns = [
+      'source'
+    ];
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setEditCustomer(customer.getLogin());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerCreditHistoryListLoadQuery}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerCreditHistoryListLoadQuery}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerCreditHistoryListLoadQuery}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerCreditHistoryListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerCreditHistory_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customercredithistory_insert
+ */
+class CustomerCreditHistoryInsert extends Request {
+  /**
+   * CustomerCreditHistoryInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerCreditHistory_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.amount = null;
+    this.description = null;
+    this.transactionReference = null;
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setEditCustomer(customer.getLogin());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Amount.
+   * @returns {number}
+   */
+  getAmount() {
+    return this.amount;
+  }
+
+  /**
+   * Get Description.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.description;
+  }
+
+  /**
+   * Get TransactionReference.
+   * @returns {string}
+   */
+  getTransactionReference() {
+    return this.transactionReference;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Amount.
+   * @param {number} amount
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setAmount(amount) {
+    this.amount = amount;
+    return this;
+  }
+
+  /**
+   * Set Description.
+   * @param {string} description
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Set TransactionReference.
+   * @param {string} transactionReference
+   * @returns {CustomerCreditHistoryInsert}
+   */
+  setTransactionReference(transactionReference) {
+    this.transactionReference = transactionReference;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    data['Amount'] = this.amount;
+
+    data['Description'] = this.description;
+
+    if (!util.isNullOrUndefined(this.transactionReference)) {
+      data['TransactionReference'] = this.transactionReference;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerCreditHistoryInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerCreditHistory_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customercredithistory_delete
+ */
+class CustomerCreditHistoryDelete extends Request {
+  /**
+   * CustomerCreditHistoryDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?CustomerCreditHistory} customerCreditHistory
+   */
+  constructor(client, customerCreditHistory = null) {
+    super(client);
+    this.function = 'CustomerCreditHistory_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerCreditHistoryId = null;
+
+    if (util.isInstanceOf(customerCreditHistory, models.CustomerCreditHistory)) {
+      this.setCustomerCreditHistoryId(customerCreditHistory.getId());
+    }
+  }
+
+  /**
+   * Get CustomerCreditHistory_ID.
+   * @returns {number}
+   */
+  getCustomerCreditHistoryId() {
+    return this.customerCreditHistoryId;
+  }
+
+  /**
+   * Set CustomerCreditHistory_ID.
+   * @param {number} customerCreditHistoryId
+   * @returns {CustomerCreditHistoryDelete}
+   */
+  setCustomerCreditHistoryId(customerCreditHistoryId) {
+    this.customerCreditHistoryId = customerCreditHistoryId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['CustomerCreditHistory_ID'] = this.customerCreditHistoryId;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerCreditHistoryDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderCoupon_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/ordercoupon_update_assigned
+ */
+class OrderCouponUpdateAssigned extends Request {
+  /**
+   * OrderCouponUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderCoupon_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.couponId = null;
+    this.editCoupon = null;
+    this.couponCode = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Coupon_ID.
+   * @returns {number}
+   */
+  getCouponId() {
+    return this.couponId;
+  }
+
+  /**
+   * Get Edit_Coupon.
+   * @returns {string}
+   */
+  getEditCoupon() {
+    return this.editCoupon;
+  }
+
+  /**
+   * Get Coupon_Code.
+   * @returns {string}
+   */
+  getCouponCode() {
+    return this.couponCode;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderCouponUpdateAssigned}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Coupon_ID.
+   * @param {number} couponId
+   * @returns {OrderCouponUpdateAssigned}
+   */
+  setCouponId(couponId) {
+    this.couponId = couponId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Coupon.
+   * @param {string} editCoupon
+   * @returns {OrderCouponUpdateAssigned}
+   */
+  setEditCoupon(editCoupon) {
+    this.editCoupon = editCoupon;
+    return this;
+  }
+
+  /**
+   * Set Coupon_Code.
+   * @param {string} couponCode
+   * @returns {OrderCouponUpdateAssigned}
+   */
+  setCouponCode(couponCode) {
+    this.couponCode = couponCode;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {OrderCouponUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.couponId)) {
+      data['Coupon_ID'] = this.couponId;
+    } else if (!util.isNullOrUndefined(this.editCoupon)) {
+      data['Edit_Coupon'] = this.editCoupon;
+    } else if (!util.isNullOrUndefined(this.couponCode)) {
+      data['Coupon_Code'] = this.couponCode;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderCouponUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderPriceGroup_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderpricegroup_update_assigned
+ */
+class OrderPriceGroupUpdateAssigned extends Request {
+  /**
+   * OrderPriceGroupUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderPriceGroup_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.priceGroupId = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderPriceGroupUpdateAssigned}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {OrderPriceGroupUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {OrderPriceGroupUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {OrderPriceGroupUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderPriceGroupUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderItemList_CreateReturn. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderitemlist_createreturn
+ */
+class OrderItemListCreateReturn extends Request {
+  /**
+   * OrderItemListCreateReturn Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderItemList_CreateReturn';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.lineIds = [];
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Line_IDs.
+   * @returns {Array}
+   */
+  getLineIds() {
+    return this.lineIds;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderItemListCreateReturn}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Add Line_IDs.
+   * @param {number} lineId
+   * @returns {OrderItemListCreateReturn}
+   */
+  addLineId(lineId) {
+    this.lineIds.push(lineId);
+    return this;
+  }
+
+  /**
+   * Add OrderItem model.
+   * @param {OrderItem} orderItem
+   * @throws {Error}
+   * @returns {OrderItemListCreateReturn}
+   */
+  addOrderItem(orderItem) {
+    if (!util.isInstanceOf(orderItem, models.OrderItem)) {
+      throw new Error(util.format('Expected instance of OrderItem but got %s',
+        typeof orderItem));
+    }
+
+    if (orderItem.getLineId()) {
+      this.lineIds.push(orderItem.getLineId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    data['Line_IDs'] = this.lineIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListCreateReturn(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderReturnList_Received. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderreturnlist_received
+ */
+class OrderReturnListReceived extends Request {
+  /**
+   * OrderReturnListReceived Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'OrderReturnList_Received';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.returns = [];
+  }
+
+  /**
+   * Get Returns.
+   * @returns {ReceivedReturn[]}
+   */
+  getReturns() {
+    return this.returns;
+  }
+
+  /**
+   * Set Returns.
+   * @param {ReceivedReturn[]} returns
+   * @throws {Error}
+   * @returns {OrderReturnListReceived}
+   */
+  setReturns(returns) {
+    var i;
+    var l;
+
+    if (!util.isArray(returns)) {
+      throw new Error(util.format('Expected an array but got %s', typeof returns));
+    }
+
+    for (i = 0, l = returns.length; i < l; i++) {
+      if (!util.isInstanceOf(returns[i], models.ReceivedReturn) && util.isObject(returns[i])) {
+        returns[i] = new models.ReceivedReturn(returns[i]);
+      } else if (!util.isInstanceOf(returns[i], models.ReceivedReturn)) {
+        throw new Error(util.format('Expected instance of ReceivedReturn or an Object but got %s',
+          typeof returns[i]));
+      }
+    }
+
+    this.returns = returns;
+    return this;
+  }
+
+  /**
+   * Add Returns.
+   * @param {ReceivedReturn} receivedReturn
+   * @throws {Error}
+   * @returns {OrderReturnListReceived}
+   */
+  addReceivedReturn(receivedReturn) {
+    if (util.isInstanceOf(receivedReturn, models.ReceivedReturn)) {
+      this.returns.push(receivedReturn);
+    } else if (util.isObject(receivedReturn)) {
+      this.returns.push(new models.ReceivedReturn(receivedReturn));
+    } else {
+      throw new Error(util.format('Expected instance of ReceivedReturn or Object but got %s',
+        typeof receivedReturn));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many ReceivedReturn.
+   * @param {ReceivedReturn[]} returns
+   * @throws {Error}
+   * @returns {OrderReturnListReceived}
+   */
+  addReturns(returns) {
+    var i;
+    var l;
+
+    if (!util.isArray(returns)) {
+      throw new Error(util.format('Expecting an array of ReceivedReturn but got %s',
+        typeof returns));
+    }
+
+    for (i = 0, l = returns.length; i < l; i++) {
+      if (util.isInstanceOf(returns[i], models.ReceivedReturn)) {
+        this.returns.push(returns[i]);
+      } else if (util.isObject(returns[i])) {
+        this.returns.push(new models.ReceivedReturn(returns[i]));
+      } else {
+        throw new Error(util.format('Expected array of ReceivedReturn or an array of Object but got %s',
+          typeof returns[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (util.isArray(this.returns)) {
+      data['Returns'] = [];
+
+      for (i = 0, l = this.returns.length; i < l; i++) {
+        data['Returns'].push(this.returns[i].toObject());
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderReturnListReceived(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchPropertyVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchpropertyversionlist_load_query
+ */
+class BranchPropertyVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * BranchPropertyVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'BranchPropertyVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'prop_id',
+      'type',
+      'code',
+      'product_id',
+      'cat_id',
+      'sync',
+      'templ_id',
+      'version_id',
+      'version_user_id',
+      'version_user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'prop_id',
+      'type',
+      'code',
+      'product_id',
+      'cat_id',
+      'sync',
+      'templ_id',
+      'version_id',
+      'version_user_id',
+      'version_user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'settings',
+      'product',
+      'category',
+      'source'
+    ];
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.changesetId = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchPropertyVersionListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchPropertyVersionListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchPropertyVersionListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchPropertyVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchPropertyVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ChangesetPropertyVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/changesetpropertyversionlist_load_query
+ */
+class ChangesetPropertyVersionListLoadQuery extends ListQueryRequest {
+  /**
+   * ChangesetPropertyVersionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Changeset} changeset
+   */
+  constructor(client, changeset = null) {
+    super(client);
+    this.function = 'ChangesetPropertyVersionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'prop_id',
+      'type',
+      'code',
+      'product_id',
+      'cat_id',
+      'sync',
+      'version_id',
+      'version_user_id',
+      'version_user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'prop_id',
+      'type',
+      'code',
+      'product_id',
+      'cat_id',
+      'sync',
+      'version_id',
+      'version_user_id',
+      'version_user_name',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'settings',
+      'product',
+      'category',
+      'source'
+    ];
+    this.changesetId = null;
+
+    if (util.isInstanceOf(changeset, models.Changeset)) {
+      this.setChangesetId(changeset.getId());
+    }
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ChangesetPropertyVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Changeset_ID'] = this.getChangesetId();
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChangesetPropertyVersionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ResourceGroupList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/resourcegrouplist_load_query
+ */
+class ResourceGroupListLoadQuery extends ListQueryRequest {
+  /**
+   * ResourceGroupListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'ResourceGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'code'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'code'
+    ];
+
+    this.availableOnDemandColumns = [
+      'linkedcssresources',
+      'linkedjavascriptresources'
+    ];
+    this.branchId = null;
+    this.branchName = null;
+    this.editBranch = null;
+    this.changesetId = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      }
+
+      this.setBranchName(branch.getName());
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Changeset_ID.
+   * @returns {number}
+   */
+  getChangesetId() {
+    return this.changesetId;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {ResourceGroupListLoadQuery}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {ResourceGroupListLoadQuery}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {ResourceGroupListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {ResourceGroupListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.changesetId)) {
+      data['Changeset_ID'] = this.changesetId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ResourceGroupListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BranchList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchlist_delete
+ */
+class BranchListDelete extends Request {
+  /**
+   * BranchListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BranchList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.branchIds = [];
+  }
+
+  /**
+   * Get Branch_IDs.
+   * @returns {Array}
+   */
+  getBranchIds() {
+    return this.branchIds;
+  }
+
+  /**
+   * Add Branch_IDs.
+   * @param {number} branchId
+   * @returns {BranchListDelete}
+   */
+  addBranchId(branchId) {
+    this.branchIds.push(branchId);
+    return this;
+  }
+
+  /**
+   * Add Branch model.
+   * @param {Branch} branch
+   * @throws {Error}
+   * @returns {BranchListDelete}
+   */
+  addBranch(branch) {
+    if (!util.isInstanceOf(branch, models.Branch)) {
+      throw new Error(util.format('Expected instance of Branch but got %s',
+        typeof branch));
+    }
+
+    if (branch.getId()) {
+      this.branchIds.push(branch.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Branch_IDs'] = this.branchIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request MivaMerchantVersion. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/mivamerchantversion
+ */
+class MivaMerchantVersion extends Request {
+  /**
+   * MivaMerchantVersion Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'MivaMerchantVersion';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.MivaMerchantVersion(this, httpResponse, data);
   }
 }
 
@@ -12717,7 +16318,7 @@ class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
 class CategoryProductListLoadQuery extends ProductListLoadQuery {
   /**
    * CategoryProductListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Category} category
    */
   constructor(client, category = null) {
@@ -12861,8 +16462,8 @@ class CategoryProductListLoadQuery extends ProductListLoadQuery {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CategoryProductListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CategoryProductListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -12873,7 +16474,7 @@ class CategoryProductListLoadQuery extends ProductListLoadQuery {
 class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   /**
    * CouponPriceGroupListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Coupon} coupon
    */
   constructor(client, coupon = null) {
@@ -13017,8 +16618,8 @@ class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CouponPriceGroupListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CouponPriceGroupListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -13029,7 +16630,7 @@ class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
 class PriceGroupCustomerListLoadQuery extends CustomerListLoadQuery {
   /**
    * PriceGroupCustomerListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PriceGroup} priceGroup
    */
   constructor(client, priceGroup = null) {
@@ -13152,8 +16753,8 @@ class PriceGroupCustomerListLoadQuery extends CustomerListLoadQuery {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PriceGroupCustomerListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupCustomerListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -13164,7 +16765,7 @@ class PriceGroupCustomerListLoadQuery extends CustomerListLoadQuery {
 class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
   /**
    * PriceGroupProductListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?PriceGroup} priceGroup
    */
   constructor(client, priceGroup = null) {
@@ -13287,8 +16888,8 @@ class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.PriceGroupProductListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupProductListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -13299,7 +16900,7 @@ class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
 class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   /**
    * CustomerPriceGroupListLoadQuery Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {?Customer} customer
    */
   constructor(client, customer = null) {
@@ -13443,8 +17044,228 @@ class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.CustomerPriceGroupListLoadQuery(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.CustomerPriceGroupListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderPriceGroupList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderpricegrouplist_load_query
+ */
+class OrderPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
+  /**
+   * OrderPriceGroupListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderPriceGroupList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderPriceGroupListLoadQuery}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {OrderPriceGroupListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {OrderPriceGroupListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderPriceGroupListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderCouponList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/ordercouponlist_load_query
+ */
+class OrderCouponListLoadQuery extends CouponListLoadQuery {
+  /**
+   * OrderCouponListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderCouponList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(order, models.Order)) {
+      this.setOrderId(order.getId());
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderCouponListLoadQuery}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {OrderCouponListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {OrderCouponListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Order_ID'] = this.getOrderId();
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderCouponListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -13455,7 +17276,7 @@ class RequestBuilder extends Request
 {
   /**
    * RequestBuilder Constructor.
-   * @param {?Client} client
+   * @param {?BaseClient} client
    * @param {string} apiFunction
    * @param {?Object} data
    */
@@ -13603,8 +17424,8 @@ class RequestBuilder extends Request
    * @override
    * @returns {Response}
    */
-  createResponse(data) {
-    return new responses.RequestBuilder(this, data);
+  createResponse(httpResponse, data) {
+    return new responses.RequestBuilder(this, httpResponse, data);
   }
 }
 
@@ -13676,9 +17497,37 @@ module.exports = {
   OrderCreateFromOrder,
   OrderAuthorize,
   CustomerPaymentCardListLoadQuery,
+  BranchCopy,
+  BranchCreate,
+  BranchDelete,
+  ChangesetCreate,
+  ChangesetListMerge,
+  ChangesetChangeListLoadQuery,
+  BranchListLoadQuery,
+  BranchTemplateVersionListLoadQuery,
+  BranchCSSResourceVersionListLoadQuery,
+  BranchJavaScriptResourceVersionListLoadQuery,
+  ChangesetListLoadQuery,
+  ChangesetTemplateVersionListLoadQuery,
+  ChangesetCSSResourceVersionListLoadQuery,
+  ChangesetJavaScriptResourceVersionListLoadQuery,
+  CustomerCreditHistoryListLoadQuery,
+  CustomerCreditHistoryInsert,
+  CustomerCreditHistoryDelete,
+  OrderCouponUpdateAssigned,
+  OrderPriceGroupUpdateAssigned,
+  OrderItemListCreateReturn,
+  OrderReturnListReceived,
+  BranchPropertyVersionListLoadQuery,
+  ChangesetPropertyVersionListLoadQuery,
+  ResourceGroupListLoadQuery,
+  BranchListDelete,
+  MivaMerchantVersion,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,
   PriceGroupProductListLoadQuery,
-  CustomerPriceGroupListLoadQuery
+  CustomerPriceGroupListLoadQuery,
+  OrderPriceGroupListLoadQuery,
+  OrderCouponListLoadQuery
 };

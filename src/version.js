@@ -3,17 +3,15 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: version.js 77287 2019-08-07 21:12:42Z gidriss $
  */
 
 /** @module Version */
 
 /** @ignore */
-const VERSION_MAJOR = 1;
+const VERSION_MAJOR = 2;
 
 /** @ignore */
-const VERSION_MINOR = 3;
+const VERSION_MINOR = 0;
 
 /** @ignore */
 const VERSION_PATCH = 0;

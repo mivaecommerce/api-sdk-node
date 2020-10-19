@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Id: multicall.js 71465 2018-11-09 18:59:55Z gidriss 
  */
 
 const { Request, Response } = require('./abstract');
@@ -187,6 +185,14 @@ class MultiCallRequest extends Request {
     super(client);
     this.requests = [];
     this.useIterations = false;
+    this.autoTimeoutContinue = false;
+    this.initialResponse = null;
+    this.autoContinueCallback = null;
+    this.continueError = null;
+    this.range = {
+      completed: 0,
+      total: 0
+    };
   }
 
   /**
@@ -350,11 +356,131 @@ class MultiCallRequest extends Request {
   }
 
   /**
+   * Set the state of the auto timeout continue flag
+   * @param {bool}
+   * @returns {MultiCallRequest}
+   */
+  setAutoTimeoutContinue(state) {
+    this.autoTimeoutContinue = state;
+    return this;
+  }
+  
+  /**
+   * Get the state of the auto timeout continue flag
+   * @returns {bool}
+   */
+  getAutoTimeoutContinue() {
+    return this.autoTimeoutContinue;
+  }
+
+  /**
+   * Set the callback used throughout the auto continue feature. 
+   * This callback gets called on error, on each chunk, and on completion
+   * @param  {MultiCallRequest~autoContinueCallback}
+   * @returns {MultiCallRequest}
+   * @throws {Error}
+   */
+  setAutoContinueCallback(cb) {
+    if (!util.isNullOrUndefined(cb) && !util.isFunction(cb)) {
+      throw new Error('Callback expected to be null or a function');
+    }
+
+    this.autoContinueCallback = cb;
+    return this;
+  }
+
+  /**
+   * The callback signature for MultiCallRequest~autoContinueCallback
+   * @callback MultiCallRequest~autoContinueCallback
+   * @param {?Error} error
+   * @param {?Response} response
+   * @param {?bool} completed
+   */
+
+  /**
+   * @overrides
+   * @param {Object} headers
+   * @returns {Object}
+   */
+  processRequestHeaders(headers) {
+    if (util.isInstanceOf(this.initialResponse, MultiCallResponse)) {
+      if (this.initialResponse.isTimeout()) {
+        headers['RANGE'] = util.format('Operations=%d-%d', this.range.completed + 1, this.range.total)
+      }
+    }
+
+    return headers;
+  }
+
+  /**
+   * @param {Object} httpResponse
    * @param {Object} data
    * @override
    */
-  createResponse(data) { {}
-    return new MultiCallResponse(this, data);
+  createResponse(httpResponse, data) {
+    var response = new MultiCallResponse(this, httpResponse, data);
+
+    if (response.isTimeout() && this.autoTimeoutContinue) {
+      this.initialResponse = response;
+      this.range = response.readContentRange();
+      this.processContinue();
+    }
+
+    return response;
+  }
+
+  /**
+   * @returns {void}
+   */
+  processContinue() {
+    var self = this;
+
+    if (this.continueError == null && this.range.completed != this.range.total) {
+      this.send(function(error, response) {
+         var e, range;
+
+        if (error) {
+          self.continueError = new MultiCallError(error, self.request, self);
+          return self.processContinue();
+        }
+
+        if (!util.isArray(response.data)) {
+          self.continueError = new MultiCallError('Expected an array of objects', self.request, self);
+          return self.processContinue();
+        }
+
+        response.getResponses().forEach(function(chunkResponse) {
+          self.initialResponse.addResponse(chunkResponse);
+          self.initialResponse.data.concat(chunkResponse.data);
+        });
+
+        range = response.readContentRange();
+
+        if (range.completed > 0 ) {
+          self.range.completed += range.completed;
+        } else {
+          if ((self.range.total - self.range.completed) == response.data.length) {
+            self.range.completed = self.range.total;
+          }
+        }
+
+        if (util.isFunction(self.autoContinueCallback)) {
+          self.autoContinueCallback(null, response, false);
+        }
+
+        self.processContinue();
+      });
+    } else {
+      var initialResponse = this.initialResponse;
+      if (this.continueError == null) {
+        this.initialResponse = null;
+        initialResponse.timeout = false;
+      }
+
+      if (util.isFunction(this.autoContinueCallback)) {
+          this.autoContinueCallback(this.continueError, initialResponse, (this.continueError == null));
+      }
+    }
   }
 }
 
@@ -366,47 +492,49 @@ class MultiCallResponse extends Response {
   /**
    * MultiCallResponse constructor.
    * @param {Request} request
+   * @param {Object} httpResponse
    * @param {Object} data
    * @returns {void}
    */
-  constructor(request, data) {
-    super(request, {});
-    var gi;
-    var gl;
-    var ri;
-    var rl;
-    var iter_requests;
+  constructor(request, httpResponse, data) {
+    super(request, httpResponse, {});
 
-    var requests   = request.getRequests();
+    var requests, requestStartIndex;
+    var self = this;
 
     this.data      = data;
     this.responses = [];
+    this.timeout = false;
 
-    if (!this.isSuccess()) {
-      return;
+    if (httpResponse.statusCode === 206) {
+      this.timeout = true;
     }
 
-    for (gi = 0, gl = requests.length; gi < gl; gi++) {
-      if (util.isNullOrUndefined(this.data[gi])) {
-        throw new Error(util.format('Unexpected Response. Expected response for request %d.', gi));
-      }
+    requestStartIndex = 0;
+    requests = request.getRequests();
 
-      if (util.isInstanceOf(requests[gi], MultiCallOperation)) {
-        iter_requests = requests[gi].getRequests();
+    if (request.initialResponse != null) {
+        requestStartIndex = request.initialResponse.getResponses().length;
+    }
 
-        for (ri = 0, rl = iter_requests.length; ri < rl; ri++) {
-          if (util.isNullOrUndefined(this.data[gi][ri])) {
-            throw new Error(util.format('Unexpected Response. Expected response for request %d iteration %d',
-              gi, ri));
-          }
-
-          this.addResponse(iter_requests[ri].createResponse(this.data[gi][ri]));
+    if (util.isArray(this.data)) {
+      this.data.forEach(function(rdata, index) {
+        var requestIndex = requestStartIndex + index;
+        var crequest = requests[requestIndex];
+        
+        if (util.isNullOrUndefined(crequest)) {
+          throw new MultiCallError('Unable to match response data chunk to request object', self.request, self);
         }
 
-      } else {
-        this.addResponse(requests[gi].createResponse(this.data[gi]));
-      }
-    }      
+        if (util.isInstanceOf(crequest, MultiCallOperation)) {
+          crequest.getRequests().forEach(function(oprequest, opindex) {
+            self.addResponse(oprequest.createResponse(self.httpResponse, rdata[opindex]));
+          });
+        } else {
+          self.addResponse(crequest.createResponse(self.httpResponse, rdata));
+        }
+      }); 
+    }
   }
 
   /**
@@ -415,6 +543,13 @@ class MultiCallResponse extends Response {
    */
   isSuccess() {
     return util.isArray(this.data);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  isTimeout() {
+    return this.timeout;
   }
 
   /**
@@ -433,7 +568,7 @@ class MultiCallResponse extends Response {
    */
   addResponse(response) {
     if (!util.isInstanceOf(response, Response)) {
-      throw new Error("Expecting an instance of Response");
+      throw new MultiCallError("Expecting an instance of Response", this.request, this);
     }
 
     this.responses.push(response);
@@ -456,10 +591,56 @@ class MultiCallResponse extends Response {
 
     return this;
   }
+
+  /**
+   * @returns {Object}
+   */
+  readContentRange() {
+    var ranges;
+    var completed = 0;
+    var total = 0;
+
+    var range = this.httpResponse.headers['content-range'];
+
+    if (!util.isNullOrUndefined(range))
+    {
+      ranges = range.split('/');
+
+      if (ranges.length == 2) {
+        completed = parseInt(ranges[0]);
+        total = parseInt(ranges[1]);
+      }
+    }
+
+    return {
+      completed: completed,
+      total: total
+    }
+  }
+}
+
+/** 
+ * Any errors thrown within MultiCall will be of this type
+ */
+class MultiCallError extends Error {
+  constructor(message, request, response) {
+    super(message);
+    this.request = request;
+    this.response = response;
+  }
+
+  getRequest() {
+    return this.request;
+  }
+
+  getResponse() {
+    return this.response;
+  }
 }
 
 module.exports = {
   MultiCallRequest,
   MultiCallResponse,
-  MultiCallOperation
+  MultiCallOperation,
+  MultiCallError
 };

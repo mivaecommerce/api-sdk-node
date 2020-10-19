@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: models.js 77410 2019-08-16 17:40:08Z gidriss $
  */
 
 const util      = require('./util');
@@ -367,266 +365,6 @@ class Customer extends Model {
   }
   
   /**
-   * Set login.
-   * @param {string} login
-   * @returns {Customer}
-   */
-  setLogin(login) {
-    return this.setField('login', login);
-  }
-
-  /**
-   * Set pw_email.
-   * @param {string} passwordEmail
-   * @returns {Customer}
-   */
-  setPasswordEmail(passwordEmail) {
-    return this.setField('pw_email', passwordEmail);
-  }
-
-  /**
-   * Set ship_res.
-   * @param {boolean} shippingResidential
-   * @returns {Customer}
-   */
-  setShippingResidential(shippingResidential) {
-    return this.setField('ship_res', shippingResidential);
-  }
-
-  /**
-   * Set ship_fname.
-   * @param {string} shipFirstName
-   * @returns {Customer}
-   */
-  setShipFirstName(shipFirstName) {
-    return this.setField('ship_fname', shipFirstName);
-  }
-
-  /**
-   * Set ship_lname.
-   * @param {string} shipLastName
-   * @returns {Customer}
-   */
-  setShipLastName(shipLastName) {
-    return this.setField('ship_lname', shipLastName);
-  }
-
-  /**
-   * Set ship_email.
-   * @param {string} shipEmail
-   * @returns {Customer}
-   */
-  setShipEmail(shipEmail) {
-    return this.setField('ship_email', shipEmail);
-  }
-
-  /**
-   * Set ship_comp.
-   * @param {string} shipCompany
-   * @returns {Customer}
-   */
-  setShipCompany(shipCompany) {
-    return this.setField('ship_comp', shipCompany);
-  }
-
-  /**
-   * Set ship_phone.
-   * @param {string} shipPhone
-   * @returns {Customer}
-   */
-  setShipPhone(shipPhone) {
-    return this.setField('ship_phone', shipPhone);
-  }
-
-  /**
-   * Set ship_fax.
-   * @param {string} shipFax
-   * @returns {Customer}
-   */
-  setShipFax(shipFax) {
-    return this.setField('ship_fax', shipFax);
-  }
-
-  /**
-   * Set ship_addr1.
-   * @param {string} shipAddress1
-   * @returns {Customer}
-   */
-  setShipAddress1(shipAddress1) {
-    return this.setField('ship_addr1', shipAddress1);
-  }
-
-  /**
-   * Set ship_addr2.
-   * @param {string} shipAddress2
-   * @returns {Customer}
-   */
-  setShipAddress2(shipAddress2) {
-    return this.setField('ship_addr2', shipAddress2);
-  }
-
-  /**
-   * Set ship_city.
-   * @param {string} shipCity
-   * @returns {Customer}
-   */
-  setShipCity(shipCity) {
-    return this.setField('ship_city', shipCity);
-  }
-
-  /**
-   * Set ship_state.
-   * @param {string} shipState
-   * @returns {Customer}
-   */
-  setShipState(shipState) {
-    return this.setField('ship_state', shipState);
-  }
-
-  /**
-   * Set ship_zip.
-   * @param {string} shipZip
-   * @returns {Customer}
-   */
-  setShipZip(shipZip) {
-    return this.setField('ship_zip', shipZip);
-  }
-
-  /**
-   * Set ship_cntry.
-   * @param {string} shipCountry
-   * @returns {Customer}
-   */
-  setShipCountry(shipCountry) {
-    return this.setField('ship_cntry', shipCountry);
-  }
-
-  /**
-   * Set bill_fname.
-   * @param {string} billFirstName
-   * @returns {Customer}
-   */
-  setBillFirstName(billFirstName) {
-    return this.setField('bill_fname', billFirstName);
-  }
-
-  /**
-   * Set bill_lname.
-   * @param {string} billLastName
-   * @returns {Customer}
-   */
-  setBillLastName(billLastName) {
-    return this.setField('bill_lname', billLastName);
-  }
-
-  /**
-   * Set bill_email.
-   * @param {string} billEmail
-   * @returns {Customer}
-   */
-  setBillEmail(billEmail) {
-    return this.setField('bill_email', billEmail);
-  }
-
-  /**
-   * Set bill_comp.
-   * @param {string} billCompany
-   * @returns {Customer}
-   */
-  setBillCompany(billCompany) {
-    return this.setField('bill_comp', billCompany);
-  }
-
-  /**
-   * Set bill_phone.
-   * @param {string} billPhone
-   * @returns {Customer}
-   */
-  setBillPhone(billPhone) {
-    return this.setField('bill_phone', billPhone);
-  }
-
-  /**
-   * Set bill_fax.
-   * @param {string} billFax
-   * @returns {Customer}
-   */
-  setBillFax(billFax) {
-    return this.setField('bill_fax', billFax);
-  }
-
-  /**
-   * Set bill_addr1.
-   * @param {string} billAddress1
-   * @returns {Customer}
-   */
-  setBillAddress1(billAddress1) {
-    return this.setField('bill_addr1', billAddress1);
-  }
-
-  /**
-   * Set bill_addr2.
-   * @param {string} billAddress2
-   * @returns {Customer}
-   */
-  setBillAddress2(billAddress2) {
-    return this.setField('bill_addr2', billAddress2);
-  }
-
-  /**
-   * Set bill_city.
-   * @param {string} billCity
-   * @returns {Customer}
-   */
-  setBillCity(billCity) {
-    return this.setField('bill_city', billCity);
-  }
-
-  /**
-   * Set bill_state.
-   * @param {string} billState
-   * @returns {Customer}
-   */
-  setBillState(billState) {
-    return this.setField('bill_state', billState);
-  }
-
-  /**
-   * Set bill_zip.
-   * @param {string} billZip
-   * @returns {Customer}
-   */
-  setBillZip(billZip) {
-    return this.setField('bill_zip', billZip);
-  }
-
-  /**
-   * Set bill_cntry.
-   * @param {string} billCountry
-   * @returns {Customer}
-   */
-  setBillCountry(billCountry) {
-    return this.setField('bill_cntry', billCountry);
-  }
-
-  /**
-   * Set CustomField_Values.
-   * @param {CustomFieldValues|Object} customFieldValues
-   * @returns {Customer}
-   * @throws {Error}
-   */
-  setCustomFieldValues(customFieldValues) {
-    if (util.isInstanceOf(customFieldValues, CustomFieldValues) || util.isNull(customFieldValues)) {
-      return this.setField('CustomField_Values', customFieldValues);
-    } else if (util.isObject(customFieldValues)) {
-      return this.setField('CustomField_Values', new CustomFieldValues(customFieldValues));
-    }
-
-    throw new Error(util.format('Expected instance of CustomFieldValues, Object, or null but got %s',
-      typeof customFieldValues));
-  }
-  
-  /**
    * @override
    */
   toObject() {
@@ -767,86 +505,6 @@ class Coupon extends Model {
    */
   getUseCount() {
     return this.getField('use_count', 0);
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {Coupon}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set descrip.
-   * @param {string} description
-   * @returns {Coupon}
-   */
-  setDescription(description) {
-    return this.setField('descrip', description);
-  }
-
-  /**
-   * Set custscope.
-   * @param {string} customerScope
-   * @returns {Coupon}
-   */
-  setCustomerScope(customerScope) {
-    return this.setField('custscope', customerScope);
-  }
-
-  /**
-   * Set dt_start.
-   * @param {Date|number} dateTimeStart
-   * @returns {Coupon}
-   */
-  setDateTimeStart(dateTimeStart) {
-    if (util.isDate(dateTimeStart)) {
-      return this.setField('dt_start', Math.floor(dateTimeStart.getTime()/1000));
-    }
-
-    return this.setField('dt_start', dateTimeStart);
-  }
-
-  /**
-   * Set dt_end.
-   * @param {Date|number} dateTimeEnd
-   * @returns {Coupon}
-   */
-  setDateTimeEnd(dateTimeEnd) {
-    if (util.isDate(dateTimeEnd)) {
-      return this.setField('dt_end', Math.floor(dateTimeEnd.getTime()/1000));
-    }
-
-    return this.setField('dt_end', dateTimeEnd);
-  }
-
-  /**
-   * Set max_use.
-   * @param {number} maxUse
-   * @returns {Coupon}
-   */
-  setMaxUse(maxUse) {
-    return this.setField('max_use', maxUse);
-  }
-
-  /**
-   * Set max_per.
-   * @param {number} maxPer
-   * @returns {Coupon}
-   */
-  setMaxPer(maxPer) {
-    return this.setField('max_per', maxPer);
-  }
-
-  /**
-   * Set active.
-   * @param {boolean} active
-   * @returns {Coupon}
-   */
-  setActive(active) {
-    return this.setField('active', active);
   }
 }
 
@@ -1088,42 +746,6 @@ class Note extends Model {
    */
   getAdminUser() {
     return this.getField('admin_user');
-  }
-  
-  /**
-   * Set cust_id.
-   * @param {number} customerId
-   * @returns {Note}
-   */
-  setCustomerId(customerId) {
-    return this.setField('cust_id', customerId);
-  }
-
-  /**
-   * Set account_id.
-   * @param {number} accountId
-   * @returns {Note}
-   */
-  setAccountId(accountId) {
-    return this.setField('account_id', accountId);
-  }
-
-  /**
-   * Set order_id.
-   * @param {number} orderId
-   * @returns {Note}
-   */
-  setOrderId(orderId) {
-    return this.setField('order_id', orderId);
-  }
-
-  /**
-   * Set notetext.
-   * @param {string} noteText
-   * @returns {Note}
-   */
-  setNoteText(noteText) {
-    return this.setField('notetext', noteText);
   }
 }
 
@@ -1408,211 +1030,6 @@ class PriceGroup extends Model {
    */
   getDisplay() {
     return this.getField('display', false);
-  }
-  
-  /**
-   * Set custscope.
-   * @param {string} customerScope
-   * @returns {PriceGroup}
-   */
-  setCustomerScope(customerScope) {
-    return this.setField('custscope', customerScope);
-  }
-
-  /**
-   * Set discount.
-   * @param {number} discount
-   * @returns {PriceGroup}
-   */
-  setDiscount(discount) {
-    return this.setField('discount', discount);
-  }
-
-  /**
-   * Set dt_start.
-   * @param {Date|number} dateTimeStart
-   * @returns {PriceGroup}
-   */
-  setDateTimeStart(dateTimeStart) {
-    if (util.isDate(dateTimeStart)) {
-      return this.setField('dt_start', Math.floor(dateTimeStart.getTime()/1000));
-    }
-
-    return this.setField('dt_start', dateTimeStart);
-  }
-
-  /**
-   * Set dt_end.
-   * @param {Date|number} dateTimeEnd
-   * @returns {PriceGroup}
-   */
-  setDateTimeEnd(dateTimeEnd) {
-    if (util.isDate(dateTimeEnd)) {
-      return this.setField('dt_end', Math.floor(dateTimeEnd.getTime()/1000));
-    }
-
-    return this.setField('dt_end', dateTimeEnd);
-  }
-
-  /**
-   * Set qmn_subtot.
-   * @param {number} minimumSubtotal
-   * @returns {PriceGroup}
-   */
-  setMinimumSubtotal(minimumSubtotal) {
-    return this.setField('qmn_subtot', minimumSubtotal);
-  }
-
-  /**
-   * Set qmx_subtot.
-   * @param {number} maximumSubtotal
-   * @returns {PriceGroup}
-   */
-  setMaximumSubtotal(maximumSubtotal) {
-    return this.setField('qmx_subtot', maximumSubtotal);
-  }
-
-  /**
-   * Set qmn_quan.
-   * @param {number} minimumQuantity
-   * @returns {PriceGroup}
-   */
-  setMinimumQuantity(minimumQuantity) {
-    return this.setField('qmn_quan', minimumQuantity);
-  }
-
-  /**
-   * Set qmx_quan.
-   * @param {number} maximumQuantity
-   * @returns {PriceGroup}
-   */
-  setMaximumQuantity(maximumQuantity) {
-    return this.setField('qmx_quan', maximumQuantity);
-  }
-
-  /**
-   * Set qmn_weight.
-   * @param {number} minimumWeight
-   * @returns {PriceGroup}
-   */
-  setMinimumWeight(minimumWeight) {
-    return this.setField('qmn_weight', minimumWeight);
-  }
-
-  /**
-   * Set qmx_weight.
-   * @param {number} maximumWeight
-   * @returns {PriceGroup}
-   */
-  setMaximumWeight(maximumWeight) {
-    return this.setField('qmx_weight', maximumWeight);
-  }
-
-  /**
-   * Set bmn_subtot.
-   * @param {number} basketMinimumSubtotal
-   * @returns {PriceGroup}
-   */
-  setBasketMinimumSubtotal(basketMinimumSubtotal) {
-    return this.setField('bmn_subtot', basketMinimumSubtotal);
-  }
-
-  /**
-   * Set bmx_subtot.
-   * @param {number} basketMaximumSubtotal
-   * @returns {PriceGroup}
-   */
-  setBasketMaximumSubtotal(basketMaximumSubtotal) {
-    return this.setField('bmx_subtot', basketMaximumSubtotal);
-  }
-
-  /**
-   * Set bmn_quan.
-   * @param {number} basketMinimumQuantity
-   * @returns {PriceGroup}
-   */
-  setBasketMinimumQuantity(basketMinimumQuantity) {
-    return this.setField('bmn_quan', basketMinimumQuantity);
-  }
-
-  /**
-   * Set bmx_quan.
-   * @param {number} basketMaximumQuantity
-   * @returns {PriceGroup}
-   */
-  setBasketMaximumQuantity(basketMaximumQuantity) {
-    return this.setField('bmx_quan', basketMaximumQuantity);
-  }
-
-  /**
-   * Set bmn_weight.
-   * @param {number} basketMinimumWeight
-   * @returns {PriceGroup}
-   */
-  setBasketMinimumWeight(basketMinimumWeight) {
-    return this.setField('bmn_weight', basketMinimumWeight);
-  }
-
-  /**
-   * Set bmx_weight.
-   * @param {number} basketMaximumWeight
-   * @returns {PriceGroup}
-   */
-  setBasketMaximumWeight(basketMaximumWeight) {
-    return this.setField('bmx_weight', basketMaximumWeight);
-  }
-
-  /**
-   * Set priority.
-   * @param {number} priority
-   * @returns {PriceGroup}
-   */
-  setPriority(priority) {
-    return this.setField('priority', priority);
-  }
-
-  /**
-   * Set module.
-   * @param {Module|Object} module
-   * @returns {PriceGroup}
-   * @throws {Error}
-   */
-  setModule(module) {
-    if (util.isInstanceOf(module, Module) || util.isNull(module)) {
-      return this.setField('module', module);
-    } else if (util.isObject(module)) {
-      return this.setField('module', new Module(module));
-    }
-
-    throw new Error(util.format('Expected instance of Module, Object, or null but got %s',
-      typeof module));
-  }
-
-  /**
-   * Set exclusion.
-   * @param {boolean} exclusion
-   * @returns {PriceGroup}
-   */
-  setExclusion(exclusion) {
-    return this.setField('exclusion', exclusion);
-  }
-
-  /**
-   * Set descrip.
-   * @param {string} description
-   * @returns {PriceGroup}
-   */
-  setDescription(description) {
-    return this.setField('descrip', description);
-  }
-
-  /**
-   * Set display.
-   * @param {boolean} display
-   * @returns {PriceGroup}
-   */
-  setDisplay(display) {
-    return this.setField('display', display);
   }
   
   /**
@@ -2025,7 +1442,7 @@ class Product extends Model {
    * Get productshippingrules.
    * @returns {ProductShippingRules|*}
    */
-  getProductShuppingRules() {
+  getProductShippingRules() {
     return this.getField('productshippingrules', null);
   }
   
@@ -2043,158 +1460,6 @@ class Product extends Model {
    */
   getAttributes() {
     return this.getField('attributes', []);
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {Product}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set sku.
-   * @param {string} sku
-   * @returns {Product}
-   */
-  setSku(sku) {
-    return this.setField('sku', sku);
-  }
-
-  /**
-   * Set name.
-   * @param {string} name
-   * @returns {Product}
-   */
-  setName(name) {
-    return this.setField('name', name);
-  }
-
-  /**
-   * Set thumbnail.
-   * @param {string} thumbnail
-   * @returns {Product}
-   */
-  setThumbnail(thumbnail) {
-    return this.setField('thumbnail', thumbnail);
-  }
-
-  /**
-   * Set image.
-   * @param {string} image
-   * @returns {Product}
-   */
-  setImage(image) {
-    return this.setField('image', image);
-  }
-
-  /**
-   * Set price.
-   * @param {number} price
-   * @returns {Product}
-   */
-  setPrice(price) {
-    return this.setField('price', price);
-  }
-
-  /**
-   * Set cost.
-   * @param {number} cost
-   * @returns {Product}
-   */
-  setCost(cost) {
-    return this.setField('cost', cost);
-  }
-
-  /**
-   * Set descrip.
-   * @param {string} description
-   * @returns {Product}
-   */
-  setDescription(description) {
-    return this.setField('descrip', description);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {Product}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
-  }
-
-  /**
-   * Set active.
-   * @param {boolean} active
-   * @returns {Product}
-   */
-  setActive(active) {
-    return this.setField('active', active);
-  }
-
-  /**
-   * Set page_title.
-   * @param {string} pageTitle
-   * @returns {Product}
-   */
-  setPageTitle(pageTitle) {
-    return this.setField('page_title', pageTitle);
-  }
-
-  /**
-   * Set taxable.
-   * @param {boolean} taxable
-   * @returns {Product}
-   */
-  setTaxable(taxable) {
-    return this.setField('taxable', taxable);
-  }
-
-  /**
-   * Set product_inventory.
-   * @param {number} productInventory
-   * @returns {Product}
-   */
-  setProductInventory(productInventory) {
-    return this.setField('product_inventory', productInventory);
-  }
-
-  /**
-   * Set cancat_code.
-   * @param {string} canonicalCategoryCode
-   * @returns {Product}
-   */
-  setCanonicalCategoryCode(canonicalCategoryCode) {
-    return this.setField('cancat_code', canonicalCategoryCode);
-  }
-
-  /**
-   * Set page_code.
-   * @param {string} pageCode
-   * @returns {Product}
-   */
-  setPageCode(pageCode) {
-    return this.setField('page_code', pageCode);
-  }
-
-  /**
-   * Set CustomField_Values.
-   * @param {CustomFieldValues|Object} customFieldValues
-   * @returns {Product}
-   * @throws {Error}
-   */
-  setCustomFieldValues(customFieldValues) {
-    if (util.isInstanceOf(customFieldValues, CustomFieldValues) || util.isNull(customFieldValues)) {
-      return this.setField('CustomField_Values', customFieldValues);
-    } else if (util.isObject(customFieldValues)) {
-      return this.setField('CustomField_Values', new CustomFieldValues(customFieldValues));
-    }
-
-    throw new Error(util.format('Expected instance of CustomFieldValues, Object, or null but got %s',
-      typeof customFieldValues));
   }
   
   /**
@@ -2398,105 +1663,6 @@ class RelatedProduct extends Model {
    */
   getDateTimeUpdated() {
     return this.getField('dt_updated', 0);
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {RelatedProduct}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set sku.
-   * @param {string} sku
-   * @returns {RelatedProduct}
-   */
-  setSku(sku) {
-    return this.setField('sku', sku);
-  }
-
-  /**
-   * Set name.
-   * @param {string} name
-   * @returns {RelatedProduct}
-   */
-  setName(name) {
-    return this.setField('name', name);
-  }
-
-  /**
-   * Set thumbnail.
-   * @param {string} thumbnail
-   * @returns {RelatedProduct}
-   */
-  setThumbnail(thumbnail) {
-    return this.setField('thumbnail', thumbnail);
-  }
-
-  /**
-   * Set image.
-   * @param {string} image
-   * @returns {RelatedProduct}
-   */
-  setImage(image) {
-    return this.setField('image', image);
-  }
-
-  /**
-   * Set price.
-   * @param {number} price
-   * @returns {RelatedProduct}
-   */
-  setPrice(price) {
-    return this.setField('price', price);
-  }
-
-  /**
-   * Set cost.
-   * @param {number} cost
-   * @returns {RelatedProduct}
-   */
-  setCost(cost) {
-    return this.setField('cost', cost);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {RelatedProduct}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
-  }
-
-  /**
-   * Set active.
-   * @param {boolean} active
-   * @returns {RelatedProduct}
-   */
-  setActive(active) {
-    return this.setField('active', active);
-  }
-
-  /**
-   * Set page_title.
-   * @param {string} pageTitle
-   * @returns {RelatedProduct}
-   */
-  setPageTitle(pageTitle) {
-    return this.setField('page_title', pageTitle);
-  }
-
-  /**
-   * Set taxable.
-   * @param {boolean} taxable
-   * @returns {RelatedProduct}
-   */
-  setTaxable(taxable) {
-    return this.setField('taxable', taxable);
   }
 }
 
@@ -2989,53 +2155,6 @@ class ProductShippingRules extends Model {
   }
   
   /**
-   * Set methods.
-   * @param {ProductShippingMethod[]} methods
-   * @throws {Error}
-   * @returns {ProductShippingRules}
-   */
-  setMethods(methods) {
-    var i;
-    var l;
-
-    if (!util.isArray(methods)) {
-      throw new Error(util.format('Expected an array but got %s', typeof methods));
-    }
-
-    for (i = 0, l = methods.length; i < l; i++) {
-      if (util.isInstanceOf(methods[i], ProductShippingMethod)) {
-          continue;
-      } else if (util.isObject(methods[i])) {
-          methods[i] = new ProductShippingMethod(methods[i]);
-      } else {
-        throw new Error(util.format('Expected instance of ProductShippingMethod, Object, or null but got %s at offset %d',
-          typeof methods[i], i));
-      }
-    }
-
-    return this.setField('methods', methods);
-  }
-
-  /**
-   * Add a ProductShippingMethod.
-   * @param {ProductShippingMethod} method
-   * @returns {ProductShippingRules}
-   */
-  addMethod(method) {
-    if (!util.isInstanceOf(method, ProductShippingMethod)) {
-      throw new Error(util.format('Expected instance of ProductShippingMethod but got %s', typeof method));
-    }
-
-    if (util.isUndefined(this['methods'])) {
-      this['methods'] = [];
-    }
-
-    this['methods'].push(method);
-
-    return this;
-  }
-  
-  /**
    * @override
    */
   toObject() {
@@ -3255,7 +2374,23 @@ class Category extends Model {
    * @returns {void}
    */
   constructor(data = {}) {
+    var i;
+    var l;
+
     super(data);
+
+    if (!util.isUndefined(this.uris) && util.isArray(this.uris)) {
+      for (i = 0, l = this.uris.length; i < l; i++) {
+        if (!util.isInstanceOf(this.uris[i], Uri) && util.isObject(data['uris'][i])) {
+          this.uris[i] = new Uri(this.uris[i]);
+        } else if (!util.isInstanceOf(this.uris[i], Uri)) {
+          throw new Error(util.format('Expected array of Uri or an array of Objects but got %s',
+            typeof this.uris[i]));
+        }
+      }
+    } else {
+      this.uris = [];
+    }
 
     if (!util.isUndefined(this.CustomField_Values)) {
       if (!util.isInstanceOf(this.CustomField_Values, CustomFieldValues) && util.isObject(this.CustomField_Values)) {
@@ -3382,6 +2517,14 @@ class Category extends Model {
   }
   
   /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return this.getField('uris', []);
+  }
+  
+  /**
    * Get CustomField_Values.
    * @returns {CustomFieldValues|*}
    */
@@ -3390,81 +2533,20 @@ class Category extends Model {
   }
   
   /**
-   * Set code.
-   * @param {string} code
-   * @returns {Category}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set name.
-   * @param {string} name
-   * @returns {Category}
-   */
-  setName(name) {
-    return this.setField('name', name);
-  }
-
-  /**
-   * Set page_title.
-   * @param {string} pageTitle
-   * @returns {Category}
-   */
-  setPageTitle(pageTitle) {
-    return this.setField('page_title', pageTitle);
-  }
-
-  /**
-   * Set active.
-   * @param {boolean} active
-   * @returns {Category}
-   */
-  setActive(active) {
-    return this.setField('active', active);
-  }
-
-  /**
-   * Set page_code.
-   * @param {string} pageCode
-   * @returns {Category}
-   */
-  setPageCode(pageCode) {
-    return this.setField('page_code', pageCode);
-  }
-
-  /**
-   * Set parent_category.
-   * @param {string} parentCategory
-   * @returns {Category}
-   */
-  setParentCategory(parentCategory) {
-    return this.setField('parent_category', parentCategory);
-  }
-
-  /**
-   * Set CustomField_Values.
-   * @param {CustomFieldValues|Object} customFieldValues
-   * @returns {Category}
-   * @throws {Error}
-   */
-  setCustomFieldValues(customFieldValues) {
-    if (util.isInstanceOf(customFieldValues, CustomFieldValues) || util.isNull(customFieldValues)) {
-      return this.setField('CustomField_Values', customFieldValues);
-    } else if (util.isObject(customFieldValues)) {
-      return this.setField('CustomField_Values', new CustomFieldValues(customFieldValues));
-    }
-
-    throw new Error(util.format('Expected instance of CustomFieldValues, Object, or null but got %s',
-      typeof customFieldValues));
-  }
-  
-  /**
    * @override
    */
   toObject() {
+    var i;
+    var l;
     var ret = Object.assign(this);
+
+    if (util.isArray(ret['uris'])) {
+      for (i = 0, l = ret['uris'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['uris'][i], Uri)) {
+          ret['uris'][i] = ret['uris'][i].toObject();
+        }
+      }
+    }
 
     if (util.isInstanceOf(ret['CustomField_Values'], CustomFieldValues)) {
       ret['CustomField_Values'] = ret['CustomField_Values'].toObject();
@@ -4317,231 +3399,6 @@ class Order extends Model {
   }
   
   /**
-   * Set cust_id.
-   * @param {number} customerId
-   * @returns {Order}
-   */
-  setCustomerId(customerId) {
-    return this.setField('cust_id', customerId);
-  }
-
-  /**
-   * Set ship_fname.
-   * @param {string} shipFirstName
-   * @returns {Order}
-   */
-  setShipFirstName(shipFirstName) {
-    return this.setField('ship_fname', shipFirstName);
-  }
-
-  /**
-   * Set ship_lname.
-   * @param {string} shipLastName
-   * @returns {Order}
-   */
-  setShipLastName(shipLastName) {
-    return this.setField('ship_lname', shipLastName);
-  }
-
-  /**
-   * Set ship_email.
-   * @param {string} shipEmail
-   * @returns {Order}
-   */
-  setShipEmail(shipEmail) {
-    return this.setField('ship_email', shipEmail);
-  }
-
-  /**
-   * Set ship_comp.
-   * @param {string} shipCompany
-   * @returns {Order}
-   */
-  setShipCompany(shipCompany) {
-    return this.setField('ship_comp', shipCompany);
-  }
-
-  /**
-   * Set ship_phone.
-   * @param {string} shipPhone
-   * @returns {Order}
-   */
-  setShipPhone(shipPhone) {
-    return this.setField('ship_phone', shipPhone);
-  }
-
-  /**
-   * Set ship_fax.
-   * @param {string} shipFax
-   * @returns {Order}
-   */
-  setShipFax(shipFax) {
-    return this.setField('ship_fax', shipFax);
-  }
-
-  /**
-   * Set ship_addr1.
-   * @param {string} shipAddress1
-   * @returns {Order}
-   */
-  setShipAddress1(shipAddress1) {
-    return this.setField('ship_addr1', shipAddress1);
-  }
-
-  /**
-   * Set ship_addr2.
-   * @param {string} shipAddress2
-   * @returns {Order}
-   */
-  setShipAddress2(shipAddress2) {
-    return this.setField('ship_addr2', shipAddress2);
-  }
-
-  /**
-   * Set ship_city.
-   * @param {string} shipCity
-   * @returns {Order}
-   */
-  setShipCity(shipCity) {
-    return this.setField('ship_city', shipCity);
-  }
-
-  /**
-   * Set ship_state.
-   * @param {string} shipState
-   * @returns {Order}
-   */
-  setShipState(shipState) {
-    return this.setField('ship_state', shipState);
-  }
-
-  /**
-   * Set ship_zip.
-   * @param {string} shipZip
-   * @returns {Order}
-   */
-  setShipZip(shipZip) {
-    return this.setField('ship_zip', shipZip);
-  }
-
-  /**
-   * Set ship_cntry.
-   * @param {string} shipCountry
-   * @returns {Order}
-   */
-  setShipCountry(shipCountry) {
-    return this.setField('ship_cntry', shipCountry);
-  }
-
-  /**
-   * Set bill_fname.
-   * @param {string} billFirstName
-   * @returns {Order}
-   */
-  setBillFirstName(billFirstName) {
-    return this.setField('bill_fname', billFirstName);
-  }
-
-  /**
-   * Set bill_lname.
-   * @param {string} billLastName
-   * @returns {Order}
-   */
-  setBillLastName(billLastName) {
-    return this.setField('bill_lname', billLastName);
-  }
-
-  /**
-   * Set bill_email.
-   * @param {string} billEmail
-   * @returns {Order}
-   */
-  setBillEmail(billEmail) {
-    return this.setField('bill_email', billEmail);
-  }
-
-  /**
-   * Set bill_comp.
-   * @param {string} billCompany
-   * @returns {Order}
-   */
-  setBillCompany(billCompany) {
-    return this.setField('bill_comp', billCompany);
-  }
-
-  /**
-   * Set bill_phone.
-   * @param {string} billPhone
-   * @returns {Order}
-   */
-  setBillPhone(billPhone) {
-    return this.setField('bill_phone', billPhone);
-  }
-
-  /**
-   * Set bill_fax.
-   * @param {string} billFax
-   * @returns {Order}
-   */
-  setBillFax(billFax) {
-    return this.setField('bill_fax', billFax);
-  }
-
-  /**
-   * Set bill_addr1.
-   * @param {string} billAddress1
-   * @returns {Order}
-   */
-  setBillAddress1(billAddress1) {
-    return this.setField('bill_addr1', billAddress1);
-  }
-
-  /**
-   * Set bill_addr2.
-   * @param {string} billAddress2
-   * @returns {Order}
-   */
-  setBillAddress2(billAddress2) {
-    return this.setField('bill_addr2', billAddress2);
-  }
-
-  /**
-   * Set bill_city.
-   * @param {string} billCity
-   * @returns {Order}
-   */
-  setBillCity(billCity) {
-    return this.setField('bill_city', billCity);
-  }
-
-  /**
-   * Set bill_state.
-   * @param {string} billState
-   * @returns {Order}
-   */
-  setBillState(billState) {
-    return this.setField('bill_state', billState);
-  }
-
-  /**
-   * Set bill_zip.
-   * @param {string} billZip
-   * @returns {Order}
-   */
-  setBillZip(billZip) {
-    return this.setField('bill_zip', billZip);
-  }
-
-  /**
-   * Set bill_cntry.
-   * @param {string} billCountry
-   * @returns {Order}
-   */
-  setBillCountry(billCountry) {
-    return this.setField('bill_cntry', billCountry);
-  }
-  
-  /**
    * @override
    */
   toObject() {
@@ -4761,114 +3618,6 @@ class OrderShipment extends Model {
   getFormattedCost() {
     return this.getField('formatted_cost');
   }
-  
-  /**
-   * Set id.
-   * @param {number} id
-   * @returns {OrderShipment}
-   */
-  setId(id) {
-    return this.setField('id', id);
-  }
-
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {OrderShipment}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set batch_id.
-   * @param {number} batchId
-   * @returns {OrderShipment}
-   */
-  setBatchId(batchId) {
-    return this.setField('batch_id', batchId);
-  }
-
-  /**
-   * Set order_id.
-   * @param {number} orderId
-   * @returns {OrderShipment}
-   */
-  setOrderId(orderId) {
-    return this.setField('order_id', orderId);
-  }
-
-  /**
-   * Set status.
-   * @param {number} status
-   * @returns {OrderShipment}
-   */
-  setStatus(status) {
-    return this.setField('status', status);
-  }
-
-  /**
-   * Set labelcount.
-   * @param {number} labelCount
-   * @returns {OrderShipment}
-   */
-  setLabelCount(labelCount) {
-    return this.setField('labelcount', labelCount);
-  }
-
-  /**
-   * Set ship_date.
-   * @param {number} shipDate
-   * @returns {OrderShipment}
-   */
-  setShipDate(shipDate) {
-    return this.setField('ship_date', shipDate);
-  }
-
-  /**
-   * Set tracknum.
-   * @param {string} trackingNumber
-   * @returns {OrderShipment}
-   */
-  setTrackingNumber(trackingNumber) {
-    return this.setField('tracknum', trackingNumber);
-  }
-
-  /**
-   * Set tracktype.
-   * @param {string} trackingType
-   * @returns {OrderShipment}
-   */
-  setTrackingType(trackingType) {
-    return this.setField('tracktype', trackingType);
-  }
-
-  /**
-   * Set tracklink.
-   * @param {string} trackingLink
-   * @returns {OrderShipment}
-   */
-  setTrackingLink(trackingLink) {
-    return this.setField('tracklink', trackingLink);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {OrderShipment}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
-  }
-
-  /**
-   * Set cost.
-   * @param {number} cost
-   * @returns {OrderShipment}
-   */
-  setCost(cost) {
-    return this.setField('cost', cost);
-  }
 }
 
 /** OrderItemOption data model. */
@@ -4883,11 +3632,67 @@ class OrderItemOption extends Model {
   }
 
   /**
-   * Get attribute.
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get order_id.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.getField('order_id', 0);
+  }
+  
+  /**
+   * Get line_id.
+   * @returns {number}
+   */
+  getLineId() {
+    return this.getField('line_id', 0);
+  }
+  
+  /**
+   * Get option_id.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.getField('option_id', 0);
+  }
+  
+  /**
+   * Get opt_code.
    * @returns {string}
    */
-  getAttribute() {
-    return this.getField('attribute');
+  getOptionCode() {
+    return this.getField('opt_code');
+  }
+  
+  /**
+   * Get attr_code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.getField('attr_code');
+  }
+  
+  /**
+   * Get attr_id.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.getField('attr_id', 0);
+  }
+  
+  /**
+   * Get attmpat_id.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.getField('attmpat_id', 0);
   }
   
   /**
@@ -4931,12 +3736,62 @@ class OrderItemOption extends Model {
   }
   
   /**
-   * Set attribute.
-   * @param {string} attribute
+   * Get data.
+   * @returns {string}
+   */
+  getOptionData() {
+    return this.getField('data');
+  }
+  
+  /**
+   * Get data_long.
+   * @returns {string}
+   */
+  getOptionDataLong() {
+    return this.getField('data_long');
+  }
+  
+  /**
+   * Get attr_prompt.
+   * @returns {string}
+   */
+  getAttributePrompt() {
+    return this.getField('attr_prompt');
+  }
+  
+  /**
+   * Get opt_prompt.
+   * @returns {string}
+   */
+  getOptionPrompt() {
+    return this.getField('opt_prompt');
+  }
+  
+  /**
+   * Set attr_code.
+   * @param {string} attributeCode
    * @returns {OrderItemOption}
    */
-  setAttribute(attribute) {
-    return this.setField('attribute', attribute);
+  setAttributeCode(attributeCode) {
+    return this.setField('attr_code', attributeCode);
+  }
+
+  /**
+   * Set attr_id.
+   * @param {number} attributeId
+   * @returns {OrderItemOption}
+   */
+  setAttributeId(attributeId) {
+    return this.setField('attr_id', attributeId);
+  }
+
+  /**
+   * Set attmpat_id.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {OrderItemOption}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    return this.setField('attmpat_id', attributeTemplateAttributeId);
   }
 
   /**
@@ -4958,6 +3813,24 @@ class OrderItemOption extends Model {
   }
 
   /**
+   * Set retail.
+   * @param {number} retail
+   * @returns {OrderItemOption}
+   */
+  setRetail(retail) {
+    return this.setField('retail', retail);
+  }
+
+  /**
+   * Set base_price.
+   * @param {number} basePrice
+   * @returns {OrderItemOption}
+   */
+  setBasePrice(basePrice) {
+    return this.setField('base_price', basePrice);
+  }
+
+  /**
    * Set price.
    * @param {number} price
    * @returns {OrderItemOption}
@@ -4972,8 +3845,20 @@ class OrderItemOption extends Model {
   toObject() {
     var ret = {};
     
-    if (this.hasField('attribute')) {
-      ret['attr_code'] = this.getField('attribute');
+    if (this.hasField('attr_code')) {
+      ret['attr_code'] = this.getField('attr_code');
+    }
+    
+    if (this.hasField('opt_code_or_data')) {
+      ret['opt_code_or_data'] = this.getField('opt_code_or_data');
+    }
+    
+    if (this.hasField('attr_id')) {
+      ret['attr_id'] = this.getField('attr_id');
+    }
+    
+    if (this.hasField('attmpat_id')) {
+      ret['attmpat_id'] = this.getField('attmpat_id');
     }
 
     if (this.hasField('value')) {
@@ -4986,6 +3871,14 @@ class OrderItemOption extends Model {
 
     if (this.hasField('weight')) {
       ret['weight'] = this.getField('weight');
+    }
+
+    if (this.hasField('base_price')) {
+      ret['base_price'] = this.getField('base_price');
+    }
+
+    if (this.hasField('retail')) {
+      ret['retail'] = this.getField('retail');
     }
 
     return ret;
@@ -5417,15 +4310,6 @@ class OrderItem extends Model {
   }
   
   /**
-   * Set status.
-   * @param {number} status
-   * @returns {OrderItem}
-   */
-  setStatus(status) {
-    return this.setField('status', status);
-  }
-
-  /**
    * Set code.
    * @param {string} code
    * @returns {OrderItem}
@@ -5767,6 +4651,14 @@ class OrderCoupon extends Model {
    */
   getTotal() {
     return this.getField('total', 0.00);
+  }
+  
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
   }
 }
 
@@ -6346,15 +5238,6 @@ class Subscription extends Model {
   getFormattedTotal() {
     return this.getField('formatted_total');
   }
-  
-  /**
-   * Set cncldate.
-   * @param {string} cancelDate
-   * @returns {Subscription}
-   */
-  setCancelDate(cancelDate) {
-    return this.setField('cncldate', cancelDate);
-  }
 }
 
 /** TERM_FREQUENCY constants. */
@@ -6651,77 +5534,6 @@ class OrderCustomField extends Model {
    */
   getChoices() {
     return this.getField('choices', []);
-  }
-  
-  /**
-   * Set code.
-   * @param {string} code
-   * @returns {OrderCustomField}
-   */
-  setCode(code) {
-    return this.setField('code', code);
-  }
-
-  /**
-   * Set name.
-   * @param {string} name
-   * @returns {OrderCustomField}
-   */
-  setName(name) {
-    return this.setField('name', name);
-  }
-
-  /**
-   * Set type.
-   * @param {string} type
-   * @returns {OrderCustomField}
-   */
-  setType(type) {
-    return this.setField('type', type);
-  }
-
-  /**
-   * Set searchable.
-   * @param {boolean} searchable
-   * @returns {OrderCustomField}
-   */
-  setSearchable(searchable) {
-    return this.setField('searchable', searchable);
-  }
-
-  /**
-   * Set sortable.
-   * @param {boolean} sortable
-   * @returns {OrderCustomField}
-   */
-  setSortable(sortable) {
-    return this.setField('sortable', sortable);
-  }
-
-  /**
-   * Set module.
-   * @param {Module|Object} module
-   * @returns {OrderCustomField}
-   * @throws {Error}
-   */
-  setModule(module) {
-    if (util.isInstanceOf(module, Module) || util.isNull(module)) {
-      return this.setField('module', module);
-    } else if (util.isObject(module)) {
-      return this.setField('module', new Module(module));
-    }
-
-    throw new Error(util.format('Expected instance of Module, Object, or null but got %s',
-      typeof module));
-  }
-
-  /**
-   * Set choices.
-   * @param {Array} choices
-   * @returns {OrderCustomField}
-   */
-  setChoices(choices) {
-    return this.setField('choices', choices);
   }
   
   /**
@@ -7604,86 +6416,6 @@ class ProductInventoryAdjustment extends Model {
    */
   setAdjustment(adjustment) {
     return this.setField('adjustment', adjustment);
-  }
-}
-
-/** OrderItemAttribute data model. */
-class OrderItemAttribute extends Model {
-  /**
-   * OrderItemAttribute Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    super(data);
-  }
-
-  /**
-   * Get attr_code.
-   * @returns {string}
-   */
-  getAttributeCode() {
-    return this.getField('attr_code');
-  }
-  
-  /**
-   * Get opt_code_or_data.
-   * @returns {string}
-   */
-  getOptionCodeOrData() {
-    return this.getField('opt_code_or_data');
-  }
-  
-  /**
-   * Get price.
-   * @returns {number}
-   */
-  getPrice() {
-    return this.getField('price', 0.00);
-  }
-  
-  /**
-   * Get weight.
-   * @returns {number}
-   */
-  getWeight() {
-    return this.getField('weight', 0.00);
-  }
-  
-  /**
-   * Set attr_code.
-   * @param {string} attributeCode
-   * @returns {OrderItemAttribute}
-   */
-  setAttributeCode(attributeCode) {
-    return this.setField('attr_code', attributeCode);
-  }
-
-  /**
-   * Set opt_code_or_data.
-   * @param {string} optionCodeOrData
-   * @returns {OrderItemAttribute}
-   */
-  setOptionCodeOrData(optionCodeOrData) {
-    return this.setField('opt_code_or_data', optionCodeOrData);
-  }
-
-  /**
-   * Set price.
-   * @param {number} price
-   * @returns {OrderItemAttribute}
-   */
-  setPrice(price) {
-    return this.setField('price', price);
-  }
-
-  /**
-   * Set weight.
-   * @param {number} weight
-   * @returns {OrderItemAttribute}
-   */
-  setWeight(weight) {
-    return this.setField('weight', weight);
   }
 }
 
@@ -8608,6 +7340,2978 @@ class OrderPaymentAuthorize extends Model {
   }
 }
 
+/** Branch data model. */
+class Branch extends Model {
+  /**
+   * Branch Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get immutable.
+   * @returns {boolean}
+   */
+  getImmutable() {
+    return this.getField('immutable', false);
+  }
+  
+  /**
+   * Get branchkey.
+   * @returns {string}
+   */
+  getBranchKey() {
+    return this.getField('branchkey');
+  }
+  
+  /**
+   * Get name.
+   * @returns {string}
+   */
+  getName() {
+    return this.getField('name');
+  }
+  
+  /**
+   * Get color.
+   * @returns {string}
+   */
+  getColor() {
+    return this.getField('color');
+  }
+  
+  /**
+   * Get framework.
+   * @returns {string}
+   */
+  getFramework() {
+    return this.getField('framework');
+  }
+  
+  /**
+   * Get is_primary.
+   * @returns {boolean}
+   */
+  getIsPrimary() {
+    return this.getField('is_primary', false);
+  }
+  
+  /**
+   * Get is_working.
+   * @returns {boolean}
+   */
+  getIsWorking() {
+    return this.getField('is_working', false);
+  }
+  
+  /**
+   * Get preview_url.
+   * @returns {string}
+   */
+  getPreviewUrl() {
+    return this.getField('preview_url');
+  }
+}
+
+/** BranchTemplateVersion data model. */
+class BranchTemplateVersion extends Model {
+  /**
+   * BranchTemplateVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.settings)) {
+      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
+        this.settings = new TemplateVersionSettings(this.settings);
+      }
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get parent_id.
+   * @returns {number}
+   */
+  getParentId() {
+    return this.getField('parent_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get user_icon.
+   * @returns {string}
+   */
+  getUserIcon() {
+    return this.getField('user_icon');
+  }
+  
+  /**
+   * Get item_id.
+   * @returns {number}
+   */
+  getItemId() {
+    return this.getField('item_id', 0);
+  }
+  
+  /**
+   * Get prop_id.
+   * @returns {number}
+   */
+  getPropertyId() {
+    return this.getField('prop_id', 0);
+  }
+  
+  /**
+   * Get sync.
+   * @returns {boolean}
+   */
+  getSync() {
+    return this.getField('sync', false);
+  }
+  
+  /**
+   * Get filename.
+   * @returns {string}
+   */
+  getFilename() {
+    return this.getField('filename');
+  }
+  
+  /**
+   * Get dtstamp.
+   * @returns {number}
+   */
+  getDateTimeStamp() {
+    return this.getField('dtstamp', 0);
+  }
+  
+  /**
+   * Get notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.getField('notes');
+  }
+  
+  /**
+   * Get source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('source');
+  }
+  
+  /**
+   * Get settings.
+   * @returns {TemplateVersionSettings|*}
+   */
+  getSettings() {
+    return this.getField('settings', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+      ret['settings'] = ret['settings'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** TemplateVersionSettings data model. */
+class TemplateVersionSettings extends Model {
+  /**
+   * TemplateVersionSettings Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super({});
+    this.data = data;
+  }
+
+  /**
+   * Set an items value
+   * @return {TemplateVersionSettings}
+   */
+  setItem(item, value) {
+    if (!this.data || this.isObject()) {
+      this.data[item] = value;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set an items property value
+   * @return {TemplateVersionSettings}
+   */
+  setItemProperty(item, property, value) {
+    if (!this.data || this.isObject()) {
+      if (!hasItem(item)) {
+        setItem(item, {});
+      }
+
+      this.data[item][property] = value;
+    }
+
+    return this;
+  }
+
+  /**
+   * Check if the underlying data is a scalar value
+   * @return {bool}
+   */
+  isScalar() {
+    return !util.isArray(this.data) && !util.isObject(this.data);
+  }
+
+  /**
+   * Check if the underlying data is an array
+   * @return {bool}
+   */
+  isArray() {
+    return util.isArray(this.data);
+  }
+
+  /**
+   * Check if the underlying data is an object
+   * @return {bool}
+   */
+  isObject() {
+    return util.isObject(this.data);
+  }
+
+  /**
+   * Check if an item exists
+   * @return {bool}
+   */
+  hasItem(item) {
+    if (this.isObject()) {
+      if (util.isObject(this.data[item])) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Check if and item has a property
+   * @return {bool}
+   */
+  itemHasProperty(item, property) {
+    if (this.isObject()) {
+      if (util.isObject(this.data[item])) {
+        return !util.isNullOrUndefined(this.data[item][property]);
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Get an items or null if it does not exist
+   * @return {*?}
+   */
+  getItem(item) {
+    if (hasItem(item)) {
+      return this.data[item];
+    }
+
+    return null;
+  }
+
+  /**
+   * Get an items property, or null if it does not exist
+   * @return {*?}
+   */
+  getItemProperty() {
+    if (itemHasProperty(item)) {
+      return this.data[item][property];
+    }
+
+    return null;
+  }
+
+  /**
+   * Get the underlying data.
+   * @return {*}
+   */
+  getData() {
+    return this.data;
+  }
+
+  /**
+   * Get the data for the request.
+   * @return {Object}
+   */
+  toObject() {
+    return this.getData();
+  }
+
+}
+
+/** Changeset data model. */
+class Changeset extends Model {
+  /**
+   * Changeset Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get branch_id.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.getField('branch_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get dtstamp.
+   * @returns {number}
+   */
+  getDateTimeStamp() {
+    return this.getField('dtstamp', 0);
+  }
+  
+  /**
+   * Get notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.getField('notes');
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get user_icon.
+   * @returns {string}
+   */
+  getUserIcon() {
+    return this.getField('user_icon');
+  }
+  
+  /**
+   * Get tags.
+   * @returns {array}
+   */
+  getTags() {
+    return this.getField('tags', []);
+  }
+  
+  /**
+   * Get formatted_tags.
+   * @returns {string}
+   */
+  getFormattedTags() {
+    return this.getField('formatted_tags');
+  }
+}
+
+/** TemplateChange data model. */
+class TemplateChange extends Model {
+  /**
+   * TemplateChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.Settings)) {
+      if (!util.isInstanceOf(this.Settings, TemplateVersionSettings)) {
+        this.Settings = new TemplateVersionSettings(this.Settings);
+      }
+    }
+  }
+
+  /**
+   * Get Template_ID.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('Template_ID', 0);
+  }
+  
+  /**
+   * Get Template_Filename.
+   * @returns {string}
+   */
+  getTemplateFilename() {
+    return this.getField('Template_Filename');
+  }
+  
+  /**
+   * Get Source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('Source');
+  }
+  
+  /**
+   * Get Settings.
+   * @returns {TemplateVersionSettings|*}
+   */
+  getSettings() {
+    return this.getField('Settings', null);
+  }
+  
+  /**
+   * Set Template_ID.
+   * @param {number} templateId
+   * @returns {TemplateChange}
+   */
+  setTemplateId(templateId) {
+    return this.setField('Template_ID', templateId);
+  }
+
+  /**
+   * Set Template_Filename.
+   * @param {string} templateFilename
+   * @returns {TemplateChange}
+   */
+  setTemplateFilename(templateFilename) {
+    return this.setField('Template_Filename', templateFilename);
+  }
+
+  /**
+   * Set Source.
+   * @param {string} source
+   * @returns {TemplateChange}
+   */
+  setSource(source) {
+    return this.setField('Source', source);
+  }
+
+  /**
+   * Set Settings.
+   * @param {TemplateVersionSettings|Object} settings
+   * @returns {TemplateChange}
+   * @throws {Error}
+   */
+  setSettings(settings) {
+    if (util.isInstanceOf(settings, TemplateVersionSettings) || util.isNull(settings)) {
+      return this.setField('Settings', settings);
+    } else if (util.isObject(settings)) {
+      return this.setField('Settings', new TemplateVersionSettings(settings));
+    }
+
+    throw new Error(util.format('Expected instance of TemplateVersionSettings, Object, or null but got %s',
+      typeof settings));
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['Settings'], TemplateVersionSettings)) {
+      ret['Settings'] = ret['Settings'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** ResourceGroupChange data model. */
+class ResourceGroupChange extends Model {
+  /**
+   * ResourceGroupChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get ResourceGroup_ID.
+   * @returns {number}
+   */
+  getResourceGroupId() {
+    return this.getField('ResourceGroup_ID', 0);
+  }
+  
+  /**
+   * Get ResourceGroup_Code.
+   * @returns {string}
+   */
+  getResourceGroupCode() {
+    return this.getField('ResourceGroup_Code');
+  }
+  
+  /**
+   * Get LinkedCSSResources.
+   * @returns {array}
+   */
+  getLinkedCSSResources() {
+    return this.getField('LinkedCSSResources', []);
+  }
+  
+  /**
+   * Get LinkedJavaScriptResources.
+   * @returns {array}
+   */
+  getLinkedJavaScriptResources() {
+    return this.getField('LinkedJavaScriptResources', []);
+  }
+  
+  /**
+   * Set ResourceGroup_ID.
+   * @param {number} resourceGroupId
+   * @returns {ResourceGroupChange}
+   */
+  setResourceGroupId(resourceGroupId) {
+    return this.setField('ResourceGroup_ID', resourceGroupId);
+  }
+
+  /**
+   * Set ResourceGroup_Code.
+   * @param {string} resourceGroupCode
+   * @returns {ResourceGroupChange}
+   */
+  setResourceGroupCode(resourceGroupCode) {
+    return this.setField('ResourceGroup_Code', resourceGroupCode);
+  }
+
+  /**
+   * Set LinkedCSSResources.
+   * @param {Array} linkedCSSResources
+   * @returns {ResourceGroupChange}
+   */
+  setLinkedCSSResources(linkedCSSResources) {
+    return this.setField('LinkedCSSResources', linkedCSSResources);
+  }
+
+  /**
+   * Set LinkedJavaScriptResources.
+   * @param {Array} linkedJavaScriptResources
+   * @returns {ResourceGroupChange}
+   */
+  setLinkedJavaScriptResources(linkedJavaScriptResources) {
+    return this.setField('LinkedJavaScriptResources', linkedJavaScriptResources);
+  }
+}
+
+/** CSSResourceChange data model. */
+class CSSResourceChange extends Model {
+  /**
+   * CSSResourceChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.Attributes) && util.isArray(this.Attributes)) {
+      for (i = 0, l = this.Attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.Attributes[i], CSSResourceVersionAttribute) && util.isObject(data['Attributes'][i])) {
+          this.Attributes[i] = new CSSResourceVersionAttribute(this.Attributes[i]);
+        } else if (!util.isInstanceOf(this.Attributes[i], CSSResourceVersionAttribute)) {
+          throw new Error(util.format('Expected array of CSSResourceVersionAttribute or an array of Objects but got %s',
+            typeof this.Attributes[i]));
+        }
+      }
+    } else {
+      this.Attributes = [];
+    }
+  }
+
+  /**
+   * Get CSSResource_ID.
+   * @returns {number}
+   */
+  getCSSResourceId() {
+    return this.getField('CSSResource_ID', 0);
+  }
+  
+  /**
+   * Get CSSResource_Code.
+   * @returns {string}
+   */
+  getCSSResourceCode() {
+    return this.getField('CSSResource_Code');
+  }
+  
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('Type');
+  }
+  
+  /**
+   * Get Global.
+   * @returns {boolean}
+   */
+  getGlobal() {
+    return this.getField('Global', false);
+  }
+  
+  /**
+   * Get Active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('Active', false);
+  }
+  
+  /**
+   * Get File_Path.
+   * @returns {string}
+   */
+  getFilePath() {
+    return this.getField('File_Path');
+  }
+  
+  /**
+   * Get Branchless_File_Path.
+   * @returns {string}
+   */
+  getBranchlessFilePath() {
+    return this.getField('Branchless_File_Path');
+  }
+  
+  /**
+   * Get Source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('Source');
+  }
+  
+  /**
+   * Get LinkedPages.
+   * @returns {array}
+   */
+  getLinkedPages() {
+    return this.getField('LinkedPages', []);
+  }
+  
+  /**
+   * Get LinkedResources.
+   * @returns {array}
+   */
+  getLinkedResources() {
+    return this.getField('LinkedResources', []);
+  }
+  
+  /**
+   * Get Attributes.
+   * @returns {CSSResourceVersionAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('Attributes', []);
+  }
+  
+  /**
+   * Set CSSResource_ID.
+   * @param {number} CSSResourceId
+   * @returns {CSSResourceChange}
+   */
+  setCSSResourceId(CSSResourceId) {
+    return this.setField('CSSResource_ID', CSSResourceId);
+  }
+
+  /**
+   * Set CSSResource_Code.
+   * @param {string} CSSResourceCode
+   * @returns {CSSResourceChange}
+   */
+  setCSSResourceCode(CSSResourceCode) {
+    return this.setField('CSSResource_Code', CSSResourceCode);
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {CSSResourceChange}
+   */
+  setType(type) {
+    return this.setField('Type', type);
+  }
+
+  /**
+   * Set Global.
+   * @param {boolean} global
+   * @returns {CSSResourceChange}
+   */
+  setGlobal(global) {
+    return this.setField('Global', global);
+  }
+
+  /**
+   * Set Active.
+   * @param {boolean} active
+   * @returns {CSSResourceChange}
+   */
+  setActive(active) {
+    return this.setField('Active', active);
+  }
+
+  /**
+   * Set File_Path.
+   * @param {string} filePath
+   * @returns {CSSResourceChange}
+   */
+  setFilePath(filePath) {
+    return this.setField('File_Path', filePath);
+  }
+
+  /**
+   * Set Branchless_File_Path.
+   * @param {string} branchlessFilePath
+   * @returns {CSSResourceChange}
+   */
+  setBranchlessFilePath(branchlessFilePath) {
+    return this.setField('Branchless_File_Path', branchlessFilePath);
+  }
+
+  /**
+   * Set Source.
+   * @param {string} source
+   * @returns {CSSResourceChange}
+   */
+  setSource(source) {
+    return this.setField('Source', source);
+  }
+
+  /**
+   * Set LinkedPages.
+   * @param {Array} linkedPages
+   * @returns {CSSResourceChange}
+   */
+  setLinkedPages(linkedPages) {
+    return this.setField('LinkedPages', linkedPages);
+  }
+
+  /**
+   * Set LinkedResources.
+   * @param {Array} linkedResources
+   * @returns {CSSResourceChange}
+   */
+  setLinkedResources(linkedResources) {
+    return this.setField('LinkedResources', linkedResources);
+  }
+
+  /**
+   * Set Attributes.
+   * @param {CSSResourceVersionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {CSSResourceChange}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], CSSResourceVersionAttribute)) {
+          continue;
+      } else if (util.isObject(attributes[i])) {
+          attributes[i] = new CSSResourceVersionAttribute(attributes[i]);
+      } else {
+        throw new Error(util.format('Expected instance of CSSResourceVersionAttribute, Object, or null but got %s at offset %d',
+          typeof attributes[i], i));
+      }
+    }
+
+    return this.setField('Attributes', attributes);
+  }
+
+  /**
+   * Add a CSSResourceVersionAttribute.
+   * @param {CSSResourceVersionAttribute} attribute
+   * @returns {CSSResourceChange}
+   */
+  addAttribute(attribute) {
+    if (!util.isInstanceOf(attribute, CSSResourceVersionAttribute)) {
+      throw new Error(util.format('Expected instance of CSSResourceVersionAttribute but got %s', typeof attribute));
+    }
+
+    if (util.isUndefined(this['Attributes'])) {
+      this['Attributes'] = [];
+    }
+
+    this['Attributes'].push(attribute);
+
+    return this;
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['Attributes'])) {
+      for (i = 0, l = ret['Attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['Attributes'][i], CSSResourceVersionAttribute)) {
+          ret['Attributes'][i] = ret['Attributes'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** JavaScriptResourceChange data model. */
+class JavaScriptResourceChange extends Model {
+  /**
+   * JavaScriptResourceChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.Attributes) && util.isArray(this.Attributes)) {
+      for (i = 0, l = this.Attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.Attributes[i], JavaScriptResourceVersionAttribute) && util.isObject(data['Attributes'][i])) {
+          this.Attributes[i] = new JavaScriptResourceVersionAttribute(this.Attributes[i]);
+        } else if (!util.isInstanceOf(this.Attributes[i], JavaScriptResourceVersionAttribute)) {
+          throw new Error(util.format('Expected array of JavaScriptResourceVersionAttribute or an array of Objects but got %s',
+            typeof this.Attributes[i]));
+        }
+      }
+    } else {
+      this.Attributes = [];
+    }
+  }
+
+  /**
+   * Get JavaScriptResource_ID.
+   * @returns {number}
+   */
+  getJavaScriptResourceId() {
+    return this.getField('JavaScriptResource_ID', 0);
+  }
+  
+  /**
+   * Get JavaScriptResource_Code.
+   * @returns {string}
+   */
+  getJavaScriptResourceCode() {
+    return this.getField('JavaScriptResource_Code');
+  }
+  
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('Type');
+  }
+  
+  /**
+   * Get Global.
+   * @returns {boolean}
+   */
+  getGlobal() {
+    return this.getField('Global', false);
+  }
+  
+  /**
+   * Get Active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('Active', false);
+  }
+  
+  /**
+   * Get File_Path.
+   * @returns {string}
+   */
+  getFilePath() {
+    return this.getField('File_Path');
+  }
+  
+  /**
+   * Get Branchless_File_Path.
+   * @returns {string}
+   */
+  getBranchlessFilePath() {
+    return this.getField('Branchless_File_Path');
+  }
+  
+  /**
+   * Get Source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('Source');
+  }
+  
+  /**
+   * Get LinkedPages.
+   * @returns {array}
+   */
+  getLinkedPages() {
+    return this.getField('LinkedPages', []);
+  }
+  
+  /**
+   * Get LinkedResources.
+   * @returns {array}
+   */
+  getLinkedResources() {
+    return this.getField('LinkedResources', []);
+  }
+  
+  /**
+   * Get Attributes.
+   * @returns {JavaScriptResourceVersionAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('Attributes', []);
+  }
+  
+  /**
+   * Set JavaScriptResource_ID.
+   * @param {number} javaScriptResourceId
+   * @returns {JavaScriptResourceChange}
+   */
+  setJavaScriptResourceId(javaScriptResourceId) {
+    return this.setField('JavaScriptResource_ID', javaScriptResourceId);
+  }
+
+  /**
+   * Set JavaScriptResource_Code.
+   * @param {string} javaScriptResourceCode
+   * @returns {JavaScriptResourceChange}
+   */
+  setJavaScriptResourceCode(javaScriptResourceCode) {
+    return this.setField('JavaScriptResource_Code', javaScriptResourceCode);
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {JavaScriptResourceChange}
+   */
+  setType(type) {
+    return this.setField('Type', type);
+  }
+
+  /**
+   * Set Global.
+   * @param {boolean} global
+   * @returns {JavaScriptResourceChange}
+   */
+  setGlobal(global) {
+    return this.setField('Global', global);
+  }
+
+  /**
+   * Set Active.
+   * @param {boolean} active
+   * @returns {JavaScriptResourceChange}
+   */
+  setActive(active) {
+    return this.setField('Active', active);
+  }
+
+  /**
+   * Set File_Path.
+   * @param {string} filePath
+   * @returns {JavaScriptResourceChange}
+   */
+  setFilePath(filePath) {
+    return this.setField('File_Path', filePath);
+  }
+
+  /**
+   * Set Branchless_File_Path.
+   * @param {string} branchlessFilePath
+   * @returns {JavaScriptResourceChange}
+   */
+  setBranchlessFilePath(branchlessFilePath) {
+    return this.setField('Branchless_File_Path', branchlessFilePath);
+  }
+
+  /**
+   * Set Source.
+   * @param {string} source
+   * @returns {JavaScriptResourceChange}
+   */
+  setSource(source) {
+    return this.setField('Source', source);
+  }
+
+  /**
+   * Set LinkedPages.
+   * @param {Array} linkedPages
+   * @returns {JavaScriptResourceChange}
+   */
+  setLinkedPages(linkedPages) {
+    return this.setField('LinkedPages', linkedPages);
+  }
+
+  /**
+   * Set LinkedResources.
+   * @param {Array} linkedResources
+   * @returns {JavaScriptResourceChange}
+   */
+  setLinkedResources(linkedResources) {
+    return this.setField('LinkedResources', linkedResources);
+  }
+
+  /**
+   * Set Attributes.
+   * @param {JavaScriptResourceVersionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {JavaScriptResourceChange}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], JavaScriptResourceVersionAttribute)) {
+          continue;
+      } else if (util.isObject(attributes[i])) {
+          attributes[i] = new JavaScriptResourceVersionAttribute(attributes[i]);
+      } else {
+        throw new Error(util.format('Expected instance of JavaScriptResourceVersionAttribute, Object, or null but got %s at offset %d',
+          typeof attributes[i], i));
+      }
+    }
+
+    return this.setField('Attributes', attributes);
+  }
+
+  /**
+   * Add a JavaScriptResourceVersionAttribute.
+   * @param {JavaScriptResourceVersionAttribute} attribute
+   * @returns {JavaScriptResourceChange}
+   */
+  addAttribute(attribute) {
+    if (!util.isInstanceOf(attribute, JavaScriptResourceVersionAttribute)) {
+      throw new Error(util.format('Expected instance of JavaScriptResourceVersionAttribute but got %s', typeof attribute));
+    }
+
+    if (util.isUndefined(this['Attributes'])) {
+      this['Attributes'] = [];
+    }
+
+    this['Attributes'].push(attribute);
+
+    return this;
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['Attributes'])) {
+      for (i = 0, l = ret['Attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['Attributes'][i], JavaScriptResourceVersionAttribute)) {
+          ret['Attributes'][i] = ret['Attributes'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** ChangesetChange data model. */
+class ChangesetChange extends Model {
+  /**
+   * ChangesetChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get item_type.
+   * @returns {string}
+   */
+  getItemType() {
+    return this.getField('item_type');
+  }
+  
+  /**
+   * Get item_id.
+   * @returns {number}
+   */
+  getItemId() {
+    return this.getField('item_id', 0);
+  }
+  
+  /**
+   * Get item_version_id.
+   * @returns {number}
+   */
+  getItemVersionId() {
+    return this.getField('item_version_id', 0);
+  }
+  
+  /**
+   * Get item_identifier.
+   * @returns {string}
+   */
+  getItemIdentifier() {
+    return this.getField('item_identifier');
+  }
+}
+
+/** PropertyChange data model. */
+class PropertyChange extends Model {
+  /**
+   * PropertyChange Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.Settings)) {
+      if (!util.isInstanceOf(this.Settings, TemplateVersionSettings)) {
+        this.Settings = new TemplateVersionSettings(this.Settings);
+      }
+    }
+  }
+
+  /**
+   * Get Property_ID.
+   * @returns {number}
+   */
+  getPropertyId() {
+    return this.getField('Property_ID', 0);
+  }
+  
+  /**
+   * Get Property_Type.
+   * @returns {string}
+   */
+  getPropertyType() {
+    return this.getField('Property_Type');
+  }
+  
+  /**
+   * Get Property_Code.
+   * @returns {string}
+   */
+  getPropertyCode() {
+    return this.getField('Property_Code');
+  }
+  
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.getField('Product_ID', 0);
+  }
+  
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.getField('Product_Code');
+  }
+  
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.getField('Edit_Product');
+  }
+  
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.getField('Category_ID', 0);
+  }
+  
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.getField('Category_Code');
+  }
+  
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.getField('Edit_Category');
+  }
+  
+  /**
+   * Get Source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('Source');
+  }
+  
+  /**
+   * Get Settings.
+   * @returns {TemplateVersionSettings|*}
+   */
+  getSettings() {
+    return this.getField('Settings', null);
+  }
+  
+  /**
+   * Set Property_ID.
+   * @param {number} propertyId
+   * @returns {PropertyChange}
+   */
+  setPropertyId(propertyId) {
+    return this.setField('Property_ID', propertyId);
+  }
+
+  /**
+   * Set Property_Type.
+   * @param {string} propertyType
+   * @returns {PropertyChange}
+   */
+  setPropertyType(propertyType) {
+    return this.setField('Property_Type', propertyType);
+  }
+
+  /**
+   * Set Property_Code.
+   * @param {string} propertyCode
+   * @returns {PropertyChange}
+   */
+  setPropertyCode(propertyCode) {
+    return this.setField('Property_Code', propertyCode);
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {PropertyChange}
+   */
+  setProductId(productId) {
+    return this.setField('Product_ID', productId);
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {PropertyChange}
+   */
+  setProductCode(productCode) {
+    return this.setField('Product_Code', productCode);
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {PropertyChange}
+   */
+  setEditProduct(editProduct) {
+    return this.setField('Edit_Product', editProduct);
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {PropertyChange}
+   */
+  setCategoryId(categoryId) {
+    return this.setField('Category_ID', categoryId);
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {PropertyChange}
+   */
+  setCategoryCode(categoryCode) {
+    return this.setField('Category_Code', categoryCode);
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {PropertyChange}
+   */
+  setEditCategory(editCategory) {
+    return this.setField('Edit_Category', editCategory);
+  }
+
+  /**
+   * Set Source.
+   * @param {string} source
+   * @returns {PropertyChange}
+   */
+  setSource(source) {
+    return this.setField('Source', source);
+  }
+
+  /**
+   * Set Settings.
+   * @param {TemplateVersionSettings|Object} settings
+   * @returns {PropertyChange}
+   * @throws {Error}
+   */
+  setSettings(settings) {
+    if (util.isInstanceOf(settings, TemplateVersionSettings) || util.isNull(settings)) {
+      return this.setField('Settings', settings);
+    } else if (util.isObject(settings)) {
+      return this.setField('Settings', new TemplateVersionSettings(settings));
+    }
+
+    throw new Error(util.format('Expected instance of TemplateVersionSettings, Object, or null but got %s',
+      typeof settings));
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['Settings'], TemplateVersionSettings)) {
+      ret['Settings'] = ret['Settings'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** ChangesetTemplateVersion data model. */
+class ChangesetTemplateVersion extends Model {
+  /**
+   * ChangesetTemplateVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.settings)) {
+      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
+        this.settings = new TemplateVersionSettings(this.settings);
+      }
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get parent_id.
+   * @returns {number}
+   */
+  getParentId() {
+    return this.getField('parent_id', 0);
+  }
+  
+  /**
+   * Get item_id.
+   * @returns {number}
+   */
+  getItemId() {
+    return this.getField('item_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get user_icon.
+   * @returns {string}
+   */
+  getUserIcon() {
+    return this.getField('user_icon');
+  }
+  
+  /**
+   * Get prop_id.
+   * @returns {number}
+   */
+  getPropertyId() {
+    return this.getField('prop_id', 0);
+  }
+  
+  /**
+   * Get sync.
+   * @returns {boolean}
+   */
+  getSync() {
+    return this.getField('sync', false);
+  }
+  
+  /**
+   * Get filename.
+   * @returns {string}
+   */
+  getFilename() {
+    return this.getField('filename');
+  }
+  
+  /**
+   * Get dtstamp.
+   * @returns {number}
+   */
+  getDateTimeStamp() {
+    return this.getField('dtstamp', 0);
+  }
+  
+  /**
+   * Get notes.
+   * @returns {string}
+   */
+  getNotes() {
+    return this.getField('notes');
+  }
+  
+  /**
+   * Get source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('source');
+  }
+  
+  /**
+   * Get settings.
+   * @returns {TemplateVersionSettings|*}
+   */
+  getSettings() {
+    return this.getField('settings', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+      ret['settings'] = ret['settings'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** CSSResourceVersion data model. */
+class CSSResourceVersion extends Model {
+  /**
+   * CSSResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.attributes) && util.isArray(this.attributes)) {
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.attributes[i], CSSResourceVersionAttribute) && util.isObject(data['attributes'][i])) {
+          this.attributes[i] = new CSSResourceVersionAttribute(this.attributes[i]);
+        } else if (!util.isInstanceOf(this.attributes[i], CSSResourceVersionAttribute)) {
+          throw new Error(util.format('Expected array of CSSResourceVersionAttribute or an array of Objects but got %s',
+            typeof this.attributes[i]));
+        }
+      }
+    } else {
+      this.attributes = [];
+    }
+
+    if (!util.isUndefined(this.linkedpages) && util.isArray(this.linkedpages)) {
+      for (i = 0, l = this.linkedpages.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedpages[i], Page) && util.isObject(data['linkedpages'][i])) {
+          this.linkedpages[i] = new Page(this.linkedpages[i]);
+        } else if (!util.isInstanceOf(this.linkedpages[i], Page)) {
+          throw new Error(util.format('Expected array of Page or an array of Objects but got %s',
+            typeof this.linkedpages[i]));
+        }
+      }
+    } else {
+      this.linkedpages = [];
+    }
+
+    if (!util.isUndefined(this.linkedresources) && util.isArray(this.linkedresources)) {
+      for (i = 0, l = this.linkedresources.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedresources[i], CSSResource) && util.isObject(data['linkedresources'][i])) {
+          this.linkedresources[i] = new CSSResource(this.linkedresources[i]);
+        } else if (!util.isInstanceOf(this.linkedresources[i], CSSResource)) {
+          throw new Error(util.format('Expected array of CSSResource or an array of Objects but got %s',
+            typeof this.linkedresources[i]));
+        }
+      }
+    } else {
+      this.linkedresources = [];
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get res_id.
+   * @returns {number}
+   */
+  getResourceId() {
+    return this.getField('res_id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get is_global.
+   * @returns {boolean}
+   */
+  getIsGlobal() {
+    return this.getField('is_global', false);
+  }
+  
+  /**
+   * Get active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('active', false);
+  }
+  
+  /**
+   * Get file.
+   * @returns {string}
+   */
+  getFile() {
+    return this.getField('file');
+  }
+  
+  /**
+   * Get branchless_file.
+   * @returns {string}
+   */
+  getBranchlessFile() {
+    return this.getField('branchless_file');
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get user_icon.
+   * @returns {string}
+   */
+  getUserIcon() {
+    return this.getField('user_icon');
+  }
+  
+  /**
+   * Get source_user_id.
+   * @returns {number}
+   */
+  getSourceUserId() {
+    return this.getField('source_user_id', 0);
+  }
+  
+  /**
+   * Get source_user_name.
+   * @returns {string}
+   */
+  getSourceUserName() {
+    return this.getField('source_user_name');
+  }
+  
+  /**
+   * Get source_user_icon.
+   * @returns {string}
+   */
+  getSourceUserIcon() {
+    return this.getField('source_user_icon');
+  }
+  
+  /**
+   * Get source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('source');
+  }
+  
+  /**
+   * Get attributes.
+   * @returns {CSSResourceVersionAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('attributes', []);
+  }
+  
+  /**
+   * Get linkedpages.
+   * @returns {Page[]}
+   */
+  getLinkedPages() {
+    return this.getField('linkedpages', []);
+  }
+  
+  /**
+   * Get linkedresources.
+   * @returns {CSSResource[]}
+   */
+  getLinkedResources() {
+    return this.getField('linkedresources', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['attributes'])) {
+      for (i = 0, l = ret['attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['attributes'][i], CSSResourceVersionAttribute)) {
+          ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['linkedpages'])) {
+      for (i = 0, l = ret['linkedpages'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedpages'][i], Page)) {
+          ret['linkedpages'][i] = ret['linkedpages'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['linkedresources'])) {
+      for (i = 0, l = ret['linkedresources'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedresources'][i], CSSResource)) {
+          ret['linkedresources'][i] = ret['linkedresources'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** CSSResource data model. */
+class CSSResource extends Model {
+  /**
+   * CSSResource Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.attributes) && util.isArray(this.attributes)) {
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.attributes[i], CSSResourceAttribute) && util.isObject(data['attributes'][i])) {
+          this.attributes[i] = new CSSResourceAttribute(this.attributes[i]);
+        } else if (!util.isInstanceOf(this.attributes[i], CSSResourceAttribute)) {
+          throw new Error(util.format('Expected array of CSSResourceAttribute or an array of Objects but got %s',
+            typeof this.attributes[i]));
+        }
+      }
+    } else {
+      this.attributes = [];
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get is_global.
+   * @returns {boolean}
+   */
+  getIsGlobal() {
+    return this.getField('is_global', false);
+  }
+  
+  /**
+   * Get active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('active', false);
+  }
+  
+  /**
+   * Get file.
+   * @returns {number}
+   */
+  getFile() {
+    return this.getField('file', 0);
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get attributes.
+   * @returns {CSSResourceAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('attributes', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['attributes'])) {
+      for (i = 0, l = ret['attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['attributes'][i], CSSResourceAttribute)) {
+          ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** Page data model. */
+class Page extends Model {
+  /**
+   * Page Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get secure.
+   * @returns {boolean}
+   */
+  getSecure() {
+    return this.getField('secure', false);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get name.
+   * @returns {string}
+   */
+  getName() {
+    return this.getField('name');
+  }
+  
+  /**
+   * Get title.
+   * @returns {string}
+   */
+  getTitle() {
+    return this.getField('title');
+  }
+  
+  /**
+   * Get ui_id.
+   * @returns {number}
+   */
+  getUiId() {
+    return this.getField('ui_id', 0);
+  }
+}
+
+/** JavaScriptResourceVersion data model. */
+class JavaScriptResourceVersion extends Model {
+  /**
+   * JavaScriptResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.attributes) && util.isArray(this.attributes)) {
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.attributes[i], JavaScriptResourceVersionAttribute) && util.isObject(data['attributes'][i])) {
+          this.attributes[i] = new JavaScriptResourceVersionAttribute(this.attributes[i]);
+        } else if (!util.isInstanceOf(this.attributes[i], JavaScriptResourceVersionAttribute)) {
+          throw new Error(util.format('Expected array of JavaScriptResourceVersionAttribute or an array of Objects but got %s',
+            typeof this.attributes[i]));
+        }
+      }
+    } else {
+      this.attributes = [];
+    }
+
+    if (!util.isUndefined(this.linkedpages) && util.isArray(this.linkedpages)) {
+      for (i = 0, l = this.linkedpages.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedpages[i], Page) && util.isObject(data['linkedpages'][i])) {
+          this.linkedpages[i] = new Page(this.linkedpages[i]);
+        } else if (!util.isInstanceOf(this.linkedpages[i], Page)) {
+          throw new Error(util.format('Expected array of Page or an array of Objects but got %s',
+            typeof this.linkedpages[i]));
+        }
+      }
+    } else {
+      this.linkedpages = [];
+    }
+
+    if (!util.isUndefined(this.linkedresources) && util.isArray(this.linkedresources)) {
+      for (i = 0, l = this.linkedresources.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedresources[i], JavaScriptResource) && util.isObject(data['linkedresources'][i])) {
+          this.linkedresources[i] = new JavaScriptResource(this.linkedresources[i]);
+        } else if (!util.isInstanceOf(this.linkedresources[i], JavaScriptResource)) {
+          throw new Error(util.format('Expected array of JavaScriptResource or an array of Objects but got %s',
+            typeof this.linkedresources[i]));
+        }
+      }
+    } else {
+      this.linkedresources = [];
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get res_id.
+   * @returns {number}
+   */
+  getResourceId() {
+    return this.getField('res_id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get is_global.
+   * @returns {boolean}
+   */
+  getIsGlobal() {
+    return this.getField('is_global', false);
+  }
+  
+  /**
+   * Get active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('active', false);
+  }
+  
+  /**
+   * Get file.
+   * @returns {string}
+   */
+  getFile() {
+    return this.getField('file');
+  }
+  
+  /**
+   * Get branchless_file.
+   * @returns {string}
+   */
+  getBranchlessFile() {
+    return this.getField('branchless_file');
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+  
+  /**
+   * Get user_icon.
+   * @returns {string}
+   */
+  getUserIcon() {
+    return this.getField('user_icon');
+  }
+  
+  /**
+   * Get source_user_id.
+   * @returns {number}
+   */
+  getSourceUserId() {
+    return this.getField('source_user_id', 0);
+  }
+  
+  /**
+   * Get source_user_name.
+   * @returns {string}
+   */
+  getSourceUserName() {
+    return this.getField('source_user_name');
+  }
+  
+  /**
+   * Get source_user_icon.
+   * @returns {string}
+   */
+  getSourceUserIcon() {
+    return this.getField('source_user_icon');
+  }
+  
+  /**
+   * Get source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('source');
+  }
+  
+  /**
+   * Get attributes.
+   * @returns {JavaScriptResourceVersionAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('attributes', []);
+  }
+  
+  /**
+   * Get linkedpages.
+   * @returns {Page[]}
+   */
+  getLinkedPages() {
+    return this.getField('linkedpages', []);
+  }
+  
+  /**
+   * Get linkedresources.
+   * @returns {JavaScriptResource[]}
+   */
+  getLinkedResources() {
+    return this.getField('linkedresources', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['attributes'])) {
+      for (i = 0, l = ret['attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['attributes'][i], JavaScriptResourceVersionAttribute)) {
+          ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['linkedpages'])) {
+      for (i = 0, l = ret['linkedpages'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedpages'][i], Page)) {
+          ret['linkedpages'][i] = ret['linkedpages'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['linkedresources'])) {
+      for (i = 0, l = ret['linkedresources'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedresources'][i], JavaScriptResource)) {
+          ret['linkedresources'][i] = ret['linkedresources'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** JavaScriptResource data model. */
+class JavaScriptResource extends Model {
+  /**
+   * JavaScriptResource Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.attributes) && util.isArray(this.attributes)) {
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.attributes[i], JavaScriptResourceAttribute) && util.isObject(data['attributes'][i])) {
+          this.attributes[i] = new JavaScriptResourceAttribute(this.attributes[i]);
+        } else if (!util.isInstanceOf(this.attributes[i], JavaScriptResourceAttribute)) {
+          throw new Error(util.format('Expected array of JavaScriptResourceAttribute or an array of Objects but got %s',
+            typeof this.attributes[i]));
+        }
+      }
+    } else {
+      this.attributes = [];
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get is_global.
+   * @returns {boolean}
+   */
+  getIsGlobal() {
+    return this.getField('is_global', false);
+  }
+  
+  /**
+   * Get active.
+   * @returns {boolean}
+   */
+  getActive() {
+    return this.getField('active', false);
+  }
+  
+  /**
+   * Get file.
+   * @returns {number}
+   */
+  getFile() {
+    return this.getField('file', 0);
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get attributes.
+   * @returns {JavaScriptResourceAttribute[]}
+   */
+  getAttributes() {
+    return this.getField('attributes', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['attributes'])) {
+      for (i = 0, l = ret['attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['attributes'][i], JavaScriptResourceAttribute)) {
+          ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** ResourceAttribute data model. */
+class ResourceAttribute extends Model {
+  /**
+   * ResourceAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get name.
+   * @returns {string}
+   */
+  getName() {
+    return this.getField('name');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Set name.
+   * @param {string} name
+   * @returns {ResourceAttribute}
+   */
+  setName(name) {
+    return this.setField('name', name);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {ResourceAttribute}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+}
+
+/** CustomerCreditHistory data model. */
+class CustomerCreditHistory extends Model {
+  /**
+   * CustomerCreditHistory Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get user_id.
+   * @returns {number}
+   */
+  getUserId() {
+    return this.getField('user_id', 0);
+  }
+  
+  /**
+   * Get cust_id.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.getField('cust_id', 0);
+  }
+  
+  /**
+   * Get order_id.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.getField('order_id', 0);
+  }
+  
+  /**
+   * Get txref.
+   * @returns {string}
+   */
+  getTransactionReference() {
+    return this.getField('txref');
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+  
+  /**
+   * Get amount.
+   * @returns {number}
+   */
+  getAmount() {
+    return this.getField('amount', 0.00);
+  }
+  
+  /**
+   * Get dtstamp.
+   * @returns {number}
+   */
+  getDateTimeStamp() {
+    return this.getField('dtstamp', 0);
+  }
+  
+  /**
+   * Get user_name.
+   * @returns {string}
+   */
+  getUserName() {
+    return this.getField('user_name');
+  }
+}
+
+/** ORDER_RETURN_STATUS constants. */
+/** @ignore */
+const ORDER_RETURN_STATUS_ISSUED = 500;
+/** @ignore */
+const ORDER_RETURN_STATUS_RECEIVED = 600;
+
+/** OrderReturn data model. */
+class OrderReturn extends Model {
+  /**
+   * OrderReturn Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Constant ORDER_RETURN_STATUS_ISSUED
+   * @returns {number}
+   * @const
+   * @static
+   */
+  static get ORDER_RETURN_STATUS_ISSUED() {
+    return ORDER_RETURN_STATUS_ISSUED;
+  }
+
+  /**
+   * Constant ORDER_RETURN_STATUS_RECEIVED
+   * @returns {number}
+   * @const
+   * @static
+   */
+  static get ORDER_RETURN_STATUS_RECEIVED() {
+    return ORDER_RETURN_STATUS_RECEIVED;
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get order_id.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.getField('order_id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.getField('status', 0);
+  }
+  
+  /**
+   * Get dt_issued.
+   * @returns {number}
+   */
+  getDateTimeIssued() {
+    return this.getField('dt_issued', 0);
+  }
+  
+  /**
+   * Get dt_recvd.
+   * @returns {number}
+   */
+  getDateTimeReceived() {
+    return this.getField('dt_recvd', 0);
+  }
+}
+
+/** ReceivedReturn data model. */
+class ReceivedReturn extends Model {
+  /**
+   * ReceivedReturn Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get return_id.
+   * @returns {number}
+   */
+  getReturnId() {
+    return this.getField('return_id', 0);
+  }
+  
+  /**
+   * Get adjust_inventory.
+   * @returns {number}
+   */
+  getAdjustInventory() {
+    return this.getField('adjust_inventory', 0);
+  }
+  
+  /**
+   * Set return_id.
+   * @param {number} returnId
+   * @returns {ReceivedReturn}
+   */
+  setReturnId(returnId) {
+    return this.setField('return_id', returnId);
+  }
+
+  /**
+   * Set adjust_inventory.
+   * @param {number} adjustInventory
+   * @returns {ReceivedReturn}
+   */
+  setAdjustInventory(adjustInventory) {
+    return this.setField('adjust_inventory', adjustInventory);
+  }
+}
+
+/** PropertyVersion data model. */
+class PropertyVersion extends Model {
+  /**
+   * PropertyVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.settings)) {
+      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
+        this.settings = new TemplateVersionSettings(this.settings);
+      }
+    }
+
+    if (!util.isUndefined(this.product)) {
+      if (!util.isInstanceOf(this.product, Product) && util.isObject(this.product)) {
+        this.product = new Product(this.product);
+      } else if (!util.isInstanceOf(this.product, Product)) {
+        throw new Error(util.format('Expected Product or an Object but got %s',
+          typeof this.product));
+      }
+    } else {
+      this.product = {};
+    }
+
+    if (!util.isUndefined(this.category)) {
+      if (!util.isInstanceOf(this.category, Category) && util.isObject(this.category)) {
+        this.category = new Category(this.category);
+      } else if (!util.isInstanceOf(this.category, Category)) {
+        throw new Error(util.format('Expected Category or an Object but got %s',
+          typeof this.category));
+      }
+    } else {
+      this.category = {};
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get prop_id.
+   * @returns {number}
+   */
+  getPropertyId() {
+    return this.getField('prop_id', 0);
+  }
+  
+  /**
+   * Get version_id.
+   * @returns {number}
+   */
+  getVersionId() {
+    return this.getField('version_id', 0);
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get product_id.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.getField('product_id', 0);
+  }
+  
+  /**
+   * Get cat_id.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.getField('cat_id', 0);
+  }
+  
+  /**
+   * Get version_user_id.
+   * @returns {number}
+   */
+  getVersionUserId() {
+    return this.getField('version_user_id', 0);
+  }
+  
+  /**
+   * Get version_user_name.
+   * @returns {string}
+   */
+  getVersionUserName() {
+    return this.getField('version_user_name');
+  }
+  
+  /**
+   * Get version_user_icon.
+   * @returns {string}
+   */
+  getVersionUserIcon() {
+    return this.getField('version_user_icon');
+  }
+  
+  /**
+   * Get source_user_id.
+   * @returns {number}
+   */
+  getSourceUserId() {
+    return this.getField('source_user_id', 0);
+  }
+  
+  /**
+   * Get source_user_name.
+   * @returns {string}
+   */
+  getSourceUserName() {
+    return this.getField('source_user_name');
+  }
+  
+  /**
+   * Get source_user_icon.
+   * @returns {string}
+   */
+  getSourceUserIcon() {
+    return this.getField('source_user_icon');
+  }
+  
+  /**
+   * Get templ_id.
+   * @returns {number}
+   */
+  getTemplateId() {
+    return this.getField('templ_id', 0);
+  }
+  
+  /**
+   * Get settings.
+   * @returns {TemplateVersionSettings|*}
+   */
+  getSettings() {
+    return this.getField('settings', null);
+  }
+  
+  /**
+   * Get product.
+   * @returns {Product|*}
+   */
+  getProduct() {
+    return this.getField('product', null);
+  }
+  
+  /**
+   * Get category.
+   * @returns {Category|*}
+   */
+  getCategory() {
+    return this.getField('category', null);
+  }
+  
+  /**
+   * Get source.
+   * @returns {string}
+   */
+  getSource() {
+    return this.getField('source');
+  }
+  
+  /**
+   * Get sync.
+   * @returns {boolean}
+   */
+  getSync() {
+    return this.getField('sync', false);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+      ret['settings'] = ret['settings'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['product'], Product)) {
+      ret['product'] = ret['product'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['category'], Category)) {
+      ret['category'] = ret['category'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** ResourceGroup data model. */
+class ResourceGroup extends Model {
+  /**
+   * ResourceGroup Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.linkedcssresources) && util.isArray(this.linkedcssresources)) {
+      for (i = 0, l = this.linkedcssresources.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedcssresources[i], CSSResource) && util.isObject(data['linkedcssresources'][i])) {
+          this.linkedcssresources[i] = new CSSResource(this.linkedcssresources[i]);
+        } else if (!util.isInstanceOf(this.linkedcssresources[i], CSSResource)) {
+          throw new Error(util.format('Expected array of CSSResource or an array of Objects but got %s',
+            typeof this.linkedcssresources[i]));
+        }
+      }
+    } else {
+      this.linkedcssresources = [];
+    }
+
+    if (!util.isUndefined(this.linkedjavascriptresources) && util.isArray(this.linkedjavascriptresources)) {
+      for (i = 0, l = this.linkedjavascriptresources.length; i < l; i++) {
+        if (!util.isInstanceOf(this.linkedjavascriptresources[i], JavaScriptResource) && util.isObject(data['linkedjavascriptresources'][i])) {
+          this.linkedjavascriptresources[i] = new JavaScriptResource(this.linkedjavascriptresources[i]);
+        } else if (!util.isInstanceOf(this.linkedjavascriptresources[i], JavaScriptResource)) {
+          throw new Error(util.format('Expected array of JavaScriptResource or an array of Objects but got %s',
+            typeof this.linkedjavascriptresources[i]));
+        }
+      }
+    } else {
+      this.linkedjavascriptresources = [];
+    }
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get linkedcssresources.
+   * @returns {CSSResource[]}
+   */
+  getLinkedCSSResources() {
+    return this.getField('linkedcssresources', []);
+  }
+  
+  /**
+   * Get linkedjavascriptresources.
+   * @returns {JavaScriptResource[]}
+   */
+  getLinkedJavaScriptResources() {
+    return this.getField('linkedjavascriptresources', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['linkedcssresources'])) {
+      for (i = 0, l = ret['linkedcssresources'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedcssresources'][i], CSSResource)) {
+          ret['linkedcssresources'][i] = ret['linkedcssresources'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['linkedjavascriptresources'])) {
+      for (i = 0, l = ret['linkedjavascriptresources'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['linkedjavascriptresources'][i], JavaScriptResource)) {
+          ret['linkedjavascriptresources'][i] = ret['linkedjavascriptresources'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** MerchantVersion data model. */
+class MerchantVersion extends Model {
+  /**
+   * MerchantVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get version.
+   * @returns {string}
+   */
+  getVersion() {
+    return this.getField('version');
+  }
+  
+  /**
+   * Get major.
+   * @returns {number}
+   */
+  getMajor() {
+    return this.getField('major', 0);
+  }
+  
+  /**
+   * Get minor.
+   * @returns {number}
+   */
+  getMinor() {
+    return this.getField('minor', 0);
+  }
+  
+  /**
+   * Get bugfix.
+   * @returns {number}
+   */
+  getBugfix() {
+    return this.getField('bugfix', 0);
+  }
+}
+
 /** OrderNote data model. */
 class OrderNote extends Note {
   /**
@@ -8732,6 +10436,170 @@ class CustomerPriceGroup extends PriceGroup {
   }
 }
 
+/** BranchCSSResourceVersion data model. */
+class BranchCSSResourceVersion extends CSSResourceVersion {
+  /**
+   * BranchCSSResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** ChangesetCSSResourceVersion data model. */
+class ChangesetCSSResourceVersion extends CSSResourceVersion {
+  /**
+   * ChangesetCSSResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** BranchCSSResource data model. */
+class BranchCSSResource extends CSSResource {
+  /**
+   * BranchCSSResource Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** ChangesetCSSResource data model. */
+class ChangesetCSSResource extends CSSResource {
+  /**
+   * ChangesetCSSResource Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** BranchJavaScriptResourceVersion data model. */
+class BranchJavaScriptResourceVersion extends JavaScriptResourceVersion {
+  /**
+   * BranchJavaScriptResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** ChangesetJavaScriptResourceVersion data model. */
+class ChangesetJavaScriptResourceVersion extends JavaScriptResourceVersion {
+  /**
+   * ChangesetJavaScriptResourceVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** CSSResourceVersionAttribute data model. */
+class CSSResourceVersionAttribute extends ResourceAttribute {
+  /**
+   * CSSResourceVersionAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** CSSResourceAttribute data model. */
+class CSSResourceAttribute extends ResourceAttribute {
+  /**
+   * CSSResourceAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** JavaScriptResourceVersionAttribute data model. */
+class JavaScriptResourceVersionAttribute extends ResourceAttribute {
+  /**
+   * JavaScriptResourceVersionAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** JavaScriptResourceAttribute data model. */
+class JavaScriptResourceAttribute extends ResourceAttribute {
+  /**
+   * JavaScriptResourceAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** OrderPriceGroup data model. */
+class OrderPriceGroup extends PriceGroup {
+  /**
+   * OrderPriceGroup Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** BranchPropertyVersion data model. */
+class BranchPropertyVersion extends PropertyVersion {
+  /**
+   * BranchPropertyVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
+/** ChangesetPropertyVersion data model. */
+class ChangesetPropertyVersion extends PropertyVersion {
+  /**
+   * ChangesetPropertyVersion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+}
+
 module.exports = {
   AvailabilityGroup,
   Customer,
@@ -8772,7 +10640,6 @@ module.exports = {
   OrderItemSubscription,
   SubscriptionOption,
   ProductInventoryAdjustment,
-  OrderItemAttribute,
   OrderShipmentUpdate,
   ProductVariantLimit,
   ProductVariantExclusion,
@@ -8785,11 +10652,47 @@ module.exports = {
   PaymentMethod,
   PaymentCardType,
   OrderPaymentAuthorize,
+  Branch,
+  BranchTemplateVersion,
+  TemplateVersionSettings,
+  Changeset,
+  TemplateChange,
+  ResourceGroupChange,
+  CSSResourceChange,
+  JavaScriptResourceChange,
+  ChangesetChange,
+  PropertyChange,
+  ChangesetTemplateVersion,
+  CSSResourceVersion,
+  CSSResource,
+  Page,
+  JavaScriptResourceVersion,
+  JavaScriptResource,
+  ResourceAttribute,
+  CustomerCreditHistory,
+  OrderReturn,
+  ReceivedReturn,
+  PropertyVersion,
+  ResourceGroup,
+  MerchantVersion,
   OrderNote,
   CategoryProduct,
   CouponPriceGroup,
   OrderPaymentCard,
   PriceGroupCustomer,
   PriceGroupProduct,
-  CustomerPriceGroup
+  CustomerPriceGroup,
+  BranchCSSResourceVersion,
+  ChangesetCSSResourceVersion,
+  BranchCSSResource,
+  ChangesetCSSResource,
+  BranchJavaScriptResourceVersion,
+  ChangesetJavaScriptResourceVersion,
+  CSSResourceVersionAttribute,
+  CSSResourceAttribute,
+  JavaScriptResourceVersionAttribute,
+  JavaScriptResourceAttribute,
+  OrderPriceGroup,
+  BranchPropertyVersion,
+  ChangesetPropertyVersion
 };

@@ -1,3 +1,55 @@
+v2.0.0
+	There are possible breaking changes in this release. Please consult the UPGRADING.md file included in this repository
+	for assistance in upgrading your existing code base from 1.x to 2.x
+	
+	- Added the following API functions introduced in 10.00.00:
+		Branch_Copy
+		Branch_Create
+		Branch_Delete
+		BranchCSSResourceVersionList_Load_Query
+		BranchJavaScriptResourceVersionList_Load_Query
+		BranchList_Load_Query
+		BranchPropertyVersionList_Load_Query
+		BranchTemplateVersionList_Load_Query
+		Changeset_Create
+		ChangesetChangeList_Load_Query
+		ChangesetCSSResourceVersionList_Load_Query
+		ChangesetJavaScriptResourceVersionList_Load_Query
+		ChangesetList_Load_Query
+		ChangesetList_Merge
+		ChangesetPropertyVersionList_Load_Query
+		ChangesetTemplateVersionList_Load_Query
+		CustomerCreditHistory_Delete
+		CustomerCreditHistory_Insert
+		CustomerCreditHistoryList_Load_Query
+		MivaMerchantVersion
+		OrderCoupon_Update_Assigned
+		OrderCouponList_Load_Query
+		OrderItemList_CreateReturn
+		OrderPriceGroup_Update_Assigned
+		OrderPriceGroupList_Load_Query
+		OrderReturnList_Received
+		ResourceGroupList_Load_Query
+	- OrderItemOption model no longer has the attribute property. It has been renamed to attribute_code.
+	- Removed fields from OrderItemOption model:
+		- attribute (now use attribute_code)
+	- New fields on OrderItemOption model:
+		- attribute_id (attr_code)
+		- attribute_code (attr_id)
+		- attribute_template_attribute_id (attmpat_id)
+	- New client option `operation_timeout` allows the control of the timeout for multicall operations
+	- New MultiCallRequest option, auto_timeout_continue
+	- All Response objects now include the underlying HTTP Response object
+	- New Request option, binaryEncoding allows specifying the exchange of binary information for supported requests.
+	- Client.sendLowLevel callback altered. 3rd argument is now the http response buffer instead of the json object
+	- Client now supports logging. See Client.setLogger()
+	- Added support for SSH Private Key authentication
+		- Requires Node >= 11.6.0
+		- See SSHClient
+		- See examples/client_example.js
+	- Added support for SSH Private Key authentication via a local SSH Agent (allows for authentication via security keys)
+		- See SSHAgentClient
+		- See examples/client_example.js
 v1.3.0
 	- Added support for PriceGroupCustomer_ListLoad_Query
 	- OrderAuthorize.customData renamed to OrderAuthorize.moduleFields

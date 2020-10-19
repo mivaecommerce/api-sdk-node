@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: util.js 71505 2018-11-13 00:29:29Z gidriss $
  */
 
 const core = require('util');

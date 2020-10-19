@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: listquery.js 72815 2019-01-23 00:00:04Z gidriss $
  */
 
 const { Request, Response } = require('./abstract');
@@ -434,11 +432,12 @@ class ListQueryRequest extends Request {
 
   /**
    * @override
+   * @param {Object} httpResponse
    * @param {Object} data
    * @returns {Response}
    */
-  createResponse(data) {
-    return new ListQueryResponse(this, data);
+  createResponse(httpResponse, data) {
+    return new ListQueryResponse(this, httpResponse, data);
   }
 }
 
@@ -450,10 +449,11 @@ class ListQueryResponse extends Response {
   /**
    * ListQueryResponse Constructor.
    * @param {Request} request
+   * @param {Object} httpResponse
    * @param {Object} data
    */
-  constructor(request, data = {}) {
-    super(request, data);
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
   }
 
   /**

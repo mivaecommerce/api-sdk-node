@@ -3,19 +3,23 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: abstract.js 72467 2019-01-08 23:00:09Z gidriss $
  */
 
 const util = require('./util');
 
 /** @module Abstract */
 
-/** CATEGORY_SHOW constants. */
+/** REQUEST_SCOPE constants. */
 /** @ignore */
 const REQUEST_SCOPE_STORE = 'store';
 /** @ignore */
 const REQUEST_SCOPE_DOMAIN = 'domain';
+
+/** BINARY_ENCODING constants. */
+/** @ignore */
+const BINARY_ENCODING_DEFAULT = 'json';
+/** @ignore */
+const BINARY_ENCODING_BASE64 = 'base64';
 
 /** Abstract data model */
 class Model {
@@ -80,9 +84,10 @@ class Request {
    * @returns {void}
    */
   constructor(client = null) {
-    this.client    = client;
-    this.storeCode = null;
-    this.scope     = REQUEST_SCOPE_STORE;
+    this.client         = client;
+    this.storeCode      = null;
+    this.scope          = REQUEST_SCOPE_STORE;
+    this.binartEncoding = BINARY_ENCODING_DEFAULT;
   }
   
   /**
@@ -103,6 +108,26 @@ class Request {
    */
   static get REQUEST_SCOPE_DOMAIN() {
     return REQUEST_SCOPE_DOMAIN;
+  }
+
+  /**
+   * Constant BINARY_ENCODING_DEFAULT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get BINARY_ENCODING_DEFAULT() {
+    return BINARY_ENCODING_DEFAULT;
+  }
+
+  /**
+   * Constant BINARY_ENCODING_BASE64
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get BINARY_ENCODING_BASE64() {
+    return BINARY_ENCODING_BASE64;
   }
 
   /**
@@ -141,6 +166,31 @@ class Request {
    */
   getScope() {
     return this.scope;
+  }
+
+  /**
+   * Get the type of binary encoding the request uses.
+   * @returns {string}
+   */
+  getBinaryEncoding() {
+    return this.binaryEncoding;
+  }
+
+  /**
+   * Set the type of binary encoding the request uses.
+   * @param {string} storeCode
+   * @returns {Request}
+   */
+  setBinaryEncoding(binaryEncoding) {
+    if (util.isString(binaryEncoding)) {
+      binaryEncoding = binaryEncoding.toLower();
+
+      if (binaryEncoding == BINARY_ENCODING_DEFAULT || binaryEncoding == BINARY_ENCODING_BASE64) {
+        this.binaryEncoding = binaryEncoding;
+      }      
+    }
+
+    return this;
   }
 
   /**
@@ -211,11 +261,22 @@ class Request {
   /**
    * Override this method to create a response for this request.
    * @abstract
-   * @param {Object} data
+   * @param {Object} httpResponse
+   * @param {http.IncomingMessage} data
    * @returns {Response}
    */
-  createResponse(data) {
-    return new Response(this, data);
+  createResponse(httpResponse, data) {
+    return new Response(this,httpResponse, data);
+  }
+
+  /**
+   * Override this method to add additional headers into the underlying request
+   * @abstract
+   * @param {Object} headers
+   * @returns {Object}
+   */
+  processRequestHeaders(headers) {
+    return headers;
   }
 }
 
@@ -224,10 +285,11 @@ class Response {
   /**
    * Response constructor.
    * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
    * @param {Object} data
    * @returns void
    */
-  constructor(request, data = {}) {
+  constructor(request, httpResponse, data = {}) {
     if (!util.isInstanceOf(request, Request)) {
       throw new Error(util.format('Expected request to be an instance of Request but but got %s',
         typeof request));
@@ -236,8 +298,9 @@ class Response {
         typeof data));
     }
 
-    this.request = request;
-    this.data    = data;
+    this.request      = request;
+    this.httpResponse = httpResponse;
+    this.data         = data;
   }
 
   /**
@@ -362,6 +425,14 @@ class Response {
    */
   getRequest() {
     return this.request;
+  }
+
+  /**
+   * Get the underlying HttpResponse object
+   * @returns {Request}
+   */
+  getHttpResponse() {
+    return this.httpResponse;
   }
 }
 

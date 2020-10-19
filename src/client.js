@@ -3,17 +3,16 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: client.js 74093 2019-03-13 20:38:09Z gidriss $
  */
 
-const http      = require('http');
-const https     = require('https');
-const crypto    = require('crypto');
-const util      = require('./util');
-const abstract  = require('./abstract');
-const requests  = require('./requests');
+const http            = require('http');
+const https           = require('https');
+const util            = require('./util');
+const abstract        = require('./abstract');
+const requests        = require('./requests');
+const { Logger }      = require('./logger');
 const { MultiCallRequest, MultiCallOperation } = require('./multicall');
+const { Authenticator, TokenAuthenticator, SSHPrivateKeyAuthenticator, SSHAgentAuthenticator }  = require('./authenticator');
 
 /** @module Client */
 
@@ -24,12 +23,13 @@ const SIGN_DIGEST_SHA1    = 'sha1';
 const SIGN_DIGEST_SHA256  = 'sha256';
 /** @ignore */
 const SIGN_DIGEST_NONE    = '';
+/** @ignore */
+const CLIENT_DEFAULT_OPERATION_TIMEOUT = 60;
 
 /** 
- * Handles sending API requests
- * @see https://docs.miva.com/json-api/#authentication
+ * BaseClient - All clients extend this class
  */
-class Client {
+class BaseClient {
   /**
    * Client Constructor.
    * @param {URL|string} endpoint
@@ -37,43 +37,16 @@ class Client {
    * @param {string} signingKey
    * @param {Object} options
    */
-  constructor(endpoint, apiToken, signingKey, options = {}) {
+  constructor(endpoint, authenticator, options = {}) {
     this.setEndpoint(endpoint);
-    this.setApiToken(apiToken);
-    this.setSigningKey(signingKey);
+    this.logger = null;
+    this.authenticator = authenticator;
 
     this.options = Object.assign({
       require_timestamps: true,
-      signing_key_digest: 'sha256',
       default_store_code: null,
+      operation_timeout: CLIENT_DEFAULT_OPERATION_TIMEOUT
     }, options);
-  }
-
-  /**
-   * Constant SIGN_DIGEST_SHA1
-   * @constant
-   * @returns {string}
-   */
-  static get SIGN_DIGEST_SHA1() {
-    return SIGN_DIGEST_SHA1;
-  }
-
-  /**
-   * Constant SIGN_DIGEST_SHA256
-   * @constant
-   * @returns {string}
-   */
-  static get SIGN_DIGEST_SHA256() {
-    return SIGN_DIGEST_SHA256;
-  }
-
-  /**
-   * Constant SIGN_DIGEST_NONE
-   * @constant
-   * @returns {string}
-   */
-  static get SIGN_DIGEST_NONE() {
-    return SIGN_DIGEST_NONE;
   }
 
   /**
@@ -108,42 +81,6 @@ class Client {
   }
 
   /**
-   * Get the api token used to authenticate the request.
-   * @returns {string}
-   */
-  getApiToken() {
-    return this.apiToken;
-  }
-
-  /**
-   * Set the api token used to authenticate the request.
-   * @param {string} apiToken
-   * @returns {Client}
-   */
-  setApiToken(apiToken) {
-    this.apiToken = apiToken;
-    return this;
-  }
-
-  /**
-   * Get the signing key used to sign requests. Base64 encoded.
-   * @returns {string}
-   */
-  getSigningKey() {
-    return this.signingKey;
-  }
-
-  /**
-   * Set the signing key used to sign requests. Base64 encoded.
-   * @param {string} signingKey
-   * @returns {Client}
-   */
-  setSigningKey(signingKey) {
-    this.signingKey = signingKey;
-    return this;
-  }
-
-  /**
    * Get a client option.
    * @param {string} key
    * @returns {*}
@@ -161,6 +98,27 @@ class Client {
   setOption(key, value) {
     this.options[key] = value;
     return this;
+  }
+
+  /**
+   * Set the logger instance
+   * @param {Logger?} logger
+   * @returns {Client}
+   */
+  setLogger(logger) {
+    if (!util.isNullOrUndefined(logger) && !util.isInstanceOf(logger, Logger)) {
+      throw new Error('Expecting an instance of Logger or null');
+    }
+
+    this.logger = logger;
+  }
+
+  /**
+   * Get the logger instance
+   * @returns {Logger?}
+   */
+  getLogger() {
+    return this.logger;
   }
 
   /**
@@ -190,13 +148,11 @@ class Client {
    * @returns {void}
    */
   send(request, callback) {
-    var data;
-    var i;
-    var l;
-    var i2;
-    var l2;
-    var mrequests;
-    var orequests;
+    var data, timeout;
+    var i, l, i2, l2;
+    var mrequests, orequests;
+    var headers = {};
+    var self = this;
 
     var defaultStore = this.getOption('default_store_code');
 
@@ -249,17 +205,39 @@ class Client {
       data['Miva_Request_Timestamp'] = Math.floor(Date.now() / 1000);
     }
 
-    this.sendLowLevel(data, function onJsonResponse(error, json) {
-      var response;
+    if ((timeout = parseInt(this.getOption('operation_timeout'))) && timeout != CLIENT_DEFAULT_OPERATION_TIMEOUT) {
+      headers['X-Miva-API-Timeout'] = timeout;
+    }
 
+    if (request.getBinaryEncoding() == abstract.Request.BINARY_ENCODING_BASE64) {
+      headers['X-Miva-API-Binary-Encoding'] = request.getBinaryEncoding();
+    }
+    
+    headers = request.processRequestHeaders(headers);
+
+    if (!util.isObject(headers)) {
+      headers = {};
+    }
+
+    if (util.isInstanceOf(this.logger, Logger)) {
+      this.logger.logRequest(request, headers, data);
+    }
+
+    this.sendLowLevel(data, headers, function onJsonResponse(error, httpResponse, content) {
+      var response;
+      
       if (error) {
         callback(error, null);
       } else {
-        
         try {
-          response = request.createResponse(json);
+          response = request.createResponse(httpResponse, JSON.parse(content));
+          
+          if (util.isInstanceOf(self.logger, Logger)) {
+            self.logger.logResponse(response, content);
+          }
         } catch(e) {
           callback(e, null);
+          return;
         }
 
         if (!util.isInstanceOf(response, abstract.Response)) {
@@ -281,10 +259,11 @@ class Client {
   /**
    * Send an low level API request with callback.
    * @param {Object} data
+   * @param {Object} headers
    * @param {Client~sendLowLevelCallback} callback
    * @returns {http.ClientRequest|https.ClientRequest}
    */
-  sendLowLevel(data, callback) {
+  sendLowLevel(data, headers, callback) {
     var body;
     var options;
     var proto;
@@ -303,11 +282,10 @@ class Client {
       port: this.endpoint.port,
       path: this.endpoint.pathname,
       method: 'POST',
-      headers: {
+      headers: Object.assign(headers, {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body, 'utf8'),
-        'X-Miva-API-Authorization': this.generateAuthHeader(body)
-      }
+        'Content-Length': Buffer.byteLength(body, 'utf8')
+      })
     };
 
     const request = proto.request(options, function onPrepareResponse(response) {
@@ -319,21 +297,19 @@ class Client {
       response.on('data', function onChunkReceived(chunk) {
         content += chunk;
       }).on('end', function onResponseEnd() {
-        try {          
-          json = JSON.parse(content);
-        } catch (e) {
-          callback(new Error(e.message), null);
-          return;
-        }
-
-        callback(null, json);
+        callback(null, this, content);
       })
     }).on('error', function onRequestError(error) {
-      callback(error, null);
+      callback(error, this, null);
     });
 
-    request.write(body);
-    request.end();
+    this.generateAuthHeader(body).then(authHeader => {
+      request.setHeader('X-Miva-API-Authorization', authHeader);
+      request.write(body);
+      request.end();
+    }).catch(error => {
+      throw error;
+    });
 
     return request;
   }
@@ -342,32 +318,21 @@ class Client {
    * The callback signature for Client~sendLowLevel
    * @callback Client~sendLowLevelCallback
    * @param {?Error} error
-   * @param {?Object} response
+   * @param {?} httpResponse
+   * @param {?Buffer} response
    */
 
   /**
    * Generates the authentication header value.
    * @param {string} data
-   * @returns {string}
+   * @returns {Promise}
    */
   generateAuthHeader(data) {
-    var key;
-    var hash;
-    var digest = this.getOption('signing_key_digest');
-    
-    if (digest !== SIGN_DIGEST_SHA1 && digest !== SIGN_DIGEST_SHA256) {
-      return util.format('MIVA %s', this.getApiToken());
+    if (!util.isInstanceOf(this.authenticator, Authenticator)) {
+      throw new Error('Expected an instance of Authenticator');
     }
 
-    key = Buffer.from(this.getSigningKey(), 'base64');
-
-    if (!key.byteLength) {
-      throw new Error('No signing key assigned to sign request');
-    }
-
-    hash = crypto.createHmac(digest, key).update(data);
-
-    return util.format('MIVA-HMAC-%s %s:%s', digest.toUpperCase(), this.getApiToken(), hash.digest('base64'));
+    return this.authenticator.generateAuthenticationHeader(data);
   }
 
   /**
@@ -389,6 +354,315 @@ class Client {
   }
 }
 
+
+/** 
+ * Handles sending API requests
+ * @see https://docs.miva.com/json-api/#authentication
+ */
+class Client extends BaseClient {
+  /**
+   * Client Constructor.
+   * @param {URL|string} endpoint
+   * @param {string} apiToken
+   * @param {string} signingKey
+   * @param {Object} options
+   */
+  constructor(endpoint, apiToken, signingKey, options = {}) {
+    super(endpoint, new TokenAuthenticator(apiToken, signingKey), options);
+    if (!util.isNullOrUndefined(options.signing_key_digest)) {
+      this.authenticator.setDigestType(options.signing_key_digest);
+    }
+  }
+
+  /**
+   * Constant SIGN_DIGEST_SHA1
+   * @constant
+   * @returns {string}
+   */
+  static get SIGN_DIGEST_SHA1() {
+    return SIGN_DIGEST_SHA1;
+  }
+
+  /**
+   * Constant SIGN_DIGEST_SHA256
+   * @constant
+   * @returns {string}
+   */
+  static get SIGN_DIGEST_SHA256() {
+    return SIGN_DIGEST_SHA256;
+  }
+
+  /**
+   * Constant SIGN_DIGEST_NONE
+   * @constant
+   * @returns {string}
+   */
+  static get SIGN_DIGEST_NONE() {
+    return SIGN_DIGEST_NONE;
+  }
+
+  /**
+   * Get the api token used to authenticate the request.
+   * @returns {string}
+   */
+  getApiToken() {
+    if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+      return this.authenticator.getApiToken();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the api token used to authenticate the request.
+   * @param {string} apiToken
+   * @returns {Client}
+   */
+  setApiToken(apiToken) {
+    if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+      this.authenticator.setApiToken(apiToken);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the signing key used to sign requests. Base64 encoded.
+   * @returns {string}
+   */
+  getSigningKey() {
+    if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+      return this.authenticator.getSigningKey();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the signing key used to sign requests. Base64 encoded.
+   * @param {string} signingKey
+   * @returns {Client}
+   */
+  setSigningKey(signingKey) {
+    if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+      this.authenticator.setSigningKey(signingKey);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get a client option.
+   * @param {string} key
+   * @returns {*}
+   */
+  getOption(key) {
+    if (key === 'signing_key_digest') {
+      if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+        return this.authenticator.getDigestType();
+      }
+      return null;
+    }
+
+    return super.getOption(key);
+  }
+
+  /**
+   * Set a client option.
+   * @param {string} key
+   * @param {*} value
+   * @returns {Client}
+   */
+  setOption(key, value) {
+    if (key === 'signing_key_digest') {
+      if (util.isInstanceOf(this.authenticator, TokenAuthenticator)) {
+        this.authenticator.setDigestType(value);
+      }
+      return this;
+    }
+
+    return super.setOption(key, value);
+  }
+}
+
+
+class SSHClient extends BaseClient {
+  /**
+   * Client Constructor.
+   * @param {URL|string} endpoint
+   * @param {string} apiToken
+   * @param {string} signingKey
+   * @param {Object} options
+   */
+  constructor(endpoint, username, privateKeyPath, password, digestType = SSHPrivateKeyAuthenticator.SIGN_DIGEST_SHA256, options = {}) {
+    super(endpoint, new SSHPrivateKeyAuthenticator(username, privateKeyPath, password, digestType), options);
+  }
+
+  /**
+   * Set the username to authenticate with
+   * @param {stirng} username
+   * @return self
+   */
+  setUsername(username) {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      this.authenticator.setUsername(username);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the username to authenticate with
+   * @return {stirng} username
+   */
+  getUsername() {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      return this.authenticator.getUsername();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the private key file to authenticate with
+   * @param {string} path to the private key file
+   * @param {string} private key password
+   * @returns self
+   */
+  setPrivateKey(privateKeyPath, password) {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      this.authenticator.setPrivateKey(privateKeyPath, password);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the private key to authenticate with
+   */
+  getPrivateKey() {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      return this.authenticator.getPrivateKey();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the sign digest type
+   * @param {string}
+   */
+  setDigestType(digestType) {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      this.authenticator.setDigestType(digestType);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the sign digest type
+   * @returns {string}
+   */
+  getDigestType() {
+    if (util.isInstanceOf(this.authenticator, SSHPrivateKeyAuthenticator)) {
+      return this.authenticator.getDigestType();
+    }
+
+    return null;
+  }
+}
+
+
+class SSHAgentClient extends BaseClient {
+  /**
+   * Client Constructor.
+   * @param {URL|string} endpoint
+   * @param {string} apiToken
+   * @param {string} signingKey
+   * @param {Object} options
+   */
+  constructor(endpoint, username, publicKeyFilePath, agentSocketPath = '', digestType = SSHAgentAuthenticator.SIGN_DIGEST_SHA256, options = {}) {
+    super(endpoint, new SSHAgentAuthenticator(username, publicKeyFilePath, agentSocketPath, digestType), options);
+  }
+
+  /**
+   * Set the username to authenticate with
+   * @param {stirng} username
+   * @return self
+   */
+  setUsername(username) {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      this.authenticator.setUsername(username);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the username to authenticate with
+   * @return {stirng} username
+   */
+  getUsername() {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      return this.authenticator.getUsername();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the public key file to authenticate with
+   * @param {string} path to the public key file
+   * @returns self
+   */
+  setPrivateKey(publicKeyPath) {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      this.authenticator.setPublicKey(publicKeyPath);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the public key to authenticate with
+   */
+  getPublicKey() {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      return this.authenticator.getPublicKey();
+    }
+
+    return null;
+  }
+
+  /**
+   * Set the sign digest type
+   * @param {int}
+   */
+  setDigestType(digestType) {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      this.authenticator.setDigestType(digestType);
+    }
+
+    return this;
+  }
+
+  /**
+   * Get the sign digest type
+   * @returns {int}
+   */
+  getDigestType() {
+    if (util.isInstanceOf(this.authenticator, SSHAgentAuthenticator)) {
+      return this.authenticator.getDigestType();
+    }
+
+    return null;
+  }
+}
+
 module.exports = {
-  Client
+  BaseClient,
+  Client,
+  SSHClient,
+  SSHAgentClient
 };

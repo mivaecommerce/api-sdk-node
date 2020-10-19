@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: index.js 71912 2018-12-11 21:08:41Z gidriss $
  */
 
 const { Client }             = require('./client');
@@ -16,14 +14,18 @@ const { FilterExpression }   = require('./listquery');
 const requests     = require('./requests');
 const responses    = require('./responses');
 const models       = require('./models');
+const logger       = require('./logger');
 
 module.exports = {
   Client,
+  SSHClient,
+  SSHAgentClient,
   MultiCallRequest,
   MultiCallOperation,
   FilterExpression,
   Version,
   requests,
   responses,
-  models
+  models,
+  logger
 };
