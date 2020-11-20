@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: list_query_example.js 74181 2019-03-27 23:32:37Z gidriss $
  */
 
 const api   = require('merchantapi');

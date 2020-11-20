@@ -1,3 +1,7 @@
+v2.0.1
+	- Corrected version number in library version class
+	- MMAPI-13 - Client can now define http headers to be sent with every request
+	- MMAPI-18 - Fixed missing class inclusions in require clause in index.js
 v2.0.0
 	There are possible breaking changes in this release. Please consult the UPGRADING.md file included in this repository
 	for assistance in upgrading your existing code base from 1.x to 2.x

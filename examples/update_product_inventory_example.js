@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: update_product_inventory_example.js 71954 2018-12-13 21:15:41Z gidriss $
  */
 
 const api = require('merchantapi');

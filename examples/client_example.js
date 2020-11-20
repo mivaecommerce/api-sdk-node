@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: client_example.js 71932 2018-12-12 20:25:36Z gidriss $
  */
 
 const api = require('merchantapi');
@@ -29,7 +27,10 @@ var options = {
       The default store code that will be added to each request that
       did not have one specified. Default is null.
   */
-  default_store_code: 'STORE_CODE'
+  default_store_code: 'STORE_CODE',
+
+  /* Multi call operation timeout, in seconds. Defaults to 60 */
+  'operation_timeout': 60
 };
 
 var client = new api.Client('https://www.mystore.com/mm5/json.mvc', 'MyApiToken', 'MySigningKey', options);

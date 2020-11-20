@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: multicall_example.js 76866 2019-07-15 19:51:00Z gidriss $
  */
 
 const api   = require('merchantapi');
@@ -61,6 +59,26 @@ var operation = request.operation();
         var operation = new api.MultiCallOperation();
         request.addOperation(operation);
 */
+
+/* If needed, we can adjust the timeout for the multi call operation within the client. The default is 60 seconds. */
+
+client.set_option('operation_timeout', 60);
+
+/* If you wish to automatically fetch the remaining data in the event of a timeout, you can specify the auto timeout completion flag within the request. 
+# By default it is not enabled. */
+
+request.setAutoContinueTimeout(true);
+
+/* Optionally supply a callback which gets called on each subsequent request when using the auto timeout continue feature */
+request.setAutoContinueCallback(function(error, response, completed) {
+  if (error) {
+    return;
+  }
+  
+  if (complete) {
+    // all data received
+  }
+});
 
 /*  Set shared data between the iterations, for example we can set a shared
     value for Product_Price and update many products without specifying the same

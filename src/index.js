@@ -6,6 +6,8 @@
  */
 
 const { Client }             = require('./client');
+const { SSHClient }          = require('./client');
+const { SSHAgentClient }     = require('./client');
 const { Version }            = require('./version');
 const { MultiCallRequest }   = require('./multicall');
 const { MultiCallOperation } = require('./multicall');

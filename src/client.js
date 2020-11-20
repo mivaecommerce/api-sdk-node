@@ -41,6 +41,7 @@ class BaseClient {
     this.setEndpoint(endpoint);
     this.logger = null;
     this.authenticator = authenticator;
+    this.globalHeaders = {}
 
     this.options = Object.assign({
       require_timestamps: true,
@@ -122,6 +123,45 @@ class BaseClient {
   }
 
   /**
+   * Set a global header to be sent with every request
+   * @oaram {str}
+   * @oaram {str}
+   * @returns {Client?}
+   */
+  setGlobalHeader(key, value) {
+    this.globalHeaders[key] = value;
+    return this;
+  }
+  
+  /**
+   * Get a global header or null if not defined
+   * @oaram {str}
+   * @returns {string?}
+   */
+  getGlobalHeader(key) {
+    return key in this.globalHeaders ? this.globalHeaders[key] : null;
+  }
+  
+  /**
+   * Check if a global header is defined
+   * @oaram {str}
+   * @returns {bool}
+   */
+  hasGlobalHeader(key) {
+    return key in this.globalHeaders;
+  }
+
+  /**
+   * Remove a defined global header
+   * @oaram {str}
+   * @returns {Client}
+   */
+  removeGlobalHeader(key) {
+    delete this.globalHeaders[key];
+    return this;
+  }
+
+  /**
    * Queue a Request object for a Promise.
    * @param {Request} request
    * @returns {Promise}
@@ -151,7 +191,7 @@ class BaseClient {
     var data, timeout;
     var i, l, i2, l2;
     var mrequests, orequests;
-    var headers = {};
+    var headers = this.globalHeaders;
     var self = this;
 
     var defaultStore = this.getOption('default_store_code');
@@ -225,15 +265,28 @@ class BaseClient {
 
     this.sendLowLevel(data, headers, function onJsonResponse(error, httpResponse, content) {
       var response;
-      
+      var errorResponse;
+
       if (error) {
         callback(error, null);
       } else {
+        errorResponse = httpResponse.statusCode < 200 || httpResponse.statusCode >= 300;
+
         try {
-          response = request.createResponse(httpResponse, JSON.parse(content));
+          response = request.createResponse(httpResponse, errorResponse ? {} : JSON.parse(content));
           
           if (util.isInstanceOf(self.logger, Logger)) {
             self.logger.logResponse(response, content);
+          }
+
+          if (errorResponse) {
+            if (httpResponse.statusCode == 401) {
+              callback(new Error('HTTP Authentication Error'), httpResponse);
+            } else {
+              callback(new Error('HTTP Response Error'), httpResponse);
+            }
+
+            return;
           }
         } catch(e) {
           callback(e, null);

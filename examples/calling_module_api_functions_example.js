@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: calling_module_api_functions_example.js 71956 2018-12-13 21:20:05Z gidriss $
  */
 
 const api = require('merchantapi');

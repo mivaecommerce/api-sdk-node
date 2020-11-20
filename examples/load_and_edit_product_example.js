@@ -3,8 +3,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * $Id: load_and_edit_product_example.js 71519 2018-11-13 23:25:31Z gidriss $
  */
 
 const api  = require('merchantapi');
