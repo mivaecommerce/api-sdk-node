@@ -100,7 +100,7 @@ class ListQueryRequest extends Request {
     this.sort                       = null;
     this.offset                     = 0;
     this.count                      = 0;
-    this.filters                    = [];
+    this.filters                    = new FilterExpression(this);
     this.expressions                = [];
     this.onDemandColumns            = [];
     this.customFilters              = {};

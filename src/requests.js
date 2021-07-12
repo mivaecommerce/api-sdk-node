@@ -14174,7 +14174,8 @@ class BranchCSSResourceVersionListLoadQuery extends ListQueryRequest {
     this.availableOnDemandColumns = [
       'source',
       'linkedpages',
-      'linkedresources'
+      'linkedresources',
+      'source_notes'
     ];
     this.branchId = null;
     this.branchName = null;
@@ -14347,7 +14348,8 @@ class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
     this.availableOnDemandColumns = [
       'source',
       'linkedpages',
-      'linkedresources'
+      'linkedresources',
+      'source_notes'
     ];
     this.branchId = null;
     this.branchName = null;
@@ -14745,7 +14747,8 @@ class ChangesetCSSResourceVersionListLoadQuery extends ListQueryRequest {
     ];
 
     this.availableOnDemandColumns = [
-      'source'
+      'source',
+      'source_notes'
     ];
     this.changesetId = null;
 
@@ -14841,7 +14844,8 @@ class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
     ];
 
     this.availableOnDemandColumns = [
-      'source'
+      'source',
+      'source_notes'
     ];
     this.changesetId = null;
 
@@ -15834,7 +15838,8 @@ class BranchPropertyVersionListLoadQuery extends ListQueryRequest {
       'settings',
       'product',
       'category',
-      'source'
+      'source',
+      'source_notes'
     ];
     this.branchId = null;
     this.branchName = null;
@@ -16008,7 +16013,8 @@ class ChangesetPropertyVersionListLoadQuery extends ListQueryRequest {
       'settings',
       'product',
       'category',
-      'source'
+      'source',
+      'source_notes'
     ];
     this.changesetId = null;
 
@@ -16308,6 +16314,17359 @@ class MivaMerchantVersion extends Request {
    */
   createResponse(httpResponse, data) {
     return new responses.MivaMerchantVersion(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Attribute_Load_Code. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_load_code
+ */
+class AttributeLoadCode extends Request {
+  /**
+   * AttributeLoadCode Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'Attribute_Load_Code';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.customerId = null;
+    this.attributeCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeLoadCode}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeLoadCode}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeLoadCode}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {AttributeLoadCode}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {AttributeLoadCode}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    }
+
+    data['Attribute_Code'] = this.attributeCode;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeLoadCode(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Attribute_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_insert
+ */
+class AttributeInsert extends Request {
+  /**
+   * AttributeInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'Attribute_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.code = null;
+    this.prompt = null;
+    this.type = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.copy = null;
+    this.required = null;
+    this.inventory = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+
+      this.setProductCode(product.getCode());
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.type;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get Copy.
+   * @returns {boolean}
+   */
+  getCopy() {
+    return this.copy;
+  }
+
+  /**
+   * Get Required.
+   * @returns {boolean}
+   */
+  getRequired() {
+    return this.required;
+  }
+
+  /**
+   * Get Inventory.
+   * @returns {boolean}
+   */
+  getInventory() {
+    return this.inventory;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeInsert}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeInsert}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeInsert}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeInsert}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeInsert}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {AttributeInsert}
+   */
+  setType(type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeInsert}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeInsert}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeInsert}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeInsert}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set Copy.
+   * @param {boolean} copy
+   * @returns {AttributeInsert}
+   */
+  setCopy(copy) {
+    this.copy = copy;
+    return this;
+  }
+
+  /**
+   * Set Required.
+   * @param {boolean} required
+   * @returns {AttributeInsert}
+   */
+  setRequired(required) {
+    this.required = required;
+    return this;
+  }
+
+  /**
+   * Set Inventory.
+   * @param {boolean} inventory
+   * @returns {AttributeInsert}
+   */
+  setInventory(inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    data['Code'] = this.code;
+
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
+
+    data['Type'] = this.type;
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.copy)) {
+      data['Copy'] = this.copy;
+    }
+
+    if (!util.isNullOrUndefined(this.required)) {
+      data['Required'] = this.required;
+    }
+
+    if (!util.isNullOrUndefined(this.inventory)) {
+      data['Inventory'] = this.inventory;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Attribute_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_update
+ */
+class AttributeUpdate extends Request {
+  /**
+   * AttributeUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductAttribute} productAttribute
+   */
+  constructor(client, productAttribute = null) {
+    super(client);
+    this.function = 'Attribute_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+    this.code = null;
+    this.prompt = null;
+    this.type = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.copy = null;
+    this.required = null;
+    this.inventory = null;
+
+    if (util.isInstanceOf(productAttribute, models.ProductAttribute)) {
+      if (productAttribute.getProductId()) {
+        this.setProductId(productAttribute.getProductId());
+      }
+
+      if (productAttribute.getId()) {
+        this.setAttributeId(productAttribute.getId());
+      } else if (productAttribute.getCode()) {
+        this.setEditAttribute(productAttribute.getCode());
+      } else if (productAttribute.getCode()) {
+        this.setAttributeCode(productAttribute.getCode());
+      }
+
+      this.setEditAttribute(productAttribute.getCode());
+      this.setCode(productAttribute.getCode());
+      this.setPrompt(productAttribute.getPrompt());
+      this.setType(productAttribute.getType());
+      this.setImage(productAttribute.getImage());
+      this.setPrice(productAttribute.getPrice());
+      this.setCost(productAttribute.getCost());
+      this.setWeight(productAttribute.getWeight());
+      this.setRequired(productAttribute.getRequired());
+      this.setInventory(productAttribute.getInventory());
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.type;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get Copy.
+   * @returns {boolean}
+   */
+  getCopy() {
+    return this.copy;
+  }
+
+  /**
+   * Get Required.
+   * @returns {boolean}
+   */
+  getRequired() {
+    return this.required;
+  }
+
+  /**
+   * Get Inventory.
+   * @returns {boolean}
+   */
+  getInventory() {
+    return this.inventory;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {AttributeUpdate}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {AttributeUpdate}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {AttributeUpdate}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeUpdate}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeUpdate}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {AttributeUpdate}
+   */
+  setType(type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeUpdate}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeUpdate}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeUpdate}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeUpdate}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set Copy.
+   * @param {boolean} copy
+   * @returns {AttributeUpdate}
+   */
+  setCopy(copy) {
+    this.copy = copy;
+    return this;
+  }
+
+  /**
+   * Set Required.
+   * @param {boolean} required
+   * @returns {AttributeUpdate}
+   */
+  setRequired(required) {
+    this.required = required;
+    return this;
+  }
+
+  /**
+   * Set Inventory.
+   * @param {boolean} inventory
+   * @returns {AttributeUpdate}
+   */
+  setInventory(inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    }
+
+    if (!util.isNullOrUndefined(this.code)) {
+      data['Code'] = this.code;
+    }
+
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
+
+    if (!util.isNullOrUndefined(this.type)) {
+      data['Type'] = this.type;
+    }
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.copy)) {
+      data['Copy'] = this.copy;
+    }
+
+    if (!util.isNullOrUndefined(this.required)) {
+      data['Required'] = this.required;
+    }
+
+    if (!util.isNullOrUndefined(this.inventory)) {
+      data['Inventory'] = this.inventory;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Attribute_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_delete
+ */
+class AttributeDelete extends Request {
+  /**
+   * AttributeDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductAttribute} productAttribute
+   */
+  constructor(client, productAttribute = null) {
+    super(client);
+    this.function = 'Attribute_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+
+    if (util.isInstanceOf(productAttribute, models.ProductAttribute)) {
+      if (productAttribute.getProductId()) {
+        this.setProductId(productAttribute.getProductId());
+      }
+
+      if (productAttribute.getId()) {
+        this.setAttributeId(productAttribute.getId());
+      } else if (productAttribute.getCode()) {
+        this.setEditAttribute(productAttribute.getCode());
+      }
+
+      this.setEditAttribute(productAttribute.getCode());
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeDelete}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeDelete}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeDelete}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {AttributeDelete}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {AttributeDelete}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {AttributeDelete}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OptionList_Load_Attribute. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/optionlist_load_attribute
+ */
+class OptionListLoadAttribute extends Request {
+  /**
+   * OptionListLoadAttribute Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductAttribute} productAttribute
+   */
+  constructor(client, productAttribute = null) {
+    super(client);
+    this.function = 'OptionList_Load_Attribute';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+    this.customerId = null;
+
+    if (util.isInstanceOf(productAttribute, models.ProductAttribute)) {
+      if (productAttribute.getProductId()) {
+        this.setProductId(productAttribute.getProductId());
+      }
+
+      if (productAttribute.getId()) {
+        this.setAttributeId(productAttribute.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {OptionListLoadAttribute}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {OptionListLoadAttribute}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {OptionListLoadAttribute}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionListLoadAttribute}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {OptionListLoadAttribute}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {OptionListLoadAttribute}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {OptionListLoadAttribute}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionListLoadAttribute(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Option_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/option_delete
+ */
+class OptionDelete extends Request {
+  /**
+   * OptionDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductOption} productOption
+   */
+  constructor(client, productOption = null) {
+    super(client);
+    this.function = 'Option_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.optionId = null;
+    this.optionCode = null;
+    this.attributeId = null;
+
+    if (util.isInstanceOf(productOption, models.ProductOption)) {
+      if (productOption.getId()) {
+        this.setOptionId(productOption.getId());
+      } else if (productOption.getCode()) {
+        this.setOptionCode(productOption.getCode());
+      }
+
+      if (productOption.getAttributeId()) {
+        this.setAttributeId(productOption.getAttributeId());
+      }
+
+      this.setOptionId(productOption.getId());
+    }
+  }
+
+  /**
+   * Get Option_ID.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.optionId;
+  }
+
+  /**
+   * Get Option_Code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.optionCode;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Set Option_ID.
+   * @param {number} optionId
+   * @returns {OptionDelete}
+   */
+  setOptionId(optionId) {
+    this.optionId = optionId;
+    return this;
+  }
+
+  /**
+   * Set Option_Code.
+   * @param {string} optionCode
+   * @returns {OptionDelete}
+   */
+  setOptionCode(optionCode) {
+    this.optionCode = optionCode;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionDelete}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.optionId)) {
+      data['Option_ID'] = this.optionId;
+    } else if (!util.isNullOrUndefined(this.optionCode)) {
+      data['Option_Code'] = this.optionCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    }
+
+    if (!util.isNullOrUndefined(this.optionId)) {
+      data['Option_ID'] = this.optionId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Option_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/option_insert
+ */
+class OptionInsert extends Request {
+  /**
+   * OptionInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductAttribute} productAttribute
+   */
+  constructor(client, productAttribute = null) {
+    super(client);
+    this.function = 'Option_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+    this.code = null;
+    this.prompt = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.defaultOption = null;
+
+    if (util.isInstanceOf(productAttribute, models.ProductAttribute)) {
+      if (productAttribute.getProductId()) {
+        this.setProductId(productAttribute.getProductId());
+      }
+
+      if (productAttribute.getId()) {
+        this.setAttributeId(productAttribute.getId());
+      } else if (productAttribute.getCode()) {
+        this.setEditAttribute(productAttribute.getCode());
+      } else if (productAttribute.getCode()) {
+        this.setAttributeCode(productAttribute.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get default_option.
+   * @returns {boolean}
+   */
+  getDefaultOption() {
+    return this.defaultOption;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {OptionInsert}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {OptionInsert}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {OptionInsert}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionInsert}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {OptionInsert}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {OptionInsert}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {OptionInsert}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {OptionInsert}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {OptionInsert}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {OptionInsert}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {OptionInsert}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {OptionInsert}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set default_option.
+   * @param {boolean} defaultOption
+   * @returns {OptionInsert}
+   */
+  setDefaultOption(defaultOption) {
+    this.defaultOption = defaultOption;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    data['Code'] = this.code;
+
+    data['Prompt'] = this.prompt;
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.defaultOption)) {
+      data['Default'] = this.defaultOption;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Option_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/option_update
+ */
+class OptionUpdate extends Request {
+  /**
+   * OptionUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductOption} productOption
+   */
+  constructor(client, productOption = null) {
+    super(client);
+    this.function = 'Option_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.optionId = null;
+    this.optionCode = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+    this.code = null;
+    this.prompt = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.defaultOption = null;
+
+    if (util.isInstanceOf(productOption, models.ProductOption)) {
+      if (productOption.getProductId()) {
+        this.setProductId(productOption.getProductId());
+      }
+
+      if (productOption.getAttributeId()) {
+        this.setAttributeId(productOption.getAttributeId());
+      }
+
+      if (productOption.getId()) {
+        this.setOptionId(productOption.getId());
+      } else if (productOption.getCode()) {
+        this.setOptionCode(productOption.getCode());
+      }
+
+      this.setCode(productOption.getCode());
+      this.setPrompt(productOption.getPrompt());
+      this.setImage(productOption.getImage());
+      this.setPrice(productOption.getPrice());
+      this.setCost(productOption.getCost());
+      this.setWeight(productOption.getWeight());
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Option_ID.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.optionId;
+  }
+
+  /**
+   * Get Option_Code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.optionCode;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get default_option.
+   * @returns {boolean}
+   */
+  getDefaultOption() {
+    return this.defaultOption;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {OptionUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {OptionUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {OptionUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Option_ID.
+   * @param {number} optionId
+   * @returns {OptionUpdate}
+   */
+  setOptionId(optionId) {
+    this.optionId = optionId;
+    return this;
+  }
+
+  /**
+   * Set Option_Code.
+   * @param {string} optionCode
+   * @returns {OptionUpdate}
+   */
+  setOptionCode(optionCode) {
+    this.optionCode = optionCode;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionUpdate}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {OptionUpdate}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {OptionUpdate}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {OptionUpdate}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {OptionUpdate}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {OptionUpdate}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {OptionUpdate}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {OptionUpdate}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {OptionUpdate}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set default_option.
+   * @param {boolean} defaultOption
+   * @returns {OptionUpdate}
+   */
+  setDefaultOption(defaultOption) {
+    this.defaultOption = defaultOption;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    if (!util.isNullOrUndefined(this.optionId)) {
+      data['Option_ID'] = this.optionId;
+    } else if (!util.isNullOrUndefined(this.optionCode)) {
+      data['Option_Code'] = this.optionCode;
+    }
+
+    if (!util.isNullOrUndefined(this.code)) {
+      data['Code'] = this.code;
+    }
+
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.defaultOption)) {
+      data['Default'] = this.defaultOption;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Option_Load_Code. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/option_load_code
+ */
+class OptionLoadCode extends Request {
+  /**
+   * OptionLoadCode Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'Option_Load_Code';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.attributeCode = null;
+    this.editAttribute = null;
+    this.optionCode = null;
+    this.customerId = null;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Option_Code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.optionCode;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {OptionLoadCode}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {OptionLoadCode}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {OptionLoadCode}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionLoadCode}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {OptionLoadCode}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {OptionLoadCode}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Option_Code.
+   * @param {string} optionCode
+   * @returns {OptionLoadCode}
+   */
+  setOptionCode(optionCode) {
+    this.optionCode = optionCode;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {OptionLoadCode}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    }
+
+    if (!util.isNullOrUndefined(this.optionCode)) {
+      data['Option_Code'] = this.optionCode;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionLoadCode(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Option_Set_Default. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/option_set_default
+ */
+class OptionSetDefault extends Request {
+  /**
+   * OptionSetDefault Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductOption} productOption
+   */
+  constructor(client, productOption = null) {
+    super(client);
+    this.function = 'Option_Set_Default';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.optionId = null;
+    this.optionCode = null;
+    this.attributeId = null;
+    this.optionDefault = null;
+
+    if (util.isInstanceOf(productOption, models.ProductOption)) {
+      if (productOption.getId()) {
+        this.setOptionId(productOption.getId());
+      } else if (productOption.getCode()) {
+        this.setOptionCode(productOption.getCode());
+      }
+
+      if (productOption.getAttributeId()) {
+        this.setAttributeId(productOption.getAttributeId());
+      }
+
+      this.setOptionCode(productOption.getCode());
+    }
+  }
+
+  /**
+   * Get Option_ID.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.optionId;
+  }
+
+  /**
+   * Get Option_Code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.optionCode;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Option_Default.
+   * @returns {boolean}
+   */
+  getOptionDefault() {
+    return this.optionDefault;
+  }
+
+  /**
+   * Set Option_ID.
+   * @param {number} optionId
+   * @returns {OptionSetDefault}
+   */
+  setOptionId(optionId) {
+    this.optionId = optionId;
+    return this;
+  }
+
+  /**
+   * Set Option_Code.
+   * @param {string} optionCode
+   * @returns {OptionSetDefault}
+   */
+  setOptionCode(optionCode) {
+    this.optionCode = optionCode;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {OptionSetDefault}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Option_Default.
+   * @param {boolean} optionDefault
+   * @returns {OptionSetDefault}
+   */
+  setOptionDefault(optionDefault) {
+    this.optionDefault = optionDefault;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.optionId)) {
+      data['Option_ID'] = this.optionId;
+    } else if (!util.isNullOrUndefined(this.optionCode)) {
+      data['Option_Code'] = this.optionCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    }
+
+    if (!util.isNullOrUndefined(this.optionCode)) {
+      data['Option_Code'] = this.optionCode;
+    }
+
+    if (!util.isNullOrUndefined(this.optionDefault)) {
+      data['Option_Default'] = this.optionDefault;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OptionSetDefault(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeAndOptionList_Load_Product. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributeandoptionlist_load_product
+ */
+class AttributeAndOptionListLoadProduct extends Request {
+  /**
+   * AttributeAndOptionListLoadProduct Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'AttributeAndOptionList_Load_Product';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.customerId = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      }
+
+      this.setProductCode(product.getCode());
+      this.setEditProduct(product.getCode());
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeAndOptionListLoadProduct}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeAndOptionListLoadProduct}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeAndOptionListLoadProduct}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {AttributeAndOptionListLoadProduct}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeAndOptionListLoadProduct(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderShipmentList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/ordershipmentlist_load_query
+ */
+class OrderShipmentListLoadQuery extends ListQueryRequest {
+  /**
+   * OrderShipmentListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'OrderShipmentList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'order_id',
+      'code',
+      'tracknum',
+      'tracktype',
+      'weight',
+      'cost',
+      'status',
+      'ship_date',
+      'batch_id',
+      'order_batch_id',
+      'order_pay_id',
+      'order_status',
+      'order_pay_status',
+      'order_stk_status',
+      'order_orderdate',
+      'order_dt_instock',
+      'order_cust_id',
+      'order_ship_res',
+      'order_ship_fname',
+      'order_ship_lname',
+      'order_ship_email',
+      'order_ship_comp',
+      'order_ship_phone',
+      'order_ship_fax',
+      'order_ship_addr1',
+      'order_ship_addr2',
+      'order_ship_city',
+      'order_ship_state',
+      'order_ship_zip',
+      'order_ship_cntry',
+      'order_bill_fname',
+      'order_bill_lname',
+      'order_bill_email',
+      'order_bill_comp',
+      'order_bill_phone',
+      'order_bill_fax',
+      'order_bill_addr1',
+      'order_bill_addr2',
+      'order_bill_city',
+      'order_bill_state',
+      'order_bill_zip',
+      'order_bill_cntry',
+      'order_ship_id',
+      'order_ship_data',
+      'order_source',
+      'order_source_id',
+      'order_total',
+      'order_total_ship',
+      'order_total_tax',
+      'order_total_auth',
+      'order_total_capt',
+      'order_total_rfnd',
+      'order_net_capt',
+      'order_pend_count',
+      'order_bord_count',
+      'order_note_count'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'order_id',
+      'code',
+      'tracknum',
+      'tracktype',
+      'weight',
+      'cost',
+      'status',
+      'ship_date',
+      'batch_id',
+      'order_batch_id',
+      'order_pay_id',
+      'order_status',
+      'order_pay_status',
+      'order_stk_status',
+      'order_dt_instock',
+      'order_orderdate',
+      'order_cust_id',
+      'order_ship_res',
+      'order_ship_fname',
+      'order_ship_lname',
+      'order_ship_email',
+      'order_ship_comp',
+      'order_ship_phone',
+      'order_ship_fax',
+      'order_ship_addr1',
+      'order_ship_addr2',
+      'order_ship_city',
+      'order_ship_state',
+      'order_ship_zip',
+      'order_ship_cntry',
+      'order_bill_fname',
+      'order_bill_lname',
+      'order_bill_email',
+      'order_bill_comp',
+      'order_bill_phone',
+      'order_bill_fax',
+      'order_bill_addr1',
+      'order_bill_addr2',
+      'order_bill_city',
+      'order_bill_state',
+      'order_bill_zip',
+      'order_bill_cntry',
+      'order_ship_id',
+      'order_ship_data',
+      'order_source',
+      'order_source_id',
+      'order_total',
+      'order_total_ship',
+      'order_total_tax',
+      'order_total_auth',
+      'order_total_capt',
+      'order_total_rfnd',
+      'order_net_capt',
+      'order_pend_count',
+      'order_bord_count',
+      'order_note_count'
+    ];
+
+    this.availableOnDemandColumns = [
+      'items',
+      'include_order'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderShipmentListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderItem_Split. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderitem_split
+ */
+class OrderItemSplit extends Request {
+  /**
+   * OrderItemSplit Constructor.
+   * @param {?BaseClient} client
+   * @param {?OrderItem} orderItem
+   */
+  constructor(client, orderItem = null) {
+    super(client);
+    this.function = 'OrderItem_Split';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.lineId = null;
+    this.quantity = null;
+
+    if (util.isInstanceOf(orderItem, models.OrderItem)) {
+      if (orderItem.getOrderId()) {
+        this.setOrderId(orderItem.getOrderId());
+      }
+
+      if (orderItem.getLineId()) {
+        this.setLineId(orderItem.getLineId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Line_ID.
+   * @returns {number}
+   */
+  getLineId() {
+    return this.lineId;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderItemSplit}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Line_ID.
+   * @param {number} lineId
+   * @returns {OrderItemSplit}
+   */
+  setLineId(lineId) {
+    this.lineId = lineId;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {OrderItemSplit}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.lineId)) {
+      data['Line_ID'] = this.lineId;
+    }
+
+    data['Quantity'] = this.quantity;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemSplit(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request OrderItemList_RemoveFromShipment. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/orderitemlist_removefromshipment
+ */
+class OrderItemListRemoveFromShipment extends Request {
+  /**
+   * OrderItemListRemoveFromShipment Constructor.
+   * @param {?BaseClient} client
+   * @param {?Order} order
+   */
+  constructor(client, order = null) {
+    super(client);
+    this.function = 'OrderItemList_RemoveFromShipment';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.lineIds = [];
+
+    if (util.isInstanceOf(order, models.Order)) {
+      if (order.getId()) {
+        this.setOrderId(order.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Line_IDs.
+   * @returns {Array}
+   */
+  getLineIds() {
+    return this.lineIds;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {OrderItemListRemoveFromShipment}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Add Line_IDs.
+   * @param {number} lineId
+   * @returns {OrderItemListRemoveFromShipment}
+   */
+  addLineId(lineId) {
+    this.lineIds.push(lineId);
+    return this;
+  }
+
+  /**
+   * Add OrderItem model.
+   * @param {OrderItem} orderItem
+   * @throws {Error}
+   * @returns {OrderItemListRemoveFromShipment}
+   */
+  addOrderItem(orderItem) {
+    if (!util.isInstanceOf(orderItem, models.OrderItem)) {
+      throw new Error(util.format('Expected instance of OrderItem but got %s',
+        typeof orderItem));
+    }
+
+    if (orderItem.getLineId()) {
+      this.lineIds.push(orderItem.getLineId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    data['Line_IDs'] = this.lineIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.OrderItemListRemoveFromShipment(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerAddress_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customeraddress_insert
+ */
+class CustomerAddressInsert extends Request {
+  /**
+   * CustomerAddressInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerAddress_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.customerLogin = null;
+    this.description = null;
+    this.firstName = null;
+    this.lastName = null;
+    this.email = null;
+    this.phone = null;
+    this.fax = null;
+    this.company = null;
+    this.address1 = null;
+    this.address2 = null;
+    this.city = null;
+    this.state = null;
+    this.zip = null;
+    this.country = null;
+    this.residential = null;
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Description.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.description;
+  }
+
+  /**
+   * Get FirstName.
+   * @returns {string}
+   */
+  getFirstName() {
+    return this.firstName;
+  }
+
+  /**
+   * Get LastName.
+   * @returns {string}
+   */
+  getLastName() {
+    return this.lastName;
+  }
+
+  /**
+   * Get Email.
+   * @returns {string}
+   */
+  getEmail() {
+    return this.email;
+  }
+
+  /**
+   * Get Phone.
+   * @returns {string}
+   */
+  getPhone() {
+    return this.phone;
+  }
+
+  /**
+   * Get Fax.
+   * @returns {string}
+   */
+  getFax() {
+    return this.fax;
+  }
+
+  /**
+   * Get Company.
+   * @returns {string}
+   */
+  getCompany() {
+    return this.company;
+  }
+
+  /**
+   * Get Address1.
+   * @returns {string}
+   */
+  getAddress1() {
+    return this.address1;
+  }
+
+  /**
+   * Get Address2.
+   * @returns {string}
+   */
+  getAddress2() {
+    return this.address2;
+  }
+
+  /**
+   * Get City.
+   * @returns {string}
+   */
+  getCity() {
+    return this.city;
+  }
+
+  /**
+   * Get State.
+   * @returns {string}
+   */
+  getState() {
+    return this.state;
+  }
+
+  /**
+   * Get Zip.
+   * @returns {string}
+   */
+  getZip() {
+    return this.zip;
+  }
+
+  /**
+   * Get Country.
+   * @returns {string}
+   */
+  getCountry() {
+    return this.country;
+  }
+
+  /**
+   * Get Residential.
+   * @returns {boolean}
+   */
+  getResidential() {
+    return this.residential;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerAddressInsert}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerAddressInsert}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Description.
+   * @param {string} description
+   * @returns {CustomerAddressInsert}
+   */
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Set FirstName.
+   * @param {string} firstName
+   * @returns {CustomerAddressInsert}
+   */
+  setFirstName(firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * Set LastName.
+   * @param {string} lastName
+   * @returns {CustomerAddressInsert}
+   */
+  setLastName(lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  /**
+   * Set Email.
+   * @param {string} email
+   * @returns {CustomerAddressInsert}
+   */
+  setEmail(email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Set Phone.
+   * @param {string} phone
+   * @returns {CustomerAddressInsert}
+   */
+  setPhone(phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  /**
+   * Set Fax.
+   * @param {string} fax
+   * @returns {CustomerAddressInsert}
+   */
+  setFax(fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  /**
+   * Set Company.
+   * @param {string} company
+   * @returns {CustomerAddressInsert}
+   */
+  setCompany(company) {
+    this.company = company;
+    return this;
+  }
+
+  /**
+   * Set Address1.
+   * @param {string} address1
+   * @returns {CustomerAddressInsert}
+   */
+  setAddress1(address1) {
+    this.address1 = address1;
+    return this;
+  }
+
+  /**
+   * Set Address2.
+   * @param {string} address2
+   * @returns {CustomerAddressInsert}
+   */
+  setAddress2(address2) {
+    this.address2 = address2;
+    return this;
+  }
+
+  /**
+   * Set City.
+   * @param {string} city
+   * @returns {CustomerAddressInsert}
+   */
+  setCity(city) {
+    this.city = city;
+    return this;
+  }
+
+  /**
+   * Set State.
+   * @param {string} state
+   * @returns {CustomerAddressInsert}
+   */
+  setState(state) {
+    this.state = state;
+    return this;
+  }
+
+  /**
+   * Set Zip.
+   * @param {string} zip
+   * @returns {CustomerAddressInsert}
+   */
+  setZip(zip) {
+    this.zip = zip;
+    return this;
+  }
+
+  /**
+   * Set Country.
+   * @param {string} country
+   * @returns {CustomerAddressInsert}
+   */
+  setCountry(country) {
+    this.country = country;
+    return this;
+  }
+
+  /**
+   * Set Residential.
+   * @param {boolean} residential
+   * @returns {CustomerAddressInsert}
+   */
+  setResidential(residential) {
+    this.residential = residential;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (!util.isNullOrUndefined(this.description)) {
+      data['Description'] = this.description;
+    }
+
+    if (!util.isNullOrUndefined(this.firstName)) {
+      data['FirstName'] = this.firstName;
+    }
+
+    if (!util.isNullOrUndefined(this.lastName)) {
+      data['LastName'] = this.lastName;
+    }
+
+    if (!util.isNullOrUndefined(this.email)) {
+      data['Email'] = this.email;
+    }
+
+    if (!util.isNullOrUndefined(this.phone)) {
+      data['Phone'] = this.phone;
+    }
+
+    if (!util.isNullOrUndefined(this.fax)) {
+      data['Fax'] = this.fax;
+    }
+
+    if (!util.isNullOrUndefined(this.company)) {
+      data['Company'] = this.company;
+    }
+
+    if (!util.isNullOrUndefined(this.address1)) {
+      data['Address1'] = this.address1;
+    }
+
+    if (!util.isNullOrUndefined(this.address2)) {
+      data['Address2'] = this.address2;
+    }
+
+    if (!util.isNullOrUndefined(this.city)) {
+      data['City'] = this.city;
+    }
+
+    if (!util.isNullOrUndefined(this.state)) {
+      data['State'] = this.state;
+    }
+
+    if (!util.isNullOrUndefined(this.zip)) {
+      data['Zip'] = this.zip;
+    }
+
+    if (!util.isNullOrUndefined(this.country)) {
+      data['Country'] = this.country;
+    }
+
+    if (!util.isNullOrUndefined(this.residential)) {
+      data['Residential'] = this.residential;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerAddress_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customeraddress_update
+ */
+class CustomerAddressUpdate extends Request {
+  /**
+   * CustomerAddressUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?CustomerAddress} customerAddress
+   */
+  constructor(client, customerAddress = null) {
+    super(client);
+    this.function = 'CustomerAddress_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.customerId = null;
+    this.customerLogin = null;
+    this.description = null;
+    this.firstName = null;
+    this.lastName = null;
+    this.email = null;
+    this.phone = null;
+    this.fax = null;
+    this.company = null;
+    this.address1 = null;
+    this.address2 = null;
+    this.city = null;
+    this.state = null;
+    this.zip = null;
+    this.country = null;
+    this.residential = null;
+
+    if (util.isInstanceOf(customerAddress, models.CustomerAddress)) {
+      if (customerAddress.getCustomerId()) {
+        this.setCustomerId(customerAddress.getCustomerId());
+      }
+
+      if (customerAddress.getId()) {
+        this.setAddressId(customerAddress.getId());
+      }
+
+      this.setDescription(customerAddress.getDescription());
+      this.setFirstName(customerAddress.getFirstName());
+      this.setLastName(customerAddress.getLastName());
+      this.setEmail(customerAddress.getEmail());
+      this.setFax(customerAddress.getPhone());
+      this.setCompany(customerAddress.getCompany());
+      this.setAddress1(customerAddress.getAddress1());
+      this.setAddress2(customerAddress.getAddress2());
+      this.setCity(customerAddress.getCity());
+      this.setState(customerAddress.getState());
+      this.setZip(customerAddress.getZip());
+      this.setCountry(customerAddress.getCountry());
+      this.setResidential(customerAddress.getResidential());
+    }
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Description.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.description;
+  }
+
+  /**
+   * Get FirstName.
+   * @returns {string}
+   */
+  getFirstName() {
+    return this.firstName;
+  }
+
+  /**
+   * Get LastName.
+   * @returns {string}
+   */
+  getLastName() {
+    return this.lastName;
+  }
+
+  /**
+   * Get Email.
+   * @returns {string}
+   */
+  getEmail() {
+    return this.email;
+  }
+
+  /**
+   * Get Phone.
+   * @returns {string}
+   */
+  getPhone() {
+    return this.phone;
+  }
+
+  /**
+   * Get Fax.
+   * @returns {string}
+   */
+  getFax() {
+    return this.fax;
+  }
+
+  /**
+   * Get Company.
+   * @returns {string}
+   */
+  getCompany() {
+    return this.company;
+  }
+
+  /**
+   * Get Address1.
+   * @returns {string}
+   */
+  getAddress1() {
+    return this.address1;
+  }
+
+  /**
+   * Get Address2.
+   * @returns {string}
+   */
+  getAddress2() {
+    return this.address2;
+  }
+
+  /**
+   * Get City.
+   * @returns {string}
+   */
+  getCity() {
+    return this.city;
+  }
+
+  /**
+   * Get State.
+   * @returns {string}
+   */
+  getState() {
+    return this.state;
+  }
+
+  /**
+   * Get Zip.
+   * @returns {string}
+   */
+  getZip() {
+    return this.zip;
+  }
+
+  /**
+   * Get Country.
+   * @returns {string}
+   */
+  getCountry() {
+    return this.country;
+  }
+
+  /**
+   * Get Residential.
+   * @returns {boolean}
+   */
+  getResidential() {
+    return this.residential;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {CustomerAddressUpdate}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {CustomerAddressUpdate}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerAddressUpdate}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerAddressUpdate}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Description.
+   * @param {string} description
+   * @returns {CustomerAddressUpdate}
+   */
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Set FirstName.
+   * @param {string} firstName
+   * @returns {CustomerAddressUpdate}
+   */
+  setFirstName(firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * Set LastName.
+   * @param {string} lastName
+   * @returns {CustomerAddressUpdate}
+   */
+  setLastName(lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  /**
+   * Set Email.
+   * @param {string} email
+   * @returns {CustomerAddressUpdate}
+   */
+  setEmail(email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Set Phone.
+   * @param {string} phone
+   * @returns {CustomerAddressUpdate}
+   */
+  setPhone(phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  /**
+   * Set Fax.
+   * @param {string} fax
+   * @returns {CustomerAddressUpdate}
+   */
+  setFax(fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  /**
+   * Set Company.
+   * @param {string} company
+   * @returns {CustomerAddressUpdate}
+   */
+  setCompany(company) {
+    this.company = company;
+    return this;
+  }
+
+  /**
+   * Set Address1.
+   * @param {string} address1
+   * @returns {CustomerAddressUpdate}
+   */
+  setAddress1(address1) {
+    this.address1 = address1;
+    return this;
+  }
+
+  /**
+   * Set Address2.
+   * @param {string} address2
+   * @returns {CustomerAddressUpdate}
+   */
+  setAddress2(address2) {
+    this.address2 = address2;
+    return this;
+  }
+
+  /**
+   * Set City.
+   * @param {string} city
+   * @returns {CustomerAddressUpdate}
+   */
+  setCity(city) {
+    this.city = city;
+    return this;
+  }
+
+  /**
+   * Set State.
+   * @param {string} state
+   * @returns {CustomerAddressUpdate}
+   */
+  setState(state) {
+    this.state = state;
+    return this;
+  }
+
+  /**
+   * Set Zip.
+   * @param {string} zip
+   * @returns {CustomerAddressUpdate}
+   */
+  setZip(zip) {
+    this.zip = zip;
+    return this;
+  }
+
+  /**
+   * Set Country.
+   * @param {string} country
+   * @returns {CustomerAddressUpdate}
+   */
+  setCountry(country) {
+    this.country = country;
+    return this;
+  }
+
+  /**
+   * Set Residential.
+   * @param {boolean} residential
+   * @returns {CustomerAddressUpdate}
+   */
+  setResidential(residential) {
+    this.residential = residential;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    if (!util.isNullOrUndefined(this.description)) {
+      data['Description'] = this.description;
+    }
+
+    if (!util.isNullOrUndefined(this.firstName)) {
+      data['FirstName'] = this.firstName;
+    }
+
+    if (!util.isNullOrUndefined(this.lastName)) {
+      data['LastName'] = this.lastName;
+    }
+
+    if (!util.isNullOrUndefined(this.email)) {
+      data['Email'] = this.email;
+    }
+
+    if (!util.isNullOrUndefined(this.phone)) {
+      data['Phone'] = this.phone;
+    }
+
+    if (!util.isNullOrUndefined(this.fax)) {
+      data['Fax'] = this.fax;
+    }
+
+    if (!util.isNullOrUndefined(this.company)) {
+      data['Company'] = this.company;
+    }
+
+    if (!util.isNullOrUndefined(this.address1)) {
+      data['Address1'] = this.address1;
+    }
+
+    if (!util.isNullOrUndefined(this.address2)) {
+      data['Address2'] = this.address2;
+    }
+
+    if (!util.isNullOrUndefined(this.city)) {
+      data['City'] = this.city;
+    }
+
+    if (!util.isNullOrUndefined(this.state)) {
+      data['State'] = this.state;
+    }
+
+    if (!util.isNullOrUndefined(this.zip)) {
+      data['Zip'] = this.zip;
+    }
+
+    if (!util.isNullOrUndefined(this.country)) {
+      data['Country'] = this.country;
+    }
+
+    if (!util.isNullOrUndefined(this.residential)) {
+      data['Residential'] = this.residential;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerAddress_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customeraddress_delete
+ */
+class CustomerAddressDelete extends Request {
+  /**
+   * CustomerAddressDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?CustomerAddress} customerAddress
+   */
+  constructor(client, customerAddress = null) {
+    super(client);
+    this.function = 'CustomerAddress_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.customerId = null;
+    this.customerLogin = null;
+    this.editCustomer = null;
+
+    if (util.isInstanceOf(customerAddress, models.CustomerAddress)) {
+      if (customerAddress.getCustomerId()) {
+        this.setCustomerId(customerAddress.getCustomerId());
+      }
+
+      if (customerAddress.getId()) {
+        this.setAddressId(customerAddress.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {CustomerAddressDelete}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {CustomerAddressDelete}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerAddressDelete}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerAddressDelete}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerAddressDelete}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerAddressList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customeraddresslist_delete
+ */
+class CustomerAddressListDelete extends Request {
+  /**
+   * CustomerAddressListDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerAddressList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.customerLogin = null;
+    this.editCustomer = null;
+    this.customerAddressIds = [];
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setCustomerLogin(customer.getLogin());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get CustomerAddress_IDs.
+   * @returns {Array}
+   */
+  getCustomerAddressIds() {
+    return this.customerAddressIds;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerAddressListDelete}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerAddressListDelete}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerAddressListDelete}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Add CustomerAddress_IDs.
+   * @param {number} customerAddressId
+   * @returns {CustomerAddressListDelete}
+   */
+  addCustomerAddress_ID(customerAddressId) {
+    this.customerAddressIds.push(customerAddressId);
+    return this;
+  }
+
+  /**
+   * Add CustomerAddress model.
+   * @param {CustomerAddress} customerAddress
+   * @throws {Error}
+   * @returns {CustomerAddressListDelete}
+   */
+  addCustomerAddress(customerAddress) {
+    if (!util.isInstanceOf(customerAddress, models.CustomerAddress)) {
+      throw new Error(util.format('Expected instance of CustomerAddress but got %s',
+        typeof customerAddress));
+    }
+
+    if (customerAddress.getId()) {
+      this.customerAddressIds.push(customerAddress.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    }
+
+    data['CustomerAddress_IDs'] = this.customerAddressIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CustomerAddress_Update_Residential. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customeraddress_update_residential
+ */
+class CustomerAddressUpdateResidential extends Request {
+  /**
+   * CustomerAddressUpdateResidential Constructor.
+   * @param {?BaseClient} client
+   * @param {?CustomerAddress} customerAddress
+   */
+  constructor(client, customerAddress = null) {
+    super(client);
+    this.function = 'CustomerAddress_Update_Residential';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.residential = null;
+
+    if (util.isInstanceOf(customerAddress, models.CustomerAddress)) {
+      if (customerAddress.getId()) {
+        this.setAddressId(customerAddress.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Residential.
+   * @returns {boolean}
+   */
+  getResidential() {
+    return this.residential;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {CustomerAddressUpdateResidential}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {CustomerAddressUpdateResidential}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Residential.
+   * @param {boolean} residential
+   * @returns {CustomerAddressUpdateResidential}
+   */
+  setResidential(residential) {
+    this.residential = residential;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    if (!util.isNullOrUndefined(this.residential)) {
+      data['Residential'] = this.residential;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerAddressUpdateResidential(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request URIList_Load_Query. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/urilist_load_query
+ */
+class URIListLoadQuery extends ListQueryRequest {
+  /**
+   * URIListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'URIList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+
+    this.availableSearchFields = [
+      'id',
+      'uri',
+      'screen',
+      'status',
+      'canonical',
+      'store_name',
+      'page_code',
+      'page_name',
+      'category_code',
+      'category_name',
+      'product_code',
+      'product_sku',
+      'product_name',
+      'feed_code',
+      'feed_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'uri',
+      'screen',
+      'status',
+      'canonical',
+      'store_name',
+      'page_code',
+      'page_name',
+      'category_code',
+      'category_name',
+      'product_code',
+      'product_sku',
+      'product_name',
+      'feed_code',
+      'feed_name'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.URIListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request URI_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/uri_insert
+ */
+class URIInsert extends Request {
+  /**
+   * URIInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'URI_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uri = null;
+    this.destinationType = null;
+    this.destination = null;
+    this.status = null;
+    this.canonical = null;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Destination_Type.
+   * @returns {string}
+   */
+  getDestinationType() {
+    return this.destinationType;
+  }
+
+  /**
+   * Get Destination.
+   * @returns {string}
+   */
+  getDestination() {
+    return this.destination;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {URIInsert}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Destination_Type.
+   * @param {string} destinationType
+   * @returns {URIInsert}
+   */
+  setDestinationType(destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * Set Destination.
+   * @param {string} destination
+   * @returns {URIInsert}
+   */
+  setDestination(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {URIInsert}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {URIInsert}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationType)) {
+      data['Destination_Type'] = this.destinationType;
+    }
+
+    if (!util.isNullOrUndefined(this.destination)) {
+      data['Destination'] = this.destination;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.URIInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductURI_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/producturi_insert
+ */
+class ProductURIInsert extends Request {
+  /**
+   * ProductURIInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductURI_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {ProductURIInsert}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {ProductURIInsert}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {ProductURIInsert}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductURIInsert}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductURIInsert}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductURIInsert}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductURIInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryURI_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/categoryuri_insert
+ */
+class CategoryURIInsert extends Request {
+  /**
+   * CategoryURIInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Category} category
+   */
+  constructor(client, category = null) {
+    super(client);
+    this.function = 'CategoryURI_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+    this.categoryId = null;
+    this.categoryCode = null;
+    this.editCategory = null;
+
+    if (util.isInstanceOf(category, models.Category)) {
+      if (category.getId()) {
+        this.setCategoryId(category.getId());
+      } else if (category.getCode()) {
+        this.setCategoryCode(category.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.categoryCode;
+  }
+
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.editCategory;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {CategoryURIInsert}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {CategoryURIInsert}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {CategoryURIInsert}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {CategoryURIInsert}
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {CategoryURIInsert}
+   */
+  setCategoryCode(categoryCode) {
+    this.categoryCode = categoryCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {CategoryURIInsert}
+   */
+  setEditCategory(editCategory) {
+    this.editCategory = editCategory;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.categoryId)) {
+      data['Category_ID'] = this.categoryId;
+    } else if (!util.isNullOrUndefined(this.categoryCode)) {
+      data['Category_Code'] = this.categoryCode;
+    } else if (!util.isNullOrUndefined(this.editCategory)) {
+      data['Edit_Category'] = this.editCategory;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CategoryURIInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PageURI_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pageuri_insert
+ */
+class PageURIInsert extends Request {
+  /**
+   * PageURIInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Page} page
+   */
+  constructor(client, page = null) {
+    super(client);
+    this.function = 'PageURI_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+    this.pageId = null;
+    this.pageCode = null;
+    this.editPage = null;
+
+    if (util.isInstanceOf(page, models.Page)) {
+      if (page.getId()) {
+        this.setPageId(page.getId());
+      } else if (page.getCode()) {
+        this.setPageCode(page.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Get Page_ID.
+   * @returns {number}
+   */
+  getPageId() {
+    return this.pageId;
+  }
+
+  /**
+   * Get Page_Code.
+   * @returns {string}
+   */
+  getPageCode() {
+    return this.pageCode;
+  }
+
+  /**
+   * Get Edit_Page.
+   * @returns {string}
+   */
+  getEditPage() {
+    return this.editPage;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {PageURIInsert}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {PageURIInsert}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {PageURIInsert}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Set Page_ID.
+   * @param {number} pageId
+   * @returns {PageURIInsert}
+   */
+  setPageId(pageId) {
+    this.pageId = pageId;
+    return this;
+  }
+
+  /**
+   * Set Page_Code.
+   * @param {string} pageCode
+   * @returns {PageURIInsert}
+   */
+  setPageCode(pageCode) {
+    this.pageCode = pageCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Page.
+   * @param {string} editPage
+   * @returns {PageURIInsert}
+   */
+  setEditPage(editPage) {
+    this.editPage = editPage;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.pageId)) {
+      data['Page_ID'] = this.pageId;
+    } else if (!util.isNullOrUndefined(this.pageCode)) {
+      data['Page_Code'] = this.pageCode;
+    } else if (!util.isNullOrUndefined(this.editPage)) {
+      data['Edit_Page'] = this.editPage;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PageURIInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request FeedURI_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/feeduri_insert
+ */
+class FeedURIInsert extends Request {
+  /**
+   * FeedURIInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'FeedURI_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.feedId = null;
+    this.feedCode = null;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+  }
+
+  /**
+   * Get Feed_ID.
+   * @returns {number}
+   */
+  getFeedId() {
+    return this.feedId;
+  }
+
+  /**
+   * Get Feed_Code.
+   * @returns {string}
+   */
+  getFeedCode() {
+    return this.feedCode;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set Feed_ID.
+   * @param {number} feedId
+   * @returns {FeedURIInsert}
+   */
+  setFeedId(feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  /**
+   * Set Feed_Code.
+   * @param {string} feedCode
+   * @returns {FeedURIInsert}
+   */
+  setFeedCode(feedCode) {
+    this.feedCode = feedCode;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {FeedURIInsert}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {FeedURIInsert}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {FeedURIInsert}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.feedId)) {
+      data['Feed_ID'] = this.feedId;
+    } else if (!util.isNullOrUndefined(this.feedCode)) {
+      data['Feed_Code'] = this.feedCode;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.FeedURIInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request URI_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/uri_update
+ */
+class URIUpdate extends Request {
+  /**
+   * URIUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'URI_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriId = null;
+    this.uri = null;
+    this.destinationType = null;
+    this.destination = null;
+    this.status = null;
+    this.canonical = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Destination_Type.
+   * @returns {string}
+   */
+  getDestinationType() {
+    return this.destinationType;
+  }
+
+  /**
+   * Get Destination.
+   * @returns {string}
+   */
+  getDestination() {
+    return this.destination;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {URIUpdate}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {URIUpdate}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Destination_Type.
+   * @param {string} destinationType
+   * @returns {URIUpdate}
+   */
+  setDestinationType(destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * Set Destination.
+   * @param {string} destination
+   * @returns {URIUpdate}
+   */
+  setDestination(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {URIUpdate}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {URIUpdate}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationType)) {
+      data['Destination_Type'] = this.destinationType;
+    }
+
+    if (!util.isNullOrUndefined(this.destination)) {
+      data['Destination'] = this.destination;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.URIUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductURI_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/producturi_update
+ */
+class ProductURIUpdate extends Request {
+  /**
+   * ProductURIUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'ProductURI_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriId = null;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {ProductURIUpdate}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {ProductURIUpdate}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {ProductURIUpdate}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {ProductURIUpdate}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductURIUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryURI_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/categoryuri_update
+ */
+class CategoryURIUpdate extends Request {
+  /**
+   * CategoryURIUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'CategoryURI_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriId = null;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {CategoryURIUpdate}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {CategoryURIUpdate}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {CategoryURIUpdate}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {CategoryURIUpdate}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CategoryURIUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PageURI_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pageuri_update
+ */
+class PageURIUpdate extends Request {
+  /**
+   * PageURIUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'PageURI_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriId = null;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {PageURIUpdate}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {PageURIUpdate}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {PageURIUpdate}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {PageURIUpdate}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PageURIUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request FeedURI_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/feeduri_update
+ */
+class FeedURIUpdate extends Request {
+  /**
+   * FeedURIUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'FeedURI_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriId = null;
+    this.uri = null;
+    this.status = null;
+    this.canonical = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Get URI.
+   * @returns {string}
+   */
+  getUri() {
+    return this.uri;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get Canonical.
+   * @returns {boolean}
+   */
+  getCanonical() {
+    return this.canonical;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {FeedURIUpdate}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Set URI.
+   * @param {string} uri
+   * @returns {FeedURIUpdate}
+   */
+  setUri(uri) {
+    this.uri = uri;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {FeedURIUpdate}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Set Canonical.
+   * @param {boolean} canonical
+   * @returns {FeedURIUpdate}
+   */
+  setCanonical(canonical) {
+    this.canonical = canonical;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    if (!util.isNullOrUndefined(this.uri)) {
+      data['URI'] = this.uri;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    if (!util.isNullOrUndefined(this.canonical)) {
+      data['Canonical'] = this.canonical;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.FeedURIUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request URI_Delete. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/uri_delete
+ */
+class URIDelete extends Request {
+  /**
+   * URIDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?Uri} uri
+   */
+  constructor(client, uri = null) {
+    super(client);
+    this.function = 'URI_Delete';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+    this.uriId = null;
+
+    if (util.isInstanceOf(uri, models.Uri)) {
+      if (uri.getId()) {
+        this.setUriId(uri.getId());
+      }
+    }
+  }
+
+  /**
+   * Get URI_ID.
+   * @returns {number}
+   */
+  getUriId() {
+    return this.uriId;
+  }
+
+  /**
+   * Set URI_ID.
+   * @param {number} uriId
+   * @returns {URIDelete}
+   */
+  setUriId(uriId) {
+    this.uriId = uriId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.uriId)) {
+      data['URI_ID'] = this.uriId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.URIDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductURIList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/producturilist_load_query
+ */
+class ProductURIListLoadQuery extends ListQueryRequest {
+  /**
+   * ProductURIListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductURIList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'canonical',
+      'status',
+      'uri'
+    ];
+
+    this.availableSortFields = [
+      'uri'
+    ];
+
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductURIListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductURIListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductURIListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductURIListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryURIList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/categoryurilist_load_query
+ */
+class CategoryURIListLoadQuery extends ListQueryRequest {
+  /**
+   * CategoryURIListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Category} category
+   */
+  constructor(client, category = null) {
+    super(client);
+    this.function = 'CategoryURIList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'canonical',
+      'status',
+      'uri'
+    ];
+
+    this.availableSortFields = [
+      'uri'
+    ];
+
+    this.categoryId = null;
+    this.editCategory = null;
+    this.categoryCode = null;
+
+    if (util.isInstanceOf(category, models.Category)) {
+      if (category.getId()) {
+        this.setCategoryId(category.getId());
+      } else if (category.getCode()) {
+        this.setEditCategory(category.getCode());
+      } else if (category.getCode()) {
+        this.setCategoryCode(category.getCode());
+      }
+
+      this.setCategoryCode(category.getCode());
+    }
+  }
+
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.editCategory;
+  }
+
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.categoryCode;
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {CategoryURIListLoadQuery}
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {CategoryURIListLoadQuery}
+   */
+  setEditCategory(editCategory) {
+    this.editCategory = editCategory;
+    return this;
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {CategoryURIListLoadQuery}
+   */
+  setCategoryCode(categoryCode) {
+    this.categoryCode = categoryCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.categoryId)) {
+      data['Category_ID'] = this.categoryId;
+    } else if (!util.isNullOrUndefined(this.editCategory)) {
+      data['Edit_Category'] = this.editCategory;
+    } else if (!util.isNullOrUndefined(this.categoryCode)) {
+      data['Category_Code'] = this.categoryCode;
+    }
+
+    data['Category_Code'] = this.categoryCode;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CategoryURIListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PageURIList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pageurilist_load_query
+ */
+class PageURIListLoadQuery extends ListQueryRequest {
+  /**
+   * PageURIListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'PageURIList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'canonical',
+      'status',
+      'uri'
+    ];
+
+    this.availableSortFields = [
+      'uri'
+    ];
+
+    this.pageId = null;
+    this.editPage = null;
+    this.pageCode = null;
+  }
+
+  /**
+   * Get Page_ID.
+   * @returns {number}
+   */
+  getPageId() {
+    return this.pageId;
+  }
+
+  /**
+   * Get Edit_Page.
+   * @returns {string}
+   */
+  getEditPage() {
+    return this.editPage;
+  }
+
+  /**
+   * Get Page_Code.
+   * @returns {string}
+   */
+  getPageCode() {
+    return this.pageCode;
+  }
+
+  /**
+   * Set Page_ID.
+   * @param {number} pageId
+   * @returns {PageURIListLoadQuery}
+   */
+  setPageId(pageId) {
+    this.pageId = pageId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Page.
+   * @param {string} editPage
+   * @returns {PageURIListLoadQuery}
+   */
+  setEditPage(editPage) {
+    this.editPage = editPage;
+    return this;
+  }
+
+  /**
+   * Set Page_Code.
+   * @param {string} pageCode
+   * @returns {PageURIListLoadQuery}
+   */
+  setPageCode(pageCode) {
+    this.pageCode = pageCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.pageId)) {
+      data['Page_ID'] = this.pageId;
+    } else if (!util.isNullOrUndefined(this.editPage)) {
+      data['Edit_Page'] = this.editPage;
+    } else if (!util.isNullOrUndefined(this.pageCode)) {
+      data['Page_Code'] = this.pageCode;
+    }
+
+    data['Page_Code'] = this.pageCode;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PageURIListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request FeedURIList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/feedurilist_load_query
+ */
+class FeedURIListLoadQuery extends ListQueryRequest {
+  /**
+   * FeedURIListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'FeedURIList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'canonical',
+      'status',
+      'uri'
+    ];
+
+    this.availableSortFields = [
+      'uri'
+    ];
+
+    this.feedId = null;
+    this.feedCode = null;
+  }
+
+  /**
+   * Get Feed_ID.
+   * @returns {number}
+   */
+  getFeedId() {
+    return this.feedId;
+  }
+
+  /**
+   * Get Feed_Code.
+   * @returns {string}
+   */
+  getFeedCode() {
+    return this.feedCode;
+  }
+
+  /**
+   * Set Feed_ID.
+   * @param {number} feedId
+   * @returns {FeedURIListLoadQuery}
+   */
+  setFeedId(feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  /**
+   * Set Feed_Code.
+   * @param {string} feedCode
+   * @returns {FeedURIListLoadQuery}
+   */
+  setFeedCode(feedCode) {
+    this.feedCode = feedCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.feedId)) {
+      data['Feed_ID'] = this.feedId;
+    } else if (!util.isNullOrUndefined(this.feedCode)) {
+      data['Feed_Code'] = this.feedCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.FeedURIListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductURIList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/producturilist_delete
+ */
+class ProductURIListDelete extends Request {
+  /**
+   * ProductURIListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'ProductURIList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {ProductURIListDelete}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {ProductURIListDelete}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductURIListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PageURIList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pageurilist_delete
+ */
+class PageURIListDelete extends Request {
+  /**
+   * PageURIListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'PageURIList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {PageURIListDelete}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {PageURIListDelete}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PageURIListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryURIList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/categoryurilist_delete
+ */
+class CategoryURIListDelete extends Request {
+  /**
+   * CategoryURIListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'CategoryURIList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {CategoryURIListDelete}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {CategoryURIListDelete}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CategoryURIListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request FeedURIList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/feedurilist_delete
+ */
+class FeedURIListDelete extends Request {
+  /**
+   * FeedURIListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'FeedURIList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {FeedURIListDelete}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {FeedURIListDelete}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.FeedURIListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request URIList_Delete. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/urilist_delete
+ */
+class URIListDelete extends Request {
+  /**
+   * URIListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'URIList_Delete';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {URIListDelete}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {URIListDelete}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.URIListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PageURI_Redirect. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pageuri_redirect
+ */
+class PageURIRedirect extends ListQueryRequest {
+  /**
+   * PageURIRedirect Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'PageURI_Redirect';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.destinationStoreCode = null;
+    this.destinationType = null;
+    this.destination = null;
+    this.status = null;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get Destination_Store_Code.
+   * @returns {string}
+   */
+  getDestinationStoreCode() {
+    return this.destinationStoreCode;
+  }
+
+  /**
+   * Get Destination_Type.
+   * @returns {string}
+   */
+  getDestinationType() {
+    return this.destinationType;
+  }
+
+  /**
+   * Get Destination.
+   * @returns {string}
+   */
+  getDestination() {
+    return this.destination;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Set Destination_Store_Code.
+   * @param {string} destinationStoreCode
+   * @returns {PageURIRedirect}
+   */
+  setDestinationStoreCode(destinationStoreCode) {
+    this.destinationStoreCode = destinationStoreCode;
+    return this;
+  }
+
+  /**
+   * Set Destination_Type.
+   * @param {string} destinationType
+   * @returns {PageURIRedirect}
+   */
+  setDestinationType(destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * Set Destination.
+   * @param {string} destination
+   * @returns {PageURIRedirect}
+   */
+  setDestination(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {PageURIRedirect}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {PageURIRedirect}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {PageURIRedirect}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.destinationStoreCode)) {
+      data['Destination_Store_Code'] = this.destinationStoreCode;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationType)) {
+      data['Destination_Type'] = this.destinationType;
+    }
+
+    if (!util.isNullOrUndefined(this.destination)) {
+      data['Destination'] = this.destination;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PageURIRedirect(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductURI_Redirect. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/producturi_redirect
+ */
+class ProductURIRedirect extends ListQueryRequest {
+  /**
+   * ProductURIRedirect Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'ProductURI_Redirect';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.destinationStoreCode = null;
+    this.destinationType = null;
+    this.destination = null;
+    this.status = null;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get Destination_Store_Code.
+   * @returns {string}
+   */
+  getDestinationStoreCode() {
+    return this.destinationStoreCode;
+  }
+
+  /**
+   * Get Destination_Type.
+   * @returns {string}
+   */
+  getDestinationType() {
+    return this.destinationType;
+  }
+
+  /**
+   * Get Destination.
+   * @returns {string}
+   */
+  getDestination() {
+    return this.destination;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Set Destination_Store_Code.
+   * @param {string} destinationStoreCode
+   * @returns {ProductURIRedirect}
+   */
+  setDestinationStoreCode(destinationStoreCode) {
+    this.destinationStoreCode = destinationStoreCode;
+    return this;
+  }
+
+  /**
+   * Set Destination_Type.
+   * @param {string} destinationType
+   * @returns {ProductURIRedirect}
+   */
+  setDestinationType(destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * Set Destination.
+   * @param {string} destination
+   * @returns {ProductURIRedirect}
+   */
+  setDestination(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {ProductURIRedirect}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {ProductURIRedirect}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {ProductURIRedirect}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.destinationStoreCode)) {
+      data['Destination_Store_Code'] = this.destinationStoreCode;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationType)) {
+      data['Destination_Type'] = this.destinationType;
+    }
+
+    if (!util.isNullOrUndefined(this.destination)) {
+      data['Destination'] = this.destination;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductURIRedirect(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CategoryURI_Redirect. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/categoryuri_redirect
+ */
+class CategoryURIRedirect extends ListQueryRequest {
+  /**
+   * CategoryURIRedirect Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'CategoryURI_Redirect';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.destinationStoreCode = null;
+    this.destinationType = null;
+    this.destination = null;
+    this.status = null;
+    this.uriIds = [];
+  }
+
+  /**
+   * Get Destination_Store_Code.
+   * @returns {string}
+   */
+  getDestinationStoreCode() {
+    return this.destinationStoreCode;
+  }
+
+  /**
+   * Get Destination_Type.
+   * @returns {string}
+   */
+  getDestinationType() {
+    return this.destinationType;
+  }
+
+  /**
+   * Get Destination.
+   * @returns {string}
+   */
+  getDestination() {
+    return this.destination;
+  }
+
+  /**
+   * Get Status.
+   * @returns {number}
+   */
+  getStatus() {
+    return this.status;
+  }
+
+  /**
+   * Get URI_IDs.
+   * @returns {Array}
+   */
+  getUriIds() {
+    return this.uriIds;
+  }
+
+  /**
+   * Set Destination_Store_Code.
+   * @param {string} destinationStoreCode
+   * @returns {CategoryURIRedirect}
+   */
+  setDestinationStoreCode(destinationStoreCode) {
+    this.destinationStoreCode = destinationStoreCode;
+    return this;
+  }
+
+  /**
+   * Set Destination_Type.
+   * @param {string} destinationType
+   * @returns {CategoryURIRedirect}
+   */
+  setDestinationType(destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * Set Destination.
+   * @param {string} destination
+   * @returns {CategoryURIRedirect}
+   */
+  setDestination(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  /**
+   * Set Status.
+   * @param {number} status
+   * @returns {CategoryURIRedirect}
+   */
+  setStatus(status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Add URI_IDs.
+   * @param {number} uriId
+   * @returns {CategoryURIRedirect}
+   */
+  addUriID(uriId) {
+    this.uriIds.push(uriId);
+    return this;
+  }
+
+  /**
+   * Add Uri model.
+   * @param {Uri} uri
+   * @throws {Error}
+   * @returns {CategoryURIRedirect}
+   */
+  addUri(uri) {
+    if (!util.isInstanceOf(uri, models.Uri)) {
+      throw new Error(util.format('Expected instance of Uri but got %s',
+        typeof uri));
+    }
+
+    if (uri.getId()) {
+      this.uriIds.push(uri.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.destinationStoreCode)) {
+      data['Destination_Store_Code'] = this.destinationStoreCode;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationType)) {
+      data['Destination_Type'] = this.destinationType;
+    }
+
+    if (!util.isNullOrUndefined(this.destination)) {
+      data['Destination'] = this.destination;
+    }
+
+    if (!util.isNullOrUndefined(this.status)) {
+      data['Status'] = this.status;
+    }
+
+    data['URI_IDs'] = this.uriIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CategoryURIRedirect(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroup_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_delete
+ */
+class AvailabilityGroupDelete extends Request {
+  /**
+   * AvailabilityGroupDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroup_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupDelete}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupDelete}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupDelete}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroup_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_insert
+ */
+class AvailabilityGroupInsert extends Request {
+  /**
+   * AvailabilityGroupInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'AvailabilityGroup_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupName = null;
+    this.availabilityGroupTaxExempt = null;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get AvailabilityGroup_Tax_Exempt.
+   * @returns {boolean}
+   */
+  getAvailabilityGroupTaxExempt() {
+    return this.availabilityGroupTaxExempt;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupInsert}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Tax_Exempt.
+   * @param {boolean} availabilityGroupTaxExempt
+   * @returns {AvailabilityGroupInsert}
+   */
+  setAvailabilityGroupTaxExempt(availabilityGroupTaxExempt) {
+    this.availabilityGroupTaxExempt = availabilityGroupTaxExempt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+
+    if (!util.isNullOrUndefined(this.availabilityGroupTaxExempt)) {
+      data['AvailabilityGroup_Tax_Exempt'] = this.availabilityGroupTaxExempt;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroup_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_update
+ */
+class AvailabilityGroupUpdate extends Request {
+  /**
+   * AvailabilityGroupUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroup_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.availabilityGroupTaxExempt = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+
+      this.setAvailabilityGroupTaxExempt(availabilityGroup.getTaxExempt());
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get AvailabilityGroup_Tax_Exempt.
+   * @returns {boolean}
+   */
+  getAvailabilityGroupTaxExempt() {
+    return this.availabilityGroupTaxExempt;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupUpdate}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupUpdate}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupUpdate}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Tax_Exempt.
+   * @param {boolean} availabilityGroupTaxExempt
+   * @returns {AvailabilityGroupUpdate}
+   */
+  setAvailabilityGroupTaxExempt(availabilityGroupTaxExempt) {
+    this.availabilityGroupTaxExempt = availabilityGroupTaxExempt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    }
+
+    data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+
+    if (!util.isNullOrUndefined(this.availabilityGroupTaxExempt)) {
+      data['AvailabilityGroup_Tax_Exempt'] = this.availabilityGroupTaxExempt;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupCategory_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcategory_update_assigned
+ */
+class AvailabilityGroupCategoryUpdateAssigned extends Request {
+  /**
+   * AvailabilityGroupCategoryUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?Category} category
+   */
+  constructor(client, category = null) {
+    super(client);
+    this.function = 'AvailabilityGroupCategory_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.categoryId = null;
+    this.editCategory = null;
+    this.categoryCode = null;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(category, models.Category)) {
+      if (category.getId()) {
+        this.setCategoryId(category.getId());
+      }
+
+      this.setCategoryCode(category.getCode());
+    }
+  }
+
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.editCategory;
+  }
+
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.categoryCode;
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setEditCategory(editCategory) {
+    this.editCategory = editCategory;
+    return this;
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setCategoryCode(categoryCode) {
+    this.categoryCode = categoryCode;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupCategoryUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.categoryId)) {
+      data['Category_ID'] = this.categoryId;
+    } else if (!util.isNullOrUndefined(this.editCategory)) {
+      data['Edit_Category'] = this.editCategory;
+    } else if (!util.isNullOrUndefined(this.categoryCode)) {
+      data['Category_Code'] = this.categoryCode;
+    }
+
+    data['Category_Code'] = this.categoryCode;
+
+    data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupCategoryUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupShippingMethodList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethodlist_load_query
+ */
+class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryRequest {
+  /**
+   * AvailabilityGroupShippingMethodListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroupShippingMethodList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availableSearchFields = [
+      'method_name'
+    ];
+
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupShippingMethodListLoadQuery}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupShippingMethodListLoadQuery}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupShippingMethodListLoadQuery}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupShippingMethodListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AvailabilityGroupShippingMethodListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupShippingMethodListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupBusinessAccount_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccount_update_assigned
+ */
+class PriceGroupBusinessAccountUpdateAssigned extends Request {
+  /**
+   * PriceGroupBusinessAccountUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupBusinessAccount_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.businessAccountId = null;
+    this.editBusinessAccount = null;
+    this.businessAccountTitle = null;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get BusinessAccount_ID.
+   * @returns {number}
+   */
+  getBusinessAccountId() {
+    return this.businessAccountId;
+  }
+
+  /**
+   * Get Edit_BusinessAccount.
+   * @returns {string}
+   */
+  getEditBusinessAccount() {
+    return this.editBusinessAccount;
+  }
+
+  /**
+   * Get BusinessAccount_Title.
+   * @returns {string}
+   */
+  getBusinessAccountTitle() {
+    return this.businessAccountTitle;
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set BusinessAccount_ID.
+   * @param {number} businessAccountId
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setBusinessAccountId(businessAccountId) {
+    this.businessAccountId = businessAccountId;
+    return this;
+  }
+
+  /**
+   * Set Edit_BusinessAccount.
+   * @param {string} editBusinessAccount
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setEditBusinessAccount(editBusinessAccount) {
+    this.editBusinessAccount = editBusinessAccount;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Title.
+   * @param {string} businessAccountTitle
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setBusinessAccountTitle(businessAccountTitle) {
+    this.businessAccountTitle = businessAccountTitle;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupBusinessAccountUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.businessAccountId)) {
+      data['BusinessAccount_ID'] = this.businessAccountId;
+    } else if (!util.isNullOrUndefined(this.editBusinessAccount)) {
+      data['Edit_BusinessAccount'] = this.editBusinessAccount;
+    } else if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupBusinessAccountUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupCategory_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupcategory_update_assigned
+ */
+class PriceGroupCategoryUpdateAssigned extends Request {
+  /**
+   * PriceGroupCategoryUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupCategory_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.categoryId = null;
+    this.editCategory = null;
+    this.categoryCode = null;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      } else if (priceGroup.getName()) {
+        this.setEditPriceGroup(priceGroup.getName());
+      } else if (priceGroup.getName()) {
+        this.setPriceGroupName(priceGroup.getName());
+      }
+
+      this.setPriceGroupName(priceGroup.getName());
+    }
+  }
+
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.editCategory;
+  }
+
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.categoryCode;
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setEditCategory(editCategory) {
+    this.editCategory = editCategory;
+    return this;
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setCategoryCode(categoryCode) {
+    this.categoryCode = categoryCode;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupCategoryUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.categoryId)) {
+      data['Category_ID'] = this.categoryId;
+    } else if (!util.isNullOrUndefined(this.editCategory)) {
+      data['Edit_Category'] = this.editCategory;
+    } else if (!util.isNullOrUndefined(this.categoryCode)) {
+      data['Category_Code'] = this.categoryCode;
+    }
+
+    data['PriceGroup_Name'] = this.priceGroupName;
+
+    data['Assigned'] = this.assigned;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupCategoryUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupExcludedCategory_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategory_update_assigned
+ */
+class PriceGroupExcludedCategoryUpdateAssigned extends Request {
+  /**
+   * PriceGroupExcludedCategoryUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupExcludedCategory_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.categoryId = null;
+    this.editCategory = null;
+    this.categoryCode = null;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setCategoryId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Category_ID.
+   * @returns {number}
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Get Edit_Category.
+   * @returns {string}
+   */
+  getEditCategory() {
+    return this.editCategory;
+  }
+
+  /**
+   * Get Category_Code.
+   * @returns {string}
+   */
+  getCategoryCode() {
+    return this.categoryCode;
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Category_ID.
+   * @param {number} categoryId
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Category.
+   * @param {string} editCategory
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setEditCategory(editCategory) {
+    this.editCategory = editCategory;
+    return this;
+  }
+
+  /**
+   * Set Category_Code.
+   * @param {string} categoryCode
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setCategoryCode(categoryCode) {
+    this.categoryCode = categoryCode;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupExcludedCategoryUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.categoryId)) {
+      data['Category_ID'] = this.categoryId;
+    } else if (!util.isNullOrUndefined(this.editCategory)) {
+      data['Edit_Category'] = this.editCategory;
+    } else if (!util.isNullOrUndefined(this.categoryCode)) {
+      data['Category_Code'] = this.categoryCode;
+    }
+
+    data['PriceGroup_Name'] = this.priceGroupName;
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupExcludedCategoryUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupExcludedProduct_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproduct_update_assigned
+ */
+class PriceGroupExcludedProductUpdateAssigned extends Request {
+  /**
+   * PriceGroupExcludedProductUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupExcludedProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupExcludedProductUpdateAssigned}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupExcludedProductUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupQualifyingProduct_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproduct_update_assigned
+ */
+class PriceGroupQualifyingProductUpdateAssigned extends Request {
+  /**
+   * PriceGroupQualifyingProductUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupQualifyingProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setProductId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupQualifyingProductUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    data['PriceGroup_Name'] = this.priceGroupName;
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupQualifyingProductUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroup_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroup_delete
+ */
+class PriceGroupDelete extends Request {
+  /**
+   * PriceGroupDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroup_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+
+      this.setPriceGroupName(priceGroup.getName());
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupDelete}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupDelete}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupDelete}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    data['PriceGroup_Name'] = this.priceGroupName;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroup_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroup_insert
+ */
+class PriceGroupInsert extends Request {
+  /**
+   * PriceGroupInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'PriceGroup_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.name = null;
+    this.customerScope = null;
+    this.rate = null;
+    this.discount = null;
+    this.markup = null;
+    this.moduleId = null;
+    this.exclusion = null;
+    this.description = null;
+    this.display = null;
+    this.dateTimeStart = null;
+    this.dateTimeEnd = null;
+    this.qualifyingMinSubtotal = null;
+    this.qualifyingMaxSubtotal = null;
+    this.qualifyingMinQuantity = null;
+    this.qualifyingMaxQuantity = null;
+    this.qualifyingMinWeight = null;
+    this.qualifyingMaxWeight = null;
+    this.basketMinSubtotal = null;
+    this.basketMaxSubtotal = null;
+    this.basketMinQuantity = null;
+    this.basketMaxQuantity = null;
+    this.basketMinWeight = null;
+    this.basketMaxWeight = null;
+    this.priority = null;
+    this.moduleFields = {};
+  }
+
+  /**
+   * Get Name.
+   * @returns {string}
+   */
+  getName() {
+    return this.name;
+  }
+
+  /**
+   * Get CustomerScope.
+   * @returns {string}
+   */
+  getCustomerScope() {
+    return this.customerScope;
+  }
+
+  /**
+   * Get Rate.
+   * @returns {string}
+   */
+  getRate() {
+    return this.rate;
+  }
+
+  /**
+   * Get Discount.
+   * @returns {number}
+   */
+  getDiscount() {
+    return this.discount;
+  }
+
+  /**
+   * Get Markup.
+   * @returns {number}
+   */
+  getMarkup() {
+    return this.markup;
+  }
+
+  /**
+   * Get Module_ID.
+   * @returns {number}
+   */
+  getModuleId() {
+    return this.moduleId;
+  }
+
+  /**
+   * Get Exclusion.
+   * @returns {boolean}
+   */
+  getExclusion() {
+    return this.exclusion;
+  }
+
+  /**
+   * Get Description.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.description;
+  }
+
+  /**
+   * Get Display.
+   * @returns {boolean}
+   */
+  getDisplay() {
+    return this.display;
+  }
+
+  /**
+   * Get DateTime_Start.
+   * @returns {number}
+   */
+  getDateTimeStart() {
+    return this.dateTimeStart;
+  }
+
+  /**
+   * Get DateTime_End.
+   * @returns {number}
+   */
+  getDateTimeEnd() {
+    return this.dateTimeEnd;
+  }
+
+  /**
+   * Get Qualifying_Min_Subtotal.
+   * @returns {number}
+   */
+  getQualifyingMinSubtotal() {
+    return this.qualifyingMinSubtotal;
+  }
+
+  /**
+   * Get Qualifying_Max_Subtotal.
+   * @returns {number}
+   */
+  getQualifyingMaxSubtotal() {
+    return this.qualifyingMaxSubtotal;
+  }
+
+  /**
+   * Get Qualifying_Min_Quantity.
+   * @returns {number}
+   */
+  getQualifyingMinQuantity() {
+    return this.qualifyingMinQuantity;
+  }
+
+  /**
+   * Get Qualifying_Max_Quantity.
+   * @returns {number}
+   */
+  getQualifyingMaxQuantity() {
+    return this.qualifyingMaxQuantity;
+  }
+
+  /**
+   * Get Qualifying_Min_Weight.
+   * @returns {number}
+   */
+  getQualifyingMinWeight() {
+    return this.qualifyingMinWeight;
+  }
+
+  /**
+   * Get Qualifying_Max_Weight.
+   * @returns {number}
+   */
+  getQualifyingMaxWeight() {
+    return this.qualifyingMaxWeight;
+  }
+
+  /**
+   * Get Basket_Min_Subtotal.
+   * @returns {number}
+   */
+  getBasketMinSubtotal() {
+    return this.basketMinSubtotal;
+  }
+
+  /**
+   * Get Basket_Max_Subtotal.
+   * @returns {number}
+   */
+  getBasketMaxSubtotal() {
+    return this.basketMaxSubtotal;
+  }
+
+  /**
+   * Get Basket_Min_Quantity.
+   * @returns {number}
+   */
+  getBasketMinQuantity() {
+    return this.basketMinQuantity;
+  }
+
+  /**
+   * Get Basket_Max_Quantity.
+   * @returns {number}
+   */
+  getBasketMaxQuantity() {
+    return this.basketMaxQuantity;
+  }
+
+  /**
+   * Get Basket_Min_Weight.
+   * @returns {number}
+   */
+  getBasketMinWeight() {
+    return this.basketMinWeight;
+  }
+
+  /**
+   * Get Basket_Max_Weight.
+   * @returns {number}
+   */
+  getBasketMaxWeight() {
+    return this.basketMaxWeight;
+  }
+
+  /**
+   * Get Priority.
+   * @returns {number}
+   */
+  getPriority() {
+    return this.priority;
+  }
+
+  /**
+   * Get Module_Fields.
+   * @returns {Object}
+   */
+  getModuleFields() {
+    return this.moduleFields;
+  }
+
+  /**
+   * Set Name.
+   * @param {string} name
+   * @returns {PriceGroupInsert}
+   */
+  setName(name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Set CustomerScope.
+   * @param {string} customerScope
+   * @returns {PriceGroupInsert}
+   */
+  setCustomerScope(customerScope) {
+    this.customerScope = customerScope;
+    return this;
+  }
+
+  /**
+   * Set Rate.
+   * @param {string} rate
+   * @returns {PriceGroupInsert}
+   */
+  setRate(rate) {
+    this.rate = rate;
+    return this;
+  }
+
+  /**
+   * Set Discount.
+   * @param {number} discount
+   * @returns {PriceGroupInsert}
+   */
+  setDiscount(discount) {
+    this.discount = discount;
+    return this;
+  }
+
+  /**
+   * Set Markup.
+   * @param {number} markup
+   * @returns {PriceGroupInsert}
+   */
+  setMarkup(markup) {
+    this.markup = markup;
+    return this;
+  }
+
+  /**
+   * Set Module_ID.
+   * @param {number} moduleId
+   * @returns {PriceGroupInsert}
+   */
+  setModuleId(moduleId) {
+    this.moduleId = moduleId;
+    return this;
+  }
+
+  /**
+   * Set Exclusion.
+   * @param {boolean} exclusion
+   * @returns {PriceGroupInsert}
+   */
+  setExclusion(exclusion) {
+    this.exclusion = exclusion;
+    return this;
+  }
+
+  /**
+   * Set Description.
+   * @param {string} description
+   * @returns {PriceGroupInsert}
+   */
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Set Display.
+   * @param {boolean} display
+   * @returns {PriceGroupInsert}
+   */
+  setDisplay(display) {
+    this.display = display;
+    return this;
+  }
+
+  /**
+   * Set DateTime_Start.
+   * @param {number|Date} dateTimeStart
+   * @returns {PriceGroupInsert}
+   */
+  setDateTimeStart(dateTimeStart) {
+    if (util.isDate(dateTimeStart)) {
+      this.dateTimeStart = Math.floor(dateTimeStart.getTime()/1000);      
+    } else {
+      this.dateTimeStart = dateTimeStart;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set DateTime_End.
+   * @param {number|Date} dateTimeEnd
+   * @returns {PriceGroupInsert}
+   */
+  setDateTimeEnd(dateTimeEnd) {
+    if (util.isDate(dateTimeEnd)) {
+      this.dateTimeEnd = Math.floor(dateTimeEnd.getTime()/1000);      
+    } else {
+      this.dateTimeEnd = dateTimeEnd;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Subtotal.
+   * @param {number} qualifyingMinSubtotal
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMinSubtotal(qualifyingMinSubtotal) {
+    this.qualifyingMinSubtotal = qualifyingMinSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Subtotal.
+   * @param {number} qualifyingMaxSubtotal
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMaxSubtotal(qualifyingMaxSubtotal) {
+    this.qualifyingMaxSubtotal = qualifyingMaxSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Quantity.
+   * @param {number} qualifyingMinQuantity
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMinQuantity(qualifyingMinQuantity) {
+    this.qualifyingMinQuantity = qualifyingMinQuantity;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Quantity.
+   * @param {number} qualifyingMaxQuantity
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMaxQuantity(qualifyingMaxQuantity) {
+    this.qualifyingMaxQuantity = qualifyingMaxQuantity;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Weight.
+   * @param {number} qualifyingMinWeight
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMinWeight(qualifyingMinWeight) {
+    this.qualifyingMinWeight = qualifyingMinWeight;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Weight.
+   * @param {number} qualifyingMaxWeight
+   * @returns {PriceGroupInsert}
+   */
+  setQualifyingMaxWeight(qualifyingMaxWeight) {
+    this.qualifyingMaxWeight = qualifyingMaxWeight;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Subtotal.
+   * @param {number} basketMinSubtotal
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMinSubtotal(basketMinSubtotal) {
+    this.basketMinSubtotal = basketMinSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Subtotal.
+   * @param {number} basketMaxSubtotal
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMaxSubtotal(basketMaxSubtotal) {
+    this.basketMaxSubtotal = basketMaxSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Quantity.
+   * @param {number} basketMinQuantity
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMinQuantity(basketMinQuantity) {
+    this.basketMinQuantity = basketMinQuantity;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Quantity.
+   * @param {number} basketMaxQuantity
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMaxQuantity(basketMaxQuantity) {
+    this.basketMaxQuantity = basketMaxQuantity;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Weight.
+   * @param {number} basketMinWeight
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMinWeight(basketMinWeight) {
+    this.basketMinWeight = basketMinWeight;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Weight.
+   * @param {number} basketMaxWeight
+   * @returns {PriceGroupInsert}
+   */
+  setBasketMaxWeight(basketMaxWeight) {
+    this.basketMaxWeight = basketMaxWeight;
+    return this;
+  }
+
+  /**
+   * Set Priority.
+   * @param {number} priority
+   * @returns {PriceGroupInsert}
+   */
+  setPriority(priority) {
+    this.priority = priority;
+    return this;
+  }
+
+  /**
+   * Set Module_Fields.
+   * @param {Object} moduleFields
+   * @returns {PriceGroupInsert}
+   */
+  setModuleFields(moduleFields) {
+    this.moduleFields = moduleFields;
+    return this;
+  }
+
+  /**
+   * Add custom data to the request.
+   *
+   * @param {string}
+   * @param {*}
+   * @returns {PriceGroupInsert}
+   */
+  setModuleField(field, value)
+  {
+      this.moduleFields[field] = value;
+      return this;
+  }
+    
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = Object.assign(super.toObject(), this.getModuleFields());
+
+    if (!util.isNullOrUndefined(this.name)) {
+      data['Name'] = this.name;
+    }
+
+    if (!util.isNullOrUndefined(this.customerScope)) {
+      data['CustomerScope'] = this.customerScope;
+    }
+
+    if (!util.isNullOrUndefined(this.rate)) {
+      data['Rate'] = this.rate;
+    }
+
+    if (!util.isNullOrUndefined(this.discount)) {
+      data['Discount'] = this.discount;
+    }
+
+    if (!util.isNullOrUndefined(this.markup)) {
+      data['Markup'] = this.markup;
+    }
+
+    if (!util.isNullOrUndefined(this.moduleId)) {
+      data['Module_ID'] = this.moduleId;
+    }
+
+    if (!util.isNullOrUndefined(this.exclusion)) {
+      data['Exclusion'] = this.exclusion;
+    }
+
+    if (!util.isNullOrUndefined(this.description)) {
+      data['Description'] = this.description;
+    }
+
+    if (!util.isNullOrUndefined(this.display)) {
+      data['Display'] = this.display;
+    }
+
+    if (!util.isNullOrUndefined(this.dateTimeStart)) {
+      data['DateTime_Start'] = this.dateTimeStart;
+    }
+
+    if (!util.isNullOrUndefined(this.dateTimeEnd)) {
+      data['DateTime_End'] = this.dateTimeEnd;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinSubtotal)) {
+      data['Qualifying_Min_Subtotal'] = this.qualifyingMinSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxSubtotal)) {
+      data['Qualifying_Max_Subtotal'] = this.qualifyingMaxSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinQuantity)) {
+      data['Qualifying_Min_Quantity'] = this.qualifyingMinQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxQuantity)) {
+      data['Qualifying_Max_Quantity'] = this.qualifyingMaxQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinWeight)) {
+      data['Qualifying_Min_Weight'] = this.qualifyingMinWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxWeight)) {
+      data['Qualifying_Max_Weight'] = this.qualifyingMaxWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinSubtotal)) {
+      data['Basket_Min_Subtotal'] = this.basketMinSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxSubtotal)) {
+      data['Basket_Max_Subtotal'] = this.basketMaxSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinQuantity)) {
+      data['Basket_Min_Quantity'] = this.basketMinQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxQuantity)) {
+      data['Basket_Max_Quantity'] = this.basketMaxQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinWeight)) {
+      data['Basket_Min_Weight'] = this.basketMinWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxWeight)) {
+      data['Basket_Max_Weight'] = this.basketMaxWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.priority)) {
+      data['Priority'] = this.priority;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroup_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroup_update
+ */
+class PriceGroupUpdate extends Request {
+  /**
+   * PriceGroupUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroup_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.name = null;
+    this.customerScope = null;
+    this.rate = null;
+    this.discount = null;
+    this.markup = null;
+    this.moduleId = null;
+    this.exclusion = null;
+    this.description = null;
+    this.display = null;
+    this.dateTimeStart = null;
+    this.dateTimeEnd = null;
+    this.qualifyingMinSubtotal = null;
+    this.qualifyingMaxSubtotal = null;
+    this.qualifyingMinQuantity = null;
+    this.qualifyingMaxQuantity = null;
+    this.qualifyingMinWeight = null;
+    this.qualifyingMaxWeight = null;
+    this.basketMinSubtotal = null;
+    this.basketMaxSubtotal = null;
+    this.basketMinQuantity = null;
+    this.basketMaxQuantity = null;
+    this.basketMinWeight = null;
+    this.basketMaxWeight = null;
+    this.priority = null;
+    this.exclusions = [];
+    this.moduleFields = {};
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+
+      this.setPriceGroupName(priceGroup.getName());
+      this.setName(priceGroup.getName());
+      this.setCustomerScope(priceGroup.getCustomerScope());
+      this.setRate(priceGroup.getRate());
+      this.setDiscount(priceGroup.getDiscount());
+      this.setMarkup(priceGroup.getMarkup());
+      this.setExclusion(priceGroup.getExclusion());
+      this.setDescription(priceGroup.getDescription());
+      this.setDisplay(priceGroup.getDisplay());
+      this.setDateTimeStart(priceGroup.getDateTimeStart());
+      this.setDateTimeEnd(priceGroup.getDateTimeEnd());
+      this.setQualifyingMinSubtotal(priceGroup.getMinimumSubtotal());
+      this.setQualifyingMaxSubtotal(priceGroup.getMaximumSubtotal());
+      this.setQualifyingMinQuantity(priceGroup.getMinimumQuantity());
+      this.setQualifyingMaxQuantity(priceGroup.getMaximumQuantity());
+      this.setQualifyingMinWeight(priceGroup.getMinimumWeight());
+      this.setQualifyingMaxWeight(priceGroup.getMaximumWeight());
+      this.setBasketMinSubtotal(priceGroup.getBasketMinimumSubtotal());
+      this.setBasketMaxSubtotal(priceGroup.getBasketMaximumSubtotal());
+      this.setBasketMinQuantity(priceGroup.getBasketMinimumQuantity());
+      this.setBasketMaxQuantity(priceGroup.getBasketMaximumQuantity());
+      this.setBasketMinWeight(priceGroup.getBasketMinimumWeight());
+      this.setBasketMaxWeight(priceGroup.getBasketMaximumWeight());
+      this.setPriority(priceGroup.getPriority());
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Name.
+   * @returns {string}
+   */
+  getName() {
+    return this.name;
+  }
+
+  /**
+   * Get CustomerScope.
+   * @returns {string}
+   */
+  getCustomerScope() {
+    return this.customerScope;
+  }
+
+  /**
+   * Get Rate.
+   * @returns {string}
+   */
+  getRate() {
+    return this.rate;
+  }
+
+  /**
+   * Get Discount.
+   * @returns {number}
+   */
+  getDiscount() {
+    return this.discount;
+  }
+
+  /**
+   * Get Markup.
+   * @returns {number}
+   */
+  getMarkup() {
+    return this.markup;
+  }
+
+  /**
+   * Get Module_ID.
+   * @returns {number}
+   */
+  getModuleId() {
+    return this.moduleId;
+  }
+
+  /**
+   * Get Exclusion.
+   * @returns {boolean}
+   */
+  getExclusion() {
+    return this.exclusion;
+  }
+
+  /**
+   * Get Description.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.description;
+  }
+
+  /**
+   * Get Display.
+   * @returns {boolean}
+   */
+  getDisplay() {
+    return this.display;
+  }
+
+  /**
+   * Get DateTime_Start.
+   * @returns {number}
+   */
+  getDateTimeStart() {
+    return this.dateTimeStart;
+  }
+
+  /**
+   * Get DateTime_End.
+   * @returns {number}
+   */
+  getDateTimeEnd() {
+    return this.dateTimeEnd;
+  }
+
+  /**
+   * Get Qualifying_Min_Subtotal.
+   * @returns {number}
+   */
+  getQualifyingMinSubtotal() {
+    return this.qualifyingMinSubtotal;
+  }
+
+  /**
+   * Get Qualifying_Max_Subtotal.
+   * @returns {number}
+   */
+  getQualifyingMaxSubtotal() {
+    return this.qualifyingMaxSubtotal;
+  }
+
+  /**
+   * Get Qualifying_Min_Quantity.
+   * @returns {number}
+   */
+  getQualifyingMinQuantity() {
+    return this.qualifyingMinQuantity;
+  }
+
+  /**
+   * Get Qualifying_Max_Quantity.
+   * @returns {number}
+   */
+  getQualifyingMaxQuantity() {
+    return this.qualifyingMaxQuantity;
+  }
+
+  /**
+   * Get Qualifying_Min_Weight.
+   * @returns {number}
+   */
+  getQualifyingMinWeight() {
+    return this.qualifyingMinWeight;
+  }
+
+  /**
+   * Get Qualifying_Max_Weight.
+   * @returns {number}
+   */
+  getQualifyingMaxWeight() {
+    return this.qualifyingMaxWeight;
+  }
+
+  /**
+   * Get Basket_Min_Subtotal.
+   * @returns {number}
+   */
+  getBasketMinSubtotal() {
+    return this.basketMinSubtotal;
+  }
+
+  /**
+   * Get Basket_Max_Subtotal.
+   * @returns {number}
+   */
+  getBasketMaxSubtotal() {
+    return this.basketMaxSubtotal;
+  }
+
+  /**
+   * Get Basket_Min_Quantity.
+   * @returns {number}
+   */
+  getBasketMinQuantity() {
+    return this.basketMinQuantity;
+  }
+
+  /**
+   * Get Basket_Max_Quantity.
+   * @returns {number}
+   */
+  getBasketMaxQuantity() {
+    return this.basketMaxQuantity;
+  }
+
+  /**
+   * Get Basket_Min_Weight.
+   * @returns {number}
+   */
+  getBasketMinWeight() {
+    return this.basketMinWeight;
+  }
+
+  /**
+   * Get Basket_Max_Weight.
+   * @returns {number}
+   */
+  getBasketMaxWeight() {
+    return this.basketMaxWeight;
+  }
+
+  /**
+   * Get Priority.
+   * @returns {number}
+   */
+  getPriority() {
+    return this.priority;
+  }
+
+  /**
+   * Get Exclusions.
+   * @returns {PriceGroupExclusion[]}
+   */
+  getExclusions() {
+    return this.exclusions;
+  }
+
+  /**
+   * Get Module_Fields.
+   * @returns {Object}
+   */
+  getModuleFields() {
+    return this.moduleFields;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupUpdate}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupUpdate}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupUpdate}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Name.
+   * @param {string} name
+   * @returns {PriceGroupUpdate}
+   */
+  setName(name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Set CustomerScope.
+   * @param {string} customerScope
+   * @returns {PriceGroupUpdate}
+   */
+  setCustomerScope(customerScope) {
+    this.customerScope = customerScope;
+    return this;
+  }
+
+  /**
+   * Set Rate.
+   * @param {string} rate
+   * @returns {PriceGroupUpdate}
+   */
+  setRate(rate) {
+    this.rate = rate;
+    return this;
+  }
+
+  /**
+   * Set Discount.
+   * @param {number} discount
+   * @returns {PriceGroupUpdate}
+   */
+  setDiscount(discount) {
+    this.discount = discount;
+    return this;
+  }
+
+  /**
+   * Set Markup.
+   * @param {number} markup
+   * @returns {PriceGroupUpdate}
+   */
+  setMarkup(markup) {
+    this.markup = markup;
+    return this;
+  }
+
+  /**
+   * Set Module_ID.
+   * @param {number} moduleId
+   * @returns {PriceGroupUpdate}
+   */
+  setModuleId(moduleId) {
+    this.moduleId = moduleId;
+    return this;
+  }
+
+  /**
+   * Set Exclusion.
+   * @param {boolean} exclusion
+   * @returns {PriceGroupUpdate}
+   */
+  setExclusion(exclusion) {
+    this.exclusion = exclusion;
+    return this;
+  }
+
+  /**
+   * Set Description.
+   * @param {string} description
+   * @returns {PriceGroupUpdate}
+   */
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Set Display.
+   * @param {boolean} display
+   * @returns {PriceGroupUpdate}
+   */
+  setDisplay(display) {
+    this.display = display;
+    return this;
+  }
+
+  /**
+   * Set DateTime_Start.
+   * @param {number|Date} dateTimeStart
+   * @returns {PriceGroupUpdate}
+   */
+  setDateTimeStart(dateTimeStart) {
+    if (util.isDate(dateTimeStart)) {
+      this.dateTimeStart = Math.floor(dateTimeStart.getTime()/1000);      
+    } else {
+      this.dateTimeStart = dateTimeStart;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set DateTime_End.
+   * @param {number|Date} dateTimeEnd
+   * @returns {PriceGroupUpdate}
+   */
+  setDateTimeEnd(dateTimeEnd) {
+    if (util.isDate(dateTimeEnd)) {
+      this.dateTimeEnd = Math.floor(dateTimeEnd.getTime()/1000);      
+    } else {
+      this.dateTimeEnd = dateTimeEnd;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Subtotal.
+   * @param {number} qualifyingMinSubtotal
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMinSubtotal(qualifyingMinSubtotal) {
+    this.qualifyingMinSubtotal = qualifyingMinSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Subtotal.
+   * @param {number} qualifyingMaxSubtotal
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMaxSubtotal(qualifyingMaxSubtotal) {
+    this.qualifyingMaxSubtotal = qualifyingMaxSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Quantity.
+   * @param {number} qualifyingMinQuantity
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMinQuantity(qualifyingMinQuantity) {
+    this.qualifyingMinQuantity = qualifyingMinQuantity;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Quantity.
+   * @param {number} qualifyingMaxQuantity
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMaxQuantity(qualifyingMaxQuantity) {
+    this.qualifyingMaxQuantity = qualifyingMaxQuantity;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Min_Weight.
+   * @param {number} qualifyingMinWeight
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMinWeight(qualifyingMinWeight) {
+    this.qualifyingMinWeight = qualifyingMinWeight;
+    return this;
+  }
+
+  /**
+   * Set Qualifying_Max_Weight.
+   * @param {number} qualifyingMaxWeight
+   * @returns {PriceGroupUpdate}
+   */
+  setQualifyingMaxWeight(qualifyingMaxWeight) {
+    this.qualifyingMaxWeight = qualifyingMaxWeight;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Subtotal.
+   * @param {number} basketMinSubtotal
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMinSubtotal(basketMinSubtotal) {
+    this.basketMinSubtotal = basketMinSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Subtotal.
+   * @param {number} basketMaxSubtotal
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMaxSubtotal(basketMaxSubtotal) {
+    this.basketMaxSubtotal = basketMaxSubtotal;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Quantity.
+   * @param {number} basketMinQuantity
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMinQuantity(basketMinQuantity) {
+    this.basketMinQuantity = basketMinQuantity;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Quantity.
+   * @param {number} basketMaxQuantity
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMaxQuantity(basketMaxQuantity) {
+    this.basketMaxQuantity = basketMaxQuantity;
+    return this;
+  }
+
+  /**
+   * Set Basket_Min_Weight.
+   * @param {number} basketMinWeight
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMinWeight(basketMinWeight) {
+    this.basketMinWeight = basketMinWeight;
+    return this;
+  }
+
+  /**
+   * Set Basket_Max_Weight.
+   * @param {number} basketMaxWeight
+   * @returns {PriceGroupUpdate}
+   */
+  setBasketMaxWeight(basketMaxWeight) {
+    this.basketMaxWeight = basketMaxWeight;
+    return this;
+  }
+
+  /**
+   * Set Priority.
+   * @param {number} priority
+   * @returns {PriceGroupUpdate}
+   */
+  setPriority(priority) {
+    this.priority = priority;
+    return this;
+  }
+
+  /**
+   * Set Exclusions.
+   * @param {PriceGroupExclusion[]} exclusions
+   * @throws {Error}
+   * @returns {PriceGroupUpdate}
+   */
+  setExclusions(exclusions) {
+    var i;
+    var l;
+
+    if (!util.isArray(exclusions)) {
+      throw new Error(util.format('Expected an array but got %s', typeof exclusions));
+    }
+
+    for (i = 0, l = exclusions.length; i < l; i++) {
+      if (!util.isInstanceOf(exclusions[i], models.PriceGroupExclusion) && util.isObject(exclusions[i])) {
+        exclusions[i] = new models.PriceGroupExclusion(exclusions[i]);
+      } else if (!util.isInstanceOf(exclusions[i], models.PriceGroupExclusion)) {
+        throw new Error(util.format('Expected instance of PriceGroupExclusion or an Object but got %s',
+          typeof exclusions[i]));
+      }
+    }
+
+    this.exclusions = exclusions;
+    return this;
+  }
+
+  /**
+   * Set Module_Fields.
+   * @param {Object} moduleFields
+   * @returns {PriceGroupUpdate}
+   */
+  setModuleFields(moduleFields) {
+    this.moduleFields = moduleFields;
+    return this;
+  }
+
+  /**
+   * Add Exclusions.
+   * @param {PriceGroupExclusion} priceGroupExclusion
+   * @throws {Error}
+   * @returns {PriceGroupUpdate}
+   */
+  addPriceGroupExclusion(priceGroupExclusion) {
+    if (util.isInstanceOf(priceGroupExclusion, models.PriceGroupExclusion)) {
+      this.exclusions.push(priceGroupExclusion);
+    } else if (util.isObject(priceGroupExclusion)) {
+      this.exclusions.push(new models.PriceGroupExclusion(priceGroupExclusion));
+    } else {
+      throw new Error(util.format('Expected instance of PriceGroupExclusion or Object but got %s',
+        typeof priceGroupExclusion));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many PriceGroupExclusion.
+   * @param {PriceGroupExclusion[]} exclusions
+   * @throws {Error}
+   * @returns {PriceGroupUpdate}
+   */
+  addExclusions(exclusions) {
+    var i;
+    var l;
+
+    if (!util.isArray(exclusions)) {
+      throw new Error(util.format('Expecting an array of PriceGroupExclusion but got %s',
+        typeof exclusions));
+    }
+
+    for (i = 0, l = exclusions.length; i < l; i++) {
+      if (util.isInstanceOf(exclusions[i], models.PriceGroupExclusion)) {
+        this.exclusions.push(exclusions[i]);
+      } else if (util.isObject(exclusions[i])) {
+        this.exclusions.push(new models.PriceGroupExclusion(exclusions[i]));
+      } else {
+        throw new Error(util.format('Expected array of PriceGroupExclusion or an array of Object but got %s',
+          typeof exclusions[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add custom data to the request.
+   *
+   * @param {string}
+   * @param {*}
+   * @returns {PriceGroupUpdate}
+   */
+  setModuleField(field, value)
+  {
+      this.moduleFields[field] = value;
+      return this;
+  }
+    
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = Object.assign(super.toObject(), this.getModuleFields());
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    data['PriceGroup_Name'] = this.priceGroupName;
+
+    if (!util.isNullOrUndefined(this.name)) {
+      data['Name'] = this.name;
+    }
+
+    if (!util.isNullOrUndefined(this.customerScope)) {
+      data['CustomerScope'] = this.customerScope;
+    }
+
+    if (!util.isNullOrUndefined(this.rate)) {
+      data['Rate'] = this.rate;
+    }
+
+    if (!util.isNullOrUndefined(this.discount)) {
+      data['Discount'] = this.discount;
+    }
+
+    if (!util.isNullOrUndefined(this.markup)) {
+      data['Markup'] = this.markup;
+    }
+
+    if (!util.isNullOrUndefined(this.moduleId)) {
+      data['Module_ID'] = this.moduleId;
+    }
+
+    if (!util.isNullOrUndefined(this.exclusion)) {
+      data['Exclusion'] = this.exclusion;
+    }
+
+    if (!util.isNullOrUndefined(this.description)) {
+      data['Description'] = this.description;
+    }
+
+    if (!util.isNullOrUndefined(this.display)) {
+      data['Display'] = this.display;
+    }
+
+    if (!util.isNullOrUndefined(this.dateTimeStart)) {
+      data['DateTime_Start'] = this.dateTimeStart;
+    }
+
+    if (!util.isNullOrUndefined(this.dateTimeEnd)) {
+      data['DateTime_End'] = this.dateTimeEnd;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinSubtotal)) {
+      data['Qualifying_Min_Subtotal'] = this.qualifyingMinSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxSubtotal)) {
+      data['Qualifying_Max_Subtotal'] = this.qualifyingMaxSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinQuantity)) {
+      data['Qualifying_Min_Quantity'] = this.qualifyingMinQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxQuantity)) {
+      data['Qualifying_Max_Quantity'] = this.qualifyingMaxQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMinWeight)) {
+      data['Qualifying_Min_Weight'] = this.qualifyingMinWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.qualifyingMaxWeight)) {
+      data['Qualifying_Max_Weight'] = this.qualifyingMaxWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinSubtotal)) {
+      data['Basket_Min_Subtotal'] = this.basketMinSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxSubtotal)) {
+      data['Basket_Max_Subtotal'] = this.basketMaxSubtotal;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinQuantity)) {
+      data['Basket_Min_Quantity'] = this.basketMinQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxQuantity)) {
+      data['Basket_Max_Quantity'] = this.basketMaxQuantity;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMinWeight)) {
+      data['Basket_Min_Weight'] = this.basketMinWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.basketMaxWeight)) {
+      data['Basket_Max_Weight'] = this.basketMaxWeight;
+    }
+
+    if (!util.isNullOrUndefined(this.priority)) {
+      data['Priority'] = this.priority;
+    }
+
+    if (util.isArray(this.exclusions)) {
+      data['Exclusions'] = [];
+
+      for (i = 0, l = this.exclusions.length; i < l; i++) {
+        if (util.isObject(this.exclusions[i])) {
+            data['Exclusions'].push(this.exclusions[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CouponCustomer_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/couponcustomer_update_assigned
+ */
+class CouponCustomerUpdateAssigned extends Request {
+  /**
+   * CouponCustomerUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?Coupon} coupon
+   */
+  constructor(client, coupon = null) {
+    super(client);
+    this.function = 'CouponCustomer_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.couponId = null;
+    this.editCoupon = null;
+    this.couponCode = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(coupon, models.Coupon)) {
+      if (coupon.getId()) {
+        this.setCouponId(coupon.getId());
+      }
+
+      this.setCouponCode(coupon.getCode());
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Coupon_ID.
+   * @returns {number}
+   */
+  getCouponId() {
+    return this.couponId;
+  }
+
+  /**
+   * Get Edit_Coupon.
+   * @returns {string}
+   */
+  getEditCoupon() {
+    return this.editCoupon;
+  }
+
+  /**
+   * Get Coupon_Code.
+   * @returns {string}
+   */
+  getCouponCode() {
+    return this.couponCode;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Coupon_ID.
+   * @param {number} couponId
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setCouponId(couponId) {
+    this.couponId = couponId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Coupon.
+   * @param {string} editCoupon
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setEditCoupon(editCoupon) {
+    this.editCoupon = editCoupon;
+    return this;
+  }
+
+  /**
+   * Set Coupon_Code.
+   * @param {string} couponCode
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setCouponCode(couponCode) {
+    this.couponCode = couponCode;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {CouponCustomerUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.couponId)) {
+      data['Coupon_ID'] = this.couponId;
+    } else if (!util.isNullOrUndefined(this.editCoupon)) {
+      data['Edit_Coupon'] = this.editCoupon;
+    } else if (!util.isNullOrUndefined(this.couponCode)) {
+      data['Coupon_Code'] = this.couponCode;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    data['Customer_Login'] = this.customerLogin;
+
+    data['Coupon_Code'] = this.couponCode;
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CouponCustomerUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccountList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccountlist_load_query
+ */
+class BusinessAccountListLoadQuery extends ListQueryRequest {
+  /**
+   * BusinessAccountListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BusinessAccountList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'title',
+      'note_count',
+      'tax_exempt',
+      'order_cnt',
+      'order_avg',
+      'order_tot'
+    ];
+
+    this.availableSortFields = [
+      'title',
+      'note_count',
+      'tax_exempt',
+      'order_cnt',
+      'order_avg',
+      'order_tot'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccount_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccount_insert
+ */
+class BusinessAccountInsert extends Request {
+  /**
+   * BusinessAccountInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BusinessAccount_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.businessAccountTitle = null;
+    this.businessAccountTaxExempt = null;
+  }
+
+  /**
+   * Get BusinessAccount_Title.
+   * @returns {string}
+   */
+  getBusinessAccountTitle() {
+    return this.businessAccountTitle;
+  }
+
+  /**
+   * Get BusinessAccount_Tax_Exempt.
+   * @returns {boolean}
+   */
+  getBusinessAccountTaxExempt() {
+    return this.businessAccountTaxExempt;
+  }
+
+  /**
+   * Set BusinessAccount_Title.
+   * @param {string} businessAccountTitle
+   * @returns {BusinessAccountInsert}
+   */
+  setBusinessAccountTitle(businessAccountTitle) {
+    this.businessAccountTitle = businessAccountTitle;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Tax_Exempt.
+   * @param {boolean} businessAccountTaxExempt
+   * @returns {BusinessAccountInsert}
+   */
+  setBusinessAccountTaxExempt(businessAccountTaxExempt) {
+    this.businessAccountTaxExempt = businessAccountTaxExempt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.businessAccountTaxExempt)) {
+      data['BusinessAccount_Tax_Exempt'] = this.businessAccountTaxExempt;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccount_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccount_update
+ */
+class BusinessAccountUpdate extends Request {
+  /**
+   * BusinessAccountUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?BusinessAccount} businessAccount
+   */
+  constructor(client, businessAccount = null) {
+    super(client);
+    this.function = 'BusinessAccount_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.businessAccountId = null;
+    this.editBusinessAccount = null;
+    this.businessAccountTitle = null;
+    this.businessAccountTaxExempt = null;
+
+    if (util.isInstanceOf(businessAccount, models.BusinessAccount)) {
+      if (businessAccount.getId()) {
+        this.setBusinessAccountId(businessAccount.getId());
+      }
+
+      this.setBusinessAccountTitle(businessAccount.getTitle());
+      this.setBusinessAccountTaxExempt(businessAccount.getTaxExempt());
+    }
+  }
+
+  /**
+   * Get BusinessAccount_ID.
+   * @returns {number}
+   */
+  getBusinessAccountId() {
+    return this.businessAccountId;
+  }
+
+  /**
+   * Get Edit_BusinessAccount.
+   * @returns {number}
+   */
+  getEditBusinessAccount() {
+    return this.editBusinessAccount;
+  }
+
+  /**
+   * Get BusinessAccount_Title.
+   * @returns {string}
+   */
+  getBusinessAccountTitle() {
+    return this.businessAccountTitle;
+  }
+
+  /**
+   * Get BusinessAccount_Tax_Exempt.
+   * @returns {boolean}
+   */
+  getBusinessAccountTaxExempt() {
+    return this.businessAccountTaxExempt;
+  }
+
+  /**
+   * Set BusinessAccount_ID.
+   * @param {number} businessAccountId
+   * @returns {BusinessAccountUpdate}
+   */
+  setBusinessAccountId(businessAccountId) {
+    this.businessAccountId = businessAccountId;
+    return this;
+  }
+
+  /**
+   * Set Edit_BusinessAccount.
+   * @param {number} editBusinessAccount
+   * @returns {BusinessAccountUpdate}
+   */
+  setEditBusinessAccount(editBusinessAccount) {
+    this.editBusinessAccount = editBusinessAccount;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Title.
+   * @param {string} businessAccountTitle
+   * @returns {BusinessAccountUpdate}
+   */
+  setBusinessAccountTitle(businessAccountTitle) {
+    this.businessAccountTitle = businessAccountTitle;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Tax_Exempt.
+   * @param {boolean} businessAccountTaxExempt
+   * @returns {BusinessAccountUpdate}
+   */
+  setBusinessAccountTaxExempt(businessAccountTaxExempt) {
+    this.businessAccountTaxExempt = businessAccountTaxExempt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.businessAccountId)) {
+      data['BusinessAccount_ID'] = this.businessAccountId;
+    } else if (!util.isNullOrUndefined(this.editBusinessAccount)) {
+      data['Edit_BusinessAccount'] = this.editBusinessAccount;
+    } else if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.businessAccountTaxExempt)) {
+      data['BusinessAccount_Tax_Exempt'] = this.businessAccountTaxExempt;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccountList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccountlist_delete
+ */
+class BusinessAccountListDelete extends Request {
+  /**
+   * BusinessAccountListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BusinessAccountList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.businessAccountIds = [];
+  }
+
+  /**
+   * Get BusinessAccount_IDs.
+   * @returns {Array}
+   */
+  getBusinessAccountIds() {
+    return this.businessAccountIds;
+  }
+
+  /**
+   * Add BusinessAccount_IDs.
+   * @param {number} businessAccountId
+   * @returns {BusinessAccountListDelete}
+   */
+  addBusinessAccountId(businessAccountId) {
+    this.businessAccountIds.push(businessAccountId);
+    return this;
+  }
+
+  /**
+   * Add BusinessAccount model.
+   * @param {BusinessAccount} businessAccount
+   * @throws {Error}
+   * @returns {BusinessAccountListDelete}
+   */
+  addBusinessAccount(businessAccount) {
+    if (!util.isInstanceOf(businessAccount, models.BusinessAccount)) {
+      throw new Error(util.format('Expected instance of BusinessAccount but got %s',
+        typeof businessAccount));
+    }
+
+    if (businessAccount.getId()) {
+      this.businessAccountIds.push(businessAccount.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['BusinessAccount_IDs'] = this.businessAccountIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccountCustomer_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccountcustomer_update_assigned
+ */
+class BusinessAccountCustomerUpdateAssigned extends Request {
+  /**
+   * BusinessAccountCustomerUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?BusinessAccount} businessAccount
+   */
+  constructor(client, businessAccount = null) {
+    super(client);
+    this.function = 'BusinessAccountCustomer_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.businessAccountId = null;
+    this.editBusinessAccount = null;
+    this.businessAccountTitle = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(businessAccount, models.BusinessAccount)) {
+      if (businessAccount.getId()) {
+        this.setBusinessAccountId(businessAccount.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get BusinessAccount_ID.
+   * @returns {number}
+   */
+  getBusinessAccountId() {
+    return this.businessAccountId;
+  }
+
+  /**
+   * Get Edit_BusinessAccount.
+   * @returns {string}
+   */
+  getEditBusinessAccount() {
+    return this.editBusinessAccount;
+  }
+
+  /**
+   * Get BusinessAccount_Title.
+   * @returns {string}
+   */
+  getBusinessAccountTitle() {
+    return this.businessAccountTitle;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_ID.
+   * @param {number} businessAccountId
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setBusinessAccountId(businessAccountId) {
+    this.businessAccountId = businessAccountId;
+    return this;
+  }
+
+  /**
+   * Set Edit_BusinessAccount.
+   * @param {string} editBusinessAccount
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setEditBusinessAccount(editBusinessAccount) {
+    this.editBusinessAccount = editBusinessAccount;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Title.
+   * @param {string} businessAccountTitle
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setBusinessAccountTitle(businessAccountTitle) {
+    this.businessAccountTitle = businessAccountTitle;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {BusinessAccountCustomerUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.businessAccountId)) {
+      data['BusinessAccount_ID'] = this.businessAccountId;
+    } else if (!util.isNullOrUndefined(this.editBusinessAccount)) {
+      data['Edit_BusinessAccount'] = this.editBusinessAccount;
+    } else if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    data['Customer_Login'] = this.customerLogin;
+
+    data['BusinessAccount_Title'] = this.businessAccountTitle;
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountCustomerUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request StoreList_Load_Query. Scope: Domain. 
+ * @see https://docs.miva.com/json-api/functions/storelist_load_query
+ */
+class StoreListLoadQuery extends ListQueryRequest {
+  /**
+   * StoreListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'StoreList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_DOMAIN;
+
+    this.availableSearchFields = [
+      'id',
+      'code',
+      'license',
+      'name',
+      'owner',
+      'email',
+      'company',
+      'address',
+      'city',
+      'state',
+      'zip',
+      'phone',
+      'fax',
+      'country'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'code',
+      'license',
+      'name',
+      'owner',
+      'email',
+      'company',
+      'address',
+      'city',
+      'state',
+      'zip',
+      'phone',
+      'fax',
+      'country'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.StoreListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Store_Load. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/store_load
+ */
+class StoreLoad extends Request {
+  /**
+   * StoreLoad Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'Store_Load';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.StoreLoad(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariantList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariantlist_load_query
+ */
+class ProductVariantListLoadQuery extends ListQueryRequest {
+  /**
+   * ProductVariantListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariantList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availableSearchFields = [
+      'product_code',
+      'product_name',
+      'product_sku',
+      'option_id',
+      'option_code'
+    ];
+
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariant_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariant_insert
+ */
+class ProductVariantInsert extends Request {
+  /**
+   * ProductVariantInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariant_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributes = [];
+    this.parts = [];
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {VariantAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Get Parts.
+   * @returns {VariantPart[]}
+   */
+  getParts() {
+    return this.parts;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantInsert}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantInsert}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantInsert}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {VariantAttribute[]} attributes
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.VariantAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.VariantAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.VariantAttribute)) {
+        throw new Error(util.format('Expected instance of VariantAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Set Parts.
+   * @param {VariantPart[]} parts
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  setParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expected an array but got %s', typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (!util.isInstanceOf(parts[i], models.VariantPart) && util.isObject(parts[i])) {
+        parts[i] = new models.VariantPart(parts[i]);
+      } else if (!util.isInstanceOf(parts[i], models.VariantPart)) {
+        throw new Error(util.format('Expected instance of VariantPart or an Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    this.parts = parts;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {VariantAttribute} variantAttribute
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  addVariantAttribute(variantAttribute) {
+    if (util.isInstanceOf(variantAttribute, models.VariantAttribute)) {
+      this.attributes.push(variantAttribute);
+    } else if (util.isObject(variantAttribute)) {
+      this.attributes.push(new models.VariantAttribute(variantAttribute));
+    } else {
+      throw new Error(util.format('Expected instance of VariantAttribute or Object but got %s',
+        typeof variantAttribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many VariantAttribute.
+   * @param {VariantAttribute[]} attributes
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of VariantAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.VariantAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.VariantAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of VariantAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add Parts.
+   * @param {VariantPart} variantPart
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  addVariantPart(variantPart) {
+    if (util.isInstanceOf(variantPart, models.VariantPart)) {
+      this.parts.push(variantPart);
+    } else if (util.isObject(variantPart)) {
+      this.parts.push(new models.VariantPart(variantPart));
+    } else {
+      throw new Error(util.format('Expected instance of VariantPart or Object but got %s',
+        typeof variantPart));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many VariantPart.
+   * @param {VariantPart[]} parts
+   * @throws {Error}
+   * @returns {ProductVariantInsert}
+   */
+  addParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expecting an array of VariantPart but got %s',
+        typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (util.isInstanceOf(parts[i], models.VariantPart)) {
+        this.parts.push(parts[i]);
+      } else if (util.isObject(parts[i])) {
+        this.parts.push(new models.VariantPart(parts[i]));
+      } else {
+        throw new Error(util.format('Expected array of VariantPart or an array of Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        data['Attributes'].push(this.attributes[i].toObject());
+      }
+    }
+
+    if (util.isArray(this.parts)) {
+      data['Parts'] = [];
+
+      for (i = 0, l = this.parts.length; i < l; i++) {
+        data['Parts'].push(this.parts[i].toObject());
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariant_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariant_update
+ */
+class ProductVariantUpdate extends Request {
+  /**
+   * ProductVariantUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?ProductVariant} productVariant
+   */
+  constructor(client, productVariant = null) {
+    super(client);
+    this.function = 'ProductVariant_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.variantId = null;
+    this.attributes = [];
+    this.parts = [];
+
+    if (util.isInstanceOf(productVariant, models.ProductVariant)) {
+      if (productVariant.getProductId()) {
+        this.setProductId(productVariant.getProductId());
+      }
+
+      if (productVariant.getVariantId()) {
+        this.setVariantId(productVariant.getVariantId());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Variant_ID.
+   * @returns {number}
+   */
+  getVariantId() {
+    return this.variantId;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {VariantAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Get Parts.
+   * @returns {VariantPart[]}
+   */
+  getParts() {
+    return this.parts;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Variant_ID.
+   * @param {number} variantId
+   * @returns {ProductVariantUpdate}
+   */
+  setVariantId(variantId) {
+    this.variantId = variantId;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {VariantAttribute[]} attributes
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.VariantAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.VariantAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.VariantAttribute)) {
+        throw new Error(util.format('Expected instance of VariantAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Set Parts.
+   * @param {VariantPart[]} parts
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  setParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expected an array but got %s', typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (!util.isInstanceOf(parts[i], models.VariantPart) && util.isObject(parts[i])) {
+        parts[i] = new models.VariantPart(parts[i]);
+      } else if (!util.isInstanceOf(parts[i], models.VariantPart)) {
+        throw new Error(util.format('Expected instance of VariantPart or an Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    this.parts = parts;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {VariantAttribute} variantAttribute
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  addVariantAttribute(variantAttribute) {
+    if (util.isInstanceOf(variantAttribute, models.VariantAttribute)) {
+      this.attributes.push(variantAttribute);
+    } else if (util.isObject(variantAttribute)) {
+      this.attributes.push(new models.VariantAttribute(variantAttribute));
+    } else {
+      throw new Error(util.format('Expected instance of VariantAttribute or Object but got %s',
+        typeof variantAttribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many VariantAttribute.
+   * @param {VariantAttribute[]} attributes
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of VariantAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.VariantAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.VariantAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of VariantAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Add Parts.
+   * @param {VariantPart} variantPart
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  addVariantPart(variantPart) {
+    if (util.isInstanceOf(variantPart, models.VariantPart)) {
+      this.parts.push(variantPart);
+    } else if (util.isObject(variantPart)) {
+      this.parts.push(new models.VariantPart(variantPart));
+    } else {
+      throw new Error(util.format('Expected instance of VariantPart or Object but got %s',
+        typeof variantPart));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many VariantPart.
+   * @param {VariantPart[]} parts
+   * @throws {Error}
+   * @returns {ProductVariantUpdate}
+   */
+  addParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expecting an array of VariantPart but got %s',
+        typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (util.isInstanceOf(parts[i], models.VariantPart)) {
+        this.parts.push(parts[i]);
+      } else if (util.isObject(parts[i])) {
+        this.parts.push(new models.VariantPart(parts[i]));
+      } else {
+        throw new Error(util.format('Expected array of VariantPart or an array of Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.variantId)) {
+      data['Variant_ID'] = this.variantId;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.parts)) {
+      data['Parts'] = [];
+
+      for (i = 0, l = this.parts.length; i < l; i++) {
+        data['Parts'].push(this.parts[i].toObject());
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariant_Generate. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariant_generate
+ */
+class ProductVariantGenerate extends Request {
+  /**
+   * ProductVariantGenerate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariant_Generate';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.pricingMethod = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Pricing_Method.
+   * @returns {number}
+   */
+  getPricingMethod() {
+    return this.pricingMethod;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantGenerate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantGenerate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantGenerate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Pricing_Method.
+   * @param {number} pricingMethod
+   * @returns {ProductVariantGenerate}
+   */
+  setPricingMethod(pricingMethod) {
+    this.pricingMethod = pricingMethod;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    data['Pricing_Method'] = this.pricingMethod;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantGenerate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariant_Generate_Delimiter. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
+ */
+class ProductVariantGenerateDelimiter extends Request {
+  /**
+   * ProductVariantGenerateDelimiter Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariant_Generate_Delimiter';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.pricingMethod = null;
+    this.delimiter = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Pricing_Method.
+   * @returns {number}
+   */
+  getPricingMethod() {
+    return this.pricingMethod;
+  }
+
+  /**
+   * Get Delimiter.
+   * @returns {string}
+   */
+  getDelimiter() {
+    return this.delimiter;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Pricing_Method.
+   * @param {number} pricingMethod
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setPricingMethod(pricingMethod) {
+    this.pricingMethod = pricingMethod;
+    return this;
+  }
+
+  /**
+   * Set Delimiter.
+   * @param {string} delimiter
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setDelimiter(delimiter) {
+    this.delimiter = delimiter;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    data['Pricing_Method'] = this.pricingMethod;
+
+    if (!util.isNullOrUndefined(this.delimiter)) {
+      data['Delimiter'] = this.delimiter;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantGenerateDelimiter(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductKitList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productkitlist_load_query
+ */
+class ProductKitListLoadQuery extends ListQueryRequest {
+  /**
+   * ProductKitListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductKitList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availableSearchFields = [
+      'product_code',
+      'product_name',
+      'attr_code',
+      'attr_prompt',
+      'option_code',
+      'option_prompt',
+      'attr_code',
+      'attr_prompt',
+      'option_code',
+      'option_prompt'
+    ];
+
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductKitListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductKitListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductKitListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductKitListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductKit_Generate_Variants. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productkit_generate_variants
+ */
+class ProductKitGenerateVariants extends Request {
+  /**
+   * ProductKitGenerateVariants Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductKit_Generate_Variants';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.pricingMethod = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Pricing_Method.
+   * @returns {number}
+   */
+  getPricingMethod() {
+    return this.pricingMethod;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductKitGenerateVariants}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductKitGenerateVariants}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductKitGenerateVariants}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Pricing_Method.
+   * @param {number} pricingMethod
+   * @returns {ProductKitGenerateVariants}
+   */
+  setPricingMethod(pricingMethod) {
+    this.pricingMethod = pricingMethod;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    data['Pricing_Method'] = this.pricingMethod;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductKitGenerateVariants(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductKit_Update_Parts. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productkit_update_parts
+ */
+class ProductKitUpdateParts extends Request {
+  /**
+   * ProductKitUpdateParts Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductKit_Update_Parts';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.attributeId = null;
+    this.attributeTemplateAttributeId = null;
+    this.optionId = null;
+    this.parts = [];
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get Option_ID.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.optionId;
+  }
+
+  /**
+   * Get Parts.
+   * @returns {KitPart[]}
+   */
+  getParts() {
+    return this.parts;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductKitUpdateParts}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductKitUpdateParts}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductKitUpdateParts}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {ProductKitUpdateParts}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {ProductKitUpdateParts}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set Option_ID.
+   * @param {number} optionId
+   * @returns {ProductKitUpdateParts}
+   */
+  setOptionId(optionId) {
+    this.optionId = optionId;
+    return this;
+  }
+
+  /**
+   * Set Parts.
+   * @param {KitPart[]} parts
+   * @throws {Error}
+   * @returns {ProductKitUpdateParts}
+   */
+  setParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expected an array but got %s', typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (!util.isInstanceOf(parts[i], models.KitPart) && util.isObject(parts[i])) {
+        parts[i] = new models.KitPart(parts[i]);
+      } else if (!util.isInstanceOf(parts[i], models.KitPart)) {
+        throw new Error(util.format('Expected instance of KitPart or an Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    this.parts = parts;
+    return this;
+  }
+
+  /**
+   * Add Parts.
+   * @param {KitPart} kitPart
+   * @throws {Error}
+   * @returns {ProductKitUpdateParts}
+   */
+  addKitPart(kitPart) {
+    if (util.isInstanceOf(kitPart, models.KitPart)) {
+      this.parts.push(kitPart);
+    } else if (util.isObject(kitPart)) {
+      this.parts.push(new models.KitPart(kitPart));
+    } else {
+      throw new Error(util.format('Expected instance of KitPart or Object but got %s',
+        typeof kitPart));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many KitPart.
+   * @param {KitPart[]} parts
+   * @throws {Error}
+   * @returns {ProductKitUpdateParts}
+   */
+  addParts(parts) {
+    var i;
+    var l;
+
+    if (!util.isArray(parts)) {
+      throw new Error(util.format('Expecting an array of KitPart but got %s',
+        typeof parts));
+    }
+
+    for (i = 0, l = parts.length; i < l; i++) {
+      if (util.isInstanceOf(parts[i], models.KitPart)) {
+        this.parts.push(parts[i]);
+      } else if (util.isObject(parts[i])) {
+        this.parts.push(new models.KitPart(parts[i]));
+      } else {
+        throw new Error(util.format('Expected array of KitPart or an array of Object but got %s',
+          typeof parts[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    }
+
+    if (!util.isNullOrUndefined(this.optionId)) {
+      data['Option_ID'] = this.optionId;
+    }
+
+    if (util.isArray(this.parts)) {
+      data['Parts'] = [];
+
+      for (i = 0, l = this.parts.length; i < l; i++) {
+        data['Parts'].push(this.parts[i].toObject());
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductKitUpdateParts(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductKit_Variant_Count. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productkit_variant_count
+ */
+class ProductKitVariantCount extends Request {
+  /**
+   * ProductKitVariantCount Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductKit_Variant_Count';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setProductCode(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductKitVariantCount}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductKitVariantCount}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductKitVariantCount}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductKitVariantCount(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request RelatedProduct_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/relatedproduct_update_assigned
+ */
+class RelatedProductUpdateAssigned extends Request {
+  /**
+   * RelatedProductUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'RelatedProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.relatedProductId = null;
+    this.relatedProductCode = null;
+    this.editRelatedProduct = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get RelatedProduct_ID.
+   * @returns {number}
+   */
+  getRelatedProductId() {
+    return this.relatedProductId;
+  }
+
+  /**
+   * Get RelatedProduct_Code.
+   * @returns {string}
+   */
+  getRelatedProductCode() {
+    return this.relatedProductCode;
+  }
+
+  /**
+   * Get Edit_RelatedProduct.
+   * @returns {string}
+   */
+  getEditRelatedProduct() {
+    return this.editRelatedProduct;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set RelatedProduct_ID.
+   * @param {number} relatedProductId
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setRelatedProductId(relatedProductId) {
+    this.relatedProductId = relatedProductId;
+    return this;
+  }
+
+  /**
+   * Set RelatedProduct_Code.
+   * @param {string} relatedProductCode
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setRelatedProductCode(relatedProductCode) {
+    this.relatedProductCode = relatedProductCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_RelatedProduct.
+   * @param {string} editRelatedProduct
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setEditRelatedProduct(editRelatedProduct) {
+    this.editRelatedProduct = editRelatedProduct;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {RelatedProductUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.relatedProductId)) {
+      data['RelatedProduct_ID'] = this.relatedProductId;
+    } else if (!util.isNullOrUndefined(this.relatedProductCode)) {
+      data['RelatedProduct_Code'] = this.relatedProductCode;
+    } else if (!util.isNullOrUndefined(this.editRelatedProduct)) {
+      data['Edit_RelatedProduct'] = this.editRelatedProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.RelatedProductUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** INVENTORY_CHOICE constants. */
+/** @ignore */
+const INVENTORY_CHOICE_DEFAULT = 'd';
+/** @ignore */
+const INVENTORY_CHOICE_YES = 'y';
+/** @ignore */
+const INVENTORY_CHOICE_NO = 'n';
+
+/** 
+ * Handles API Request InventoryProductSettings_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/inventoryproductsettings_update
+ */
+class InventoryProductSettingsUpdate extends Request {
+  /**
+   * InventoryProductSettingsUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'InventoryProductSettings_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.trackLowStockLevel = null;
+    this.trackOutOfStockLevel = null;
+    this.hideOutOfStockProducts = null;
+    this.lowStockLevel = null;
+    this.outOfStockLevel = null;
+    this.trackProduct = null;
+    this.inStockMessageShort = null;
+    this.inStockMessageLong = null;
+    this.lowStockMessageShort = null;
+    this.lowStockMessageLong = null;
+    this.outOfStockMessageShort = null;
+    this.outOfStockMessageLong = null;
+    this.limitedStockMessage = null;
+    this.adjustStockBy = null;
+    this.currentStock = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Constant INVENTORY_CHOICE_DEFAULT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get INVENTORY_CHOICE_DEFAULT() {
+    return INVENTORY_CHOICE_DEFAULT;
+  }
+
+  /**
+   * Constant INVENTORY_CHOICE_YES
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get INVENTORY_CHOICE_YES() {
+    return INVENTORY_CHOICE_YES;
+  }
+
+  /**
+   * Constant INVENTORY_CHOICE_NO
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get INVENTORY_CHOICE_NO() {
+    return INVENTORY_CHOICE_NO;
+  }
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get TrackLowStockLevel.
+   * @returns {string}
+   */
+  getTrackLowStockLevel() {
+    return this.trackLowStockLevel;
+  }
+
+  /**
+   * Get TrackOutOfStockLevel.
+   * @returns {string}
+   */
+  getTrackOutOfStockLevel() {
+    return this.trackOutOfStockLevel;
+  }
+
+  /**
+   * Get HideOutOfStockProducts.
+   * @returns {string}
+   */
+  getHideOutOfStockProducts() {
+    return this.hideOutOfStockProducts;
+  }
+
+  /**
+   * Get LowStockLevel.
+   * @returns {number}
+   */
+  getLowStockLevel() {
+    return this.lowStockLevel;
+  }
+
+  /**
+   * Get OutOfStockLevel.
+   * @returns {number}
+   */
+  getOutOfStockLevel() {
+    return this.outOfStockLevel;
+  }
+
+  /**
+   * Get TrackProduct.
+   * @returns {boolean}
+   */
+  getTrackProduct() {
+    return this.trackProduct;
+  }
+
+  /**
+   * Get InStockMessageShort.
+   * @returns {string}
+   */
+  getInStockMessageShort() {
+    return this.inStockMessageShort;
+  }
+
+  /**
+   * Get InStockMessageLong.
+   * @returns {string}
+   */
+  getInStockMessageLong() {
+    return this.inStockMessageLong;
+  }
+
+  /**
+   * Get LowStockMessageShort.
+   * @returns {string}
+   */
+  getLowStockMessageShort() {
+    return this.lowStockMessageShort;
+  }
+
+  /**
+   * Get LowStockMessageLong.
+   * @returns {string}
+   */
+  getLowStockMessageLong() {
+    return this.lowStockMessageLong;
+  }
+
+  /**
+   * Get OutOfStockMessageShort.
+   * @returns {string}
+   */
+  getOutOfStockMessageShort() {
+    return this.outOfStockMessageShort;
+  }
+
+  /**
+   * Get OutOfStockMessageLong.
+   * @returns {string}
+   */
+  getOutOfStockMessageLong() {
+    return this.outOfStockMessageLong;
+  }
+
+  /**
+   * Get LimitedStockMessage.
+   * @returns {string}
+   */
+  getLimitedStockMessage() {
+    return this.limitedStockMessage;
+  }
+
+  /**
+   * Get AdjustStockBy.
+   * @returns {number}
+   */
+  getAdjustStockBy() {
+    return this.adjustStockBy;
+  }
+
+  /**
+   * Get CurrentStock.
+   * @returns {number}
+   */
+  getCurrentStock() {
+    return this.currentStock;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set TrackLowStockLevel.
+   * @param {string} trackLowStockLevel
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setTrackLowStockLevel(trackLowStockLevel) {
+    this.trackLowStockLevel = trackLowStockLevel;
+    return this;
+  }
+
+  /**
+   * Set TrackOutOfStockLevel.
+   * @param {string} trackOutOfStockLevel
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setTrackOutOfStockLevel(trackOutOfStockLevel) {
+    this.trackOutOfStockLevel = trackOutOfStockLevel;
+    return this;
+  }
+
+  /**
+   * Set HideOutOfStockProducts.
+   * @param {string} hideOutOfStockProducts
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setHideOutOfStockProducts(hideOutOfStockProducts) {
+    this.hideOutOfStockProducts = hideOutOfStockProducts;
+    return this;
+  }
+
+  /**
+   * Set LowStockLevel.
+   * @param {number} lowStockLevel
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setLowStockLevel(lowStockLevel) {
+    this.lowStockLevel = lowStockLevel;
+    return this;
+  }
+
+  /**
+   * Set OutOfStockLevel.
+   * @param {number} outOfStockLevel
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setOutOfStockLevel(outOfStockLevel) {
+    this.outOfStockLevel = outOfStockLevel;
+    return this;
+  }
+
+  /**
+   * Set TrackProduct.
+   * @param {boolean} trackProduct
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setTrackProduct(trackProduct) {
+    this.trackProduct = trackProduct;
+    return this;
+  }
+
+  /**
+   * Set InStockMessageShort.
+   * @param {string} inStockMessageShort
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setInStockMessageShort(inStockMessageShort) {
+    this.inStockMessageShort = inStockMessageShort;
+    return this;
+  }
+
+  /**
+   * Set InStockMessageLong.
+   * @param {string} inStockMessageLong
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setInStockMessageLong(inStockMessageLong) {
+    this.inStockMessageLong = inStockMessageLong;
+    return this;
+  }
+
+  /**
+   * Set LowStockMessageShort.
+   * @param {string} lowStockMessageShort
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setLowStockMessageShort(lowStockMessageShort) {
+    this.lowStockMessageShort = lowStockMessageShort;
+    return this;
+  }
+
+  /**
+   * Set LowStockMessageLong.
+   * @param {string} lowStockMessageLong
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setLowStockMessageLong(lowStockMessageLong) {
+    this.lowStockMessageLong = lowStockMessageLong;
+    return this;
+  }
+
+  /**
+   * Set OutOfStockMessageShort.
+   * @param {string} outOfStockMessageShort
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setOutOfStockMessageShort(outOfStockMessageShort) {
+    this.outOfStockMessageShort = outOfStockMessageShort;
+    return this;
+  }
+
+  /**
+   * Set OutOfStockMessageLong.
+   * @param {string} outOfStockMessageLong
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setOutOfStockMessageLong(outOfStockMessageLong) {
+    this.outOfStockMessageLong = outOfStockMessageLong;
+    return this;
+  }
+
+  /**
+   * Set LimitedStockMessage.
+   * @param {string} limitedStockMessage
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setLimitedStockMessage(limitedStockMessage) {
+    this.limitedStockMessage = limitedStockMessage;
+    return this;
+  }
+
+  /**
+   * Set AdjustStockBy.
+   * @param {number} adjustStockBy
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setAdjustStockBy(adjustStockBy) {
+    this.adjustStockBy = adjustStockBy;
+    return this;
+  }
+
+  /**
+   * Set CurrentStock.
+   * @param {number} currentStock
+   * @returns {InventoryProductSettingsUpdate}
+   */
+  setCurrentStock(currentStock) {
+    this.currentStock = currentStock;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.trackLowStockLevel)) {
+      data['TrackLowStockLevel'] = this.trackLowStockLevel;
+    }
+
+    if (!util.isNullOrUndefined(this.trackOutOfStockLevel)) {
+      data['TrackOutOfStockLevel'] = this.trackOutOfStockLevel;
+    }
+
+    if (!util.isNullOrUndefined(this.hideOutOfStockProducts)) {
+      data['HideOutOfStockProducts'] = this.hideOutOfStockProducts;
+    }
+
+    if (!util.isNullOrUndefined(this.lowStockLevel)) {
+      data['LowStockLevel'] = this.lowStockLevel;
+    }
+
+    if (!util.isNullOrUndefined(this.outOfStockLevel)) {
+      data['OutOfStockLevel'] = this.outOfStockLevel;
+    }
+
+    if (!util.isNullOrUndefined(this.trackProduct)) {
+      data['TrackProduct'] = this.trackProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.inStockMessageShort)) {
+      data['InStockMessageShort'] = this.inStockMessageShort;
+    }
+
+    if (!util.isNullOrUndefined(this.inStockMessageLong)) {
+      data['InStockMessageLong'] = this.inStockMessageLong;
+    }
+
+    if (!util.isNullOrUndefined(this.lowStockMessageShort)) {
+      data['LowStockMessageShort'] = this.lowStockMessageShort;
+    }
+
+    if (!util.isNullOrUndefined(this.lowStockMessageLong)) {
+      data['LowStockMessageLong'] = this.lowStockMessageLong;
+    }
+
+    if (!util.isNullOrUndefined(this.outOfStockMessageShort)) {
+      data['OutOfStockMessageShort'] = this.outOfStockMessageShort;
+    }
+
+    if (!util.isNullOrUndefined(this.outOfStockMessageLong)) {
+      data['OutOfStockMessageLong'] = this.outOfStockMessageLong;
+    }
+
+    if (!util.isNullOrUndefined(this.limitedStockMessage)) {
+      data['LimitedStockMessage'] = this.limitedStockMessage;
+    }
+
+    if (!util.isNullOrUndefined(this.adjustStockBy)) {
+      data['AdjustStockBy'] = this.adjustStockBy;
+    }
+
+    if (!util.isNullOrUndefined(this.currentStock)) {
+      data['CurrentStock'] = this.currentStock;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.InventoryProductSettingsUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductVariantList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariantlist_delete
+ */
+class ProductVariantListDelete extends Request {
+  /**
+   * ProductVariantListDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariantList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.productVariantIds = [];
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get ProductVariant_IDs.
+   * @returns {Array}
+   */
+  getProductVariantIds() {
+    return this.productVariantIds;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductVariantListDelete}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductVariantListDelete}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductVariantListDelete}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Add ProductVariant_IDs.
+   * @param {number} variantId
+   * @returns {ProductVariantListDelete}
+   */
+  addVariantId(variantId) {
+    this.productVariantIds.push(variantId);
+    return this;
+  }
+
+  /**
+   * Add ProductVariant model.
+   * @param {ProductVariant} productVariant
+   * @throws {Error}
+   * @returns {ProductVariantListDelete}
+   */
+  addProductVariant(productVariant) {
+    if (!util.isInstanceOf(productVariant, models.ProductVariant)) {
+      throw new Error(util.format('Expected instance of ProductVariant but got %s',
+        typeof productVariant));
+    }
+
+    if (productVariant.getVariantId()) {
+      this.productVariantIds.push(productVariant.getVariantId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    data['ProductVariant_IDs'] = this.productVariantIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ImageTypeList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/imagetypelist_load_query
+ */
+class ImageTypeListLoadQuery extends ListQueryRequest {
+  /**
+   * ImageTypeListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'ImageTypeList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availableSearchFields = [
+      'code',
+      'descrip'
+    ];
+
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ImageTypeListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductImage_Update_Type. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productimage_update_type
+ */
+class ProductImageUpdateType extends Request {
+  /**
+   * ProductImageUpdateType Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'ProductImage_Update_Type';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productImageId = null;
+    this.imageTypeId = null;
+  }
+
+  /**
+   * Get ProductImage_ID.
+   * @returns {number}
+   */
+  getProductImageId() {
+    return this.productImageId;
+  }
+
+  /**
+   * Get ImageType_ID.
+   * @returns {number}
+   */
+  getImageTypeId() {
+    return this.imageTypeId;
+  }
+
+  /**
+   * Set ProductImage_ID.
+   * @param {number} productImageId
+   * @returns {ProductImageUpdateType}
+   */
+  setProductImageId(productImageId) {
+    this.productImageId = productImageId;
+    return this;
+  }
+
+  /**
+   * Set ImageType_ID.
+   * @param {number} imageTypeId
+   * @returns {ProductImageUpdateType}
+   */
+  setImageTypeId(imageTypeId) {
+    this.imageTypeId = imageTypeId;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['ProductImage_ID'] = this.productImageId;
+
+    if (!util.isNullOrUndefined(this.imageTypeId)) {
+      data['ImageType_ID'] = this.imageTypeId;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductImageUpdateType(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplatelist_load_query
+ */
+class AttributeTemplateListLoadQuery extends ListQueryRequest {
+  /**
+   * AttributeTemplateListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'AttributeTemplateList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'code',
+      'prompt',
+      'refcount'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'code',
+      'prompt',
+      'refcount'
+    ];
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateAttributeList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattributelist_load_query
+ */
+class AttributeTemplateAttributeListLoadQuery extends ListQueryRequest {
+  /**
+   * AttributeTemplateAttributeListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplateAttributeList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'attr_code',
+      'attr_prompt',
+      'attr_price',
+      'attr_cost',
+      'attr_weight',
+      'attr_image',
+      'opt_code',
+      'opt_prompt',
+      'opt_price',
+      'opt_cost',
+      'opt_weight',
+      'opt_image',
+      'code',
+      'prompt',
+      'price',
+      'cost',
+      'weight',
+      'image',
+      'required',
+      'inventory'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'code',
+      'type',
+      'prompt',
+      'price',
+      'cost',
+      'weight',
+      'image',
+      'required',
+      'inventory',
+      'attr_code',
+      'attr_prompt',
+      'attr_price',
+      'attr_cost',
+      'attr_weight',
+      'attr_image',
+      'opt_code',
+      'opt_prompt',
+      'opt_price',
+      'opt_cost',
+      'opt_weight',
+      'opt_image'
+    ];
+
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateAttributeListLoadQuery}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateAttributeListLoadQuery}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateAttributeListLoadQuery}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateAttributeListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateOptionList_Load_Attribute. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoptionlist_load_attribute
+ */
+class AttributeTemplateOptionListLoadAttribute extends ListQueryRequest {
+  /**
+   * AttributeTemplateOptionListLoadAttribute Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateAttribute} attributeTemplateAttribute
+   */
+  constructor(client, attributeTemplateAttribute = null) {
+    super(client);
+    this.function = 'AttributeTemplateOptionList_Load_Attribute';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+
+    if (util.isInstanceOf(attributeTemplateAttribute, models.AttributeTemplateAttribute)) {
+      if (attributeTemplateAttribute.getId()) {
+        this.setAttributeTemplateAttributeId(attributeTemplateAttribute.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateOptionListLoadAttribute}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateOptionListLoadAttribute(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateAttribute_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_delete
+ */
+class AttributeTemplateAttributeDelete extends Request {
+  /**
+   * AttributeTemplateAttributeDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateAttribute} attributeTemplateAttribute
+   */
+  constructor(client, attributeTemplateAttribute = null) {
+    super(client);
+    this.function = 'AttributeTemplateAttribute_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+
+    if (util.isInstanceOf(attributeTemplateAttribute, models.AttributeTemplateAttribute)) {
+      if (attributeTemplateAttribute.getId()) {
+        this.setAttributeTemplateAttributeId(attributeTemplateAttribute.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateAttributeDelete}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateAttributeDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateAttribute_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_insert
+ */
+class AttributeTemplateAttributeInsert extends Request {
+  /**
+   * AttributeTemplateAttributeInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplateAttribute_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.code = null;
+    this.prompt = null;
+    this.type = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.copy = null;
+    this.required = null;
+    this.inventory = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.type;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get Copy.
+   * @returns {boolean}
+   */
+  getCopy() {
+    return this.copy;
+  }
+
+  /**
+   * Get Required.
+   * @returns {boolean}
+   */
+  getRequired() {
+    return this.required;
+  }
+
+  /**
+   * Get Inventory.
+   * @returns {boolean}
+   */
+  getInventory() {
+    return this.inventory;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setType(type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set Copy.
+   * @param {boolean} copy
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setCopy(copy) {
+    this.copy = copy;
+    return this;
+  }
+
+  /**
+   * Set Required.
+   * @param {boolean} required
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setRequired(required) {
+    this.required = required;
+    return this;
+  }
+
+  /**
+   * Set Inventory.
+   * @param {boolean} inventory
+   * @returns {AttributeTemplateAttributeInsert}
+   */
+  setInventory(inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    data['Code'] = this.code;
+
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
+
+    data['Type'] = this.type;
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.copy)) {
+      data['Copy'] = this.copy;
+    }
+
+    if (!util.isNullOrUndefined(this.required)) {
+      data['Required'] = this.required;
+    }
+
+    if (!util.isNullOrUndefined(this.inventory)) {
+      data['Inventory'] = this.inventory;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateAttributeInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateAttribute_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_update
+ */
+class AttributeTemplateAttributeUpdate extends Request {
+  /**
+   * AttributeTemplateAttributeUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateAttribute} attributeTemplateAttribute
+   */
+  constructor(client, attributeTemplateAttribute = null) {
+    super(client);
+    this.function = 'AttributeTemplateAttribute_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+    this.code = null;
+    this.prompt = null;
+    this.type = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.copy = null;
+    this.required = null;
+    this.inventory = null;
+
+    if (util.isInstanceOf(attributeTemplateAttribute, models.AttributeTemplateAttribute)) {
+      if (attributeTemplateAttribute.getId()) {
+        this.setAttributeTemplateAttributeId(attributeTemplateAttribute.getId());
+      } else if (attributeTemplateAttribute.getCode()) {
+        this.setAttributeTemplateAttributeCode(attributeTemplateAttribute.getCode());
+      } else if (attributeTemplateAttribute.getCode()) {
+        this.setEditAttributeTemplateAttribute(attributeTemplateAttribute.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Type.
+   * @returns {string}
+   */
+  getType() {
+    return this.type;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get Copy.
+   * @returns {boolean}
+   */
+  getCopy() {
+    return this.copy;
+  }
+
+  /**
+   * Get Required.
+   * @returns {boolean}
+   */
+  getRequired() {
+    return this.required;
+  }
+
+  /**
+   * Get Inventory.
+   * @returns {boolean}
+   */
+  getInventory() {
+    return this.inventory;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Type.
+   * @param {string} type
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setType(type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set Copy.
+   * @param {boolean} copy
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setCopy(copy) {
+    this.copy = copy;
+    return this;
+  }
+
+  /**
+   * Set Required.
+   * @param {boolean} required
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setRequired(required) {
+    this.required = required;
+    return this;
+  }
+
+  /**
+   * Set Inventory.
+   * @param {boolean} inventory
+   * @returns {AttributeTemplateAttributeUpdate}
+   */
+  setInventory(inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    data['Code'] = this.code;
+
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
+
+    if (!util.isNullOrUndefined(this.type)) {
+      data['Type'] = this.type;
+    }
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.copy)) {
+      data['Copy'] = this.copy;
+    }
+
+    if (!util.isNullOrUndefined(this.required)) {
+      data['Required'] = this.required;
+    }
+
+    if (!util.isNullOrUndefined(this.inventory)) {
+      data['Inventory'] = this.inventory;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateAttributeUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateOption_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_delete
+ */
+class AttributeTemplateOptionDelete extends Request {
+  /**
+   * AttributeTemplateOptionDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateOption} attributeTemplateOption
+   */
+  constructor(client, attributeTemplateOption = null) {
+    super(client);
+    this.function = 'AttributeTemplateOption_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+    this.attributeTemplateOptionId = null;
+    this.attributeTemplateOptionCode = null;
+    this.editAttributeTemplateOption = null;
+
+    if (util.isInstanceOf(attributeTemplateOption, models.AttributeTemplateOption)) {
+      if (attributeTemplateOption.getId()) {
+        this.setAttributeTemplateOptionId(attributeTemplateOption.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Get AttributeTemplateOption_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateOptionId() {
+    return this.attributeTemplateOptionId;
+  }
+
+  /**
+   * Get AttributeTemplateOption_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateOptionCode() {
+    return this.attributeTemplateOptionCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateOption.
+   * @returns {string}
+   */
+  getEditAttributeTemplateOption() {
+    return this.editAttributeTemplateOption;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_ID.
+   * @param {number} attributeTemplateOptionId
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateOptionId(attributeTemplateOptionId) {
+    this.attributeTemplateOptionId = attributeTemplateOptionId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_Code.
+   * @param {string} attributeTemplateOptionCode
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setAttributeTemplateOptionCode(attributeTemplateOptionCode) {
+    this.attributeTemplateOptionCode = attributeTemplateOptionCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateOption.
+   * @param {string} editAttributeTemplateOption
+   * @returns {AttributeTemplateOptionDelete}
+   */
+  setEditAttributeTemplateOption(editAttributeTemplateOption) {
+    this.editAttributeTemplateOption = editAttributeTemplateOption;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateOptionId)) {
+      data['AttributeTemplateOption_ID'] = this.attributeTemplateOptionId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateOptionCode)) {
+      data['AttributeTemplateOption_Code'] = this.attributeTemplateOptionCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateOption)) {
+      data['Edit_AttributeTemplateOption'] = this.editAttributeTemplateOption;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateOptionDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateOption_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_insert
+ */
+class AttributeTemplateOptionInsert extends Request {
+  /**
+   * AttributeTemplateOptionInsert Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateAttribute} attributeTemplateAttribute
+   */
+  constructor(client, attributeTemplateAttribute = null) {
+    super(client);
+    this.function = 'AttributeTemplateOption_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+    this.code = null;
+    this.prompt = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.defaultOption = null;
+
+    if (util.isInstanceOf(attributeTemplateAttribute, models.AttributeTemplateAttribute)) {
+      if (attributeTemplateAttribute.getId()) {
+        this.setAttributeTemplateAttributeId(attributeTemplateAttribute.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get default_option.
+   * @returns {boolean}
+   */
+  getDefaultOption() {
+    return this.defaultOption;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set default_option.
+   * @param {boolean} defaultOption
+   * @returns {AttributeTemplateOptionInsert}
+   */
+  setDefaultOption(defaultOption) {
+    this.defaultOption = defaultOption;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    data['Code'] = this.code;
+
+    data['Prompt'] = this.prompt;
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.defaultOption)) {
+      data['Default'] = this.defaultOption;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateOptionInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateOption_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_update
+ */
+class AttributeTemplateOptionUpdate extends Request {
+  /**
+   * AttributeTemplateOptionUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateOption} attributeTemplateOption
+   */
+  constructor(client, attributeTemplateOption = null) {
+    super(client);
+    this.function = 'AttributeTemplateOption_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+    this.attributeTemplateOptionId = null;
+    this.attributeTemplateOptionCode = null;
+    this.editAttributeTemplateOption = null;
+    this.code = null;
+    this.prompt = null;
+    this.image = null;
+    this.price = null;
+    this.cost = null;
+    this.weight = null;
+    this.defaultOption = null;
+
+    if (util.isInstanceOf(attributeTemplateOption, models.AttributeTemplateOption)) {
+      if (attributeTemplateOption.getId()) {
+        this.setAttributeTemplateOptionId(attributeTemplateOption.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Get AttributeTemplateOption_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateOptionId() {
+    return this.attributeTemplateOptionId;
+  }
+
+  /**
+   * Get AttributeTemplateOption_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateOptionCode() {
+    return this.attributeTemplateOptionCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateOption.
+   * @returns {string}
+   */
+  getEditAttributeTemplateOption() {
+    return this.editAttributeTemplateOption;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.image;
+  }
+
+  /**
+   * Get Price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Get Cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.cost;
+  }
+
+  /**
+   * Get Weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.weight;
+  }
+
+  /**
+   * Get default_option.
+   * @returns {boolean}
+   */
+  getDefaultOption() {
+    return this.defaultOption;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_ID.
+   * @param {number} attributeTemplateOptionId
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateOptionId(attributeTemplateOptionId) {
+    this.attributeTemplateOptionId = attributeTemplateOptionId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_Code.
+   * @param {string} attributeTemplateOptionCode
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setAttributeTemplateOptionCode(attributeTemplateOptionCode) {
+    this.attributeTemplateOptionCode = attributeTemplateOptionCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateOption.
+   * @param {string} editAttributeTemplateOption
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setEditAttributeTemplateOption(editAttributeTemplateOption) {
+    this.editAttributeTemplateOption = editAttributeTemplateOption;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * Set Price.
+   * @param {number} price
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setPrice(price) {
+    this.price = price;
+    return this;
+  }
+
+  /**
+   * Set Cost.
+   * @param {number} cost
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setCost(cost) {
+    this.cost = cost;
+    return this;
+  }
+
+  /**
+   * Set Weight.
+   * @param {number} weight
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setWeight(weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Set default_option.
+   * @param {boolean} defaultOption
+   * @returns {AttributeTemplateOptionUpdate}
+   */
+  setDefaultOption(defaultOption) {
+    this.defaultOption = defaultOption;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateOptionId)) {
+      data['AttributeTemplateOption_ID'] = this.attributeTemplateOptionId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateOptionCode)) {
+      data['AttributeTemplateOption_Code'] = this.attributeTemplateOptionCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateOption)) {
+      data['Edit_AttributeTemplateOption'] = this.editAttributeTemplateOption;
+    }
+
+    data['Code'] = this.code;
+
+    data['Prompt'] = this.prompt;
+
+    if (!util.isNullOrUndefined(this.image)) {
+      data['Image'] = this.image;
+    }
+
+    if (!util.isNullOrUndefined(this.price)) {
+      data['Price'] = this.price;
+    }
+
+    if (!util.isNullOrUndefined(this.cost)) {
+      data['Cost'] = this.cost;
+    }
+
+    if (!util.isNullOrUndefined(this.weight)) {
+      data['Weight'] = this.weight;
+    }
+
+    if (!util.isNullOrUndefined(this.defaultOption)) {
+      data['Default'] = this.defaultOption;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateOptionUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplate_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_insert
+ */
+class AttributeTemplateInsert extends Request {
+  /**
+   * AttributeTemplateInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'AttributeTemplate_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.code = null;
+    this.prompt = null;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateInsert}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateInsert}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Code'] = this.code;
+
+    data['Prompt'] = this.prompt;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplate_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_update
+ */
+class AttributeTemplateUpdate extends Request {
+  /**
+   * AttributeTemplateUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplate_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.code = null;
+    this.prompt = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get Code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.code;
+  }
+
+  /**
+   * Get Prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.prompt;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateUpdate}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateUpdate}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateUpdate}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set Code.
+   * @param {string} code
+   * @returns {AttributeTemplateUpdate}
+   */
+  setCode(code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Set Prompt.
+   * @param {string} prompt
+   * @returns {AttributeTemplateUpdate}
+   */
+  setPrompt(prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    data['Code'] = this.code;
+
+    data['Prompt'] = this.prompt;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplate_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_delete
+ */
+class AttributeTemplateDelete extends Request {
+  /**
+   * AttributeTemplateDelete Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplate_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateDelete}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateDelete}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateDelete}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateOption_Set_Default. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_set_default
+ */
+class AttributeTemplateOptionSetDefault extends Request {
+  /**
+   * AttributeTemplateOptionSetDefault Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplateOption} attributeTemplateOption
+   */
+  constructor(client, attributeTemplateOption = null) {
+    super(client);
+    this.function = 'AttributeTemplateOption_Set_Default';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateOptionId = null;
+    this.attributeTemplateOptionCode = null;
+    this.editAttributeTemplateOption = null;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateAttributeId = null;
+    this.attributeTemplateAttributeCode = null;
+    this.editAttributeTemplateAttribute = null;
+    this.attributeTemplateOptionDefault = null;
+
+    if (util.isInstanceOf(attributeTemplateOption, models.AttributeTemplateOption)) {
+      if (attributeTemplateOption.getId()) {
+        this.setAttributeTemplateOptionId(attributeTemplateOption.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplateOption_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateOptionId() {
+    return this.attributeTemplateOptionId;
+  }
+
+  /**
+   * Get AttributeTemplateOption_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateOptionCode() {
+    return this.attributeTemplateOptionCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateOption.
+   * @returns {string}
+   */
+  getEditAttributeTemplateOption() {
+    return this.editAttributeTemplateOption;
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.attributeTemplateAttributeId;
+  }
+
+  /**
+   * Get AttributeTemplateAttribute_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.attributeTemplateAttributeCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplateAttribute.
+   * @returns {string}
+   */
+  getEditAttributeTemplateAttribute() {
+    return this.editAttributeTemplateAttribute;
+  }
+
+  /**
+   * Get AttributeTemplateOption_Default.
+   * @returns {boolean}
+   */
+  getAttributeTemplateOptionDefault() {
+    return this.attributeTemplateOptionDefault;
+  }
+
+  /**
+   * Set AttributeTemplateOption_ID.
+   * @param {number} attributeTemplateOptionId
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateOptionId(attributeTemplateOptionId) {
+    this.attributeTemplateOptionId = attributeTemplateOptionId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_Code.
+   * @param {string} attributeTemplateOptionCode
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateOptionCode(attributeTemplateOptionCode) {
+    this.attributeTemplateOptionCode = attributeTemplateOptionCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateOption.
+   * @param {string} editAttributeTemplateOption
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setEditAttributeTemplateOption(editAttributeTemplateOption) {
+    this.editAttributeTemplateOption = editAttributeTemplateOption;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_ID.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    this.attributeTemplateAttributeId = attributeTemplateAttributeId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateAttribute_Code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    this.attributeTemplateAttributeCode = attributeTemplateAttributeCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplateAttribute.
+   * @param {string} editAttributeTemplateAttribute
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setEditAttributeTemplateAttribute(editAttributeTemplateAttribute) {
+    this.editAttributeTemplateAttribute = editAttributeTemplateAttribute;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplateOption_Default.
+   * @param {boolean} attributeTemplateOptionDefault
+   * @returns {AttributeTemplateOptionSetDefault}
+   */
+  setAttributeTemplateOptionDefault(attributeTemplateOptionDefault) {
+    this.attributeTemplateOptionDefault = attributeTemplateOptionDefault;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateAttributeId)) {
+      data['AttributeTemplateAttribute_ID'] = this.attributeTemplateAttributeId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateAttributeCode)) {
+      data['AttributeTemplateAttribute_Code'] = this.attributeTemplateAttributeCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateAttribute)) {
+      data['Edit_AttributeTemplateAttribute'] = this.editAttributeTemplateAttribute;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateOptionId)) {
+      data['AttributeTemplateOption_ID'] = this.attributeTemplateOptionId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateOptionCode)) {
+      data['AttributeTemplateOption_Code'] = this.attributeTemplateOptionCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplateOption)) {
+      data['Edit_AttributeTemplateOption'] = this.editAttributeTemplateOption;
+    }
+
+    data['AttributeTemplateOption_Default'] = this.attributeTemplateOptionDefault;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateOptionSetDefault(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateProduct_Update_Assigned. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateproduct_update_assigned
+ */
+class AttributeTemplateProductUpdateAssigned extends Request {
+  /**
+   * AttributeTemplateProductUpdateAssigned Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplateProduct_Update_Assigned';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.assigned = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AttributeTemplateProductUpdateAssigned}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    data['Assigned'] = this.assigned;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateProductUpdateAssigned(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Branch_SetPrimary. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branch_setprimary
+ */
+class BranchSetPrimary extends Request {
+  /**
+   * BranchSetPrimary Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Branch_SetPrimary';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.branchId = null;
+    this.editBranch = null;
+    this.branchName = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      } else if (branch.getName()) {
+        this.setEditBranch(branch.getName());
+      } else if (branch.getName()) {
+        this.setBranchName(branch.getName());
+      }
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchSetPrimary}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchSetPrimary}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchSetPrimary}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchSetPrimary(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Branch_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branch_update
+ */
+class BranchUpdate extends Request {
+  /**
+   * BranchUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Branch} branch
+   */
+  constructor(client, branch = null) {
+    super(client);
+    this.function = 'Branch_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.branchId = null;
+    this.editBranch = null;
+    this.branchName = null;
+    this.branchColor = null;
+
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      } else if (branch.getName()) {
+        this.setEditBranch(branch.getName());
+      }
+    }
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
+  }
+
+  /**
+   * Get Branch_Color.
+   * @returns {string}
+   */
+  getBranchColor() {
+    return this.branchColor;
+  }
+
+  /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {BranchUpdate}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {BranchUpdate}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {BranchUpdate}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Branch_Color.
+   * @param {string} branchColor
+   * @returns {BranchUpdate}
+   */
+  setBranchColor(branchColor) {
+    this.branchColor = branchColor;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    }
+
+    if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
+
+    if (!util.isNullOrUndefined(this.branchColor)) {
+      data['Branch_Color'] = this.branchColor;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BranchUpdate(this, httpResponse, data);
   }
 }
 
@@ -17270,6 +34629,2169 @@ class OrderCouponListLoadQuery extends CouponListLoadQuery {
 }
 
 /** 
+ * Handles API Request ChildCategoryList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/childcategorylist_load_query
+ */
+class ChildCategoryListLoadQuery extends CategoryListLoadQuery {
+  /**
+   * ChildCategoryListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Category} category
+   */
+  constructor(client, category = null) {
+    super(client);
+    this.function = 'ChildCategoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.parentCategoryId = null;
+    this.parentCategoryCode = null;
+    this.editParentCategory = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(category, models.Category)) {
+      if (category.getId()) {
+        this.setParentCategoryId(category.getId());
+      } else if (category.getCode()) {
+        this.setEditParentCategory(category.getCode());
+      } else if (category.getCode()) {
+        this.setParentCategoryCode(category.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get ParentCategory_ID.
+   * @returns {number}
+   */
+  getParentCategoryId() {
+    return this.parentCategoryId;
+  }
+
+  /**
+   * Get ParentCategory_Code.
+   * @returns {string}
+   */
+  getParentCategoryCode() {
+    return this.parentCategoryCode;
+  }
+
+  /**
+   * Get Edit_ParentCategory.
+   * @returns {string}
+   */
+  getEditParentCategory() {
+    return this.editParentCategory;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set ParentCategory_ID.
+   * @param {number} parentCategoryId
+   * @returns {ChildCategoryListLoadQuery}
+   */
+  setParentCategoryId(parentCategoryId) {
+    this.parentCategoryId = parentCategoryId;
+    return this;
+  }
+
+  /**
+   * Set ParentCategory_Code.
+   * @param {string} parentCategoryCode
+   * @returns {ChildCategoryListLoadQuery}
+   */
+  setParentCategoryCode(parentCategoryCode) {
+    this.parentCategoryCode = parentCategoryCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_ParentCategory.
+   * @param {string} editParentCategory
+   * @returns {ChildCategoryListLoadQuery}
+   */
+  setEditParentCategory(editParentCategory) {
+    this.editParentCategory = editParentCategory;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {ChildCategoryListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {ChildCategoryListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.parentCategoryId)) {
+      data['ParentCategory_ID'] = this.parentCategoryId;
+    } else if (!util.isNullOrUndefined(this.parentCategoryCode)) {
+      data['ParentCategory_Code'] = this.parentCategoryCode;
+    } else if (!util.isNullOrUndefined(this.editParentCategory)) {
+      data['Edit_ParentCategory'] = this.editParentCategory;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ChildCategoryListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupCustomerList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomerlist_load_query
+ */
+class AvailabilityGroupCustomerListLoadQuery extends CustomerListLoadQuery {
+  /**
+   * AvailabilityGroupCustomerListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroupCustomerList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupCustomerListLoadQuery}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupCustomerListLoadQuery}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupCustomerListLoadQuery}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupCustomerListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AvailabilityGroupCustomerListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupCustomerListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupProductList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupproductlist_load_query
+ */
+class AvailabilityGroupProductListLoadQuery extends ProductListLoadQuery {
+  /**
+   * AvailabilityGroupProductListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroupProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupProductListLoadQuery}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupProductListLoadQuery}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupProductListLoadQuery}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupProductListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AvailabilityGroupProductListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupCategoryList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcategorylist_load_query
+ */
+class AvailabilityGroupCategoryListLoadQuery extends CategoryListLoadQuery {
+  /**
+   * AvailabilityGroupCategoryListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroupCategoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupCategoryListLoadQuery}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupCategoryListLoadQuery}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupCategoryListLoadQuery}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupCategoryListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AvailabilityGroupCategoryListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupCategoryListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AvailabilityGroupBusinessAccountList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccountlist_load_query
+ */
+class AvailabilityGroupBusinessAccountListLoadQuery extends BusinessAccountListLoadQuery {
+  /**
+   * AvailabilityGroupBusinessAccountListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AvailabilityGroup} availabilityGroup
+   */
+  constructor(client, availabilityGroup = null) {
+    super(client);
+    this.function = 'AvailabilityGroupBusinessAccountList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.availabilityGroupId = null;
+    this.editAvailabilityGroup = null;
+    this.availabilityGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(availabilityGroup, models.AvailabilityGroup)) {
+      if (availabilityGroup.getId()) {
+        this.setAvailabilityGroupId(availabilityGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get AvailabilityGroup_ID.
+   * @returns {number}
+   */
+  getAvailabilityGroupId() {
+    return this.availabilityGroupId;
+  }
+
+  /**
+   * Get Edit_AvailabilityGroup.
+   * @returns {string}
+   */
+  getEditAvailabilityGroup() {
+    return this.editAvailabilityGroup;
+  }
+
+  /**
+   * Get AvailabilityGroup_Name.
+   * @returns {string}
+   */
+  getAvailabilityGroupName() {
+    return this.availabilityGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AvailabilityGroup_ID.
+   * @param {number} availabilityGroupId
+   * @returns {AvailabilityGroupBusinessAccountListLoadQuery}
+   */
+  setAvailabilityGroupId(availabilityGroupId) {
+    this.availabilityGroupId = availabilityGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AvailabilityGroup.
+   * @param {string} editAvailabilityGroup
+   * @returns {AvailabilityGroupBusinessAccountListLoadQuery}
+   */
+  setEditAvailabilityGroup(editAvailabilityGroup) {
+    this.editAvailabilityGroup = editAvailabilityGroup;
+    return this;
+  }
+
+  /**
+   * Set AvailabilityGroup_Name.
+   * @param {string} availabilityGroupName
+   * @returns {AvailabilityGroupBusinessAccountListLoadQuery}
+   */
+  setAvailabilityGroupName(availabilityGroupName) {
+    this.availabilityGroupName = availabilityGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AvailabilityGroupBusinessAccountListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AvailabilityGroupBusinessAccountListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.availabilityGroupId)) {
+      data['AvailabilityGroup_ID'] = this.availabilityGroupId;
+    } else if (!util.isNullOrUndefined(this.editAvailabilityGroup)) {
+      data['Edit_AvailabilityGroup'] = this.editAvailabilityGroup;
+    } else if (!util.isNullOrUndefined(this.availabilityGroupName)) {
+      data['AvailabilityGroup_Name'] = this.availabilityGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AvailabilityGroupBusinessAccountListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupBusinessAccountList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccountlist_load_query
+ */
+class PriceGroupBusinessAccountListLoadQuery extends BusinessAccountListLoadQuery {
+  /**
+   * PriceGroupBusinessAccountListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupBusinessAccountList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupBusinessAccountListLoadQuery}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupBusinessAccountListLoadQuery}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupBusinessAccountListLoadQuery}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupBusinessAccountListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupBusinessAccountListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupBusinessAccountListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupCategoryList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupcategorylist_load_query
+ */
+class PriceGroupCategoryListLoadQuery extends CategoryListLoadQuery {
+  /**
+   * PriceGroupCategoryListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupCategoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupCategoryListLoadQuery}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupCategoryListLoadQuery}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupCategoryListLoadQuery}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupCategoryListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupCategoryListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupCategoryListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupExcludedCategoryList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategorylist_load_query
+ */
+class PriceGroupExcludedCategoryListLoadQuery extends CategoryListLoadQuery {
+  /**
+   * PriceGroupExcludedCategoryListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupExcludedCategoryList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupExcludedCategoryListLoadQuery}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupExcludedCategoryListLoadQuery}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupExcludedCategoryListLoadQuery}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupExcludedCategoryListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupExcludedCategoryListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupExcludedCategoryListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupExcludedProductList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproductlist_load_query
+ */
+class PriceGroupExcludedProductListLoadQuery extends ProductListLoadQuery {
+  /**
+   * PriceGroupExcludedProductListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupExcludedProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupExcludedProductListLoadQuery}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupExcludedProductListLoadQuery}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupExcludedProductListLoadQuery}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupExcludedProductListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupExcludedProductListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupExcludedProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request PriceGroupQualifyingProductList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproductlist_load_query
+ */
+class PriceGroupQualifyingProductListLoadQuery extends ProductListLoadQuery {
+  /**
+   * PriceGroupQualifyingProductListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?PriceGroup} priceGroup
+   */
+  constructor(client, priceGroup = null) {
+    super(client);
+    this.function = 'PriceGroupQualifyingProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.priceGroupId = null;
+    this.editPriceGroup = null;
+    this.priceGroupName = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(priceGroup, models.PriceGroup)) {
+      if (priceGroup.getId()) {
+        this.setPriceGroupId(priceGroup.getId());
+      }
+    }
+  }
+
+  /**
+   * Get PriceGroup_ID.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.priceGroupId;
+  }
+
+  /**
+   * Get Edit_PriceGroup.
+   * @returns {string}
+   */
+  getEditPriceGroup() {
+    return this.editPriceGroup;
+  }
+
+  /**
+   * Get PriceGroup_Name.
+   * @returns {string}
+   */
+  getPriceGroupName() {
+    return this.priceGroupName;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set PriceGroup_ID.
+   * @param {number} priceGroupId
+   * @returns {PriceGroupQualifyingProductListLoadQuery}
+   */
+  setPriceGroupId(priceGroupId) {
+    this.priceGroupId = priceGroupId;
+    return this;
+  }
+
+  /**
+   * Set Edit_PriceGroup.
+   * @param {string} editPriceGroup
+   * @returns {PriceGroupQualifyingProductListLoadQuery}
+   */
+  setEditPriceGroup(editPriceGroup) {
+    this.editPriceGroup = editPriceGroup;
+    return this;
+  }
+
+  /**
+   * Set PriceGroup_Name.
+   * @param {string} priceGroupName
+   * @returns {PriceGroupQualifyingProductListLoadQuery}
+   */
+  setPriceGroupName(priceGroupName) {
+    this.priceGroupName = priceGroupName;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {PriceGroupQualifyingProductListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {PriceGroupQualifyingProductListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.priceGroupId)) {
+      data['PriceGroup_ID'] = this.priceGroupId;
+    } else if (!util.isNullOrUndefined(this.editPriceGroup)) {
+      data['Edit_PriceGroup'] = this.editPriceGroup;
+    } else if (!util.isNullOrUndefined(this.priceGroupName)) {
+      data['PriceGroup_Name'] = this.priceGroupName;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.PriceGroupQualifyingProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request CouponCustomerList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/couponcustomerlist_load_query
+ */
+class CouponCustomerListLoadQuery extends CustomerListLoadQuery {
+  /**
+   * CouponCustomerListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Coupon} coupon
+   */
+  constructor(client, coupon = null) {
+    super(client);
+    this.function = 'CouponCustomerList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.couponId = null;
+    this.editCoupon = null;
+    this.couponCode = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(coupon, models.Coupon)) {
+      if (coupon.getId()) {
+        this.setCouponId(coupon.getId());
+      }
+    }
+  }
+
+  /**
+   * Get Coupon_ID.
+   * @returns {number}
+   */
+  getCouponId() {
+    return this.couponId;
+  }
+
+  /**
+   * Get Edit_Coupon.
+   * @returns {string}
+   */
+  getEditCoupon() {
+    return this.editCoupon;
+  }
+
+  /**
+   * Get Coupon_Code.
+   * @returns {string}
+   */
+  getCouponCode() {
+    return this.couponCode;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set Coupon_ID.
+   * @param {number} couponId
+   * @returns {CouponCustomerListLoadQuery}
+   */
+  setCouponId(couponId) {
+    this.couponId = couponId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Coupon.
+   * @param {string} editCoupon
+   * @returns {CouponCustomerListLoadQuery}
+   */
+  setEditCoupon(editCoupon) {
+    this.editCoupon = editCoupon;
+    return this;
+  }
+
+  /**
+   * Set Coupon_Code.
+   * @param {string} couponCode
+   * @returns {CouponCustomerListLoadQuery}
+   */
+  setCouponCode(couponCode) {
+    this.couponCode = couponCode;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {CouponCustomerListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {CouponCustomerListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.couponId)) {
+      data['Coupon_ID'] = this.couponId;
+    } else if (!util.isNullOrUndefined(this.editCoupon)) {
+      data['Edit_Coupon'] = this.editCoupon;
+    } else if (!util.isNullOrUndefined(this.couponCode)) {
+      data['Coupon_Code'] = this.couponCode;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CouponCustomerListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request BusinessAccountCustomerList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/businessaccountcustomerlist_load_query
+ */
+class BusinessAccountCustomerListLoadQuery extends CustomerListLoadQuery {
+  /**
+   * BusinessAccountCustomerListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'BusinessAccountCustomerList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.businessAccountId = null;
+    this.editBusinessAccount = null;
+    this.businessAccountTitle = null;
+    this.assigned = null;
+    this.unassigned = null;
+  }
+
+  /**
+   * Get BusinessAccount_ID.
+   * @returns {number}
+   */
+  getBusinessAccountId() {
+    return this.businessAccountId;
+  }
+
+  /**
+   * Get Edit_BusinessAccount.
+   * @returns {number}
+   */
+  getEditBusinessAccount() {
+    return this.editBusinessAccount;
+  }
+
+  /**
+   * Get BusinessAccount_Title.
+   * @returns {string}
+   */
+  getBusinessAccountTitle() {
+    return this.businessAccountTitle;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set BusinessAccount_ID.
+   * @param {number} businessAccountId
+   * @returns {BusinessAccountCustomerListLoadQuery}
+   */
+  setBusinessAccountId(businessAccountId) {
+    this.businessAccountId = businessAccountId;
+    return this;
+  }
+
+  /**
+   * Set Edit_BusinessAccount.
+   * @param {number} editBusinessAccount
+   * @returns {BusinessAccountCustomerListLoadQuery}
+   */
+  setEditBusinessAccount(editBusinessAccount) {
+    this.editBusinessAccount = editBusinessAccount;
+    return this;
+  }
+
+  /**
+   * Set BusinessAccount_Title.
+   * @param {string} businessAccountTitle
+   * @returns {BusinessAccountCustomerListLoadQuery}
+   */
+  setBusinessAccountTitle(businessAccountTitle) {
+    this.businessAccountTitle = businessAccountTitle;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {BusinessAccountCustomerListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {BusinessAccountCustomerListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.businessAccountId)) {
+      data['BusinessAccount_ID'] = this.businessAccountId;
+    } else if (!util.isNullOrUndefined(this.editBusinessAccount)) {
+      data['Edit_BusinessAccount'] = this.editBusinessAccount;
+    } else if (!util.isNullOrUndefined(this.businessAccountTitle)) {
+      data['BusinessAccount_Title'] = this.businessAccountTitle;
+    }
+
+    if (!util.isNullOrUndefined(this.businessAccountId)) {
+      data['BusinessAccount_ID'] = this.businessAccountId;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.BusinessAccountCustomerListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request RelatedProductList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/relatedproductlist_load_query
+ */
+class RelatedProductListLoadQuery extends ProductListLoadQuery {
+  /**
+   * RelatedProductListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'RelatedProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.productCode = null;
+    this.editProduct = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {RelatedProductListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {RelatedProductListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {RelatedProductListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {RelatedProductListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {RelatedProductListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.RelatedProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request AttributeTemplateProductList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attributetemplateproductlist_load_query
+ */
+class AttributeTemplateProductListLoadQuery extends ProductListLoadQuery {
+  /**
+   * AttributeTemplateProductListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?AttributeTemplate} attributeTemplate
+   */
+  constructor(client, attributeTemplate = null) {
+    super(client);
+    this.function = 'AttributeTemplateProductList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.attributeTemplateId = null;
+    this.attributeTemplateCode = null;
+    this.editAttributeTemplate = null;
+    this.assigned = null;
+    this.unassigned = null;
+
+    if (util.isInstanceOf(attributeTemplate, models.AttributeTemplate)) {
+      if (attributeTemplate.getId()) {
+        this.setAttributeTemplateId(attributeTemplate.getId());
+      } else if (attributeTemplate.getCode()) {
+        this.setAttributeTemplateCode(attributeTemplate.getCode());
+      } else if (attributeTemplate.getCode()) {
+        this.setEditAttributeTemplate(attributeTemplate.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get Assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.assigned;
+  }
+
+  /**
+   * Get Unassigned.
+   * @returns {boolean}
+   */
+  getUnassigned() {
+    return this.unassigned;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeTemplateProductListLoadQuery}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeTemplateProductListLoadQuery}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeTemplateProductListLoadQuery}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set Assigned.
+   * @param {boolean} assigned
+   * @returns {AttributeTemplateProductListLoadQuery}
+   */
+  setAssigned(assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  /**
+   * Set Unassigned.
+   * @param {boolean} unassigned
+   * @returns {AttributeTemplateProductListLoadQuery}
+   */
+  setUnassigned(unassigned) {
+    this.unassigned = unassigned;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    }
+
+    if (!util.isNullOrUndefined(this.assigned)) {
+      data['Assigned'] = this.assigned;
+    }
+
+    if (!util.isNullOrUndefined(this.unassigned)) {
+      data['Unassigned'] = this.unassigned;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeTemplateProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
  * This class is a utility to create custom requests.
  */
 class RequestBuilder extends Request
@@ -17523,11 +37045,119 @@ module.exports = {
   ResourceGroupListLoadQuery,
   BranchListDelete,
   MivaMerchantVersion,
+  AttributeLoadCode,
+  AttributeInsert,
+  AttributeUpdate,
+  AttributeDelete,
+  OptionListLoadAttribute,
+  OptionDelete,
+  OptionInsert,
+  OptionUpdate,
+  OptionLoadCode,
+  OptionSetDefault,
+  AttributeAndOptionListLoadProduct,
+  OrderShipmentListLoadQuery,
+  OrderItemSplit,
+  OrderItemListRemoveFromShipment,
+  CustomerAddressInsert,
+  CustomerAddressUpdate,
+  CustomerAddressDelete,
+  CustomerAddressListDelete,
+  CustomerAddressUpdateResidential,
+  URIListLoadQuery,
+  URIInsert,
+  ProductURIInsert,
+  CategoryURIInsert,
+  PageURIInsert,
+  FeedURIInsert,
+  URIUpdate,
+  ProductURIUpdate,
+  CategoryURIUpdate,
+  PageURIUpdate,
+  FeedURIUpdate,
+  URIDelete,
+  ProductURIListLoadQuery,
+  CategoryURIListLoadQuery,
+  PageURIListLoadQuery,
+  FeedURIListLoadQuery,
+  ProductURIListDelete,
+  PageURIListDelete,
+  CategoryURIListDelete,
+  FeedURIListDelete,
+  URIListDelete,
+  PageURIRedirect,
+  ProductURIRedirect,
+  CategoryURIRedirect,
+  AvailabilityGroupDelete,
+  AvailabilityGroupInsert,
+  AvailabilityGroupUpdate,
+  AvailabilityGroupCategoryUpdateAssigned,
+  AvailabilityGroupShippingMethodListLoadQuery,
+  PriceGroupBusinessAccountUpdateAssigned,
+  PriceGroupCategoryUpdateAssigned,
+  PriceGroupExcludedCategoryUpdateAssigned,
+  PriceGroupExcludedProductUpdateAssigned,
+  PriceGroupQualifyingProductUpdateAssigned,
+  PriceGroupDelete,
+  PriceGroupInsert,
+  PriceGroupUpdate,
+  CouponCustomerUpdateAssigned,
+  BusinessAccountListLoadQuery,
+  BusinessAccountInsert,
+  BusinessAccountUpdate,
+  BusinessAccountListDelete,
+  BusinessAccountCustomerUpdateAssigned,
+  StoreListLoadQuery,
+  StoreLoad,
+  ProductVariantListLoadQuery,
+  ProductVariantInsert,
+  ProductVariantUpdate,
+  ProductVariantGenerate,
+  ProductVariantGenerateDelimiter,
+  ProductKitListLoadQuery,
+  ProductKitGenerateVariants,
+  ProductKitUpdateParts,
+  ProductKitVariantCount,
+  RelatedProductUpdateAssigned,
+  InventoryProductSettingsUpdate,
+  ProductVariantListDelete,
+  ImageTypeListLoadQuery,
+  ProductImageUpdateType,
+  AttributeTemplateListLoadQuery,
+  AttributeTemplateAttributeListLoadQuery,
+  AttributeTemplateOptionListLoadAttribute,
+  AttributeTemplateAttributeDelete,
+  AttributeTemplateAttributeInsert,
+  AttributeTemplateAttributeUpdate,
+  AttributeTemplateOptionDelete,
+  AttributeTemplateOptionInsert,
+  AttributeTemplateOptionUpdate,
+  AttributeTemplateInsert,
+  AttributeTemplateUpdate,
+  AttributeTemplateDelete,
+  AttributeTemplateOptionSetDefault,
+  AttributeTemplateProductUpdateAssigned,
+  BranchSetPrimary,
+  BranchUpdate,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,
   PriceGroupProductListLoadQuery,
   CustomerPriceGroupListLoadQuery,
   OrderPriceGroupListLoadQuery,
-  OrderCouponListLoadQuery
+  OrderCouponListLoadQuery,
+  ChildCategoryListLoadQuery,
+  AvailabilityGroupCustomerListLoadQuery,
+  AvailabilityGroupProductListLoadQuery,
+  AvailabilityGroupCategoryListLoadQuery,
+  AvailabilityGroupBusinessAccountListLoadQuery,
+  PriceGroupBusinessAccountListLoadQuery,
+  PriceGroupCategoryListLoadQuery,
+  PriceGroupExcludedCategoryListLoadQuery,
+  PriceGroupExcludedProductListLoadQuery,
+  PriceGroupQualifyingProductListLoadQuery,
+  CouponCustomerListLoadQuery,
+  BusinessAccountCustomerListLoadQuery,
+  RelatedProductListLoadQuery,
+  AttributeTemplateProductListLoadQuery
 };

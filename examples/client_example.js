@@ -34,3 +34,18 @@ var options = {
 };
 
 var client = new api.Client('https://www.mystore.com/mm5/json.mvc', 'MyApiToken', 'MySigningKey', options);
+
+/// Request Logging can be enabled by assigning a Logger instance to the client
+
+/// Currently, we provide two logger types:
+//       FileLogger - logs to a local file
+//       ConsoleLogger - logs to std out/err
+
+// Setting up a FileLogger
+client.setLogger(new api.logger.FileLogger("/path/to/my/logfile.log"));
+
+// Setting up a ConsoleLogger to log to stdout
+client.setLogger(new api.logger.ConsoleLogger('stdout'));
+
+// Setting up a ConsoleLogger to log to stderr
+client.setLogger(new api.logger.ConsoleLogger('stderr'));

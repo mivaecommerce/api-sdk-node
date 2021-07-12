@@ -36,6 +36,142 @@ class AvailabilityGroup extends Model {
   getName() {
     return this.getField('name');
   }
+  
+  /**
+   * Get tax_exempt.
+   * @returns {boolean}
+   */
+  getTaxExempt() {
+    return this.getField('tax_exempt', false);
+  }
+}
+
+/** AvailabilityGroupShippingMethod data model. */
+class AvailabilityGroupShippingMethod extends Model {
+  /**
+   * AvailabilityGroupShippingMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get mod_code.
+   * @returns {string}
+   */
+  getModuleCode() {
+    return this.getField('mod_code');
+  }
+  
+  /**
+   * Get meth_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('meth_code');
+  }
+  
+  /**
+   * Get method_name.
+   * @returns {string}
+   */
+  getMethodName() {
+    return this.getField('method_name');
+  }
+  
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** BusinessAccount data model. */
+class BusinessAccount extends Model {
+  /**
+   * BusinessAccount Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get title.
+   * @returns {string}
+   */
+  getTitle() {
+    return this.getField('title');
+  }
+  
+  /**
+   * Get tax_exempt.
+   * @returns {boolean}
+   */
+  getTaxExempt() {
+    return this.getField('tax_exempt', false);
+  }
+  
+  /**
+   * Get order_cnt.
+   * @returns {number}
+   */
+  getOrderCount() {
+    return this.getField('order_cnt', 0);
+  }
+  
+  /**
+   * Get order_avg.
+   * @returns {number}
+   */
+  getOrderAverage() {
+    return this.getField('order_avg', 0.00);
+  }
+  
+  /**
+   * Get formatted_order_avg.
+   * @returns {string}
+   */
+  getFormattedOrderAverage() {
+    return this.getField('formatted_order_avg');
+  }
+  
+  /**
+   * Get order_tot.
+   * @returns {number}
+   */
+  getOrderTotal() {
+    return this.getField('order_tot', 0.00);
+  }
+  
+  /**
+   * Get formatted_order_tot.
+   * @returns {string}
+   */
+  getFormattedOrderTotal() {
+    return this.getField('formatted_order_tot');
+  }
+  
+  /**
+   * Get note_count.
+   * @returns {number}
+   */
+  getNoteCount() {
+    return this.getField('note_count', 0);
+  }
 }
 
 /** Customer data model. */
@@ -759,6 +895,16 @@ const ELIGIBILITY_CUSTOMER = 'X';
 /** @ignore */
 const ELIGIBILITY_LOGGED_IN = 'L';
 
+/** DISCOUNT_TYPE constants. */
+/** @ignore */
+const DISCOUNT_TYPE_RETAIL = 'R';
+/** @ignore */
+const DISCOUNT_TYPE_COST = 'C';
+/** @ignore */
+const DISCOUNT_TYPE_DISCOUNT_RETAIL = 'D';
+/** @ignore */
+const DISCOUNT_TYPE_MARKUP_COST = 'M';
+
 /** PriceGroup data model. */
 class PriceGroup extends Model {
   /**
@@ -831,6 +977,45 @@ class PriceGroup extends Model {
   static get ELIGIBILITY_LOGGED_IN() {
     return ELIGIBILITY_LOGGED_IN;
   }
+  /**
+   * Constant DISCOUNT_TYPE_RETAIL
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DISCOUNT_TYPE_RETAIL() {
+    return DISCOUNT_TYPE_RETAIL;
+  }
+
+  /**
+   * Constant DISCOUNT_TYPE_COST
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DISCOUNT_TYPE_COST() {
+    return DISCOUNT_TYPE_COST;
+  }
+
+  /**
+   * Constant DISCOUNT_TYPE_DISCOUNT_RETAIL
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DISCOUNT_TYPE_DISCOUNT_RETAIL() {
+    return DISCOUNT_TYPE_DISCOUNT_RETAIL;
+  }
+
+  /**
+   * Constant DISCOUNT_TYPE_MARKUP_COST
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DISCOUNT_TYPE_MARKUP_COST() {
+    return DISCOUNT_TYPE_MARKUP_COST;
+  }
 
   /**
    * Get id.
@@ -854,6 +1039,14 @@ class PriceGroup extends Model {
    */
   getCustomerScope() {
     return this.getField('custscope');
+  }
+  
+  /**
+   * Get rate.
+   * @returns {string}
+   */
+  getRate() {
+    return this.getField('rate');
   }
   
   /**
@@ -1664,6 +1857,14 @@ class RelatedProduct extends Model {
   getDateTimeUpdated() {
     return this.getField('dt_updated', 0);
   }
+  
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
 }
 
 /** ProductImageData data model. */
@@ -1758,6 +1959,22 @@ class ProductImageData extends Model {
   }
 }
 
+/** PRODUCT_ATTRIBUTE_TYPE constants. */
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_CHECKBOX = 'checkbox';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_RADIO = 'radio';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_TEXT = 'text';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_SELECT = 'select';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_MEMO = 'memo';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_TEMPLATE = 'template';
+/** @ignore */
+const PRODUCT_ATTRIBUTE_TYPE_SWATCH_SELECT = 'swatch-select';
+
 /** ProductAttribute data model. */
 class ProductAttribute extends Model {
   /**
@@ -1771,6 +1988,19 @@ class ProductAttribute extends Model {
 
     super(data);
 
+    if (!util.isUndefined(this.attributes) && util.isArray(this.attributes)) {
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (!util.isInstanceOf(this.attributes[i], ProductAttribute) && util.isObject(data['attributes'][i])) {
+          this.attributes[i] = new ProductAttribute(this.attributes[i]);
+        } else if (!util.isInstanceOf(this.attributes[i], ProductAttribute)) {
+          throw new Error(util.format('Expected array of ProductAttribute or an array of Objects but got %s',
+            typeof this.attributes[i]));
+        }
+      }
+    } else {
+      this.attributes = [];
+    }
+
     if (!util.isUndefined(this.options) && util.isArray(this.options)) {
       for (i = 0, l = this.options.length; i < l; i++) {
         if (!util.isInstanceOf(this.options[i], ProductOption) && util.isObject(data['options'][i])) {
@@ -1783,6 +2013,76 @@ class ProductAttribute extends Model {
     } else {
       this.options = [];
     }
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_CHECKBOX
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_CHECKBOX() {
+    return PRODUCT_ATTRIBUTE_TYPE_CHECKBOX;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_RADIO
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_RADIO() {
+    return PRODUCT_ATTRIBUTE_TYPE_RADIO;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_TEXT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_TEXT() {
+    return PRODUCT_ATTRIBUTE_TYPE_TEXT;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_SELECT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_SELECT() {
+    return PRODUCT_ATTRIBUTE_TYPE_SELECT;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_MEMO
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_MEMO() {
+    return PRODUCT_ATTRIBUTE_TYPE_MEMO;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_TEMPLATE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_TEMPLATE() {
+    return PRODUCT_ATTRIBUTE_TYPE_TEMPLATE;
+  }
+
+  /**
+   * Constant PRODUCT_ATTRIBUTE_TYPE_SWATCH_SELECT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get PRODUCT_ATTRIBUTE_TYPE_SWATCH_SELECT() {
+    return PRODUCT_ATTRIBUTE_TYPE_SWATCH_SELECT;
   }
 
   /**
@@ -1903,6 +2203,14 @@ class ProductAttribute extends Model {
   }
   
   /**
+   * Get attributes.
+   * @returns {ProductAttribute[]}
+   */
+  getTemplateAttributes() {
+    return this.getField('attributes', []);
+  }
+  
+  /**
    * Get options.
    * @returns {ProductOption[]}
    */
@@ -1917,6 +2225,14 @@ class ProductAttribute extends Model {
     var i;
     var l;
     var ret = Object.assign(this);
+
+    if (util.isArray(ret['attributes'])) {
+      for (i = 0, l = ret['attributes'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['attributes'][i], ProductAttribute)) {
+          ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
 
     if (util.isArray(ret['options'])) {
       for (i = 0, l = ret['options'].length; i < l; i++) {
@@ -1969,7 +2285,7 @@ class ProductOption extends Model {
    * Get attemp_id.
    * @returns {number}
    */
-  getAttempId() {
+  getAttributeTemplateId() {
     return this.getField('attemp_id', 0);
   }
   
@@ -1977,7 +2293,7 @@ class ProductOption extends Model {
    * Get attmpat_id.
    * @returns {number}
    */
-  getAttmpatId() {
+  getAttributeTemplateAttributeId() {
     return this.getField('attmpat_id', 0);
   }
   
@@ -2040,6 +2356,22 @@ class ProductOption extends Model {
    */
   getImage() {
     return this.getField('image');
+  }
+  
+  /**
+   * Get formatted_price.
+   * @returns {string}
+   */
+  getFormattedPrice() {
+    return this.getField('formatted_price');
+  }
+  
+  /**
+   * Get formatted_cost.
+   * @returns {string}
+   */
+  getFormattedCost() {
+    return this.getField('formatted_cost');
   }
 }
 
@@ -2174,6 +2506,18 @@ class ProductShippingRules extends Model {
   }
 }
 
+/** DESTINATION_TYPE constants. */
+/** @ignore */
+const DESTINATION_TYPE_SCREEN = 'screen';
+/** @ignore */
+const DESTINATION_TYPE_PAGE = 'page';
+/** @ignore */
+const DESTINATION_TYPE_CATEGORY = 'category';
+/** @ignore */
+const DESTINATION_TYPE_PRODUCT = 'product';
+/** @ignore */
+const DESTINATION_TYPE_FEED = 'feed';
+
 /** Uri data model. */
 class Uri extends Model {
   /**
@@ -2183,6 +2527,111 @@ class Uri extends Model {
    */
   constructor(data = {}) {
     super(data);
+
+    if (!util.isUndefined(this.store)) {
+      if (!util.isInstanceOf(this.store, UriDetail) && util.isObject(this.store)) {
+        this.store = new UriDetail(this.store);
+      } else if (!util.isInstanceOf(this.store, UriDetail)) {
+        throw new Error(util.format('Expected UriDetail or an Object but got %s',
+          typeof this.store));
+      }
+    } else {
+      this.store = {};
+    }
+
+    if (!util.isUndefined(this.product)) {
+      if (!util.isInstanceOf(this.product, UriDetail) && util.isObject(this.product)) {
+        this.product = new UriDetail(this.product);
+      } else if (!util.isInstanceOf(this.product, UriDetail)) {
+        throw new Error(util.format('Expected UriDetail or an Object but got %s',
+          typeof this.product));
+      }
+    } else {
+      this.product = {};
+    }
+
+    if (!util.isUndefined(this.category)) {
+      if (!util.isInstanceOf(this.category, UriDetail) && util.isObject(this.category)) {
+        this.category = new UriDetail(this.category);
+      } else if (!util.isInstanceOf(this.category, UriDetail)) {
+        throw new Error(util.format('Expected UriDetail or an Object but got %s',
+          typeof this.category));
+      }
+    } else {
+      this.category = {};
+    }
+
+    if (!util.isUndefined(this.page)) {
+      if (!util.isInstanceOf(this.page, UriDetail) && util.isObject(this.page)) {
+        this.page = new UriDetail(this.page);
+      } else if (!util.isInstanceOf(this.page, UriDetail)) {
+        throw new Error(util.format('Expected UriDetail or an Object but got %s',
+          typeof this.page));
+      }
+    } else {
+      this.page = {};
+    }
+
+    if (!util.isUndefined(this.feed)) {
+      if (!util.isInstanceOf(this.feed, UriDetail) && util.isObject(this.feed)) {
+        this.feed = new UriDetail(this.feed);
+      } else if (!util.isInstanceOf(this.feed, UriDetail)) {
+        throw new Error(util.format('Expected UriDetail or an Object but got %s',
+          typeof this.feed));
+      }
+    } else {
+      this.feed = {};
+    }
+  }
+
+  /**
+   * Constant DESTINATION_TYPE_SCREEN
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DESTINATION_TYPE_SCREEN() {
+    return DESTINATION_TYPE_SCREEN;
+  }
+
+  /**
+   * Constant DESTINATION_TYPE_PAGE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DESTINATION_TYPE_PAGE() {
+    return DESTINATION_TYPE_PAGE;
+  }
+
+  /**
+   * Constant DESTINATION_TYPE_CATEGORY
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DESTINATION_TYPE_CATEGORY() {
+    return DESTINATION_TYPE_CATEGORY;
+  }
+
+  /**
+   * Constant DESTINATION_TYPE_PRODUCT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DESTINATION_TYPE_PRODUCT() {
+    return DESTINATION_TYPE_PRODUCT;
+  }
+
+  /**
+   * Constant DESTINATION_TYPE_FEED
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get DESTINATION_TYPE_FEED() {
+    return DESTINATION_TYPE_FEED;
   }
 
   /**
@@ -2263,6 +2712,111 @@ class Uri extends Model {
    */
   getStatus() {
     return this.getField('status', 0);
+  }
+  
+  /**
+   * Get store.
+   * @returns {UriDetail|*}
+   */
+  getStore() {
+    return this.getField('store', null);
+  }
+  
+  /**
+   * Get product.
+   * @returns {UriDetail|*}
+   */
+  getProduct() {
+    return this.getField('product', null);
+  }
+  
+  /**
+   * Get category.
+   * @returns {UriDetail|*}
+   */
+  getCategory() {
+    return this.getField('category', null);
+  }
+  
+  /**
+   * Get page.
+   * @returns {UriDetail|*}
+   */
+  getPage() {
+    return this.getField('page', null);
+  }
+  
+  /**
+   * Get feed.
+   * @returns {UriDetail|*}
+   */
+  getFeed() {
+    return this.getField('feed', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['store'], UriDetail)) {
+      ret['store'] = ret['store'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['product'], UriDetail)) {
+      ret['product'] = ret['product'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['category'], UriDetail)) {
+      ret['category'] = ret['category'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['page'], UriDetail)) {
+      ret['page'] = ret['page'].toObject();
+    }
+
+    if (util.isInstanceOf(ret['feed'], UriDetail)) {
+      ret['feed'] = ret['feed'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** UriDetail data model. */
+class UriDetail extends Model {
+  /**
+   * UriDetail Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get name.
+   * @returns {string}
+   */
+  getName() {
+    return this.getField('name');
+  }
+  
+  /**
+   * Get sku.
+   * @returns {string}
+   */
+  getSku() {
+    return this.getField('sku');
   }
 }
 
@@ -2363,6 +2917,215 @@ class ProductVariant extends Model {
     }
 
     return ret;
+  }
+}
+
+/** ProductKit data model. */
+class ProductKit extends Model {
+  /**
+   * ProductKit Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.parts) && util.isArray(this.parts)) {
+      for (i = 0, l = this.parts.length; i < l; i++) {
+        if (!util.isInstanceOf(this.parts[i], ProductKitPart) && util.isObject(data['parts'][i])) {
+          this.parts[i] = new ProductKitPart(this.parts[i]);
+        } else if (!util.isInstanceOf(this.parts[i], ProductKitPart)) {
+          throw new Error(util.format('Expected array of ProductKitPart or an array of Objects but got %s',
+            typeof this.parts[i]));
+        }
+      }
+    } else {
+      this.parts = [];
+    }
+  }
+
+  /**
+   * Get attr_id.
+   * @returns {number}
+   */
+  getAttrId() {
+    return this.getField('attr_id', 0);
+  }
+  
+  /**
+   * Get attr_type.
+   * @returns {string}
+   */
+  getAttrType() {
+    return this.getField('attr_type');
+  }
+  
+  /**
+   * Get attr_code.
+   * @returns {string}
+   */
+  getAttrCode() {
+    return this.getField('attr_code');
+  }
+  
+  /**
+   * Get attr_prompt.
+   * @returns {string}
+   */
+  getAttrPrompt() {
+    return this.getField('attr_prompt');
+  }
+  
+  /**
+   * Get attmpat_id.
+   * @returns {number}
+   */
+  getAttmpatId() {
+    return this.getField('attmpat_id', 0);
+  }
+  
+  /**
+   * Get option_id.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.getField('option_id', 0);
+  }
+  
+  /**
+   * Get option_code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.getField('option_code');
+  }
+  
+  /**
+   * Get option_prompt.
+   * @returns {string}
+   */
+  getOptionPrompt() {
+    return this.getField('option_prompt');
+  }
+  
+  /**
+   * Get parts.
+   * @returns {ProductKitPart[]}
+   */
+  getParts() {
+    return this.getField('parts', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['parts'])) {
+      for (i = 0, l = ret['parts'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['parts'][i], ProductKitPart)) {
+          ret['parts'][i] = ret['parts'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** ProductKitPart data model. */
+class ProductKitPart extends Model {
+  /**
+   * ProductKitPart Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get product_id.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.getField('product_id', 0);
+  }
+  
+  /**
+   * Get product_code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.getField('product_code');
+  }
+  
+  /**
+   * Get product_name.
+   * @returns {string}
+   */
+  getProductName() {
+    return this.getField('product_name');
+  }
+  
+  /**
+   * Get quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.getField('quantity', 0);
+  }
+}
+
+/** KitPart data model. */
+class KitPart extends Model {
+  /**
+   * KitPart Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get part_id.
+   * @returns {number}
+   */
+  getPartId() {
+    return this.getField('part_id', 0);
+  }
+  
+  /**
+   * Get quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.getField('quantity', 0);
+  }
+  
+  /**
+   * Set part_id.
+   * @param {number} partId
+   * @returns {KitPart}
+   */
+  setPartId(partId) {
+    return this.setField('part_id', partId);
+  }
+
+  /**
+   * Set quantity.
+   * @param {number} quantity
+   * @returns {KitPart}
+   */
+  setQuantity(quantity) {
+    return this.setField('quantity', quantity);
   }
 }
 
@@ -3482,7 +4245,34 @@ class OrderShipment extends Model {
    * @returns {void}
    */
   constructor(data = {}) {
+    var i;
+    var l;
+
     super(data);
+
+    if (!util.isUndefined(this.order)) {
+      if (!util.isInstanceOf(this.order, Order) && util.isObject(this.order)) {
+        this.order = new Order(this.order);
+      } else if (!util.isInstanceOf(this.order, Order)) {
+        throw new Error(util.format('Expected Order or an Object but got %s',
+          typeof this.order));
+      }
+    } else {
+      this.order = {};
+    }
+
+    if (!util.isUndefined(this.items) && util.isArray(this.items)) {
+      for (i = 0, l = this.items.length; i < l; i++) {
+        if (!util.isInstanceOf(this.items[i], OrderItem) && util.isObject(data['items'][i])) {
+          this.items[i] = new OrderItem(this.items[i]);
+        } else if (!util.isInstanceOf(this.items[i], OrderItem)) {
+          throw new Error(util.format('Expected array of OrderItem or an array of Objects but got %s',
+            typeof this.items[i]));
+        }
+      }
+    } else {
+      this.items = [];
+    }
   }
 
   /**
@@ -3617,6 +4407,45 @@ class OrderShipment extends Model {
    */
   getFormattedCost() {
     return this.getField('formatted_cost');
+  }
+  
+  /**
+   * Get order.
+   * @returns {Order|*}
+   */
+  getOrder() {
+    return this.getField('order', null);
+  }
+  
+  /**
+   * Get items.
+   * @returns {OrderItem[]}
+   */
+  getItems() {
+    return this.getField('items', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['order'], Order)) {
+      ret['order'] = ret['order'].toObject();
+    }
+
+    if (util.isArray(ret['items'])) {
+      for (i = 0, l = ret['items'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['items'][i], OrderItem)) {
+          ret['items'][i] = ret['items'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
   }
 }
 
@@ -4222,6 +5051,22 @@ class OrderItem extends Model {
   }
   
   /**
+   * Get tax.
+   * @returns {number}
+   */
+  getTax() {
+    return this.getField('tax', 0.00);
+  }
+  
+  /**
+   * Get formatted_tax.
+   * @returns {string}
+   */
+  getFormattedTax() {
+    return this.getField('formatted_tax');
+  }
+  
+  /**
    * Get weight.
    * @returns {number}
    */
@@ -4307,6 +5152,14 @@ class OrderItem extends Model {
    */
   getTrackingNumber() {
     return this.getField('tracknum');
+  }
+  
+  /**
+   * Get shpmnt_id.
+   * @returns {number}
+   */
+  getShipmentId() {
+    return this.getField('shpmnt_id', 0);
   }
   
   /**
@@ -4554,6 +5407,14 @@ class OrderCharge extends Model {
    */
   getTaxExempt() {
     return this.getField('tax_exempt', false);
+  }
+  
+  /**
+   * Get tax.
+   * @returns {number}
+   */
+  getTax() {
+    return this.getField('tax', 0.00);
   }
   
   /**
@@ -6157,11 +7018,27 @@ class ProductVariantPart extends Model {
   }
   
   /**
+   * Get product_sku.
+   * @returns {string}
+   */
+  getProductSku() {
+    return this.getField('product_sku');
+  }
+  
+  /**
    * Get quantity.
    * @returns {number}
    */
   getQuantity() {
     return this.getField('quantity', 0);
+  }
+  
+  /**
+   * Get offset.
+   * @returns {number}
+   */
+  getOffset() {
+    return this.getField('offset', 0);
   }
 }
 
@@ -9135,6 +10012,14 @@ class CSSResourceVersion extends Model {
   }
   
   /**
+   * Get source_notes.
+   * @returns {string}
+   */
+  getSourceNotes() {
+    return this.getField('source_notes');
+  }
+  
+  /**
    * @override
    */
   toObject() {
@@ -9544,6 +10429,14 @@ class JavaScriptResourceVersion extends Model {
    */
   getLinkedResources() {
     return this.getField('linkedresources', []);
+  }
+  
+  /**
+   * Get source_notes.
+   * @returns {string}
+   */
+  getSourceNotes() {
+    return this.getField('source_notes');
   }
   
   /**
@@ -10147,6 +11040,14 @@ class PropertyVersion extends Model {
   }
   
   /**
+   * Get source_notes.
+   * @returns {string}
+   */
+  getSourceNotes() {
+    return this.getField('source_notes');
+  }
+  
+  /**
    * @override
    */
   toObject() {
@@ -10312,6 +11213,1121 @@ class MerchantVersion extends Model {
   }
 }
 
+/** Store data model. */
+class Store extends Model {
+  /**
+   * Store Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get manager_id.
+   * @returns {number}
+   */
+  getManagerId() {
+    return this.getField('manager_id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get license.
+   * @returns {string}
+   */
+  getLicense() {
+    return this.getField('license');
+  }
+  
+  /**
+   * Get name.
+   * @returns {string}
+   */
+  getName() {
+    return this.getField('name');
+  }
+  
+  /**
+   * Get owner.
+   * @returns {string}
+   */
+  getOwner() {
+    return this.getField('owner');
+  }
+  
+  /**
+   * Get email.
+   * @returns {string}
+   */
+  getEmail() {
+    return this.getField('email');
+  }
+  
+  /**
+   * Get company.
+   * @returns {string}
+   */
+  getCompany() {
+    return this.getField('company');
+  }
+  
+  /**
+   * Get address.
+   * @returns {string}
+   */
+  getAddress() {
+    return this.getField('address');
+  }
+  
+  /**
+   * Get city.
+   * @returns {string}
+   */
+  getCity() {
+    return this.getField('city');
+  }
+  
+  /**
+   * Get state.
+   * @returns {string}
+   */
+  getState() {
+    return this.getField('state');
+  }
+  
+  /**
+   * Get zip.
+   * @returns {string}
+   */
+  getZip() {
+    return this.getField('zip');
+  }
+  
+  /**
+   * Get phone.
+   * @returns {string}
+   */
+  getPhone() {
+    return this.getField('phone');
+  }
+  
+  /**
+   * Get fax.
+   * @returns {string}
+   */
+  getFax() {
+    return this.getField('fax');
+  }
+  
+  /**
+   * Get country.
+   * @returns {string}
+   */
+  getCountry() {
+    return this.getField('country');
+  }
+  
+  /**
+   * Get wtunits.
+   * @returns {string}
+   */
+  getWeightUnits() {
+    return this.getField('wtunits');
+  }
+  
+  /**
+   * Get wtunitcode.
+   * @returns {string}
+   */
+  getWeightUnitCode() {
+    return this.getField('wtunitcode');
+  }
+  
+  /**
+   * Get dmunitcode.
+   * @returns {string}
+   */
+  getDimensionUnits() {
+    return this.getField('dmunitcode');
+  }
+  
+  /**
+   * Get baskexp.
+   * @returns {number}
+   */
+  getBasketExpiration() {
+    return this.getField('baskexp', 0);
+  }
+  
+  /**
+   * Get pgrp_ovlp.
+   * @returns {string}
+   */
+  getPriceGroupOverlapResolution() {
+    return this.getField('pgrp_ovlp');
+  }
+  
+  /**
+   * Get ui_id.
+   * @returns {number}
+   */
+  getUserInterfaceId() {
+    return this.getField('ui_id', 0);
+  }
+  
+  /**
+   * Get tax_id.
+   * @returns {number}
+   */
+  getTaxId() {
+    return this.getField('tax_id', 0);
+  }
+  
+  /**
+   * Get currncy_id.
+   * @returns {number}
+   */
+  getCurrencyId() {
+    return this.getField('currncy_id', 0);
+  }
+  
+  /**
+   * Get mnt_warn.
+   * @returns {string}
+   */
+  getMaintenanceWarningMessage() {
+    return this.getField('mnt_warn');
+  }
+  
+  /**
+   * Get mnt_close.
+   * @returns {string}
+   */
+  getMaintenanceClosedMessage() {
+    return this.getField('mnt_close');
+  }
+  
+  /**
+   * Get mnt_time.
+   * @returns {number}
+   */
+  getMaintenanceTime() {
+    return this.getField('mnt_time', 0);
+  }
+  
+  /**
+   * Get mnt_no_new.
+   * @returns {number}
+   */
+  getMaintenanceNoNewCustomersBefore() {
+    return this.getField('mnt_no_new', 0);
+  }
+  
+  /**
+   * Get omin_quant.
+   * @returns {number}
+   */
+  getOrderMinimumQuantity() {
+    return this.getField('omin_quant', 0);
+  }
+  
+  /**
+   * Get omin_price.
+   * @returns {foat}
+   */
+  getOrderMinimumPrice() {
+    // Missing foat [5]
+  }
+  
+  /**
+   * Get omin_all.
+   * @returns {boolean}
+   */
+  getOrderMinimumRequiredAll() {
+    return this.getField('omin_all', false);
+  }
+  
+  /**
+   * Get omin_msg.
+   * @returns {string}
+   */
+  getOrderMinimumMessage() {
+    return this.getField('omin_msg');
+  }
+  
+  /**
+   * Get crypt_id.
+   * @returns {number}
+   */
+  getCryptId() {
+    return this.getField('crypt_id', 0);
+  }
+  
+  /**
+   * Get req_ship.
+   * @returns {boolean}
+   */
+  getRequireShipping() {
+    return this.getField('req_ship', false);
+  }
+  
+  /**
+   * Get req_tax.
+   * @returns {boolean}
+   */
+  getRequireTax() {
+    return this.getField('req_tax', false);
+  }
+  
+  /**
+   * Get req_frship.
+   * @returns {boolean}
+   */
+  getRequireFreeOrderShipping() {
+    return this.getField('req_frship', false);
+  }
+  
+  /**
+   * Get item_adel.
+   * @returns {boolean}
+   */
+  getItemModuleUninstallable() {
+    return this.getField('item_adel', false);
+  }
+}
+
+/** CustomerAddressList data model. */
+class CustomerAddressList extends Model {
+  /**
+   * CustomerAddressList Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.addresses) && util.isArray(this.addresses)) {
+      for (i = 0, l = this.addresses.length; i < l; i++) {
+        if (!util.isInstanceOf(this.addresses[i], CustomerAddress) && util.isObject(data['addresses'][i])) {
+          this.addresses[i] = new CustomerAddress(this.addresses[i]);
+        } else if (!util.isInstanceOf(this.addresses[i], CustomerAddress)) {
+          throw new Error(util.format('Expected array of CustomerAddress or an array of Objects but got %s',
+            typeof this.addresses[i]));
+        }
+      }
+    } else {
+      this.addresses = [];
+    }
+  }
+
+  /**
+   * Get ship_id.
+   * @returns {number}
+   */
+  getShipId() {
+    return this.getField('ship_id', 0);
+  }
+  
+  /**
+   * Get bill_id.
+   * @returns {number}
+   */
+  getBillId() {
+    return this.getField('bill_id', 0);
+  }
+  
+  /**
+   * Get addresses.
+   * @returns {CustomerAddress[]}
+   */
+  getAddresses() {
+    return this.getField('addresses', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['addresses'])) {
+      for (i = 0, l = ret['addresses'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['addresses'][i], CustomerAddress)) {
+          ret['addresses'][i] = ret['addresses'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** VariantAttribute data model. */
+class VariantAttribute extends Model {
+  /**
+   * VariantAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get attr_id.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.getField('attr_id', 0);
+  }
+  
+  /**
+   * Get attmpat_id.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.getField('attmpat_id', 0);
+  }
+  
+  /**
+   * Get option_id.
+   * @returns {number}
+   */
+  getOptionId() {
+    return this.getField('option_id', 0);
+  }
+  
+  /**
+   * Set attr_id.
+   * @param {number} attributeId
+   * @returns {VariantAttribute}
+   */
+  setAttributeId(attributeId) {
+    return this.setField('attr_id', attributeId);
+  }
+
+  /**
+   * Set attmpat_id.
+   * @param {number} attributeTemplateAttributeId
+   * @returns {VariantAttribute}
+   */
+  setAttributeTemplateAttributeId(attributeTemplateAttributeId) {
+    return this.setField('attmpat_id', attributeTemplateAttributeId);
+  }
+
+  /**
+   * Set option_id.
+   * @param {number} optionId
+   * @returns {VariantAttribute}
+   */
+  setOptionId(optionId) {
+    return this.setField('option_id', optionId);
+  }
+}
+
+/** VariantPart data model. */
+class VariantPart extends Model {
+  /**
+   * VariantPart Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get part_id.
+   * @returns {number}
+   */
+  getPartId() {
+    return this.getField('part_id', 0);
+  }
+  
+  /**
+   * Get quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.getField('quantity', 0);
+  }
+  
+  /**
+   * Set part_id.
+   * @param {number} partId
+   * @returns {VariantPart}
+   */
+  setPartId(partId) {
+    return this.setField('part_id', partId);
+  }
+
+  /**
+   * Set quantity.
+   * @param {number} quantity
+   * @returns {VariantPart}
+   */
+  setQuantity(quantity) {
+    return this.setField('quantity', quantity);
+  }
+}
+
+/** ImageType data model. */
+class ImageType extends Model {
+  /**
+   * ImageType Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+}
+
+/** EXCLUSION_SCOPE constants. */
+/** @ignore */
+const EXCLUSION_SCOPE_BASKET = 'basket';
+/** @ignore */
+const EXCLUSION_SCOPE_GROUP = 'group';
+/** @ignore */
+const EXCLUSION_SCOPE_ITEM = 'item';
+
+/** PriceGroupExclusion data model. */
+class PriceGroupExclusion extends Model {
+  /**
+   * PriceGroupExclusion Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Constant EXCLUSION_SCOPE_BASKET
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get EXCLUSION_SCOPE_BASKET() {
+    return EXCLUSION_SCOPE_BASKET;
+  }
+
+  /**
+   * Constant EXCLUSION_SCOPE_GROUP
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get EXCLUSION_SCOPE_GROUP() {
+    return EXCLUSION_SCOPE_GROUP;
+  }
+
+  /**
+   * Constant EXCLUSION_SCOPE_ITEM
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get EXCLUSION_SCOPE_ITEM() {
+    return EXCLUSION_SCOPE_ITEM;
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get scope.
+   * @returns {string}
+   */
+  getScope() {
+    return this.getField('scope');
+  }
+  
+  /**
+   * Set id.
+   * @param {number} id
+   * @returns {PriceGroupExclusion}
+   */
+  setId(id) {
+    return this.setField('id', id);
+  }
+
+  /**
+   * Set scope.
+   * @param {string} scope
+   * @returns {PriceGroupExclusion}
+   */
+  setScope(scope) {
+    return this.setField('scope', scope);
+  }
+}
+
+/** AttributeTemplate data model. */
+class AttributeTemplate extends Model {
+  /**
+   * AttributeTemplate Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.getField('prompt');
+  }
+  
+  /**
+   * Get refcount.
+   * @returns {number}
+   */
+  getRefcount() {
+    return this.getField('refcount', 0);
+  }
+}
+
+/** TEMPLATE_ATTRIBUTE_TYPE constants. */
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_CHECKBOX = 'checkbox';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_RADIO = 'radio';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_TEXT = 'text';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_SELECT = 'select';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_MEMO = 'memo';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_TEMPLATE = 'template';
+/** @ignore */
+const TEMPLATE_ATTRIBUTE_TYPE_SWATCH_SELECT = 'swatch-select';
+
+/** AttributeTemplateAttribute data model. */
+class AttributeTemplateAttribute extends Model {
+  /**
+   * AttributeTemplateAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    var i;
+    var l;
+
+    super(data);
+
+    if (!util.isUndefined(this.options) && util.isArray(this.options)) {
+      for (i = 0, l = this.options.length; i < l; i++) {
+        if (!util.isInstanceOf(this.options[i], AttributeTemplateOption) && util.isObject(data['options'][i])) {
+          this.options[i] = new AttributeTemplateOption(this.options[i]);
+        } else if (!util.isInstanceOf(this.options[i], AttributeTemplateOption)) {
+          throw new Error(util.format('Expected array of AttributeTemplateOption or an array of Objects but got %s',
+            typeof this.options[i]));
+        }
+      }
+    } else {
+      this.options = [];
+    }
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_CHECKBOX
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_CHECKBOX() {
+    return TEMPLATE_ATTRIBUTE_TYPE_CHECKBOX;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_RADIO
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_RADIO() {
+    return TEMPLATE_ATTRIBUTE_TYPE_RADIO;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_TEXT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_TEXT() {
+    return TEMPLATE_ATTRIBUTE_TYPE_TEXT;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_SELECT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_SELECT() {
+    return TEMPLATE_ATTRIBUTE_TYPE_SELECT;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_MEMO
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_MEMO() {
+    return TEMPLATE_ATTRIBUTE_TYPE_MEMO;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_TEMPLATE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_TEMPLATE() {
+    return TEMPLATE_ATTRIBUTE_TYPE_TEMPLATE;
+  }
+
+  /**
+   * Constant TEMPLATE_ATTRIBUTE_TYPE_SWATCH_SELECT
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get TEMPLATE_ATTRIBUTE_TYPE_SWATCH_SELECT() {
+    return TEMPLATE_ATTRIBUTE_TYPE_SWATCH_SELECT;
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get attemp_id.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.getField('attemp_id', 0);
+  }
+  
+  /**
+   * Get default_id.
+   * @returns {number}
+   */
+  getDefaultId() {
+    return this.getField('default_id', 0);
+  }
+  
+  /**
+   * Get disp_order.
+   * @returns {number}
+   */
+  getDisplayOrder() {
+    if (this.hasField('disp_order')) {
+      return this.getField('disp_order', 0);
+    } else if (this.hasField('disporder')) {
+      return this.getField('disporder', 0);
+    }
+    return 0;
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get type.
+   * @returns {string}
+   */
+  getType() {
+    return this.getField('type');
+  }
+  
+  /**
+   * Get prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.getField('prompt');
+  }
+  
+  /**
+   * Get price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.getField('price', 0.00);
+  }
+  
+  /**
+   * Get cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.getField('cost', 0.00);
+  }
+  
+  /**
+   * Get weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.getField('weight', 0.00);
+  }
+  
+  /**
+   * Get required.
+   * @returns {boolean}
+   */
+  getRequired() {
+    return this.getField('required', false);
+  }
+  
+  /**
+   * Get inventory.
+   * @returns {boolean}
+   */
+  getInventory() {
+    return this.getField('inventory', false);
+  }
+  
+  /**
+   * Get image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.getField('image');
+  }
+  
+  /**
+   * Get options.
+   * @returns {AttributeTemplateOption[]}
+   */
+  getOptions() {
+    return this.getField('options', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['options'])) {
+      for (i = 0, l = ret['options'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['options'][i], AttributeTemplateOption)) {
+          ret['options'][i] = ret['options'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+/** AttributeTemplateOption data model. */
+class AttributeTemplateOption extends Model {
+  /**
+   * AttributeTemplateOption Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    return this.getField('id', 0);
+  }
+  
+  /**
+   * Get attemp_id.
+   * @returns {}
+   */
+  getAttributeTemplateId() {
+    // Missing  [5]
+  }
+  
+  /**
+   * Get attmpat_id.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.getField('attmpat_id', 0);
+  }
+  
+  /**
+   * Get disporder.
+   * @returns {number}
+   */
+  getDisplayOrder() {
+    if (this.hasField('disporder')) {
+      return this.getField('disporder', 0);
+    } else if (this.hasField('disp_order')) {
+      return this.getField('disp_order', 0);
+    }
+    return 0;
+  }
+  
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get prompt.
+   * @returns {string}
+   */
+  getPrompt() {
+    return this.getField('prompt');
+  }
+  
+  /**
+   * Get price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.getField('price', 0.00);
+  }
+  
+  /**
+   * Get cost.
+   * @returns {number}
+   */
+  getCost() {
+    return this.getField('cost', 0.00);
+  }
+  
+  /**
+   * Get weight.
+   * @returns {number}
+   */
+  getWeight() {
+    return this.getField('weight', 0.00);
+  }
+  
+  /**
+   * Get image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.getField('image');
+  }
+  
+  /**
+   * Get formatted_price.
+   * @returns {string}
+   */
+  getFormattedPrice() {
+    return this.getField('formatted_price');
+  }
+  
+  /**
+   * Get formatted_cost.
+   * @returns {string}
+   */
+  getFormattedCost() {
+    return this.getField('formatted_cost');
+  }
+  
+  /**
+   * Get default_opt.
+   * @returns {boolean}
+   */
+  getDefaultOpt() {
+    return this.getField('default_opt', false);
+  }
+}
+
+/** AvailabilityGroupCustomer data model. */
+class AvailabilityGroupCustomer extends Customer {
+  /**
+   * AvailabilityGroupCustomer Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** AvailabilityGroupCategory data model. */
+class AvailabilityGroupCategory extends Category {
+  /**
+   * AvailabilityGroupCategory Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** AvailabilityGroupProduct data model. */
+class AvailabilityGroupProduct extends Product {
+  /**
+   * AvailabilityGroupProduct Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** AvailabilityGroupBusinessAccount data model. */
+class AvailabilityGroupBusinessAccount extends BusinessAccount {
+  /**
+   * AvailabilityGroupBusinessAccount Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** BusinessAccountCustomer data model. */
+class BusinessAccountCustomer extends Customer {
+  /**
+   * BusinessAccountCustomer Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
 /** OrderNote data model. */
 class OrderNote extends Note {
   /**
@@ -10344,10 +12360,50 @@ class CategoryProduct extends Product {
   }
 }
 
+/** AttributeTemplateProduct data model. */
+class AttributeTemplateProduct extends Product {
+  /**
+   * AttributeTemplateProduct Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
 /** CouponPriceGroup data model. */
 class CouponPriceGroup extends PriceGroup {
   /**
    * CouponPriceGroup Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** CouponCustomer data model. */
+class CouponCustomer extends Customer {
+  /**
+   * CouponCustomer Constructor.
    * @param {Object} data
    * @returns {void}
    */
@@ -10400,6 +12456,46 @@ class PriceGroupCustomer extends Customer {
 class PriceGroupProduct extends Product {
   /**
    * PriceGroupProduct Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** PriceGroupCategory data model. */
+class PriceGroupCategory extends Category {
+  /**
+   * PriceGroupCategory Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
+}
+
+/** PriceGroupBusinessAccount data model. */
+class PriceGroupBusinessAccount extends BusinessAccount {
+  /**
+   * PriceGroupBusinessAccount Constructor.
    * @param {Object} data
    * @returns {void}
    */
@@ -10602,6 +12698,8 @@ class ChangesetPropertyVersion extends PropertyVersion {
 
 module.exports = {
   AvailabilityGroup,
+  AvailabilityGroupShippingMethod,
+  BusinessAccount,
   Customer,
   Coupon,
   CustomFieldValues,
@@ -10617,7 +12715,11 @@ module.exports = {
   ProductShippingMethod,
   ProductShippingRules,
   Uri,
+  UriDetail,
   ProductVariant,
+  ProductKit,
+  ProductKitPart,
+  KitPart,
   Category,
   Order,
   OrderShipment,
@@ -10675,12 +12777,30 @@ module.exports = {
   PropertyVersion,
   ResourceGroup,
   MerchantVersion,
+  Store,
+  CustomerAddressList,
+  VariantAttribute,
+  VariantPart,
+  ImageType,
+  PriceGroupExclusion,
+  AttributeTemplate,
+  AttributeTemplateAttribute,
+  AttributeTemplateOption,
+  AvailabilityGroupCustomer,
+  AvailabilityGroupCategory,
+  AvailabilityGroupProduct,
+  AvailabilityGroupBusinessAccount,
+  BusinessAccountCustomer,
   OrderNote,
   CategoryProduct,
+  AttributeTemplateProduct,
   CouponPriceGroup,
+  CouponCustomer,
   OrderPaymentCard,
   PriceGroupCustomer,
   PriceGroupProduct,
+  PriceGroupCategory,
+  PriceGroupBusinessAccount,
   CustomerPriceGroup,
   BranchCSSResourceVersion,
   ChangesetCSSResourceVersion,

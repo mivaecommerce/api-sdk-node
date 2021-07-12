@@ -1296,7 +1296,7 @@ class ProvisionDomain extends Response {
 
     if (util.isArray(this.data['data'])) {
       for (i = 0, l = this.data['data'].length; i < l; i++) {
-        this.data['data'][i] = new models.ProvisionMessage(this.data[i]);
+        this.data['data'][i] = new models.ProvisionMessage(this.data['data'][i]);
       }
     }
   }
@@ -2476,6 +2476,2233 @@ class MivaMerchantVersion extends Response {
 }
 
 /** 
+ * API Response for Attribute_Load_Code.
+ * @see https://docs.miva.com/json-api/functions/attribute_load_code
+ */
+class AttributeLoadCode extends Response {
+  /**
+   * AttributeLoadCode Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductAttribute(this.data['data']);
+  }
+
+  /**
+   * Get productAttribute.
+   * @returns {?ProductAttribute}
+   */
+  getProductAttribute() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Attribute_Insert.
+ * @see https://docs.miva.com/json-api/functions/attribute_insert
+ */
+class AttributeInsert extends Response {
+  /**
+   * AttributeInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Attribute_Update.
+ * @see https://docs.miva.com/json-api/functions/attribute_update
+ */
+class AttributeUpdate extends Response {
+  /**
+   * AttributeUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Attribute_Delete.
+ * @see https://docs.miva.com/json-api/functions/attribute_delete
+ */
+class AttributeDelete extends Response {
+  /**
+   * AttributeDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for OptionList_Load_Attribute.
+ * @see https://docs.miva.com/json-api/functions/optionlist_load_attribute
+ */
+class OptionListLoadAttribute extends Response {
+  /**
+   * OptionListLoadAttribute Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.ProductOption(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productOptions.
+   * @returns {ProductOption[]}
+   */
+  getProductOptions() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Option_Delete.
+ * @see https://docs.miva.com/json-api/functions/option_delete
+ */
+class OptionDelete extends Response {
+  /**
+   * OptionDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Option_Insert.
+ * @see https://docs.miva.com/json-api/functions/option_insert
+ */
+class OptionInsert extends Response {
+  /**
+   * OptionInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Option_Update.
+ * @see https://docs.miva.com/json-api/functions/option_update
+ */
+class OptionUpdate extends Response {
+  /**
+   * OptionUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Option_Load_Code.
+ * @see https://docs.miva.com/json-api/functions/option_load_code
+ */
+class OptionLoadCode extends Response {
+  /**
+   * OptionLoadCode Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductOption(this.data['data']);
+  }
+
+  /**
+   * Get productOption.
+   * @returns {?ProductOption}
+   */
+  getProductOption() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Option_Set_Default.
+ * @see https://docs.miva.com/json-api/functions/option_set_default
+ */
+class OptionSetDefault extends Response {
+  /**
+   * OptionSetDefault Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeAndOptionList_Load_Product.
+ * @see https://docs.miva.com/json-api/functions/attributeandoptionlist_load_product
+ */
+class AttributeAndOptionListLoadProduct extends Response {
+  /**
+   * AttributeAndOptionListLoadProduct Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.ProductAttribute(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productAttributes.
+   * @returns {ProductAttribute[]}
+   */
+  getProductAttributes() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for OrderShipmentList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/ordershipmentlist_load_query
+ */
+class OrderShipmentListLoadQuery extends ListQueryResponse {
+  /**
+   * OrderShipmentListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.OrderShipment(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get orderShipments.
+   * @returns {OrderShipment[]}
+   */
+  getOrderShipments() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for OrderItem_Split.
+ * @see https://docs.miva.com/json-api/functions/orderitem_split
+ */
+class OrderItemSplit extends Response {
+  /**
+   * OrderItemSplit Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for OrderItemList_RemoveFromShipment.
+ * @see https://docs.miva.com/json-api/functions/orderitemlist_removefromshipment
+ */
+class OrderItemListRemoveFromShipment extends Response {
+  /**
+   * OrderItemListRemoveFromShipment Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CustomerAddress_Insert.
+ * @see https://docs.miva.com/json-api/functions/customeraddress_insert
+ */
+class CustomerAddressInsert extends Response {
+  /**
+   * CustomerAddressInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CustomerAddress_Update.
+ * @see https://docs.miva.com/json-api/functions/customeraddress_update
+ */
+class CustomerAddressUpdate extends Response {
+  /**
+   * CustomerAddressUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CustomerAddress_Delete.
+ * @see https://docs.miva.com/json-api/functions/customeraddress_delete
+ */
+class CustomerAddressDelete extends Response {
+  /**
+   * CustomerAddressDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CustomerAddressList_Delete.
+ * @see https://docs.miva.com/json-api/functions/customeraddresslist_delete
+ */
+class CustomerAddressListDelete extends Response {
+  /**
+   * CustomerAddressListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CustomerAddress_Update_Residential.
+ * @see https://docs.miva.com/json-api/functions/customeraddress_update_residential
+ */
+class CustomerAddressUpdateResidential extends Response {
+  /**
+   * CustomerAddressUpdateResidential Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for URIList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/urilist_load_query
+ */
+class URIListLoadQuery extends ListQueryResponse {
+  /**
+   * URIListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for URI_Insert.
+ * @see https://docs.miva.com/json-api/functions/uri_insert
+ */
+class URIInsert extends Response {
+  /**
+   * URIInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductURI_Insert.
+ * @see https://docs.miva.com/json-api/functions/producturi_insert
+ */
+class ProductURIInsert extends Response {
+  /**
+   * ProductURIInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CategoryURI_Insert.
+ * @see https://docs.miva.com/json-api/functions/categoryuri_insert
+ */
+class CategoryURIInsert extends Response {
+  /**
+   * CategoryURIInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PageURI_Insert.
+ * @see https://docs.miva.com/json-api/functions/pageuri_insert
+ */
+class PageURIInsert extends Response {
+  /**
+   * PageURIInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for FeedURI_Insert.
+ * @see https://docs.miva.com/json-api/functions/feeduri_insert
+ */
+class FeedURIInsert extends Response {
+  /**
+   * FeedURIInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for URI_Update.
+ * @see https://docs.miva.com/json-api/functions/uri_update
+ */
+class URIUpdate extends Response {
+  /**
+   * URIUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductURI_Update.
+ * @see https://docs.miva.com/json-api/functions/producturi_update
+ */
+class ProductURIUpdate extends Response {
+  /**
+   * ProductURIUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CategoryURI_Update.
+ * @see https://docs.miva.com/json-api/functions/categoryuri_update
+ */
+class CategoryURIUpdate extends Response {
+  /**
+   * CategoryURIUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PageURI_Update.
+ * @see https://docs.miva.com/json-api/functions/pageuri_update
+ */
+class PageURIUpdate extends Response {
+  /**
+   * PageURIUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for FeedURI_Update.
+ * @see https://docs.miva.com/json-api/functions/feeduri_update
+ */
+class FeedURIUpdate extends Response {
+  /**
+   * FeedURIUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for URI_Delete.
+ * @see https://docs.miva.com/json-api/functions/uri_delete
+ */
+class URIDelete extends Response {
+  /**
+   * URIDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductURIList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/producturilist_load_query
+ */
+class ProductURIListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductURIListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for CategoryURIList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/categoryurilist_load_query
+ */
+class CategoryURIListLoadQuery extends ListQueryResponse {
+  /**
+   * CategoryURIListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PageURIList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pageurilist_load_query
+ */
+class PageURIListLoadQuery extends ListQueryResponse {
+  /**
+   * PageURIListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for FeedURIList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/feedurilist_load_query
+ */
+class FeedURIListLoadQuery extends ListQueryResponse {
+  /**
+   * FeedURIListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductURIList_Delete.
+ * @see https://docs.miva.com/json-api/functions/producturilist_delete
+ */
+class ProductURIListDelete extends Response {
+  /**
+   * ProductURIListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.Uri(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for PageURIList_Delete.
+ * @see https://docs.miva.com/json-api/functions/pageurilist_delete
+ */
+class PageURIListDelete extends Response {
+  /**
+   * PageURIListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.Uri(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for CategoryURIList_Delete.
+ * @see https://docs.miva.com/json-api/functions/categoryurilist_delete
+ */
+class CategoryURIListDelete extends Response {
+  /**
+   * CategoryURIListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.Uri(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for FeedURIList_Delete.
+ * @see https://docs.miva.com/json-api/functions/feedurilist_delete
+ */
+class FeedURIListDelete extends Response {
+  /**
+   * FeedURIListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.Uri(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for URIList_Delete.
+ * @see https://docs.miva.com/json-api/functions/urilist_delete
+ */
+class URIListDelete extends Response {
+  /**
+   * URIListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.Uri(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for PageURI_Redirect.
+ * @see https://docs.miva.com/json-api/functions/pageuri_redirect
+ */
+class PageURIRedirect extends ListQueryResponse {
+  /**
+   * PageURIRedirect Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductURI_Redirect.
+ * @see https://docs.miva.com/json-api/functions/producturi_redirect
+ */
+class ProductURIRedirect extends ListQueryResponse {
+  /**
+   * ProductURIRedirect Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for CategoryURI_Redirect.
+ * @see https://docs.miva.com/json-api/functions/categoryuri_redirect
+ */
+class CategoryURIRedirect extends ListQueryResponse {
+  /**
+   * CategoryURIRedirect Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Uri(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get uris.
+   * @returns {Uri[]}
+   */
+  getUris() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroup_Delete.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_delete
+ */
+class AvailabilityGroupDelete extends Response {
+  /**
+   * AvailabilityGroupDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroup_Insert.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_insert
+ */
+class AvailabilityGroupInsert extends Response {
+  /**
+   * AvailabilityGroupInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroup_Update.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroup_update
+ */
+class AvailabilityGroupUpdate extends Response {
+  /**
+   * AvailabilityGroupUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupCategory_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcategory_update_assigned
+ */
+class AvailabilityGroupCategoryUpdateAssigned extends Response {
+  /**
+   * AvailabilityGroupCategoryUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupShippingMethodList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethodlist_load_query
+ */
+class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryResponse {
+  /**
+   * AvailabilityGroupShippingMethodListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AvailabilityGroupShippingMethod(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get availabilityGroupShippingMethods.
+   * @returns {AvailabilityGroupShippingMethod[]}
+   */
+  getAvailabilityGroupShippingMethods() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupBusinessAccount_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccount_update_assigned
+ */
+class PriceGroupBusinessAccountUpdateAssigned extends Response {
+  /**
+   * PriceGroupBusinessAccountUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PriceGroupCategory_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/pricegroupcategory_update_assigned
+ */
+class PriceGroupCategoryUpdateAssigned extends Response {
+  /**
+   * PriceGroupCategoryUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PriceGroupExcludedCategory_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategory_update_assigned
+ */
+class PriceGroupExcludedCategoryUpdateAssigned extends Response {
+  /**
+   * PriceGroupExcludedCategoryUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PriceGroupExcludedProduct_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproduct_update_assigned
+ */
+class PriceGroupExcludedProductUpdateAssigned extends Response {
+  /**
+   * PriceGroupExcludedProductUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.PriceGroupProduct(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupProducts.
+   * @returns {PriceGroupProduct[]}
+   */
+  getPriceGroupProducts() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupQualifyingProduct_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproduct_update_assigned
+ */
+class PriceGroupQualifyingProductUpdateAssigned extends Response {
+  /**
+   * PriceGroupQualifyingProductUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PriceGroup_Delete.
+ * @see https://docs.miva.com/json-api/functions/pricegroup_delete
+ */
+class PriceGroupDelete extends Response {
+  /**
+   * PriceGroupDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for PriceGroup_Insert.
+ * @see https://docs.miva.com/json-api/functions/pricegroup_insert
+ */
+class PriceGroupInsert extends Response {
+  /**
+   * PriceGroupInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get id.
+   * @returns {number}
+   */
+  getId() {
+    if (!util.isNullOrUndefined(this.data['id'])) {
+      return this.data['id'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for PriceGroup_Update.
+ * @see https://docs.miva.com/json-api/functions/pricegroup_update
+ */
+class PriceGroupUpdate extends Response {
+  /**
+   * PriceGroupUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for CouponCustomer_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/couponcustomer_update_assigned
+ */
+class CouponCustomerUpdateAssigned extends Response {
+  /**
+   * CouponCustomerUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for BusinessAccountList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/businessaccountlist_load_query
+ */
+class BusinessAccountListLoadQuery extends ListQueryResponse {
+  /**
+   * BusinessAccountListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.BusinessAccount(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get businessAccounts.
+   * @returns {BusinessAccount[]}
+   */
+  getBusinessAccounts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for BusinessAccount_Insert.
+ * @see https://docs.miva.com/json-api/functions/businessaccount_insert
+ */
+class BusinessAccountInsert extends Response {
+  /**
+   * BusinessAccountInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for BusinessAccount_Update.
+ * @see https://docs.miva.com/json-api/functions/businessaccount_update
+ */
+class BusinessAccountUpdate extends Response {
+  /**
+   * BusinessAccountUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for BusinessAccountList_Delete.
+ * @see https://docs.miva.com/json-api/functions/businessaccountlist_delete
+ */
+class BusinessAccountListDelete extends Response {
+  /**
+   * BusinessAccountListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get processed.
+   * @returns {number}
+   */
+  getProcessed() {
+    if (!util.isNullOrUndefined(this.data['processed'])) {
+      return this.data['processed'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for BusinessAccountCustomer_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/businessaccountcustomer_update_assigned
+ */
+class BusinessAccountCustomerUpdateAssigned extends Response {
+  /**
+   * BusinessAccountCustomerUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for StoreList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/storelist_load_query
+ */
+class StoreListLoadQuery extends ListQueryResponse {
+  /**
+   * StoreListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Store(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get stores.
+   * @returns {Store[]}
+   */
+  getStores() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for Store_Load.
+ * @see https://docs.miva.com/json-api/functions/store_load
+ */
+class StoreLoad extends Response {
+  /**
+   * StoreLoad Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Store(this.data['data']);
+  }
+
+  /**
+   * Get store.
+   * @returns {?Store}
+   */
+  getStore() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for ProductVariantList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/productvariantlist_load_query
+ */
+class ProductVariantListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductVariantListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ProductVariant(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productVariants.
+   * @returns {ProductVariant[]}
+   */
+  getProductVariants() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductVariant_Insert.
+ * @see https://docs.miva.com/json-api/functions/productvariant_insert
+ */
+class ProductVariantInsert extends Response {
+  /**
+   * ProductVariantInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get product_id.
+   * @returns {number}
+   */
+  getProductId() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['product_id'])) {
+      return this.data['data']['product_id'];
+    }
+
+    return 0;
+  }
+
+  /**
+   * Get variant_id.
+   * @returns {number}
+   */
+  getVariantId() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['variant_id'])) {
+      return this.data['data']['variant_id'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for ProductVariant_Update.
+ * @see https://docs.miva.com/json-api/functions/productvariant_update
+ */
+class ProductVariantUpdate extends Response {
+  /**
+   * ProductVariantUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get product_id.
+   * @returns {number}
+   */
+  getProductId() {
+    if (!util.isNullOrUndefined(this.data['product_id'])) {
+      return this.data['product_id'];
+    }
+
+    return 0;
+  }
+
+  /**
+   * Get variant_id.
+   * @returns {number}
+   */
+  getVariantId() {
+    if (!util.isNullOrUndefined(this.data['variant_id'])) {
+      return this.data['variant_id'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for ProductVariant_Generate.
+ * @see https://docs.miva.com/json-api/functions/productvariant_generate
+ */
+class ProductVariantGenerate extends Response {
+  /**
+   * ProductVariantGenerate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductVariant_Generate_Delimiter.
+ * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
+ */
+class ProductVariantGenerateDelimiter extends Response {
+  /**
+   * ProductVariantGenerateDelimiter Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductKitList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/productkitlist_load_query
+ */
+class ProductKitListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductKitListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ProductKit(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productKits.
+   * @returns {ProductKit[]}
+   */
+  getProductKits() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductKit_Generate_Variants.
+ * @see https://docs.miva.com/json-api/functions/productkit_generate_variants
+ */
+class ProductKitGenerateVariants extends Response {
+  /**
+   * ProductKitGenerateVariants Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductKit_Update_Parts.
+ * @see https://docs.miva.com/json-api/functions/productkit_update_parts
+ */
+class ProductKitUpdateParts extends Response {
+  /**
+   * ProductKitUpdateParts Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductKit_Variant_Count.
+ * @see https://docs.miva.com/json-api/functions/productkit_variant_count
+ */
+class ProductKitVariantCount extends Response {
+  /**
+   * ProductKitVariantCount Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get variants.
+   * @returns {number}
+   */
+  getVariants() {
+    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['variants'])) {
+      return this.data['data']['variants'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for RelatedProduct_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/relatedproduct_update_assigned
+ */
+class RelatedProductUpdateAssigned extends Response {
+  /**
+   * RelatedProductUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.RelatedProduct(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get relatedProducts.
+   * @returns {RelatedProduct[]}
+   */
+  getRelatedProducts() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for InventoryProductSettings_Update.
+ * @see https://docs.miva.com/json-api/functions/inventoryproductsettings_update
+ */
+class InventoryProductSettingsUpdate extends Response {
+  /**
+   * InventoryProductSettingsUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductVariantList_Delete.
+ * @see https://docs.miva.com/json-api/functions/productvariantlist_delete
+ */
+class ProductVariantListDelete extends Response {
+  /**
+   * ProductVariantListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get processed.
+   * @returns {number}
+   */
+  getProcessed() {
+    if (!util.isNullOrUndefined(this.data['processed'])) {
+      return this.data['processed'];
+    }
+
+    return 0;
+  }
+}
+
+/** 
+ * API Response for ImageTypeList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/imagetypelist_load_query
+ */
+class ImageTypeListLoadQuery extends ListQueryResponse {
+  /**
+   * ImageTypeListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ImageType(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get imageTypes.
+   * @returns {ImageType[]}
+   */
+  getImageTypes() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductImage_Update_Type.
+ * @see https://docs.miva.com/json-api/functions/productimage_update_type
+ */
+class ProductImageUpdateType extends Response {
+  /**
+   * ProductImageUpdateType Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/attributetemplatelist_load_query
+ */
+class AttributeTemplateListLoadQuery extends ListQueryResponse {
+  /**
+   * AttributeTemplateListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AttributeTemplate(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get attributeTemplates.
+   * @returns {AttributeTemplate[]}
+   */
+  getAttributeTemplates() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateAttributeList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattributelist_load_query
+ */
+class AttributeTemplateAttributeListLoadQuery extends ListQueryResponse {
+  /**
+   * AttributeTemplateAttributeListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AttributeTemplateAttribute(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get attributeTemplateAttributes.
+   * @returns {AttributeTemplateAttribute[]}
+   */
+  getAttributeTemplateAttributes() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateOptionList_Load_Attribute.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoptionlist_load_attribute
+ */
+class AttributeTemplateOptionListLoadAttribute extends ListQueryResponse {
+  /**
+   * AttributeTemplateOptionListLoadAttribute Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (util.isArray(this.data['data'])) {
+      for (i = 0, l = this.data['data'].length; i < l; i++) {
+        this.data['data'][i] = new models.AttributeTemplateOption(this.data['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get attributeTemplateOptions.
+   * @returns {AttributeTemplateOption[]}
+   */
+  getAttributeTemplateOptions() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      [] : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateAttribute_Delete.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_delete
+ */
+class AttributeTemplateAttributeDelete extends Response {
+  /**
+   * AttributeTemplateAttributeDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateAttribute_Insert.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_insert
+ */
+class AttributeTemplateAttributeInsert extends Response {
+  /**
+   * AttributeTemplateAttributeInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateAttribute_Update.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_update
+ */
+class AttributeTemplateAttributeUpdate extends Response {
+  /**
+   * AttributeTemplateAttributeUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateOption_Delete.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_delete
+ */
+class AttributeTemplateOptionDelete extends Response {
+  /**
+   * AttributeTemplateOptionDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateOption_Insert.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_insert
+ */
+class AttributeTemplateOptionInsert extends Response {
+  /**
+   * AttributeTemplateOptionInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateOption_Update.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_update
+ */
+class AttributeTemplateOptionUpdate extends Response {
+  /**
+   * AttributeTemplateOptionUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplate_Insert.
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_insert
+ */
+class AttributeTemplateInsert extends Response {
+  /**
+   * AttributeTemplateInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplate_Update.
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_update
+ */
+class AttributeTemplateUpdate extends Response {
+  /**
+   * AttributeTemplateUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplate_Delete.
+ * @see https://docs.miva.com/json-api/functions/attributetemplate_delete
+ */
+class AttributeTemplateDelete extends Response {
+  /**
+   * AttributeTemplateDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateOption_Set_Default.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateoption_set_default
+ */
+class AttributeTemplateOptionSetDefault extends Response {
+  /**
+   * AttributeTemplateOptionSetDefault Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateProduct_Update_Assigned.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateproduct_update_assigned
+ */
+class AttributeTemplateProductUpdateAssigned extends Response {
+  /**
+   * AttributeTemplateProductUpdateAssigned Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Branch_SetPrimary.
+ * @see https://docs.miva.com/json-api/functions/branch_setprimary
+ */
+class BranchSetPrimary extends Response {
+  /**
+   * BranchSetPrimary Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Branch_Update.
+ * @see https://docs.miva.com/json-api/functions/branch_update
+ */
+class BranchUpdate extends Response {
+  /**
+   * BranchUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
  * API Response for CategoryProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
@@ -2742,6 +4969,538 @@ class OrderCouponListLoadQuery extends ListQueryResponse {
 }
 
 /** 
+ * API Response for ChildCategoryList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/childcategorylist_load_query
+ */
+class ChildCategoryListLoadQuery extends ListQueryResponse {
+  /**
+   * ChildCategoryListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.Category(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get categories.
+   * @returns {Category[]}
+   */
+  getCategories() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupCustomerList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomerlist_load_query
+ */
+class AvailabilityGroupCustomerListLoadQuery extends ListQueryResponse {
+  /**
+   * AvailabilityGroupCustomerListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AvailabilityGroupCustomer(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get availabilityGroupCustomers.
+   * @returns {AvailabilityGroupCustomer[]}
+   */
+  getAvailabilityGroupCustomers() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupProductList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupproductlist_load_query
+ */
+class AvailabilityGroupProductListLoadQuery extends ListQueryResponse {
+  /**
+   * AvailabilityGroupProductListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AvailabilityGroupProduct(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get availabilityGroupProducts.
+   * @returns {AvailabilityGroupProduct[]}
+   */
+  getAvailabilityGroupProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupCategoryList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupcategorylist_load_query
+ */
+class AvailabilityGroupCategoryListLoadQuery extends ListQueryResponse {
+  /**
+   * AvailabilityGroupCategoryListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AvailabilityGroupCategory(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get availabilityGroupCategories.
+   * @returns {AvailabilityGroupCategory[]}
+   */
+  getAvailabilityGroupCategories() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AvailabilityGroupBusinessAccountList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccountlist_load_query
+ */
+class AvailabilityGroupBusinessAccountListLoadQuery extends ListQueryResponse {
+  /**
+   * AvailabilityGroupBusinessAccountListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AvailabilityGroupBusinessAccount(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get availabilityGroupBusinessAccounts.
+   * @returns {AvailabilityGroupBusinessAccount[]}
+   */
+  getAvailabilityGroupBusinessAccounts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupBusinessAccountList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccountlist_load_query
+ */
+class PriceGroupBusinessAccountListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupBusinessAccountListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupBusinessAccount(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupBusinessAccounts.
+   * @returns {PriceGroupBusinessAccount[]}
+   */
+  getPriceGroupBusinessAccounts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupCategoryList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupcategorylist_load_query
+ */
+class PriceGroupCategoryListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupCategoryListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupCategory(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupCategories.
+   * @returns {PriceGroupCategory[]}
+   */
+  getPriceGroupCategories() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupExcludedCategoryList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategorylist_load_query
+ */
+class PriceGroupExcludedCategoryListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupExcludedCategoryListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupCategory(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupCategories.
+   * @returns {PriceGroupCategory[]}
+   */
+  getPriceGroupCategories() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupExcludedProductList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproductlist_load_query
+ */
+class PriceGroupExcludedProductListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupExcludedProductListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupProduct(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupProducts.
+   * @returns {PriceGroupProduct[]}
+   */
+  getPriceGroupProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for PriceGroupQualifyingProductList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproductlist_load_query
+ */
+class PriceGroupQualifyingProductListLoadQuery extends ListQueryResponse {
+  /**
+   * PriceGroupQualifyingProductListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.PriceGroupProduct(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get priceGroupProducts.
+   * @returns {PriceGroupProduct[]}
+   */
+  getPriceGroupProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for CouponCustomerList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/couponcustomerlist_load_query
+ */
+class CouponCustomerListLoadQuery extends ListQueryResponse {
+  /**
+   * CouponCustomerListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.CouponCustomer(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get couponCustomers.
+   * @returns {CouponCustomer[]}
+   */
+  getCouponCustomers() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for BusinessAccountCustomerList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/businessaccountcustomerlist_load_query
+ */
+class BusinessAccountCustomerListLoadQuery extends ListQueryResponse {
+  /**
+   * BusinessAccountCustomerListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.BusinessAccountCustomer(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get businessAccountCustomers.
+   * @returns {BusinessAccountCustomer[]}
+   */
+  getBusinessAccountCustomers() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for RelatedProductList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/relatedproductlist_load_query
+ */
+class RelatedProductListLoadQuery extends ListQueryResponse {
+  /**
+   * RelatedProductListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.RelatedProduct(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get relatedProducts.
+   * @returns {RelatedProduct[]}
+   */
+  getRelatedProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for AttributeTemplateProductList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/attributetemplateproductlist_load_query
+ */
+class AttributeTemplateProductListLoadQuery extends ListQueryResponse {
+  /**
+   * AttributeTemplateProductListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.AttributeTemplateProduct(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get attributeTemplateProducts.
+   * @returns {AttributeTemplateProduct[]}
+   */
+  getAttributeTemplateProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
  * Response for RequestBuilder.
  */
 class RequestBuilder extends Response {
@@ -2850,11 +5609,119 @@ module.exports = {
   ResourceGroupListLoadQuery,
   BranchListDelete,
   MivaMerchantVersion,
+  AttributeLoadCode,
+  AttributeInsert,
+  AttributeUpdate,
+  AttributeDelete,
+  OptionListLoadAttribute,
+  OptionDelete,
+  OptionInsert,
+  OptionUpdate,
+  OptionLoadCode,
+  OptionSetDefault,
+  AttributeAndOptionListLoadProduct,
+  OrderShipmentListLoadQuery,
+  OrderItemSplit,
+  OrderItemListRemoveFromShipment,
+  CustomerAddressInsert,
+  CustomerAddressUpdate,
+  CustomerAddressDelete,
+  CustomerAddressListDelete,
+  CustomerAddressUpdateResidential,
+  URIListLoadQuery,
+  URIInsert,
+  ProductURIInsert,
+  CategoryURIInsert,
+  PageURIInsert,
+  FeedURIInsert,
+  URIUpdate,
+  ProductURIUpdate,
+  CategoryURIUpdate,
+  PageURIUpdate,
+  FeedURIUpdate,
+  URIDelete,
+  ProductURIListLoadQuery,
+  CategoryURIListLoadQuery,
+  PageURIListLoadQuery,
+  FeedURIListLoadQuery,
+  ProductURIListDelete,
+  PageURIListDelete,
+  CategoryURIListDelete,
+  FeedURIListDelete,
+  URIListDelete,
+  PageURIRedirect,
+  ProductURIRedirect,
+  CategoryURIRedirect,
+  AvailabilityGroupDelete,
+  AvailabilityGroupInsert,
+  AvailabilityGroupUpdate,
+  AvailabilityGroupCategoryUpdateAssigned,
+  AvailabilityGroupShippingMethodListLoadQuery,
+  PriceGroupBusinessAccountUpdateAssigned,
+  PriceGroupCategoryUpdateAssigned,
+  PriceGroupExcludedCategoryUpdateAssigned,
+  PriceGroupExcludedProductUpdateAssigned,
+  PriceGroupQualifyingProductUpdateAssigned,
+  PriceGroupDelete,
+  PriceGroupInsert,
+  PriceGroupUpdate,
+  CouponCustomerUpdateAssigned,
+  BusinessAccountListLoadQuery,
+  BusinessAccountInsert,
+  BusinessAccountUpdate,
+  BusinessAccountListDelete,
+  BusinessAccountCustomerUpdateAssigned,
+  StoreListLoadQuery,
+  StoreLoad,
+  ProductVariantListLoadQuery,
+  ProductVariantInsert,
+  ProductVariantUpdate,
+  ProductVariantGenerate,
+  ProductVariantGenerateDelimiter,
+  ProductKitListLoadQuery,
+  ProductKitGenerateVariants,
+  ProductKitUpdateParts,
+  ProductKitVariantCount,
+  RelatedProductUpdateAssigned,
+  InventoryProductSettingsUpdate,
+  ProductVariantListDelete,
+  ImageTypeListLoadQuery,
+  ProductImageUpdateType,
+  AttributeTemplateListLoadQuery,
+  AttributeTemplateAttributeListLoadQuery,
+  AttributeTemplateOptionListLoadAttribute,
+  AttributeTemplateAttributeDelete,
+  AttributeTemplateAttributeInsert,
+  AttributeTemplateAttributeUpdate,
+  AttributeTemplateOptionDelete,
+  AttributeTemplateOptionInsert,
+  AttributeTemplateOptionUpdate,
+  AttributeTemplateInsert,
+  AttributeTemplateUpdate,
+  AttributeTemplateDelete,
+  AttributeTemplateOptionSetDefault,
+  AttributeTemplateProductUpdateAssigned,
+  BranchSetPrimary,
+  BranchUpdate,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,
   PriceGroupProductListLoadQuery,
   CustomerPriceGroupListLoadQuery,
   OrderPriceGroupListLoadQuery,
-  OrderCouponListLoadQuery
+  OrderCouponListLoadQuery,
+  ChildCategoryListLoadQuery,
+  AvailabilityGroupCustomerListLoadQuery,
+  AvailabilityGroupProductListLoadQuery,
+  AvailabilityGroupCategoryListLoadQuery,
+  AvailabilityGroupBusinessAccountListLoadQuery,
+  PriceGroupBusinessAccountListLoadQuery,
+  PriceGroupCategoryListLoadQuery,
+  PriceGroupExcludedCategoryListLoadQuery,
+  PriceGroupExcludedProductListLoadQuery,
+  PriceGroupQualifyingProductListLoadQuery,
+  CouponCustomerListLoadQuery,
+  BusinessAccountCustomerListLoadQuery,
+  RelatedProductListLoadQuery,
+  AttributeTemplateProductListLoadQuery
 };
