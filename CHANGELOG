@@ -1,3 +1,23 @@
+v2.0.3
+	MM-10502 - Added the following API Functions introduced in 10.01.00:
+		Attribute_CopyTemplate
+		Attribute_CopyLinkedTemplate
+		ProductAttributeAndOptionList_Load_Query
+	MMAPI-38 - Fixed ListQueryRequest.setCustomFilter function to properly check against the available custom field lists in the inherited class.
+	MMAPI-36 - Request, ListQueryRequest, MultiCallRequest, and MultiCallOperation are now included in the requests exports.
+			   Response, ListQueryResponse, and MultiCallResponse are now included in the responses exports.
+	MMAPI-35 - Constructor added to Logger class and called from inherited class constructors
+			   Fixes error: `ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor`
+	MMAPI-34 - Added parts on demand column to OrderList_Load_Query and related model fields in Order model
+	MMAPI-33 - Fixed Request.promise() always rejecting on a successful response
+	MMAPI-20 - Added Notes field to CSSResourceChange, JavaScriptResourceChange, TemplateChange, and PropertyChange models. Addresses changes in MM-10341.
+	MM-10341 - Added Note fields to Changeset resource change models
+	MM-10930 - Added formatted versions of currency fields in OrderCharge model
+	MM-10849 - Added cache configuration fields to Store model
+	MM-10814 MM-10502 - OrderItem tax field is now mutable
+	Added fields on Customer model: tax_exempt, order_cnt, order_avg, formatted_order_avg, order_tot, formatted_order_tot,
+	Added Tax_Exempt field to Customer_Insert and Customer_Update
+
 v2.0.2
 	- MMAPI-31 - ListQueryRequest now initializes a FilterExpression during construction.
 	- MMAPI-25 - Added the follwing API functions introduced in Miva Merchant 10.01.00:

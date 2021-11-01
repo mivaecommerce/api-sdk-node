@@ -437,7 +437,7 @@ class MultiCallRequest extends Request {
 
     if (this.continueError == null && this.range.completed != this.range.total) {
       this.send(function(error, response) {
-         var e, range;
+        var e, range;
 
         if (error) {
           self.continueError = new MultiCallError(error, self.request, self);
@@ -478,7 +478,7 @@ class MultiCallRequest extends Request {
       }
 
       if (util.isFunction(this.autoContinueCallback)) {
-          this.autoContinueCallback(this.continueError, initialResponse, (this.continueError == null));
+        this.autoContinueCallback(this.continueError, initialResponse, (this.continueError == null));
       }
     }
   }

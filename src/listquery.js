@@ -335,7 +335,7 @@ class ListQueryRequest extends Request {
     }
 
     if (util.isArray(this.availableCustomFilters[name])) {
-      if (!util.inArray(value, this.availableOnDemandColumns[name])) {
+      if (!util.inArray(value, this.availableCustomFilters[name])) {
         throw new Error(util.format('Invalid custom filter choice for %s. Available choices are %s',
           name, this.availableCustomFilters[name].join(', ')));            
       }

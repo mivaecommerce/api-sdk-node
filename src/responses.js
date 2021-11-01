@@ -9,6 +9,7 @@ const util                  = require('./util');
 const models                = require('./models');
 const { Response }          = require('./abstract');
 const { ListQueryResponse } = require('./listquery');
+const { MultiCallResponse } = require('./multicall');
 
 /** @module Response */
 
@@ -4703,6 +4704,76 @@ class BranchUpdate extends Response {
 }
 
 /** 
+ * API Response for Attribute_CopyTemplate.
+ * @see https://docs.miva.com/json-api/functions/attribute_copytemplate
+ */
+class AttributeCopyTemplate extends Response {
+  /**
+   * AttributeCopyTemplate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for Attribute_CopyLinkedTemplate.
+ * @see https://docs.miva.com/json-api/functions/attribute_copylinkedtemplate
+ */
+class AttributeCopyLinkedTemplate extends Response {
+  /**
+   * AttributeCopyLinkedTemplate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for ProductAttributeAndOptionList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/productattributeandoptionlist_load_query
+ */
+class ProductAttributeAndOptionListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductAttributeAndOptionListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ProductAttributeListAttribute(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get attributes.
+   * @returns {ProductAttributeListAttribute[]}
+   */
+  getAttributes() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
  * API Response for CategoryProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
@@ -5516,6 +5587,9 @@ class RequestBuilder extends Response {
 }
 
 module.exports = {
+  Response,
+  ListQueryResponse,
+  MultiCallResponse,
   RequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
@@ -5703,6 +5777,9 @@ module.exports = {
   AttributeTemplateProductUpdateAssigned,
   BranchSetPrimary,
   BranchUpdate,
+  AttributeCopyTemplate,
+  AttributeCopyLinkedTemplate,
+  ProductAttributeAndOptionListLoadQuery,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,

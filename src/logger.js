@@ -14,6 +14,10 @@ const { Request, Response } = require('./abstract');
 
 /** Logger data model. */
 class Logger {
+  constructor() {
+    ;
+  }
+
   /**
    * Logs the request
    * @returns {void}
@@ -91,6 +95,8 @@ const DESTINATION_STDERR = 'stderr';
 /** ConsoleLogger */
 class ConsoleLogger extends Logger {
   constructor(destination = DESTINATION_STDOUT) {
+    super();
+  
     this.destination = destination;
   }
 

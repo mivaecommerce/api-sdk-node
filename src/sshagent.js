@@ -281,7 +281,7 @@ class SSHAgentSignClient {
       });
 
       if (util.isInstanceOf(data, SSHAgentMessage)) {
-      this.connection.write(data.pack(), 'utf-8');
+        this.connection.write(data.pack(), 'utf-8');
       } else {
         this.connection.write(data, 'utf-8');
       }

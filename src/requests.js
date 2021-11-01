@@ -5,11 +5,13 @@
  * file that was distributed with this source code.
  */
 
-const util                  = require('./util');
-const models                = require('./models');
-const responses             = require('./responses');
-const { Request }           = require('./abstract');
-const { ListQueryRequest }  = require('./listquery');
+const util                   = require('./util');
+const models                 = require('./models');
+const responses              = require('./responses');
+const { Request }            = require('./abstract');
+const { ListQueryRequest }   = require('./listquery');
+const { MultiCallRequest }   = require('./multicall');
+const { MultiCallOperation } = require('./multicall');
 
 /** @module Request */
 
@@ -1402,6 +1404,7 @@ class CategoryInsert extends Request {
       this.setCategoryName(category.getName());
       this.setCategoryActive(category.getActive());
       this.setCategoryPageTitle(category.getPageTitle());
+      this.setCategoryParentCategory(category.getParentCategory());
       this.setCategoryAlternateDisplayPage(category.getPageCode());
 
       if (category.getCustomFieldValues()) {
@@ -3130,6 +3133,7 @@ class CustomerInsert extends Request {
       this.setCustomerBillState(customer.getBillState());
       this.setCustomerBillZip(customer.getBillZip());
       this.setCustomerBillCountry(customer.getBillCountry());
+      this.setCustomerTaxExempt(customer.getTaxExempt());
       this.setCustomerBusinessAccount(customer.getBusinessTitle());
 
       if (customer.getCustomFieldValues()) {
@@ -3925,6 +3929,7 @@ class CustomerUpdate extends Request {
       this.setCustomerBillState(customer.getBillState());
       this.setCustomerBillZip(customer.getBillZip());
       this.setCustomerBillCountry(customer.getBillCountry());
+      this.setCustomerTaxExempt(customer.getTaxExempt());
       this.setCustomerBusinessAccount(customer.getBusinessTitle());
 
       if (customer.getCustomFieldValues()) {
@@ -4175,7 +4180,7 @@ class CustomerUpdate extends Request {
 
   /**
    * Get Customer_Tax_Exempt.
-   * @returns {string}
+   * @returns {boolean}
    */
   getCustomerTaxExempt() {
     return this.customerTaxExempt;
@@ -4499,7 +4504,7 @@ class CustomerUpdate extends Request {
 
   /**
    * Set Customer_Tax_Exempt.
-   * @param {string} customerTaxExempt
+   * @param {boolean} customerTaxExempt
    * @returns {CustomerUpdate}
    */
   setCustomerTaxExempt(customerTaxExempt) {
@@ -6895,7 +6900,8 @@ class OrderListLoadQuery extends ListQueryRequest {
       'coupons',
       'discounts',
       'payments',
-      'notes'
+      'notes',
+      'parts'
     ];
 
     this.availableCustomFilters = {
@@ -19799,7 +19805,8 @@ class CustomerAddressUpdate extends Request {
       this.setFirstName(customerAddress.getFirstName());
       this.setLastName(customerAddress.getLastName());
       this.setEmail(customerAddress.getEmail());
-      this.setFax(customerAddress.getPhone());
+      this.setPhone(customerAddress.getPhone());
+      this.setFax(customerAddress.getFax());
       this.setCompany(customerAddress.getCompany());
       this.setAddress1(customerAddress.getAddress1());
       this.setAddress2(customerAddress.getAddress2());
@@ -25491,6 +25498,8 @@ class PriceGroupInsert extends Request {
     this.discount = null;
     this.markup = null;
     this.moduleId = null;
+    this.editModule = null;
+    this.moduleCode = null;
     this.exclusion = null;
     this.description = null;
     this.display = null;
@@ -25558,6 +25567,22 @@ class PriceGroupInsert extends Request {
    */
   getModuleId() {
     return this.moduleId;
+  }
+
+  /**
+   * Get Edit_Module.
+   * @returns {string}
+   */
+  getEditModule() {
+    return this.editModule;
+  }
+
+  /**
+   * Get Module_Code.
+   * @returns {string}
+   */
+  getModuleCode() {
+    return this.moduleCode;
   }
 
   /**
@@ -25769,6 +25794,26 @@ class PriceGroupInsert extends Request {
    */
   setModuleId(moduleId) {
     this.moduleId = moduleId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Module.
+   * @param {string} editModule
+   * @returns {PriceGroupInsert}
+   */
+  setEditModule(editModule) {
+    this.editModule = editModule;
+    return this;
+  }
+
+  /**
+   * Set Module_Code.
+   * @param {string} moduleCode
+   * @returns {PriceGroupInsert}
+   */
+  setModuleCode(moduleCode) {
+    this.moduleCode = moduleCode;
     return this;
   }
 
@@ -25993,6 +26038,14 @@ class PriceGroupInsert extends Request {
   toObject() {
     var data = Object.assign(super.toObject(), this.getModuleFields());
 
+    if (!util.isNullOrUndefined(this.moduleId)) {
+      data['Module_ID'] = this.moduleId;
+    } else if (!util.isNullOrUndefined(this.editModule)) {
+      data['Edit_Module'] = this.editModule;
+    } else if (!util.isNullOrUndefined(this.moduleCode)) {
+      data['Module_Code'] = this.moduleCode;
+    }
+
     if (!util.isNullOrUndefined(this.name)) {
       data['Name'] = this.name;
     }
@@ -26011,10 +26064,6 @@ class PriceGroupInsert extends Request {
 
     if (!util.isNullOrUndefined(this.markup)) {
       data['Markup'] = this.markup;
-    }
-
-    if (!util.isNullOrUndefined(this.moduleId)) {
-      data['Module_ID'] = this.moduleId;
     }
 
     if (!util.isNullOrUndefined(this.exclusion)) {
@@ -33671,6 +33720,517 @@ class BranchUpdate extends Request {
 }
 
 /** 
+ * Handles API Request Attribute_CopyTemplate. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_copytemplate
+ */
+class AttributeCopyTemplate extends Request {
+  /**
+   * AttributeCopyTemplate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'Attribute_CopyTemplate';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.attributeTemplateId = null;
+    this.editAttributeTemplate = null;
+    this.attributeTemplateCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get AttributeTemplate_ID.
+   * @returns {number}
+   */
+  getAttributeTemplateId() {
+    return this.attributeTemplateId;
+  }
+
+  /**
+   * Get Edit_AttributeTemplate.
+   * @returns {string}
+   */
+  getEditAttributeTemplate() {
+    return this.editAttributeTemplate;
+  }
+
+  /**
+   * Get AttributeTemplate_Code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.attributeTemplateCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeCopyTemplate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeCopyTemplate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeCopyTemplate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_ID.
+   * @param {number} attributeTemplateId
+   * @returns {AttributeCopyTemplate}
+   */
+  setAttributeTemplateId(attributeTemplateId) {
+    this.attributeTemplateId = attributeTemplateId;
+    return this;
+  }
+
+  /**
+   * Set Edit_AttributeTemplate.
+   * @param {string} editAttributeTemplate
+   * @returns {AttributeCopyTemplate}
+   */
+  setEditAttributeTemplate(editAttributeTemplate) {
+    this.editAttributeTemplate = editAttributeTemplate;
+    return this;
+  }
+
+  /**
+   * Set AttributeTemplate_Code.
+   * @param {string} attributeTemplateCode
+   * @returns {AttributeCopyTemplate}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    this.attributeTemplateCode = attributeTemplateCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeTemplateId)) {
+      data['AttributeTemplate_ID'] = this.attributeTemplateId;
+    } else if (!util.isNullOrUndefined(this.editAttributeTemplate)) {
+      data['Edit_AttributeTemplate'] = this.editAttributeTemplate;
+    } else if (!util.isNullOrUndefined(this.attributeTemplateCode)) {
+      data['AttributeTemplate_Code'] = this.attributeTemplateCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeCopyTemplate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Attribute_CopyLinkedTemplate. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/attribute_copylinkedtemplate
+ */
+class AttributeCopyLinkedTemplate extends Request {
+  /**
+   * AttributeCopyLinkedTemplate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'Attribute_CopyLinkedTemplate';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.attributeId = null;
+    this.editAttribute = null;
+    this.attributeCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get Attribute_ID.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.attributeId;
+  }
+
+  /**
+   * Get Edit_Attribute.
+   * @returns {string}
+   */
+  getEditAttribute() {
+    return this.editAttribute;
+  }
+
+  /**
+   * Get Attribute_Code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.attributeCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set Attribute_ID.
+   * @param {number} attributeId
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setAttributeId(attributeId) {
+    this.attributeId = attributeId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Attribute.
+   * @param {string} editAttribute
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setEditAttribute(editAttribute) {
+    this.editAttribute = editAttribute;
+    return this;
+  }
+
+  /**
+   * Set Attribute_Code.
+   * @param {string} attributeCode
+   * @returns {AttributeCopyLinkedTemplate}
+   */
+  setAttributeCode(attributeCode) {
+    this.attributeCode = attributeCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.attributeId)) {
+      data['Attribute_ID'] = this.attributeId;
+    } else if (!util.isNullOrUndefined(this.editAttribute)) {
+      data['Edit_Attribute'] = this.editAttribute;
+    } else if (!util.isNullOrUndefined(this.attributeCode)) {
+      data['Attribute_Code'] = this.attributeCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.AttributeCopyLinkedTemplate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductAttributeAndOptionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productattributeandoptionlist_load_query
+ */
+class ProductAttributeAndOptionListLoadQuery extends ListQueryRequest {
+  /**
+   * ProductAttributeAndOptionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductAttributeAndOptionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'code',
+      'prompt',
+      'price',
+      'cost',
+      'weight',
+      'image',
+      'type',
+      'template',
+      'required',
+      'inventory',
+      'attr_code',
+      'attr_prompt',
+      'attr_price',
+      'attr_cost',
+      'attr_weight',
+      'attr_image',
+      'opt_code',
+      'opt_prompt',
+      'opt_price',
+      'opt_cost',
+      'opt_weight',
+      'opt_image'
+    ];
+
+    this.availableSortFields = [
+      'code',
+      'prompt',
+      'price',
+      'cost',
+      'weight',
+      'image',
+      'type',
+      'required',
+      'inventory',
+      'attr_code',
+      'attr_prompt',
+      'attr_price',
+      'attr_cost',
+      'attr_weight',
+      'attr_image',
+      'opt_code',
+      'opt_prompt',
+      'opt_price',
+      'opt_cost',
+      'opt_weight',
+      'opt_image',
+      'disporder'
+    ];
+
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductAttributeAndOptionListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductAttributeAndOptionListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductAttributeAndOptionListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductAttributeAndOptionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
  * Handles API Request CategoryProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
  */
@@ -36952,6 +37512,10 @@ class RequestBuilder extends Request
 }
 
 module.exports = {
+  Request,
+  ListQueryRequest,
+  MultiCallRequest,
+  MultiCallOperation,
   RequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
@@ -37139,6 +37703,9 @@ module.exports = {
   AttributeTemplateProductUpdateAssigned,
   BranchSetPrimary,
   BranchUpdate,
+  AttributeCopyTemplate,
+  AttributeCopyLinkedTemplate,
+  ProductAttributeAndOptionListLoadQuery,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,

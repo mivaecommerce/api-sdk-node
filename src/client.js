@@ -170,7 +170,7 @@ class BaseClient {
     var self = this;
 
     return new Promise(function onResolvePromise(resolve, reject) {
-      self.send(request, function onRequestComplete(response, error) {
+      self.send(request, function onRequestComplete(error, response) {
         if (error) {
           reject(error);
         } else {
