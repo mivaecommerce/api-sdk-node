@@ -11,12 +11,15 @@
 const VERSION_MAJOR = 2;
 
 /** @ignore */
-const VERSION_MINOR = 0;
+const VERSION_MINOR = 1;
 
 /** @ignore */
-const VERSION_PATCH = 3;
+const VERSION_PATCH = 0;
 
-/** Holds version information */
+/**
+ * Holds version information
+ * @class
+ */
 class Version {
   /**
    * @returns {number}
@@ -51,7 +54,7 @@ class Version {
    * @const
    */
   static get VERSION_STRING() {
-    return '2.0.3';
+    return '2.1.0';
   }
 }
 

@@ -18,6 +18,7 @@ const { MultiCallOperation } = require('./multicall');
 /** 
  * Handles API Request AvailabilityGroupBusinessAccount_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccount_update_assigned
+ * @class
  */
 class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
   /**
@@ -195,6 +196,7 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Request {
 /** 
  * Handles API Request AvailabilityGroupCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomer_update_assigned
+ * @class
  */
 class AvailabilityGroupCustomerUpdateAssigned extends Request {
   /**
@@ -393,6 +395,7 @@ class AvailabilityGroupCustomerUpdateAssigned extends Request {
 /** 
  * Handles API Request AvailabilityGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygrouplist_load_query
+ * @class
  */
 class AvailabilityGroupListLoadQuery extends ListQueryRequest {
   /**
@@ -428,6 +431,7 @@ class AvailabilityGroupListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request AvailabilityGroupPaymentMethod_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygrouppaymentmethod_update_assigned
+ * @class
  */
 class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
   /**
@@ -624,6 +628,7 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Request {
 /** 
  * Handles API Request AvailabilityGroupProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupproduct_update_assigned
+ * @class
  */
 class AvailabilityGroupProductUpdateAssigned extends Request {
   /**
@@ -841,6 +846,7 @@ class AvailabilityGroupProductUpdateAssigned extends Request {
 /** 
  * Handles API Request AvailabilityGroupShippingMethod_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethod_update_assigned
+ * @class
  */
 class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
   /**
@@ -1014,6 +1020,7 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Request {
 /** 
  * Handles API Request CategoryList_Load_Parent. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categorylist_load_parent
+ * @class
  */
 class CategoryListLoadParent extends Request {
   /**
@@ -1082,6 +1089,7 @@ const CATEGORY_SHOW_ACTIVE = 'Active';
 /** 
  * Handles API Request CategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categorylist_load_query
+ * @class
  */
 class CategoryListLoadQuery extends ListQueryRequest {
   /**
@@ -1163,6 +1171,7 @@ class CategoryListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request CategoryProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryproduct_update_assigned
+ * @class
  */
 class CategoryProductUpdateAssigned extends Request {
   /**
@@ -1380,6 +1389,7 @@ class CategoryProductUpdateAssigned extends Request {
 /** 
  * Handles API Request Category_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_insert
+ * @class
  */
 class CategoryInsert extends Request {
   /**
@@ -1595,6 +1605,7 @@ class CategoryInsert extends Request {
 /** 
  * Handles API Request Category_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_delete
+ * @class
  */
 class CategoryDelete extends Request {
   /**
@@ -1705,6 +1716,7 @@ class CategoryDelete extends Request {
 /** 
  * Handles API Request Category_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/category_update
+ * @class
  */
 class CategoryUpdate extends Request {
   /**
@@ -1974,6 +1986,7 @@ class CategoryUpdate extends Request {
 /** 
  * Handles API Request CouponList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponlist_delete
+ * @class
  */
 class CouponListDelete extends Request {
   /**
@@ -2050,6 +2063,7 @@ class CouponListDelete extends Request {
 /** 
  * Handles API Request CouponList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponlist_load_query
+ * @class
  */
 class CouponListLoadQuery extends ListQueryRequest {
   /**
@@ -2101,6 +2115,7 @@ class CouponListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request CouponPriceGroup_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponpricegroup_update_assigned
+ * @class
  */
 class CouponPriceGroupUpdateAssigned extends Request {
   /**
@@ -2276,6 +2291,7 @@ class CouponPriceGroupUpdateAssigned extends Request {
 /** 
  * Handles API Request Coupon_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/coupon_insert
+ * @class
  */
 class CouponInsert extends Request {
   /**
@@ -2539,6 +2555,7 @@ class CouponInsert extends Request {
 /** 
  * Handles API Request Coupon_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/coupon_update
+ * @class
  */
 class CouponUpdate extends Request {
   /**
@@ -2855,6 +2872,7 @@ class CouponUpdate extends Request {
 /** 
  * Handles API Request CustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerlist_load_query
+ * @class
  */
 class CustomerListLoadQuery extends ListQueryRequest {
   /**
@@ -2952,6 +2970,7 @@ class CustomerListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request Customer_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_delete
+ * @class
  */
 class CustomerDelete extends Request {
   /**
@@ -3062,6 +3081,7 @@ class CustomerDelete extends Request {
 /** 
  * Handles API Request Customer_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_insert
+ * @class
  */
 class CustomerInsert extends Request {
   /**
@@ -3850,6 +3870,7 @@ class CustomerInsert extends Request {
 /** 
  * Handles API Request Customer_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customer_update
+ * @class
  */
 class CustomerUpdate extends Request {
   /**
@@ -4694,6 +4715,7 @@ class CustomerUpdate extends Request {
 /** 
  * Handles API Request CustomerPaymentCard_Register. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerpaymentcard_register
+ * @class
  */
 class CustomerPaymentCardRegister extends Request {
   /**
@@ -5080,6 +5102,7 @@ class CustomerPaymentCardRegister extends Request {
 /** 
  * Handles API Request Module. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/module
+ * @class
  */
 class Module extends Request {
   /**
@@ -5190,6 +5213,7 @@ class Module extends Request {
 /** 
  * Handles API Request NoteList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/notelist_load_query
+ * @class
  */
 class NoteListLoadQuery extends ListQueryRequest {
   /**
@@ -5239,6 +5263,7 @@ class NoteListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request Note_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_delete
+ * @class
  */
 class NoteDelete extends Request {
   /**
@@ -5301,6 +5326,7 @@ class NoteDelete extends Request {
 /** 
  * Handles API Request Note_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_insert
+ * @class
  */
 class NoteInsert extends Request {
   /**
@@ -5427,6 +5453,7 @@ class NoteInsert extends Request {
 /** 
  * Handles API Request Note_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/note_update
+ * @class
  */
 class NoteUpdate extends Request {
   /**
@@ -5511,6 +5538,7 @@ class NoteUpdate extends Request {
 /** 
  * Handles API Request OrderCustomFieldList_Load. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercustomfieldlist_load
+ * @class
  */
 class OrderCustomFieldListLoad extends Request {
   /**
@@ -5536,6 +5564,7 @@ class OrderCustomFieldListLoad extends Request {
 /** 
  * Handles API Request OrderCustomFields_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercustomfields_update
+ * @class
  */
 class OrderCustomFieldsUpdate extends Request {
   /**
@@ -5633,6 +5662,7 @@ class OrderCustomFieldsUpdate extends Request {
 /** 
  * Handles API Request OrderItemList_BackOrder. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_backorder
+ * @class
  */
 class OrderItemListBackOrder extends Request {
   /**
@@ -5767,6 +5797,7 @@ class OrderItemListBackOrder extends Request {
 /** 
  * Handles API Request OrderItemList_Cancel. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_cancel
+ * @class
  */
 class OrderItemListCancel extends Request {
   /**
@@ -5892,6 +5923,7 @@ class OrderItemListCancel extends Request {
 /** 
  * Handles API Request OrderItemList_CreateShipment. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_createshipment
+ * @class
  */
 class OrderItemListCreateShipment extends Request {
   /**
@@ -5994,6 +6026,7 @@ class OrderItemListCreateShipment extends Request {
 /** 
  * Handles API Request OrderItemList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_delete
+ * @class
  */
 class OrderItemListDelete extends Request {
   /**
@@ -6096,6 +6129,7 @@ class OrderItemListDelete extends Request {
 /** 
  * Handles API Request OrderItem_Add. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitem_add
+ * @class
  */
 class OrderItemAdd extends Request {
   /**
@@ -6409,6 +6443,7 @@ class OrderItemAdd extends Request {
 /** 
  * Handles API Request OrderItem_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitem_update
+ * @class
  */
 class OrderItemUpdate extends Request {
   /**
@@ -6775,6 +6810,7 @@ const PAY_STATUS_FILTER_SHIPPED_NOT_CAPTURED = 'ship_not_capt';
 /** 
  * Handles API Request OrderList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderlist_load_query
+ * @class
  */
 class OrderListLoadQuery extends ListQueryRequest {
   /**
@@ -6901,7 +6937,9 @@ class OrderListLoadQuery extends ListQueryRequest {
       'discounts',
       'payments',
       'notes',
-      'parts'
+      'parts',
+      'shipments',
+      'returns'
     ];
 
     this.availableCustomFilters = {
@@ -7005,6 +7043,7 @@ class OrderListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request OrderPayment_Capture. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_capture
+ * @class
  */
 class OrderPaymentCapture extends Request {
   /**
@@ -7090,6 +7129,7 @@ class OrderPaymentCapture extends Request {
 /** 
  * Handles API Request OrderPayment_Refund. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_refund
+ * @class
  */
 class OrderPaymentRefund extends Request {
   /**
@@ -7175,6 +7215,7 @@ class OrderPaymentRefund extends Request {
 /** 
  * Handles API Request OrderPayment_VOID. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpayment_void
+ * @class
  */
 class OrderPaymentVoid extends Request {
   /**
@@ -7260,6 +7301,7 @@ class OrderPaymentVoid extends Request {
 /** 
  * Handles API Request OrderShipmentList_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordershipmentlist_update
+ * @class
  */
 class OrderShipmentListUpdate extends Request {
   /**
@@ -7390,6 +7432,7 @@ class OrderShipmentListUpdate extends Request {
 /** 
  * Handles API Request Order_Create. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_create
+ * @class
  */
 class OrderCreate extends Request {
   /**
@@ -8461,6 +8504,7 @@ class OrderCreate extends Request {
 /** 
  * Handles API Request Order_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_delete
+ * @class
  */
 class OrderDelete extends Request {
   /**
@@ -8523,6 +8567,7 @@ class OrderDelete extends Request {
 /** 
  * Handles API Request Order_Update_Customer_Information. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_update_customer_information
+ * @class
  */
 class OrderUpdateCustomerInformation extends Request {
   /**
@@ -9183,6 +9228,7 @@ class OrderUpdateCustomerInformation extends Request {
 /** 
  * Handles API Request PriceGroupCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupcustomer_update_assigned
+ * @class
  */
 class PriceGroupCustomerUpdateAssigned extends Request {
   /**
@@ -9360,6 +9406,7 @@ class PriceGroupCustomerUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegrouplist_load_query
+ * @class
  */
 class PriceGroupListLoadQuery extends ListQueryRequest {
   /**
@@ -9443,6 +9490,7 @@ class PriceGroupListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PriceGroupProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupproduct_update_assigned
+ * @class
  */
 class PriceGroupProductUpdateAssigned extends Request {
   /**
@@ -9649,6 +9697,7 @@ class PriceGroupProductUpdateAssigned extends Request {
 /** 
  * Handles API Request ProductImage_Add. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productimage_add
+ * @class
  */
 class ProductImageAdd extends Request {
   /**
@@ -9824,6 +9873,7 @@ class ProductImageAdd extends Request {
 /** 
  * Handles API Request ProductImage_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productimage_delete
+ * @class
  */
 class ProductImageDelete extends Request {
   /**
@@ -9886,6 +9936,7 @@ class ProductImageDelete extends Request {
 /** 
  * Handles API Request ProductList_Adjust_Inventory. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productlist_adjust_inventory
+ * @class
  */
 class ProductListAdjustInventory extends Request {
   /**
@@ -10024,6 +10075,7 @@ const PRODUCT_SHOW_ACTIVE = 'Active';
 /** 
  * Handles API Request ProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productlist_load_query
+ * @class
  */
 class ProductListLoadQuery extends ListQueryRequest {
   /**
@@ -10089,7 +10141,8 @@ class ProductListLoadQuery extends ListQueryRequest {
       'categories',
       'productshippingrules',
       'relatedproducts',
-      'uris'
+      'uris',
+      'url'
     ];
 
     this.availableCustomFilters = {
@@ -10143,6 +10196,7 @@ class ProductListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ProductVariantList_Load_Product. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariantlist_load_product
+ * @class
  */
 class ProductVariantListLoadProduct extends Request {
   /**
@@ -10489,6 +10543,7 @@ class ProductVariantListLoadProduct extends Request {
 /** 
  * Handles API Request Product_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_insert
+ * @class
  */
 class ProductInsert extends Request {
   /**
@@ -10918,6 +10973,7 @@ class ProductInsert extends Request {
 /** 
  * Handles API Request Product_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_delete
+ * @class
  */
 class ProductDelete extends Request {
   /**
@@ -11051,6 +11107,7 @@ class ProductDelete extends Request {
 /** 
  * Handles API Request Product_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/product_update
+ * @class
  */
 class ProductUpdate extends Request {
   /**
@@ -11536,6 +11593,7 @@ class ProductUpdate extends Request {
 /** 
  * Handles API Request Provision_Domain. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/provision_domain
+ * @class
  */
 class ProvisionDomain extends Request {
   /**
@@ -11593,6 +11651,7 @@ class ProvisionDomain extends Request {
 /** 
  * Handles API Request Provision_Store. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/provision_store
+ * @class
  */
 class ProvisionStore extends Request {
   /**
@@ -11650,6 +11709,7 @@ class ProvisionStore extends Request {
 /** 
  * Handles API Request CustomerAddressList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddresslist_load_query
+ * @class
  */
 class CustomerAddressListLoadQuery extends ListQueryRequest {
   /**
@@ -11799,6 +11859,7 @@ class CustomerAddressListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PrintQueueList_Load_Query. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/printqueuelist_load_query
+ * @class
  */
 class PrintQueueListLoadQuery extends ListQueryRequest {
   /**
@@ -11832,6 +11893,7 @@ class PrintQueueListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PrintQueueJobList_Load_Query. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/printqueuejoblist_load_query
+ * @class
  */
 class PrintQueueJobListLoadQuery extends ListQueryRequest {
   /**
@@ -11968,6 +12030,7 @@ class PrintQueueJobListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PrintQueueJob_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/printqueuejob_delete
+ * @class
  */
 class PrintQueueJobDelete extends Request {
   /**
@@ -12034,6 +12097,7 @@ class PrintQueueJobDelete extends Request {
 /** 
  * Handles API Request PrintQueueJob_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/printqueuejob_insert
+ * @class
  */
 class PrintQueueJobInsert extends Request {
   /**
@@ -12213,6 +12277,7 @@ class PrintQueueJobInsert extends Request {
 /** 
  * Handles API Request PrintQueueJob_Status. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/printqueuejob_status
+ * @class
  */
 class PrintQueueJobStatus extends Request {
   /**
@@ -12279,6 +12344,7 @@ class PrintQueueJobStatus extends Request {
 /** 
  * Handles API Request PaymentMethodList_Load. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/paymentmethodlist_load
+ * @class
  */
 class PaymentMethodListLoad extends Request {
   /**
@@ -12343,6 +12409,7 @@ class PaymentMethodListLoad extends Request {
 /** 
  * Handles API Request Order_Create_FromOrder. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_create_fromorder
+ * @class
  */
 class OrderCreateFromOrder extends Request {
   /**
@@ -12409,6 +12476,7 @@ class OrderCreateFromOrder extends Request {
 /** 
  * Handles API Request Order_Authorize. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/order_authorize
+ * @class
  */
 class OrderAuthorize extends Request {
   /**
@@ -12574,6 +12642,7 @@ class OrderAuthorize extends Request {
 /** 
  * Handles API Request CustomerPaymentCardList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerpaymentcardlist_load_query
+ * @class
  */
 class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
   /**
@@ -12724,6 +12793,7 @@ class CustomerPaymentCardListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request Branch_Copy. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branch_copy
+ * @class
  */
 class BranchCopy extends Request {
   /**
@@ -12836,6 +12906,7 @@ class BranchCopy extends Request {
 /** 
  * Handles API Request Branch_Create. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branch_create
+ * @class
  */
 class BranchCreate extends Request {
   /**
@@ -12994,6 +13065,7 @@ class BranchCreate extends Request {
 /** 
  * Handles API Request Branch_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branch_delete
+ * @class
  */
 class BranchDelete extends Request {
   /**
@@ -13087,6 +13159,7 @@ class BranchDelete extends Request {
 /** 
  * Handles API Request Changeset_Create. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changeset_create
+ * @class
  */
 class ChangesetCreate extends Request {
   /**
@@ -13719,6 +13792,7 @@ class ChangesetCreate extends Request {
 /** 
  * Handles API Request ChangesetList_Merge. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetlist_merge
+ * @class
  */
 class ChangesetListMerge extends Request {
   /**
@@ -13848,6 +13922,7 @@ class ChangesetListMerge extends Request {
 /** 
  * Handles API Request ChangesetChangeList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetchangelist_load_query
+ * @class
  */
 class ChangesetChangeListLoadQuery extends ListQueryRequest {
   /**
@@ -13925,6 +14000,7 @@ class ChangesetChangeListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BranchList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchlist_load_query
+ * @class
  */
 class BranchListLoadQuery extends ListQueryRequest {
   /**
@@ -13966,6 +14042,7 @@ class BranchListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BranchTemplateVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchtemplateversionlist_load_query
+ * @class
  */
 class BranchTemplateVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14135,6 +14212,7 @@ class BranchTemplateVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BranchCSSResourceVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchcssresourceversionlist_load_query
+ * @class
  */
 class BranchCSSResourceVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14309,6 +14387,7 @@ class BranchCSSResourceVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BranchJavaScriptResourceVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchjavascriptresourceversionlist_load_query
+ * @class
  */
 class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14483,6 +14562,7 @@ class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ChangesetList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetlist_load_query
+ * @class
  */
 class ChangesetListLoadQuery extends ListQueryRequest {
   /**
@@ -14612,6 +14692,7 @@ class ChangesetListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ChangesetTemplateVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesettemplateversionlist_load_query
+ * @class
  */
 class ChangesetTemplateVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14710,6 +14791,7 @@ class ChangesetTemplateVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ChangesetCSSResourceVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetcssresourceversionlist_load_query
+ * @class
  */
 class ChangesetCSSResourceVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14807,6 +14889,7 @@ class ChangesetCSSResourceVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ChangesetJavaScriptResourceVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetjavascriptresourceversionlist_load_query
+ * @class
  */
 class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -14904,6 +14987,7 @@ class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request CustomerCreditHistoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customercredithistorylist_load_query
+ * @class
  */
 class CustomerCreditHistoryListLoadQuery extends ListQueryRequest {
   /**
@@ -15038,6 +15122,7 @@ class CustomerCreditHistoryListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request CustomerCreditHistory_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customercredithistory_insert
+ * @class
  */
 class CustomerCreditHistoryInsert extends Request {
   /**
@@ -15213,6 +15298,7 @@ class CustomerCreditHistoryInsert extends Request {
 /** 
  * Handles API Request CustomerCreditHistory_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customercredithistory_delete
+ * @class
  */
 class CustomerCreditHistoryDelete extends Request {
   /**
@@ -15275,6 +15361,7 @@ class CustomerCreditHistoryDelete extends Request {
 /** 
  * Handles API Request OrderCoupon_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercoupon_update_assigned
+ * @class
  */
 class OrderCouponUpdateAssigned extends Request {
   /**
@@ -15429,6 +15516,7 @@ class OrderCouponUpdateAssigned extends Request {
 /** 
  * Handles API Request OrderPriceGroup_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpricegroup_update_assigned
+ * @class
  */
 class OrderPriceGroupUpdateAssigned extends Request {
   /**
@@ -15562,6 +15650,7 @@ class OrderPriceGroupUpdateAssigned extends Request {
 /** 
  * Handles API Request OrderItemList_CreateReturn. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_createreturn
+ * @class
  */
 class OrderItemListCreateReturn extends Request {
   /**
@@ -15668,6 +15757,7 @@ class OrderItemListCreateReturn extends Request {
 /** 
  * Handles API Request OrderReturnList_Received. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderreturnlist_received
+ * @class
  */
 class OrderReturnListReceived extends Request {
   /**
@@ -15798,6 +15888,7 @@ class OrderReturnListReceived extends Request {
 /** 
  * Handles API Request BranchPropertyVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchpropertyversionlist_load_query
+ * @class
  */
 class BranchPropertyVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -15845,7 +15936,8 @@ class BranchPropertyVersionListLoadQuery extends ListQueryRequest {
       'product',
       'category',
       'source',
-      'source_notes'
+      'source_notes',
+      'image'
     ];
     this.branchId = null;
     this.branchName = null;
@@ -15973,6 +16065,7 @@ class BranchPropertyVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ChangesetPropertyVersionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/changesetpropertyversionlist_load_query
+ * @class
  */
 class ChangesetPropertyVersionListLoadQuery extends ListQueryRequest {
   /**
@@ -16020,7 +16113,8 @@ class ChangesetPropertyVersionListLoadQuery extends ListQueryRequest {
       'product',
       'category',
       'source',
-      'source_notes'
+      'source_notes',
+      'image'
     ];
     this.changesetId = null;
 
@@ -16073,6 +16167,7 @@ class ChangesetPropertyVersionListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ResourceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/resourcegrouplist_load_query
+ * @class
  */
 class ResourceGroupListLoadQuery extends ListQueryRequest {
   /**
@@ -16225,6 +16320,7 @@ class ResourceGroupListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BranchList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branchlist_delete
+ * @class
  */
 class BranchListDelete extends Request {
   /**
@@ -16301,6 +16397,7 @@ class BranchListDelete extends Request {
 /** 
  * Handles API Request MivaMerchantVersion. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/mivamerchantversion
+ * @class
  */
 class MivaMerchantVersion extends Request {
   /**
@@ -16326,6 +16423,7 @@ class MivaMerchantVersion extends Request {
 /** 
  * Handles API Request Attribute_Load_Code. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_load_code
+ * @class
  */
 class AttributeLoadCode extends Request {
   /**
@@ -16478,6 +16576,7 @@ class AttributeLoadCode extends Request {
 /** 
  * Handles API Request Attribute_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_insert
+ * @class
  */
 class AttributeInsert extends Request {
   /**
@@ -16818,6 +16917,7 @@ class AttributeInsert extends Request {
 /** 
  * Handles API Request Attribute_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_update
+ * @class
  */
 class AttributeUpdate extends Request {
   /**
@@ -17244,6 +17344,7 @@ class AttributeUpdate extends Request {
 /** 
  * Handles API Request Attribute_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_delete
+ * @class
  */
 class AttributeDelete extends Request {
   /**
@@ -17429,6 +17530,7 @@ class AttributeDelete extends Request {
 /** 
  * Handles API Request OptionList_Load_Attribute. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/optionlist_load_attribute
+ * @class
  */
 class OptionListLoadAttribute extends Request {
   /**
@@ -17629,6 +17731,7 @@ class OptionListLoadAttribute extends Request {
 /** 
  * Handles API Request Option_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/option_delete
+ * @class
  */
 class OptionDelete extends Request {
   /**
@@ -17751,6 +17854,7 @@ class OptionDelete extends Request {
 /** 
  * Handles API Request Option_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/option_insert
+ * @class
  */
 class OptionInsert extends Request {
   /**
@@ -18089,6 +18193,7 @@ class OptionInsert extends Request {
 /** 
  * Handles API Request Option_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/option_update
+ * @class
  */
 class OptionUpdate extends Request {
   /**
@@ -18484,6 +18589,7 @@ class OptionUpdate extends Request {
 /** 
  * Handles API Request Option_Load_Code. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/option_load_code
+ * @class
  */
 class OptionLoadCode extends Request {
   /**
@@ -18696,6 +18802,7 @@ class OptionLoadCode extends Request {
 /** 
  * Handles API Request Option_Set_Default. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/option_set_default
+ * @class
  */
 class OptionSetDefault extends Request {
   /**
@@ -18841,6 +18948,7 @@ class OptionSetDefault extends Request {
 /** 
  * Handles API Request AttributeAndOptionList_Load_Product. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributeandoptionlist_load_product
+ * @class
  */
 class AttributeAndOptionListLoadProduct extends Request {
   /**
@@ -18983,6 +19091,7 @@ class AttributeAndOptionListLoadProduct extends Request {
 /** 
  * Handles API Request OrderShipmentList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordershipmentlist_load_query
+ * @class
  */
 class OrderShipmentListLoadQuery extends ListQueryRequest {
   /**
@@ -19133,6 +19242,7 @@ class OrderShipmentListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request OrderItem_Split. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitem_split
+ * @class
  */
 class OrderItemSplit extends Request {
   /**
@@ -19247,6 +19357,7 @@ class OrderItemSplit extends Request {
 /** 
  * Handles API Request OrderItemList_RemoveFromShipment. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderitemlist_removefromshipment
+ * @class
  */
 class OrderItemListRemoveFromShipment extends Request {
   /**
@@ -19353,6 +19464,7 @@ class OrderItemListRemoveFromShipment extends Request {
 /** 
  * Handles API Request CustomerAddress_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddress_insert
+ * @class
  */
 class CustomerAddressInsert extends Request {
   /**
@@ -19762,6 +19874,7 @@ class CustomerAddressInsert extends Request {
 /** 
  * Handles API Request CustomerAddress_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddress_update
+ * @class
  */
 class CustomerAddressUpdate extends Request {
   /**
@@ -20232,6 +20345,7 @@ class CustomerAddressUpdate extends Request {
 /** 
  * Handles API Request CustomerAddress_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddress_delete
+ * @class
  */
 class CustomerAddressDelete extends Request {
   /**
@@ -20388,6 +20502,7 @@ class CustomerAddressDelete extends Request {
 /** 
  * Handles API Request CustomerAddressList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddresslist_delete
+ * @class
  */
 class CustomerAddressListDelete extends Request {
   /**
@@ -20538,6 +20653,7 @@ class CustomerAddressListDelete extends Request {
 /** 
  * Handles API Request CustomerAddress_Update_Residential. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customeraddress_update_residential
+ * @class
  */
 class CustomerAddressUpdateResidential extends Request {
   /**
@@ -20648,6 +20764,7 @@ class CustomerAddressUpdateResidential extends Request {
 /** 
  * Handles API Request URIList_Load_Query. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/urilist_load_query
+ * @class
  */
 class URIListLoadQuery extends ListQueryRequest {
   /**
@@ -20709,6 +20826,7 @@ class URIListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request URI_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/uri_insert
+ * @class
  */
 class URIInsert extends Request {
   /**
@@ -20860,6 +20978,7 @@ class URIInsert extends Request {
 /** 
  * Handles API Request ProductURI_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/producturi_insert
+ * @class
  */
 class ProductURIInsert extends Request {
   /**
@@ -21039,6 +21158,7 @@ class ProductURIInsert extends Request {
 /** 
  * Handles API Request CategoryURI_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryuri_insert
+ * @class
  */
 class CategoryURIInsert extends Request {
   /**
@@ -21218,6 +21338,7 @@ class CategoryURIInsert extends Request {
 /** 
  * Handles API Request PageURI_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pageuri_insert
+ * @class
  */
 class PageURIInsert extends Request {
   /**
@@ -21397,6 +21518,7 @@ class PageURIInsert extends Request {
 /** 
  * Handles API Request FeedURI_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/feeduri_insert
+ * @class
  */
 class FeedURIInsert extends Request {
   /**
@@ -21546,6 +21668,7 @@ class FeedURIInsert extends Request {
 /** 
  * Handles API Request URI_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/uri_update
+ * @class
  */
 class URIUpdate extends Request {
   /**
@@ -21727,6 +21850,7 @@ class URIUpdate extends Request {
 /** 
  * Handles API Request ProductURI_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/producturi_update
+ * @class
  */
 class ProductURIUpdate extends Request {
   /**
@@ -21862,6 +21986,7 @@ class ProductURIUpdate extends Request {
 /** 
  * Handles API Request CategoryURI_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryuri_update
+ * @class
  */
 class CategoryURIUpdate extends Request {
   /**
@@ -21997,6 +22122,7 @@ class CategoryURIUpdate extends Request {
 /** 
  * Handles API Request PageURI_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pageuri_update
+ * @class
  */
 class PageURIUpdate extends Request {
   /**
@@ -22132,6 +22258,7 @@ class PageURIUpdate extends Request {
 /** 
  * Handles API Request FeedURI_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/feeduri_update
+ * @class
  */
 class FeedURIUpdate extends Request {
   /**
@@ -22267,6 +22394,7 @@ class FeedURIUpdate extends Request {
 /** 
  * Handles API Request URI_Delete. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/uri_delete
+ * @class
  */
 class URIDelete extends Request {
   /**
@@ -22333,6 +22461,7 @@ class URIDelete extends Request {
 /** 
  * Handles API Request ProductURIList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/producturilist_load_query
+ * @class
  */
 class ProductURIListLoadQuery extends ListQueryRequest {
   /**
@@ -22457,6 +22586,7 @@ class ProductURIListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request CategoryURIList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryurilist_load_query
+ * @class
  */
 class CategoryURIListLoadQuery extends ListQueryRequest {
   /**
@@ -22585,6 +22715,7 @@ class CategoryURIListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PageURIList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pageurilist_load_query
+ * @class
  */
 class PageURIListLoadQuery extends ListQueryRequest {
   /**
@@ -22700,6 +22831,7 @@ class PageURIListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request FeedURIList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/feedurilist_load_query
+ * @class
  */
 class FeedURIListLoadQuery extends ListQueryRequest {
   /**
@@ -22792,6 +22924,7 @@ class FeedURIListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ProductURIList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/producturilist_delete
+ * @class
  */
 class ProductURIListDelete extends Request {
   /**
@@ -22868,6 +23001,7 @@ class ProductURIListDelete extends Request {
 /** 
  * Handles API Request PageURIList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pageurilist_delete
+ * @class
  */
 class PageURIListDelete extends Request {
   /**
@@ -22944,6 +23078,7 @@ class PageURIListDelete extends Request {
 /** 
  * Handles API Request CategoryURIList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryurilist_delete
+ * @class
  */
 class CategoryURIListDelete extends Request {
   /**
@@ -23020,6 +23155,7 @@ class CategoryURIListDelete extends Request {
 /** 
  * Handles API Request FeedURIList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/feedurilist_delete
+ * @class
  */
 class FeedURIListDelete extends Request {
   /**
@@ -23096,6 +23232,7 @@ class FeedURIListDelete extends Request {
 /** 
  * Handles API Request URIList_Delete. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/urilist_delete
+ * @class
  */
 class URIListDelete extends Request {
   /**
@@ -23172,6 +23309,7 @@ class URIListDelete extends Request {
 /** 
  * Handles API Request PageURI_Redirect. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pageuri_redirect
+ * @class
  */
 class PageURIRedirect extends ListQueryRequest {
   /**
@@ -23340,6 +23478,7 @@ class PageURIRedirect extends ListQueryRequest {
 /** 
  * Handles API Request ProductURI_Redirect. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/producturi_redirect
+ * @class
  */
 class ProductURIRedirect extends ListQueryRequest {
   /**
@@ -23508,6 +23647,7 @@ class ProductURIRedirect extends ListQueryRequest {
 /** 
  * Handles API Request CategoryURI_Redirect. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryuri_redirect
+ * @class
  */
 class CategoryURIRedirect extends ListQueryRequest {
   /**
@@ -23676,6 +23816,7 @@ class CategoryURIRedirect extends ListQueryRequest {
 /** 
  * Handles API Request AvailabilityGroup_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_delete
+ * @class
  */
 class AvailabilityGroupDelete extends Request {
   /**
@@ -23784,6 +23925,7 @@ class AvailabilityGroupDelete extends Request {
 /** 
  * Handles API Request AvailabilityGroup_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_insert
+ * @class
  */
 class AvailabilityGroupInsert extends Request {
   /**
@@ -23864,6 +24006,7 @@ class AvailabilityGroupInsert extends Request {
 /** 
  * Handles API Request AvailabilityGroup_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_update
+ * @class
  */
 class AvailabilityGroupUpdate extends Request {
   /**
@@ -23997,6 +24140,7 @@ class AvailabilityGroupUpdate extends Request {
 /** 
  * Handles API Request AvailabilityGroupCategory_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcategory_update_assigned
+ * @class
  */
 class AvailabilityGroupCategoryUpdateAssigned extends Request {
   /**
@@ -24199,6 +24343,7 @@ class AvailabilityGroupCategoryUpdateAssigned extends Request {
 /** 
  * Handles API Request AvailabilityGroupShippingMethodList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethodlist_load_query
+ * @class
  */
 class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryRequest {
   /**
@@ -24357,6 +24502,7 @@ class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request PriceGroupBusinessAccount_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccount_update_assigned
+ * @class
  */
 class PriceGroupBusinessAccountUpdateAssigned extends Request {
   /**
@@ -24553,6 +24699,7 @@ class PriceGroupBusinessAccountUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroupCategory_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupcategory_update_assigned
+ * @class
  */
 class PriceGroupCategoryUpdateAssigned extends Request {
   /**
@@ -24755,6 +24902,7 @@ class PriceGroupCategoryUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroupExcludedCategory_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategory_update_assigned
+ * @class
  */
 class PriceGroupExcludedCategoryUpdateAssigned extends Request {
   /**
@@ -24953,6 +25101,7 @@ class PriceGroupExcludedCategoryUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroupExcludedProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproduct_update_assigned
+ * @class
  */
 class PriceGroupExcludedProductUpdateAssigned extends Request {
   /**
@@ -25172,6 +25321,7 @@ class PriceGroupExcludedProductUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroupQualifyingProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproduct_update_assigned
+ * @class
  */
 class PriceGroupQualifyingProductUpdateAssigned extends Request {
   /**
@@ -25370,6 +25520,7 @@ class PriceGroupQualifyingProductUpdateAssigned extends Request {
 /** 
  * Handles API Request PriceGroup_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroup_delete
+ * @class
  */
 class PriceGroupDelete extends Request {
   /**
@@ -25482,6 +25633,7 @@ class PriceGroupDelete extends Request {
 /** 
  * Handles API Request PriceGroup_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroup_insert
+ * @class
  */
 class PriceGroupInsert extends Request {
   /**
@@ -26154,6 +26306,7 @@ class PriceGroupInsert extends Request {
 /** 
  * Handles API Request PriceGroup_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroup_update
+ * @class
  */
 class PriceGroupUpdate extends Request {
   /**
@@ -26979,6 +27132,7 @@ class PriceGroupUpdate extends Request {
 /** 
  * Handles API Request CouponCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponcustomer_update_assigned
+ * @class
  */
 class CouponCustomerUpdateAssigned extends Request {
   /**
@@ -27181,6 +27335,7 @@ class CouponCustomerUpdateAssigned extends Request {
 /** 
  * Handles API Request BusinessAccountList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccountlist_load_query
+ * @class
  */
 class BusinessAccountListLoadQuery extends ListQueryRequest {
   /**
@@ -27224,6 +27379,7 @@ class BusinessAccountListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request BusinessAccount_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccount_insert
+ * @class
  */
 class BusinessAccountInsert extends Request {
   /**
@@ -27306,6 +27462,7 @@ class BusinessAccountInsert extends Request {
 /** 
  * Handles API Request BusinessAccount_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccount_update
+ * @class
  */
 class BusinessAccountUpdate extends Request {
   /**
@@ -27444,6 +27601,7 @@ class BusinessAccountUpdate extends Request {
 /** 
  * Handles API Request BusinessAccountList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccountlist_delete
+ * @class
  */
 class BusinessAccountListDelete extends Request {
   /**
@@ -27520,6 +27678,7 @@ class BusinessAccountListDelete extends Request {
 /** 
  * Handles API Request BusinessAccountCustomer_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccountcustomer_update_assigned
+ * @class
  */
 class BusinessAccountCustomerUpdateAssigned extends Request {
   /**
@@ -27720,6 +27879,7 @@ class BusinessAccountCustomerUpdateAssigned extends Request {
 /** 
  * Handles API Request StoreList_Load_Query. Scope: Domain. 
  * @see https://docs.miva.com/json-api/functions/storelist_load_query
+ * @class
  */
 class StoreListLoadQuery extends ListQueryRequest {
   /**
@@ -27779,6 +27939,7 @@ class StoreListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request Store_Load. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/store_load
+ * @class
  */
 class StoreLoad extends Request {
   /**
@@ -27804,6 +27965,7 @@ class StoreLoad extends Request {
 /** 
  * Handles API Request ProductVariantList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariantlist_load_query
+ * @class
  */
 class ProductVariantListLoadQuery extends ListQueryRequest {
   /**
@@ -27924,6 +28086,7 @@ class ProductVariantListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ProductVariant_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariant_insert
+ * @class
  */
 class ProductVariantInsert extends Request {
   /**
@@ -28222,6 +28385,7 @@ class ProductVariantInsert extends Request {
 /** 
  * Handles API Request ProductVariant_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariant_update
+ * @class
  */
 class ProductVariantUpdate extends Request {
   /**
@@ -28545,6 +28709,7 @@ class ProductVariantUpdate extends Request {
 /** 
  * Handles API Request ProductVariant_Generate. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariant_generate
+ * @class
  */
 class ProductVariantGenerate extends Request {
   /**
@@ -28678,6 +28843,7 @@ class ProductVariantGenerate extends Request {
 /** 
  * Handles API Request ProductVariant_Generate_Delimiter. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
+ * @class
  */
 class ProductVariantGenerateDelimiter extends Request {
   /**
@@ -28834,6 +29000,7 @@ class ProductVariantGenerateDelimiter extends Request {
 /** 
  * Handles API Request ProductKitList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productkitlist_load_query
+ * @class
  */
 class ProductKitListLoadQuery extends ListQueryRequest {
   /**
@@ -28957,6 +29124,7 @@ class ProductKitListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ProductKit_Generate_Variants. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productkit_generate_variants
+ * @class
  */
 class ProductKitGenerateVariants extends Request {
   /**
@@ -29088,6 +29256,7 @@ class ProductKitGenerateVariants extends Request {
 /** 
  * Handles API Request ProductKit_Update_Parts. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productkit_update_parts
+ * @class
  */
 class ProductKitUpdateParts extends Request {
   /**
@@ -29361,6 +29530,7 @@ class ProductKitUpdateParts extends Request {
 /** 
  * Handles API Request ProductKit_Variant_Count. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productkit_variant_count
+ * @class
  */
 class ProductKitVariantCount extends Request {
   /**
@@ -29471,6 +29641,7 @@ class ProductKitVariantCount extends Request {
 /** 
  * Handles API Request RelatedProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/relatedproduct_update_assigned
+ * @class
  */
 class RelatedProductUpdateAssigned extends Request {
   /**
@@ -29677,6 +29848,7 @@ const INVENTORY_CHOICE_NO = 'n';
 /** 
  * Handles API Request InventoryProductSettings_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/inventoryproductsettings_update
+ * @class
  */
 class InventoryProductSettingsUpdate extends Request {
   /**
@@ -30161,6 +30333,7 @@ class InventoryProductSettingsUpdate extends Request {
 /** 
  * Handles API Request ProductVariantList_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariantlist_delete
+ * @class
  */
 class ProductVariantListDelete extends Request {
   /**
@@ -30311,6 +30484,7 @@ class ProductVariantListDelete extends Request {
 /** 
  * Handles API Request ImageTypeList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/imagetypelist_load_query
+ * @class
  */
 class ImageTypeListLoadQuery extends ListQueryRequest {
   /**
@@ -30341,6 +30515,7 @@ class ImageTypeListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request ProductImage_Update_Type. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productimage_update_type
+ * @class
  */
 class ProductImageUpdateType extends Request {
   /**
@@ -30421,6 +30596,7 @@ class ProductImageUpdateType extends Request {
 /** 
  * Handles API Request AttributeTemplateList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplatelist_load_query
+ * @class
  */
 class AttributeTemplateListLoadQuery extends ListQueryRequest {
   /**
@@ -30460,6 +30636,7 @@ class AttributeTemplateListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request AttributeTemplateAttributeList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateattributelist_load_query
+ * @class
  */
 class AttributeTemplateAttributeListLoadQuery extends ListQueryRequest {
   /**
@@ -30622,6 +30799,7 @@ class AttributeTemplateAttributeListLoadQuery extends ListQueryRequest {
 /** 
  * Handles API Request AttributeTemplateOptionList_Load_Attribute. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateoptionlist_load_attribute
+ * @class
  */
 class AttributeTemplateOptionListLoadAttribute extends ListQueryRequest {
   /**
@@ -30795,6 +30973,7 @@ class AttributeTemplateOptionListLoadAttribute extends ListQueryRequest {
 /** 
  * Handles API Request AttributeTemplateAttribute_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_delete
+ * @class
  */
 class AttributeTemplateAttributeDelete extends Request {
   /**
@@ -30968,6 +31147,7 @@ class AttributeTemplateAttributeDelete extends Request {
 /** 
  * Handles API Request AttributeTemplateAttribute_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_insert
+ * @class
  */
 class AttributeTemplateAttributeInsert extends Request {
   /**
@@ -31306,6 +31486,7 @@ class AttributeTemplateAttributeInsert extends Request {
 /** 
  * Handles API Request AttributeTemplateAttribute_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_update
+ * @class
  */
 class AttributeTemplateAttributeUpdate extends Request {
   /**
@@ -31711,6 +31892,7 @@ class AttributeTemplateAttributeUpdate extends Request {
 /** 
  * Handles API Request AttributeTemplateOption_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_delete
+ * @class
  */
 class AttributeTemplateOptionDelete extends Request {
   /**
@@ -31949,6 +32131,7 @@ class AttributeTemplateOptionDelete extends Request {
 /** 
  * Handles API Request AttributeTemplateOption_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_insert
+ * @class
  */
 class AttributeTemplateOptionInsert extends Request {
   /**
@@ -32279,6 +32462,7 @@ class AttributeTemplateOptionInsert extends Request {
 /** 
  * Handles API Request AttributeTemplateOption_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_update
+ * @class
  */
 class AttributeTemplateOptionUpdate extends Request {
   /**
@@ -32674,6 +32858,7 @@ class AttributeTemplateOptionUpdate extends Request {
 /** 
  * Handles API Request AttributeTemplate_Insert. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplate_insert
+ * @class
  */
 class AttributeTemplateInsert extends Request {
   /**
@@ -32752,6 +32937,7 @@ class AttributeTemplateInsert extends Request {
 /** 
  * Handles API Request AttributeTemplate_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplate_update
+ * @class
  */
 class AttributeTemplateUpdate extends Request {
   /**
@@ -32906,6 +33092,7 @@ class AttributeTemplateUpdate extends Request {
 /** 
  * Handles API Request AttributeTemplate_Delete. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplate_delete
+ * @class
  */
 class AttributeTemplateDelete extends Request {
   /**
@@ -33018,6 +33205,7 @@ class AttributeTemplateDelete extends Request {
 /** 
  * Handles API Request AttributeTemplateOption_Set_Default. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_set_default
+ * @class
  */
 class AttributeTemplateOptionSetDefault extends Request {
   /**
@@ -33277,6 +33465,7 @@ class AttributeTemplateOptionSetDefault extends Request {
 /** 
  * Handles API Request AttributeTemplateProduct_Update_Assigned. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateproduct_update_assigned
+ * @class
  */
 class AttributeTemplateProductUpdateAssigned extends Request {
   /**
@@ -33475,6 +33664,7 @@ class AttributeTemplateProductUpdateAssigned extends Request {
 /** 
  * Handles API Request Branch_SetPrimary. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branch_setprimary
+ * @class
  */
 class BranchSetPrimary extends Request {
   /**
@@ -33587,6 +33777,7 @@ class BranchSetPrimary extends Request {
 /** 
  * Handles API Request Branch_Update. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/branch_update
+ * @class
  */
 class BranchUpdate extends Request {
   /**
@@ -33722,6 +33913,7 @@ class BranchUpdate extends Request {
 /** 
  * Handles API Request Attribute_CopyTemplate. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_copytemplate
+ * @class
  */
 class AttributeCopyTemplate extends Request {
   /**
@@ -33897,6 +34089,7 @@ class AttributeCopyTemplate extends Request {
 /** 
  * Handles API Request Attribute_CopyLinkedTemplate. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attribute_copylinkedtemplate
+ * @class
  */
 class AttributeCopyLinkedTemplate extends Request {
   /**
@@ -34072,6 +34265,7 @@ class AttributeCopyLinkedTemplate extends Request {
 /** 
  * Handles API Request ProductAttributeAndOptionList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productattributeandoptionlist_load_query
+ * @class
  */
 class ProductAttributeAndOptionListLoadQuery extends ListQueryRequest {
   /**
@@ -34231,8 +34425,2923 @@ class ProductAttributeAndOptionListLoadQuery extends ListQueryRequest {
 }
 
 /** 
+ * Handles API Request CustomerSubscriptionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * @class
+ */
+class CustomerSubscriptionListLoadQuery extends ListQueryRequest {
+  /**
+   * CustomerSubscriptionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerSubscriptionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'id',
+      'order_id',
+      'quantity',
+      'termrem',
+      'termproc',
+      'firstdate',
+      'lastdate',
+      'nextdate',
+      'status',
+      'message',
+      'cncldate',
+      'tax',
+      'shipping',
+      'subtotal',
+      'total',
+      'authfails',
+      'lastafail',
+      'frequency',
+      'term',
+      'descrip',
+      'n',
+      'fixed_dow',
+      'fixed_dom',
+      'sub_count',
+      'customer_login',
+      'customer_pw_email',
+      'customer_business_title',
+      'product_code',
+      'product_name',
+      'product_sku',
+      'product_price',
+      'product_cost',
+      'product_weight',
+      'product_descrip',
+      'product_taxable',
+      'product_thumbnail',
+      'product_image',
+      'product_active',
+      'product_page_title',
+      'product_cancat_code',
+      'product_page_code',
+      'address_descrip',
+      'address_fname',
+      'address_lname',
+      'address_email',
+      'address_phone',
+      'address_fax',
+      'address_comp',
+      'address_addr1',
+      'address_addr2',
+      'address_city',
+      'address_state',
+      'address_zip',
+      'address_cntry',
+      'product_inventory',
+      'product_inventory_active',
+      'product_inventory'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'order_id',
+      'custpc_id',
+      'quantity',
+      'termrem',
+      'termproc',
+      'firstdate',
+      'lastdate',
+      'nextdate',
+      'status',
+      'message',
+      'cncldate',
+      'tax',
+      'shipping',
+      'subtotal',
+      'total',
+      'authfails',
+      'lastafail',
+      'frequency',
+      'term',
+      'descrip',
+      'n',
+      'fixed_dow',
+      'fixed_dom',
+      'sub_count',
+      'customer_login',
+      'customer_pw_email',
+      'customer_business_title',
+      'product_code',
+      'product_name',
+      'product_sku',
+      'product_cancat_code',
+      'product_page_code',
+      'product_price',
+      'product_cost',
+      'product_weight',
+      'product_descrip',
+      'product_taxable',
+      'product_thumbnail',
+      'product_image',
+      'product_active',
+      'product_page_title',
+      'address_descrip',
+      'address_fname',
+      'address_lname',
+      'address_email',
+      'address_phone',
+      'address_fax',
+      'address_comp',
+      'address_addr1',
+      'address_addr2',
+      'address_city',
+      'address_state',
+      'address_zip',
+      'address_cntry',
+      'product_inventory'
+    ];
+
+    this.availableOnDemandColumns = [
+      'imagetypes',
+      'imagetype_count',
+      'product_descrip'
+    ];
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.customFieldValues = new models.CustomFieldValues();
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setEditCustomer(customer.getLogin());
+      }
+      if (customer.getCustomFieldValues()) {
+        this.setCustomFieldValues(customer.getCustomFieldValues());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get CustomField_Values.
+   * @returns {?CustomFieldValues}
+   */
+  getCustomFieldValues() {
+    return this.customFieldValues;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set CustomField_Values.
+   * @param {?CustomFieldValues} customFieldValues
+   * @throws {Error}
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomFieldValues(customFieldValues) {
+    if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues) && util.isObject(customFieldValues)) {
+      customFieldValues = new models.CustomFieldValues(customFieldValues);
+    } else if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues)) {
+      throw new Error(util.format('Expected instance of CustomFieldValues or an Object but got %s',
+        typeof customFieldValues));
+    }
+
+    this.customFieldValues = customFieldValues;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (this.customFieldValues && util.isObject(this.customFieldValues)) {
+      data['CustomField_Values'] = this.customFieldValues.toObject();
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerSubscriptionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductSubscriptionTermList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productsubscriptiontermlist_load_query
+ * @class
+ */
+class ProductSubscriptionTermListLoadQuery extends ListQueryRequest {
+  /**
+   * ProductSubscriptionTermListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductSubscriptionTermList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'frequency',
+      'term',
+      'descrip',
+      'n',
+      'fixed_dow',
+      'fixed_dom',
+      'sub_count'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'frequency',
+      'term',
+      'descrip',
+      'n',
+      'frequency',
+      'fixed_dow',
+      'fixed_dom',
+      'sub_count',
+      'disp_order'
+    ];
+
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {ProductSubscriptionTermListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {ProductSubscriptionTermListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {ProductSubscriptionTermListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductSubscriptionTermListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request SubscriptionShippingMethodList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscriptionshippingmethodlist_load_query
+ * @class
+ */
+class SubscriptionShippingMethodListLoadQuery extends ListQueryRequest {
+  /**
+   * SubscriptionShippingMethodListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'SubscriptionShippingMethodList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+
+    this.availableSearchFields = [
+      'method',
+      'price'
+    ];
+
+    this.availableSortFields = [
+      'method',
+      'price'
+    ];
+
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.productSubscriptionTermId = null;
+    this.productSubscriptionTermDescription = null;
+    this.customerAddressId = null;
+    this.addressId = null;
+    this.paymentCardId = null;
+    this.customerPaymentCardId = null;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.attributes = [];
+    this.quantity = null;
+
+    if (util.isInstanceOf(product, models.Product)) {
+      if (product.getId()) {
+        this.setProductId(product.getId());
+      } else if (product.getCode()) {
+        this.setEditProduct(product.getCode());
+      }
+    }
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_ID.
+   * @returns {number}
+   */
+  getProductSubscriptionTermId() {
+    return this.productSubscriptionTermId;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_Description.
+   * @returns {string}
+   */
+  getProductSubscriptionTermDescription() {
+    return this.productSubscriptionTermDescription;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get PaymentCard_ID.
+   * @returns {number}
+   */
+  getPaymentCardId() {
+    return this.paymentCardId;
+  }
+
+  /**
+   * Get CustomerPaymentCard_ID.
+   * @returns {number}
+   */
+  getCustomerPaymentCardId() {
+    return this.customerPaymentCardId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {SubscriptionAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_ID.
+   * @param {number} productSubscriptionTermId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setProductSubscriptionTermId(productSubscriptionTermId) {
+    this.productSubscriptionTermId = productSubscriptionTermId;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_Description.
+   * @param {string} productSubscriptionTermDescription
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setProductSubscriptionTermDescription(productSubscriptionTermDescription) {
+    this.productSubscriptionTermDescription = productSubscriptionTermDescription;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set PaymentCard_ID.
+   * @param {number} paymentCardId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setPaymentCardId(paymentCardId) {
+    this.paymentCardId = paymentCardId;
+    return this;
+  }
+
+  /**
+   * Set CustomerPaymentCard_ID.
+   * @param {number} customerPaymentCardId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setCustomerPaymentCardId(customerPaymentCardId) {
+    this.customerPaymentCardId = customerPaymentCardId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.SubscriptionAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        throw new Error(util.format('Expected instance of SubscriptionAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {SubscriptionAttribute} subscriptionAttribute
+   * @throws {Error}
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  addSubscriptionAttribute(subscriptionAttribute) {
+    if (util.isInstanceOf(subscriptionAttribute, models.SubscriptionAttribute)) {
+      this.attributes.push(subscriptionAttribute);
+    } else if (util.isObject(subscriptionAttribute)) {
+      this.attributes.push(new models.SubscriptionAttribute(subscriptionAttribute));
+    } else {
+      throw new Error(util.format('Expected instance of SubscriptionAttribute or Object but got %s',
+        typeof subscriptionAttribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many SubscriptionAttribute.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionShippingMethodListLoadQuery}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of SubscriptionAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.SubscriptionAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of SubscriptionAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.productSubscriptionTermId)) {
+      data['ProductSubscriptionTerm_ID'] = this.productSubscriptionTermId;
+    } else if (!util.isNullOrUndefined(this.productSubscriptionTermDescription)) {
+      data['ProductSubscriptionTerm_Description'] = this.productSubscriptionTermDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    } else if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    }
+
+    if (!util.isNullOrUndefined(this.paymentCardId)) {
+      data['PaymentCard_ID'] = this.paymentCardId;
+    } else if (!util.isNullOrUndefined(this.customerPaymentCardId)) {
+      data['CustomerPaymentCard_ID'] = this.customerPaymentCardId;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    data['Quantity'] = this.quantity;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionShippingMethodListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Subscription_Insert. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscription_insert
+ * @class
+ */
+class SubscriptionInsert extends Request {
+  /**
+   * SubscriptionInsert Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'Subscription_Insert';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.productSubscriptionTermId = null;
+    this.productSubscriptionTermDescription = null;
+    this.quantity = null;
+    // Missing time_struct
+    this.paymentCardId = null;
+    this.shipId = null;
+    this.shipData = null;
+    this.attributes = [];
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_ID.
+   * @returns {number}
+   */
+  getProductSubscriptionTermId() {
+    return this.productSubscriptionTermId;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_Description.
+   * @returns {string}
+   */
+  getProductSubscriptionTermDescription() {
+    return this.productSubscriptionTermDescription;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Get NextDate.
+   * @returns {number}
+   */
+  getNextDate() {
+    return this.nextDate;
+  }
+
+  /**
+   * Get PaymentCard_ID.
+   * @returns {number}
+   */
+  getPaymentCardId() {
+    return this.paymentCardId;
+  }
+
+  /**
+   * Get Ship_ID.
+   * @returns {number}
+   */
+  getShipId() {
+    return this.shipId;
+  }
+
+  /**
+   * Get Ship_Data.
+   * @returns {string}
+   */
+  getShipData() {
+    return this.shipData;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {SubscriptionAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {SubscriptionInsert}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {SubscriptionInsert}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {SubscriptionInsert}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {SubscriptionInsert}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {SubscriptionInsert}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {SubscriptionInsert}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {SubscriptionInsert}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {SubscriptionInsert}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_ID.
+   * @param {number} productSubscriptionTermId
+   * @returns {SubscriptionInsert}
+   */
+  setProductSubscriptionTermId(productSubscriptionTermId) {
+    this.productSubscriptionTermId = productSubscriptionTermId;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_Description.
+   * @param {string} productSubscriptionTermDescription
+   * @returns {SubscriptionInsert}
+   */
+  setProductSubscriptionTermDescription(productSubscriptionTermDescription) {
+    this.productSubscriptionTermDescription = productSubscriptionTermDescription;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {SubscriptionInsert}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Set NextDate.
+   * @param {number|Date} nextDate
+   * @returns {SubscriptionInsert}
+   */
+  setNextDate(nextDate) {
+    if (util.isDate(nextDate)) {
+      this.nextDate = Math.floor(nextDate.getTime()/1000);      
+    } else {
+      this.nextDate = nextDate;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set PaymentCard_ID.
+   * @param {number} paymentCardId
+   * @returns {SubscriptionInsert}
+   */
+  setPaymentCardId(paymentCardId) {
+    this.paymentCardId = paymentCardId;
+    return this;
+  }
+
+  /**
+   * Set Ship_ID.
+   * @param {number} shipId
+   * @returns {SubscriptionInsert}
+   */
+  setShipId(shipId) {
+    this.shipId = shipId;
+    return this;
+  }
+
+  /**
+   * Set Ship_Data.
+   * @param {string} shipData
+   * @returns {SubscriptionInsert}
+   */
+  setShipData(shipData) {
+    this.shipData = shipData;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionInsert}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.SubscriptionAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        throw new Error(util.format('Expected instance of SubscriptionAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {SubscriptionAttribute} attribute
+   * @throws {Error}
+   * @returns {SubscriptionInsert}
+   */
+  addAttribute(attribute) {
+    if (util.isInstanceOf(attribute, models.SubscriptionAttribute)) {
+      this.attributes.push(attribute);
+    } else if (util.isObject(attribute)) {
+      this.attributes.push(new models.SubscriptionAttribute(attribute));
+    } else {
+      throw new Error(util.format('Expected instance of SubscriptionAttribute or Object but got %s',
+        typeof attribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many SubscriptionAttribute.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionInsert}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of SubscriptionAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.SubscriptionAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of SubscriptionAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.productSubscriptionTermId)) {
+      data['ProductSubscriptionTerm_ID'] = this.productSubscriptionTermId;
+    } else if (!util.isNullOrUndefined(this.productSubscriptionTermDescription)) {
+      data['ProductSubscriptionTerm_Description'] = this.productSubscriptionTermDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    data['Quantity'] = this.quantity;
+
+    data['NextDate'] = this.nextDate;
+
+    if (!util.isNullOrUndefined(this.paymentCardId)) {
+      data['PaymentCard_ID'] = this.paymentCardId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipId)) {
+      data['Ship_ID'] = this.shipId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipData)) {
+      data['Ship_Data'] = this.shipData;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionInsert(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request Subscription_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscription_update
+ * @class
+ */
+class SubscriptionUpdate extends Request {
+  /**
+   * SubscriptionUpdate Constructor.
+   * @param {?BaseClient} client
+   * @param {?Subscription} subscription
+   */
+  constructor(client, subscription = null) {
+    super(client);
+    this.function = 'Subscription_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.subscriptionId = null;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.productSubscriptionTermId = null;
+    this.productSubscriptionTermDescription = null;
+    this.quantity = null;
+    this.nextDate = null;
+    this.paymentCardId = null;
+    this.shipId = null;
+    this.shipData = null;
+    this.attributes = [];
+
+    if (util.isInstanceOf(subscription, models.Subscription)) {
+      if (subscription.getId()) {
+        this.setSubscriptionId(subscription.getId());
+      }
+
+      this.setSubscriptionId(subscription.getId());
+    }
+  }
+
+  /**
+   * Get Subscription_ID.
+   * @returns {number}
+   */
+  getSubscriptionId() {
+    return this.subscriptionId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_ID.
+   * @returns {number}
+   */
+  getProductSubscriptionTermId() {
+    return this.productSubscriptionTermId;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_Description.
+   * @returns {string}
+   */
+  getProductSubscriptionTermDescription() {
+    return this.productSubscriptionTermDescription;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Get NextDate.
+   * @returns {number}
+   */
+  getNextDate() {
+    return this.nextDate;
+  }
+
+  /**
+   * Get PaymentCard_ID.
+   * @returns {number}
+   */
+  getPaymentCardId() {
+    return this.paymentCardId;
+  }
+
+  /**
+   * Get Ship_ID.
+   * @returns {number}
+   */
+  getShipId() {
+    return this.shipId;
+  }
+
+  /**
+   * Get Ship_Data.
+   * @returns {string}
+   */
+  getShipData() {
+    return this.shipData;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {SubscriptionAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Set Subscription_ID.
+   * @param {number} subscriptionId
+   * @returns {SubscriptionUpdate}
+   */
+  setSubscriptionId(subscriptionId) {
+    this.subscriptionId = subscriptionId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {SubscriptionUpdate}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {SubscriptionUpdate}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {SubscriptionUpdate}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {SubscriptionUpdate}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {SubscriptionUpdate}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {SubscriptionUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {SubscriptionUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {SubscriptionUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_ID.
+   * @param {number} productSubscriptionTermId
+   * @returns {SubscriptionUpdate}
+   */
+  setProductSubscriptionTermId(productSubscriptionTermId) {
+    this.productSubscriptionTermId = productSubscriptionTermId;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_Description.
+   * @param {string} productSubscriptionTermDescription
+   * @returns {SubscriptionUpdate}
+   */
+  setProductSubscriptionTermDescription(productSubscriptionTermDescription) {
+    this.productSubscriptionTermDescription = productSubscriptionTermDescription;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {SubscriptionUpdate}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Set NextDate.
+   * @param {number|Date} nextDate
+   * @returns {SubscriptionUpdate}
+   */
+  setNextDate(nextDate) {
+    if (util.isDate(nextDate)) {
+      this.nextDate = Math.floor(nextDate.getTime()/1000);      
+    } else {
+      this.nextDate = nextDate;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set PaymentCard_ID.
+   * @param {number} paymentCardId
+   * @returns {SubscriptionUpdate}
+   */
+  setPaymentCardId(paymentCardId) {
+    this.paymentCardId = paymentCardId;
+    return this;
+  }
+
+  /**
+   * Set Ship_ID.
+   * @param {number} shipId
+   * @returns {SubscriptionUpdate}
+   */
+  setShipId(shipId) {
+    this.shipId = shipId;
+    return this;
+  }
+
+  /**
+   * Set Ship_Data.
+   * @param {string} shipData
+   * @returns {SubscriptionUpdate}
+   */
+  setShipData(shipData) {
+    this.shipData = shipData;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionUpdate}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.SubscriptionAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        throw new Error(util.format('Expected instance of SubscriptionAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {SubscriptionAttribute} attribute
+   * @throws {Error}
+   * @returns {SubscriptionUpdate}
+   */
+  addAttribute(attribute) {
+    if (util.isInstanceOf(attribute, models.SubscriptionAttribute)) {
+      this.attributes.push(attribute);
+    } else if (util.isObject(attribute)) {
+      this.attributes.push(new models.SubscriptionAttribute(attribute));
+    } else {
+      throw new Error(util.format('Expected instance of SubscriptionAttribute or Object but got %s',
+        typeof attribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many SubscriptionAttribute.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionUpdate}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of SubscriptionAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.SubscriptionAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of SubscriptionAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.subscriptionId)) {
+      data['Subscription_ID'] = this.subscriptionId;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.productSubscriptionTermId)) {
+      data['ProductSubscriptionTerm_ID'] = this.productSubscriptionTermId;
+    } else if (!util.isNullOrUndefined(this.productSubscriptionTermDescription)) {
+      data['ProductSubscriptionTerm_Description'] = this.productSubscriptionTermDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    if (!util.isNullOrUndefined(this.subscriptionId)) {
+      data['Subscription_ID'] = this.subscriptionId;
+    }
+
+    data['Quantity'] = this.quantity;
+
+    data['NextDate'] = this.nextDate;
+
+    if (!util.isNullOrUndefined(this.paymentCardId)) {
+      data['PaymentCard_ID'] = this.paymentCardId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipId)) {
+      data['Ship_ID'] = this.shipId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipData)) {
+      data['Ship_Data'] = this.shipData;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request SubscriptionList_Delete. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscriptionlist_delete
+ * @class
+ */
+class SubscriptionListDelete extends Request {
+  /**
+   * SubscriptionListDelete Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'SubscriptionList_Delete';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.subscriptionIds = [];
+  }
+
+  /**
+   * Get Subscription_IDs.
+   * @returns {Array}
+   */
+  getSubscriptionIds() {
+    return this.subscriptionIds;
+  }
+
+  /**
+   * Add Subscription_IDs.
+   * @param {number} subscriptionId
+   * @returns {SubscriptionListDelete}
+   */
+  addSubscriptionId(subscriptionId) {
+    this.subscriptionIds.push(subscriptionId);
+    return this;
+  }
+
+  /**
+   * Add Subscription model.
+   * @param {Subscription} subscription
+   * @throws {Error}
+   * @returns {SubscriptionListDelete}
+   */
+  addSubscription(subscription) {
+    if (!util.isInstanceOf(subscription, models.Subscription)) {
+      throw new Error(util.format('Expected instance of Subscription but got %s',
+        typeof subscription));
+    }
+
+    if (subscription.getId()) {
+      this.subscriptionIds.push(subscription.getId());
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    data['Subscription_IDs'] = this.subscriptionIds;
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionListDelete(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request SubscriptionAndOrderItem_Add. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscriptionandorderitem_add
+ * @class
+ */
+class SubscriptionAndOrderItemAdd extends Request {
+  /**
+   * SubscriptionAndOrderItemAdd Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'SubscriptionAndOrderItem_Add';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.productSubscriptionTermId = null;
+    this.productSubscriptionTermDescription = null;
+    this.quantity = null;
+    this.nextDate = null;
+    this.paymentCardId = null;
+    this.shipId = null;
+    this.shipData = null;
+    this.attributes = [];
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_ID.
+   * @returns {number}
+   */
+  getProductSubscriptionTermId() {
+    return this.productSubscriptionTermId;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_Description.
+   * @returns {string}
+   */
+  getProductSubscriptionTermDescription() {
+    return this.productSubscriptionTermDescription;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Get NextDate.
+   * @returns {number}
+   */
+  getNextDate() {
+    return this.nextDate;
+  }
+
+  /**
+   * Get PaymentCard_ID.
+   * @returns {number}
+   */
+  getPaymentCardId() {
+    return this.paymentCardId;
+  }
+
+  /**
+   * Get Ship_ID.
+   * @returns {number}
+   */
+  getShipId() {
+    return this.shipId;
+  }
+
+  /**
+   * Get Ship_Data.
+   * @returns {string}
+   */
+  getShipData() {
+    return this.shipData;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {SubscriptionAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_ID.
+   * @param {number} productSubscriptionTermId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setProductSubscriptionTermId(productSubscriptionTermId) {
+    this.productSubscriptionTermId = productSubscriptionTermId;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_Description.
+   * @param {string} productSubscriptionTermDescription
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setProductSubscriptionTermDescription(productSubscriptionTermDescription) {
+    this.productSubscriptionTermDescription = productSubscriptionTermDescription;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Set NextDate.
+   * @param {number|Date} nextDate
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setNextDate(nextDate) {
+    if (util.isDate(nextDate)) {
+      this.nextDate = Math.floor(nextDate.getTime()/1000);      
+    } else {
+      this.nextDate = nextDate;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set PaymentCard_ID.
+   * @param {number} paymentCardId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setPaymentCardId(paymentCardId) {
+    this.paymentCardId = paymentCardId;
+    return this;
+  }
+
+  /**
+   * Set Ship_ID.
+   * @param {number} shipId
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setShipId(shipId) {
+    this.shipId = shipId;
+    return this;
+  }
+
+  /**
+   * Set Ship_Data.
+   * @param {string} shipData
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setShipData(shipData) {
+    this.shipData = shipData;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.SubscriptionAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        throw new Error(util.format('Expected instance of SubscriptionAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {SubscriptionAttribute} attribute
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  addAttribute(attribute) {
+    if (util.isInstanceOf(attribute, models.SubscriptionAttribute)) {
+      this.attributes.push(attribute);
+    } else if (util.isObject(attribute)) {
+      this.attributes.push(new models.SubscriptionAttribute(attribute));
+    } else {
+      throw new Error(util.format('Expected instance of SubscriptionAttribute or Object but got %s',
+        typeof attribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many SubscriptionAttribute.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemAdd}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of SubscriptionAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.SubscriptionAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of SubscriptionAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.productSubscriptionTermId)) {
+      data['ProductSubscriptionTerm_ID'] = this.productSubscriptionTermId;
+    } else if (!util.isNullOrUndefined(this.productSubscriptionTermDescription)) {
+      data['ProductSubscriptionTerm_Description'] = this.productSubscriptionTermDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    data['Quantity'] = this.quantity;
+
+    data['NextDate'] = this.nextDate;
+
+    if (!util.isNullOrUndefined(this.paymentCardId)) {
+      data['PaymentCard_ID'] = this.paymentCardId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipId)) {
+      data['Ship_ID'] = this.shipId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipData)) {
+      data['Ship_Data'] = this.shipData;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionAndOrderItemAdd(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request SubscriptionAndOrderItem_Update. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscriptionandorderitem_update
+ * @class
+ */
+class SubscriptionAndOrderItemUpdate extends Request {
+  /**
+   * SubscriptionAndOrderItemUpdate Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'SubscriptionAndOrderItem_Update';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.orderId = null;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.addressId = null;
+    this.customerAddressId = null;
+    this.productId = null;
+    this.editProduct = null;
+    this.productCode = null;
+    this.productSubscriptionTermId = null;
+    this.productSubscriptionTermDescription = null;
+    this.quantity = null;
+    this.nextDate = null;
+    this.paymentCardId = null;
+    this.shipId = null;
+    this.shipData = null;
+    this.attributes = [];
+    this.lineId = null;
+    this.subscriptionId = null;
+  }
+
+  /**
+   * Get Order_ID.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.orderId;
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get Address_ID.
+   * @returns {number}
+   */
+  getAddressId() {
+    return this.addressId;
+  }
+
+  /**
+   * Get CustomerAddress_ID.
+   * @returns {number}
+   */
+  getCustomerAddressId() {
+    return this.customerAddressId;
+  }
+
+  /**
+   * Get Product_ID.
+   * @returns {number}
+   */
+  getProductId() {
+    return this.productId;
+  }
+
+  /**
+   * Get Edit_Product.
+   * @returns {string}
+   */
+  getEditProduct() {
+    return this.editProduct;
+  }
+
+  /**
+   * Get Product_Code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.productCode;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_ID.
+   * @returns {number}
+   */
+  getProductSubscriptionTermId() {
+    return this.productSubscriptionTermId;
+  }
+
+  /**
+   * Get ProductSubscriptionTerm_Description.
+   * @returns {string}
+   */
+  getProductSubscriptionTermDescription() {
+    return this.productSubscriptionTermDescription;
+  }
+
+  /**
+   * Get Quantity.
+   * @returns {number}
+   */
+  getQuantity() {
+    return this.quantity;
+  }
+
+  /**
+   * Get NextDate.
+   * @returns {number}
+   */
+  getNextDate() {
+    return this.nextDate;
+  }
+
+  /**
+   * Get PaymentCard_ID.
+   * @returns {number}
+   */
+  getPaymentCardId() {
+    return this.paymentCardId;
+  }
+
+  /**
+   * Get Ship_ID.
+   * @returns {number}
+   */
+  getShipId() {
+    return this.shipId;
+  }
+
+  /**
+   * Get Ship_Data.
+   * @returns {string}
+   */
+  getShipData() {
+    return this.shipData;
+  }
+
+  /**
+   * Get Attributes.
+   * @returns {SubscriptionAttribute[]}
+   */
+  getAttributes() {
+    return this.attributes;
+  }
+
+  /**
+   * Get Line_ID.
+   * @returns {number}
+   */
+  getLineId() {
+    return this.lineId;
+  }
+
+  /**
+   * Get Subscription_ID.
+   * @returns {number}
+   */
+  getSubscriptionId() {
+    return this.subscriptionId;
+  }
+
+  /**
+   * Set Order_ID.
+   * @param {number} orderId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setOrderId(orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set Address_ID.
+   * @param {number} addressId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setAddressId(addressId) {
+    this.addressId = addressId;
+    return this;
+  }
+
+  /**
+   * Set CustomerAddress_ID.
+   * @param {number} customerAddressId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setCustomerAddressId(customerAddressId) {
+    this.customerAddressId = customerAddressId;
+    return this;
+  }
+
+  /**
+   * Set Product_ID.
+   * @param {number} productId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setProductId(productId) {
+    this.productId = productId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Product.
+   * @param {string} editProduct
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setEditProduct(editProduct) {
+    this.editProduct = editProduct;
+    return this;
+  }
+
+  /**
+   * Set Product_Code.
+   * @param {string} productCode
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setProductCode(productCode) {
+    this.productCode = productCode;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_ID.
+   * @param {number} productSubscriptionTermId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setProductSubscriptionTermId(productSubscriptionTermId) {
+    this.productSubscriptionTermId = productSubscriptionTermId;
+    return this;
+  }
+
+  /**
+   * Set ProductSubscriptionTerm_Description.
+   * @param {string} productSubscriptionTermDescription
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setProductSubscriptionTermDescription(productSubscriptionTermDescription) {
+    this.productSubscriptionTermDescription = productSubscriptionTermDescription;
+    return this;
+  }
+
+  /**
+   * Set Quantity.
+   * @param {number} quantity
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setQuantity(quantity) {
+    this.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Set NextDate.
+   * @param {number|Date} nextDate
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setNextDate(nextDate) {
+    if (util.isDate(nextDate)) {
+      this.nextDate = Math.floor(nextDate.getTime()/1000);      
+    } else {
+      this.nextDate = nextDate;
+    }
+
+    return this;
+  }
+
+  /**
+   * Set PaymentCard_ID.
+   * @param {number} paymentCardId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setPaymentCardId(paymentCardId) {
+    this.paymentCardId = paymentCardId;
+    return this;
+  }
+
+  /**
+   * Set Ship_ID.
+   * @param {number} shipId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setShipId(shipId) {
+    this.shipId = shipId;
+    return this;
+  }
+
+  /**
+   * Set Ship_Data.
+   * @param {string} shipData
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setShipData(shipData) {
+    this.shipData = shipData;
+    return this;
+  }
+
+  /**
+   * Set Attributes.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expected an array but got %s', typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute) && util.isObject(attributes[i])) {
+        attributes[i] = new models.SubscriptionAttribute(attributes[i]);
+      } else if (!util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        throw new Error(util.format('Expected instance of SubscriptionAttribute or an Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Set Line_ID.
+   * @param {number} lineId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setLineId(lineId) {
+    this.lineId = lineId;
+    return this;
+  }
+
+  /**
+   * Set Subscription_ID.
+   * @param {number} subscriptionId
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  setSubscriptionId(subscriptionId) {
+    this.subscriptionId = subscriptionId;
+    return this;
+  }
+
+  /**
+   * Add Attributes.
+   * @param {SubscriptionAttribute} attribute
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  addAttribute(attribute) {
+    if (util.isInstanceOf(attribute, models.SubscriptionAttribute)) {
+      this.attributes.push(attribute);
+    } else if (util.isObject(attribute)) {
+      this.attributes.push(new models.SubscriptionAttribute(attribute));
+    } else {
+      throw new Error(util.format('Expected instance of SubscriptionAttribute or Object but got %s',
+        typeof attribute));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many SubscriptionAttribute.
+   * @param {SubscriptionAttribute[]} attributes
+   * @throws {Error}
+   * @returns {SubscriptionAndOrderItemUpdate}
+   */
+  addAttributes(attributes) {
+    var i;
+    var l;
+
+    if (!util.isArray(attributes)) {
+      throw new Error(util.format('Expecting an array of SubscriptionAttribute but got %s',
+        typeof attributes));
+    }
+
+    for (i = 0, l = attributes.length; i < l; i++) {
+      if (util.isInstanceOf(attributes[i], models.SubscriptionAttribute)) {
+        this.attributes.push(attributes[i]);
+      } else if (util.isObject(attributes[i])) {
+        this.attributes.push(new models.SubscriptionAttribute(attributes[i]));
+      } else {
+        throw new Error(util.format('Expected array of SubscriptionAttribute or an array of Object but got %s',
+          typeof attributes[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var i;
+    var l;
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.orderId)) {
+      data['Order_ID'] = this.orderId;
+    }
+
+    if (!util.isNullOrUndefined(this.lineId)) {
+      data['Line_ID'] = this.lineId;
+    }
+
+    if (!util.isNullOrUndefined(this.subscriptionId)) {
+      data['Subscription_ID'] = this.subscriptionId;
+    }
+
+    if (!util.isNullOrUndefined(this.productId)) {
+      data['Product_ID'] = this.productId;
+    } else if (!util.isNullOrUndefined(this.editProduct)) {
+      data['Edit_Product'] = this.editProduct;
+    } else if (!util.isNullOrUndefined(this.productCode)) {
+      data['Product_Code'] = this.productCode;
+    }
+
+    if (!util.isNullOrUndefined(this.productSubscriptionTermId)) {
+      data['ProductSubscriptionTerm_ID'] = this.productSubscriptionTermId;
+    } else if (!util.isNullOrUndefined(this.productSubscriptionTermDescription)) {
+      data['ProductSubscriptionTerm_Description'] = this.productSubscriptionTermDescription;
+    }
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (!util.isNullOrUndefined(this.addressId)) {
+      data['Address_ID'] = this.addressId;
+    } else if (!util.isNullOrUndefined(this.customerAddressId)) {
+      data['CustomerAddress_ID'] = this.customerAddressId;
+    }
+
+    data['Quantity'] = this.quantity;
+
+    data['NextDate'] = this.nextDate;
+
+    if (!util.isNullOrUndefined(this.paymentCardId)) {
+      data['PaymentCard_ID'] = this.paymentCardId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipId)) {
+      data['Ship_ID'] = this.shipId;
+    }
+
+    if (!util.isNullOrUndefined(this.shipData)) {
+      data['Ship_Data'] = this.shipData;
+    }
+
+    if (util.isArray(this.attributes)) {
+      data['Attributes'] = [];
+
+      for (i = 0, l = this.attributes.length; i < l; i++) {
+        if (util.isObject(this.attributes[i])) {
+            data['Attributes'].push(this.attributes[i].toObject());
+        }
+      }
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.SubscriptionAndOrderItemUpdate(this, httpResponse, data);
+  }
+}
+
+/** 
  * Handles API Request CategoryProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
+ * @class
  */
 class CategoryProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -34389,6 +37498,7 @@ class CategoryProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request CouponPriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponpricegrouplist_load_query
+ * @class
  */
 class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   /**
@@ -34545,6 +37655,7 @@ class CouponPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
 /** 
  * Handles API Request PriceGroupCustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupcustomerlist_load_query
+ * @class
  */
 class PriceGroupCustomerListLoadQuery extends CustomerListLoadQuery {
   /**
@@ -34680,6 +37791,7 @@ class PriceGroupCustomerListLoadQuery extends CustomerListLoadQuery {
 /** 
  * Handles API Request PriceGroupProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupproductlist_load_query
+ * @class
  */
 class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -34815,6 +37927,7 @@ class PriceGroupProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request CustomerPriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/customerpricegrouplist_load_query
+ * @class
  */
 class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   /**
@@ -34971,6 +38084,7 @@ class CustomerPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
 /** 
  * Handles API Request OrderPriceGroupList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/orderpricegrouplist_load_query
+ * @class
  */
 class OrderPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
   /**
@@ -35083,6 +38197,7 @@ class OrderPriceGroupListLoadQuery extends PriceGroupListLoadQuery {
 /** 
  * Handles API Request OrderCouponList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/ordercouponlist_load_query
+ * @class
  */
 class OrderCouponListLoadQuery extends CouponListLoadQuery {
   /**
@@ -35191,6 +38306,7 @@ class OrderCouponListLoadQuery extends CouponListLoadQuery {
 /** 
  * Handles API Request ChildCategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/childcategorylist_load_query
+ * @class
  */
 class ChildCategoryListLoadQuery extends CategoryListLoadQuery {
   /**
@@ -35349,6 +38465,7 @@ class ChildCategoryListLoadQuery extends CategoryListLoadQuery {
 /** 
  * Handles API Request AvailabilityGroupCustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomerlist_load_query
+ * @class
  */
 class AvailabilityGroupCustomerListLoadQuery extends CustomerListLoadQuery {
   /**
@@ -35503,6 +38620,7 @@ class AvailabilityGroupCustomerListLoadQuery extends CustomerListLoadQuery {
 /** 
  * Handles API Request AvailabilityGroupProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupproductlist_load_query
+ * @class
  */
 class AvailabilityGroupProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -35657,6 +38775,7 @@ class AvailabilityGroupProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request AvailabilityGroupCategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcategorylist_load_query
+ * @class
  */
 class AvailabilityGroupCategoryListLoadQuery extends CategoryListLoadQuery {
   /**
@@ -35811,6 +38930,7 @@ class AvailabilityGroupCategoryListLoadQuery extends CategoryListLoadQuery {
 /** 
  * Handles API Request AvailabilityGroupBusinessAccountList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccountlist_load_query
+ * @class
  */
 class AvailabilityGroupBusinessAccountListLoadQuery extends BusinessAccountListLoadQuery {
   /**
@@ -35965,6 +39085,7 @@ class AvailabilityGroupBusinessAccountListLoadQuery extends BusinessAccountListL
 /** 
  * Handles API Request PriceGroupBusinessAccountList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccountlist_load_query
+ * @class
  */
 class PriceGroupBusinessAccountListLoadQuery extends BusinessAccountListLoadQuery {
   /**
@@ -36119,6 +39240,7 @@ class PriceGroupBusinessAccountListLoadQuery extends BusinessAccountListLoadQuer
 /** 
  * Handles API Request PriceGroupCategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupcategorylist_load_query
+ * @class
  */
 class PriceGroupCategoryListLoadQuery extends CategoryListLoadQuery {
   /**
@@ -36273,6 +39395,7 @@ class PriceGroupCategoryListLoadQuery extends CategoryListLoadQuery {
 /** 
  * Handles API Request PriceGroupExcludedCategoryList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategorylist_load_query
+ * @class
  */
 class PriceGroupExcludedCategoryListLoadQuery extends CategoryListLoadQuery {
   /**
@@ -36427,6 +39550,7 @@ class PriceGroupExcludedCategoryListLoadQuery extends CategoryListLoadQuery {
 /** 
  * Handles API Request PriceGroupExcludedProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproductlist_load_query
+ * @class
  */
 class PriceGroupExcludedProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -36581,6 +39705,7 @@ class PriceGroupExcludedProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request PriceGroupQualifyingProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproductlist_load_query
+ * @class
  */
 class PriceGroupQualifyingProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -36735,6 +39860,7 @@ class PriceGroupQualifyingProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request CouponCustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/couponcustomerlist_load_query
+ * @class
  */
 class CouponCustomerListLoadQuery extends CustomerListLoadQuery {
   /**
@@ -36889,6 +40015,7 @@ class CouponCustomerListLoadQuery extends CustomerListLoadQuery {
 /** 
  * Handles API Request BusinessAccountCustomerList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/businessaccountcustomerlist_load_query
+ * @class
  */
 class BusinessAccountCustomerListLoadQuery extends CustomerListLoadQuery {
   /**
@@ -37040,6 +40167,7 @@ class BusinessAccountCustomerListLoadQuery extends CustomerListLoadQuery {
 /** 
  * Handles API Request RelatedProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/relatedproductlist_load_query
+ * @class
  */
 class RelatedProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -37196,6 +40324,7 @@ class RelatedProductListLoadQuery extends ProductListLoadQuery {
 /** 
  * Handles API Request AttributeTemplateProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/attributetemplateproductlist_load_query
+ * @class
  */
 class AttributeTemplateProductListLoadQuery extends ProductListLoadQuery {
   /**
@@ -37348,6 +40477,32 @@ class AttributeTemplateProductListLoadQuery extends ProductListLoadQuery {
    */
   createResponse(httpResponse, data) {
     return new responses.AttributeTemplateProductListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
+ * Handles API Request ProductAndSubscriptionTermList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productandsubscriptiontermlist_load_query
+ * @class
+ */
+class ProductAndSubscriptionTermListLoadQuery extends ProductListLoadQuery {
+  /**
+   * ProductAndSubscriptionTermListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   */
+  constructor(client) {
+    super(client);
+    this.function = 'ProductAndSubscriptionTermList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductAndSubscriptionTermListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -37706,6 +40861,14 @@ module.exports = {
   AttributeCopyTemplate,
   AttributeCopyLinkedTemplate,
   ProductAttributeAndOptionListLoadQuery,
+  CustomerSubscriptionListLoadQuery,
+  ProductSubscriptionTermListLoadQuery,
+  SubscriptionShippingMethodListLoadQuery,
+  SubscriptionInsert,
+  SubscriptionUpdate,
+  SubscriptionListDelete,
+  SubscriptionAndOrderItemAdd,
+  SubscriptionAndOrderItemUpdate,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,
@@ -37726,5 +40889,6 @@ module.exports = {
   CouponCustomerListLoadQuery,
   BusinessAccountCustomerListLoadQuery,
   RelatedProductListLoadQuery,
-  AttributeTemplateProductListLoadQuery
+  AttributeTemplateProductListLoadQuery,
+  ProductAndSubscriptionTermListLoadQuery
 };

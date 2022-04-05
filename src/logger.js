@@ -12,7 +12,10 @@ const { Request, Response } = require('./abstract');
 
 /** @module Logger */
 
-/** Logger data model. */
+/**
+ * Logger data model.
+ * @class
+ */ 
 class Logger {
   constructor() {
     ;
@@ -23,7 +26,7 @@ class Logger {
    * @returns {void}
    */
   logRequest(request, headers, content) {
-    var sellf = this;
+    var self = this;
 
     if (util.isObject(headers)) {
       var keys = Object.keys(headers);
@@ -92,7 +95,10 @@ const DESTINATION_STDOUT = 'stdout';
 /** @ignore */
 const DESTINATION_STDERR = 'stderr';
 
-/** ConsoleLogger */
+/**
+ * ConsoleLogger
+ * @class
+ */ 
 class ConsoleLogger extends Logger {
   constructor(destination = DESTINATION_STDOUT) {
     super();
@@ -141,7 +147,10 @@ class ConsoleLogger extends Logger {
   }
 }
 
-/** FileLogger */
+/**
+ * FileLogger
+ * @class
+ */ 
 class FileLogger extends Logger {
 
   /**

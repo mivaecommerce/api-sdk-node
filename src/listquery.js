@@ -90,6 +90,7 @@ const VALID_FILTERS         = [
 /** 
  * Abstract request all *List_Load_Query api requests inherit from. 
  * @see https://docs.miva.com/json-api/list-load-query-overview
+ * @class
  */
 class ListQueryRequest extends Request {
   /**
@@ -444,6 +445,7 @@ class ListQueryRequest extends Request {
 /** 
  * Abstract response all *List_Load_Query api responses inherit from.
  * @see https://docs.miva.com/json-api/list-load-query-overview
+ * @class
  */
 class ListQueryResponse extends Response {
   /**
@@ -476,6 +478,7 @@ class ListQueryResponse extends Response {
 /** 
  * Filter Expresion 
  * @see https://docs.miva.com/json-api/list-load-query-overview#filter-list-parameters
+ * @class
  */
 class FilterExpression {
   /**
@@ -1281,7 +1284,10 @@ class FilterExpression {
   }
 }
 
-/** Filter Expression Entry */
+/**
+ * Filter Expression Entry
+ * @class
+ */ 
 class FilterExpressionEntry {
   /**
    * FilterExpressionEntry Constructor.

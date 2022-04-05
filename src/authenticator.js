@@ -3,6 +3,10 @@ const fs       = require('fs');
 const util     = require('./util');
 const sshagent = require('./sshagent');
 
+/**
+ * Base Authenticator
+ * @class
+ */
 class Authenticator {
   /**
    * Generates the authentication header value
@@ -36,6 +40,7 @@ const SIGN_DIGEST_SSH_RSA_SHA512  = 'RSA-SHA512';
 /**
  * TokenAuthenticator - Authenticates requests using an api token
  * and optional (but default) HMAC signature
+ * @class
  */
 class TokenAuthenticator extends Authenticator {
   /**
@@ -180,6 +185,10 @@ class TokenAuthenticator extends Authenticator {
   }
 }
 
+/**
+ * SSHPrivateKeyAuthenticator
+ * @class
+ */ 
 class SSHPrivateKeyAuthenticator extends Authenticator {
   /**
    * Constant SIGN_DIGEST_SSH_RSA_SHA256
@@ -316,6 +325,10 @@ class SSHPrivateKeyAuthenticator extends Authenticator {
 	}
 }
 
+/**
+ * SSHAgentAuthenticator
+ * @class
+ */ 
 class SSHAgentAuthenticator extends Authenticator {
   /**
    * Constant SIGN_DIGEST_SHA1

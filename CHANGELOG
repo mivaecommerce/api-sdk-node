@@ -1,3 +1,26 @@
+v2.1.0
+	- MMAPI-39 - Added the following functions introduced in 10.03.00
+				CustomerSubscriptionList_Load_Query
+				ProductAndSubscriptionTermList_Load_Query
+				ProductSubscriptionTermList_Load_Query
+				SubscriptionShippingMethodList_Load_Query
+				Subscription_Update
+				Subscription_Insert
+				SubscriptionList_Delete
+				SubscriptionAndOrderItem_Add
+				SubscriptionAndOrderItem_Update
+	- MMAPI-40 - TemplateVersionSettings renamed to VersionSettings
+	- MMAPI-43 - Add support for the new JSON_DateTime structure format
+	- MMAPI-44 - New fields on Order model - shipment and returns
+			   New ondemand column support for shipment and returns on OrderList_Load_Query
+	- MMAPI-45 -  Added url ondemandcolumn to ProductList_Load_Query
+				Added imagetype ondemandcolumn to ProductList_Load_Query
+	- MMAPI-46 - Added new field on Order model - dt_updated
+	- MMAPI-47 - Added support for image properties when creating managed property changes (MM-11193)
+	- MMAPI-48 - OrderItemSubscription now inherits from Subscription model
+	- MMAPI-50 - Add example subscription usage
+	- MMAPI-51 - Added @class jsDoc to all classes
+	- MMAPI-56 - Fixed an issue with MultiCall auto timeout functionality that caused multiples of the same request to be made.
 v2.0.3
 	MM-10502 - Added the following API Functions introduced in 10.01.00:
 		Attribute_CopyTemplate

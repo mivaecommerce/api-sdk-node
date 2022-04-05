@@ -13,6 +13,7 @@ const util = require('./util');
 /** 
  * Handles creation of an Operation with Iterations.
  * @see MultiCallRequest
+ * @class
  */
 class MultiCallOperation {
   /**
@@ -173,6 +174,7 @@ class MultiCallOperation {
 /** 
  * Handles sending multiple Request objects as one request.
  * @see https://docs.miva.com/json-api/multicall
+ * @class
  */
 class MultiCallRequest extends Request {
   /**
@@ -405,7 +407,7 @@ class MultiCallRequest extends Request {
   processRequestHeaders(headers) {
     if (util.isInstanceOf(this.initialResponse, MultiCallResponse)) {
       if (this.initialResponse.isTimeout()) {
-        headers['RANGE'] = util.format('Operations=%d-%d', this.range.completed + 1, this.range.total)
+        headers['RANGE'] = util.format('Operations=%d-%d', this.range.completed + 1, this.range.total);
       }
     }
 
@@ -418,9 +420,10 @@ class MultiCallRequest extends Request {
    * @override
    */
   createResponse(httpResponse, data) {
+    var autoContinueInitalized = this.initialResponse != null;
     var response = new MultiCallResponse(this, httpResponse, data);
 
-    if (response.isTimeout() && this.autoTimeoutContinue) {
+    if (response.isTimeout() && this.autoTimeoutContinue && !autoContinueInitalized) {
       this.initialResponse = response;
       this.range = response.readContentRange();
       this.processContinue();
@@ -487,6 +490,7 @@ class MultiCallRequest extends Request {
 /** 
  * Handles multicall response.
  * @see https://docs.miva.com/json-api/multicall
+ * @class
  */
 class MultiCallResponse extends Response {
   /**
@@ -502,9 +506,9 @@ class MultiCallResponse extends Response {
     var requests, requestStartIndex;
     var self = this;
 
-    this.data      = data;
-    this.responses = [];
-    this.timeout = false;
+    this.data       = data;
+    this.responses  = [];
+    this.timeout    = false;
 
     if (httpResponse.statusCode === 206) {
       this.timeout = true;
@@ -621,6 +625,7 @@ class MultiCallResponse extends Response {
 
 /** 
  * Any errors thrown within MultiCall will be of this type
+ * @class
  */
 class MultiCallError extends Error {
   constructor(message, request, response) {

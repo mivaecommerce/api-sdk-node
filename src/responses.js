@@ -16,6 +16,7 @@ const { MultiCallResponse } = require('./multicall');
 /** 
  * API Response for AvailabilityGroupBusinessAccount_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccount_update_assigned
+ * @class
  */
 class AvailabilityGroupBusinessAccountUpdateAssigned extends Response {
   /**
@@ -32,6 +33,7 @@ class AvailabilityGroupBusinessAccountUpdateAssigned extends Response {
 /** 
  * API Response for AvailabilityGroupCustomer_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomer_update_assigned
+ * @class
  */
 class AvailabilityGroupCustomerUpdateAssigned extends Response {
   /**
@@ -48,6 +50,7 @@ class AvailabilityGroupCustomerUpdateAssigned extends Response {
 /** 
  * API Response for AvailabilityGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygrouplist_load_query
+ * @class
  */
 class AvailabilityGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -86,6 +89,7 @@ class AvailabilityGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroupPaymentMethod_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygrouppaymentmethod_update_assigned
+ * @class
  */
 class AvailabilityGroupPaymentMethodUpdateAssigned extends Response {
   /**
@@ -102,6 +106,7 @@ class AvailabilityGroupPaymentMethodUpdateAssigned extends Response {
 /** 
  * API Response for AvailabilityGroupProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupproduct_update_assigned
+ * @class
  */
 class AvailabilityGroupProductUpdateAssigned extends Response {
   /**
@@ -118,6 +123,7 @@ class AvailabilityGroupProductUpdateAssigned extends Response {
 /** 
  * API Response for AvailabilityGroupShippingMethod_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethod_update_assigned
+ * @class
  */
 class AvailabilityGroupShippingMethodUpdateAssigned extends Response {
   /**
@@ -134,6 +140,7 @@ class AvailabilityGroupShippingMethodUpdateAssigned extends Response {
 /** 
  * API Response for CategoryList_Load_Parent.
  * @see https://docs.miva.com/json-api/functions/categorylist_load_parent
+ * @class
  */
 class CategoryListLoadParent extends Response {
   /**
@@ -171,6 +178,7 @@ class CategoryListLoadParent extends Response {
 /** 
  * API Response for CategoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categorylist_load_query
+ * @class
  */
 class CategoryListLoadQuery extends ListQueryResponse {
   /**
@@ -209,6 +217,7 @@ class CategoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CategoryProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/categoryproduct_update_assigned
+ * @class
  */
 class CategoryProductUpdateAssigned extends Response {
   /**
@@ -225,6 +234,7 @@ class CategoryProductUpdateAssigned extends Response {
 /** 
  * API Response for Category_Insert.
  * @see https://docs.miva.com/json-api/functions/category_insert
+ * @class
  */
 class CategoryInsert extends Response {
   /**
@@ -241,6 +251,7 @@ class CategoryInsert extends Response {
 /** 
  * API Response for Category_Delete.
  * @see https://docs.miva.com/json-api/functions/category_delete
+ * @class
  */
 class CategoryDelete extends Response {
   /**
@@ -257,6 +268,7 @@ class CategoryDelete extends Response {
 /** 
  * API Response for Category_Update.
  * @see https://docs.miva.com/json-api/functions/category_update
+ * @class
  */
 class CategoryUpdate extends Response {
   /**
@@ -273,6 +285,7 @@ class CategoryUpdate extends Response {
 /** 
  * API Response for CouponList_Delete.
  * @see https://docs.miva.com/json-api/functions/couponlist_delete
+ * @class
  */
 class CouponListDelete extends Response {
   /**
@@ -301,6 +314,7 @@ class CouponListDelete extends Response {
 /** 
  * API Response for CouponList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/couponlist_load_query
+ * @class
  */
 class CouponListLoadQuery extends ListQueryResponse {
   /**
@@ -339,6 +353,7 @@ class CouponListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CouponPriceGroup_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/couponpricegroup_update_assigned
+ * @class
  */
 class CouponPriceGroupUpdateAssigned extends Response {
   /**
@@ -355,6 +370,7 @@ class CouponPriceGroupUpdateAssigned extends Response {
 /** 
  * API Response for Coupon_Insert.
  * @see https://docs.miva.com/json-api/functions/coupon_insert
+ * @class
  */
 class CouponInsert extends Response {
   /**
@@ -383,6 +399,7 @@ class CouponInsert extends Response {
 /** 
  * API Response for Coupon_Update.
  * @see https://docs.miva.com/json-api/functions/coupon_update
+ * @class
  */
 class CouponUpdate extends Response {
   /**
@@ -399,6 +416,7 @@ class CouponUpdate extends Response {
 /** 
  * API Response for CustomerList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/customerlist_load_query
+ * @class
  */
 class CustomerListLoadQuery extends ListQueryResponse {
   /**
@@ -437,6 +455,7 @@ class CustomerListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for Customer_Delete.
  * @see https://docs.miva.com/json-api/functions/customer_delete
+ * @class
  */
 class CustomerDelete extends Response {
   /**
@@ -453,6 +472,7 @@ class CustomerDelete extends Response {
 /** 
  * API Response for Customer_Insert.
  * @see https://docs.miva.com/json-api/functions/customer_insert
+ * @class
  */
 class CustomerInsert extends Response {
   /**
@@ -484,6 +504,7 @@ class CustomerInsert extends Response {
 /** 
  * API Response for Customer_Update.
  * @see https://docs.miva.com/json-api/functions/customer_update
+ * @class
  */
 class CustomerUpdate extends Response {
   /**
@@ -500,6 +521,7 @@ class CustomerUpdate extends Response {
 /** 
  * API Response for CustomerPaymentCard_Register.
  * @see https://docs.miva.com/json-api/functions/customerpaymentcard_register
+ * @class
  */
 class CustomerPaymentCardRegister extends Response {
   /**
@@ -531,6 +553,7 @@ class CustomerPaymentCardRegister extends Response {
 /** 
  * API Response for Module.
  * @see https://docs.miva.com/json-api/functions/module
+ * @class
  */
 class Module extends Response {
   /**
@@ -547,6 +570,7 @@ class Module extends Response {
 /** 
  * API Response for NoteList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/notelist_load_query
+ * @class
  */
 class NoteListLoadQuery extends ListQueryResponse {
   /**
@@ -585,6 +609,7 @@ class NoteListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for Note_Delete.
  * @see https://docs.miva.com/json-api/functions/note_delete
+ * @class
  */
 class NoteDelete extends Response {
   /**
@@ -601,6 +626,7 @@ class NoteDelete extends Response {
 /** 
  * API Response for Note_Insert.
  * @see https://docs.miva.com/json-api/functions/note_insert
+ * @class
  */
 class NoteInsert extends Response {
   /**
@@ -617,6 +643,7 @@ class NoteInsert extends Response {
 /** 
  * API Response for Note_Update.
  * @see https://docs.miva.com/json-api/functions/note_update
+ * @class
  */
 class NoteUpdate extends Response {
   /**
@@ -633,6 +660,7 @@ class NoteUpdate extends Response {
 /** 
  * API Response for OrderCustomFieldList_Load.
  * @see https://docs.miva.com/json-api/functions/ordercustomfieldlist_load
+ * @class
  */
 class OrderCustomFieldListLoad extends Response {
   /**
@@ -670,6 +698,7 @@ class OrderCustomFieldListLoad extends Response {
 /** 
  * API Response for OrderCustomFields_Update.
  * @see https://docs.miva.com/json-api/functions/ordercustomfields_update
+ * @class
  */
 class OrderCustomFieldsUpdate extends Response {
   /**
@@ -686,6 +715,7 @@ class OrderCustomFieldsUpdate extends Response {
 /** 
  * API Response for OrderItemList_BackOrder.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_backorder
+ * @class
  */
 class OrderItemListBackOrder extends Response {
   /**
@@ -702,6 +732,7 @@ class OrderItemListBackOrder extends Response {
 /** 
  * API Response for OrderItemList_Cancel.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_cancel
+ * @class
  */
 class OrderItemListCancel extends Response {
   /**
@@ -718,6 +749,7 @@ class OrderItemListCancel extends Response {
 /** 
  * API Response for OrderItemList_CreateShipment.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_createshipment
+ * @class
  */
 class OrderItemListCreateShipment extends Response {
   /**
@@ -749,6 +781,7 @@ class OrderItemListCreateShipment extends Response {
 /** 
  * API Response for OrderItemList_Delete.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_delete
+ * @class
  */
 class OrderItemListDelete extends Response {
   /**
@@ -765,6 +798,7 @@ class OrderItemListDelete extends Response {
 /** 
  * API Response for OrderItem_Add.
  * @see https://docs.miva.com/json-api/functions/orderitem_add
+ * @class
  */
 class OrderItemAdd extends Response {
   /**
@@ -796,6 +830,7 @@ class OrderItemAdd extends Response {
 /** 
  * API Response for OrderItem_Update.
  * @see https://docs.miva.com/json-api/functions/orderitem_update
+ * @class
  */
 class OrderItemUpdate extends Response {
   /**
@@ -827,6 +862,7 @@ class OrderItemUpdate extends Response {
 /** 
  * API Response for OrderList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/orderlist_load_query
+ * @class
  */
 class OrderListLoadQuery extends ListQueryResponse {
   /**
@@ -865,6 +901,7 @@ class OrderListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for OrderPayment_Capture.
  * @see https://docs.miva.com/json-api/functions/orderpayment_capture
+ * @class
  */
 class OrderPaymentCapture extends Response {
   /**
@@ -896,6 +933,7 @@ class OrderPaymentCapture extends Response {
 /** 
  * API Response for OrderPayment_Refund.
  * @see https://docs.miva.com/json-api/functions/orderpayment_refund
+ * @class
  */
 class OrderPaymentRefund extends Response {
   /**
@@ -927,6 +965,7 @@ class OrderPaymentRefund extends Response {
 /** 
  * API Response for OrderPayment_VOID.
  * @see https://docs.miva.com/json-api/functions/orderpayment_void
+ * @class
  */
 class OrderPaymentVoid extends Response {
   /**
@@ -958,6 +997,7 @@ class OrderPaymentVoid extends Response {
 /** 
  * API Response for OrderShipmentList_Update.
  * @see https://docs.miva.com/json-api/functions/ordershipmentlist_update
+ * @class
  */
 class OrderShipmentListUpdate extends Response {
   /**
@@ -974,6 +1014,7 @@ class OrderShipmentListUpdate extends Response {
 /** 
  * API Response for Order_Create.
  * @see https://docs.miva.com/json-api/functions/order_create
+ * @class
  */
 class OrderCreate extends Response {
   /**
@@ -1005,6 +1046,7 @@ class OrderCreate extends Response {
 /** 
  * API Response for Order_Delete.
  * @see https://docs.miva.com/json-api/functions/order_delete
+ * @class
  */
 class OrderDelete extends Response {
   /**
@@ -1021,6 +1063,7 @@ class OrderDelete extends Response {
 /** 
  * API Response for Order_Update_Customer_Information.
  * @see https://docs.miva.com/json-api/functions/order_update_customer_information
+ * @class
  */
 class OrderUpdateCustomerInformation extends Response {
   /**
@@ -1037,6 +1080,7 @@ class OrderUpdateCustomerInformation extends Response {
 /** 
  * API Response for PriceGroupCustomer_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupcustomer_update_assigned
+ * @class
  */
 class PriceGroupCustomerUpdateAssigned extends Response {
   /**
@@ -1053,6 +1097,7 @@ class PriceGroupCustomerUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegrouplist_load_query
+ * @class
  */
 class PriceGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -1091,6 +1136,7 @@ class PriceGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupproduct_update_assigned
+ * @class
  */
 class PriceGroupProductUpdateAssigned extends Response {
   /**
@@ -1107,6 +1153,7 @@ class PriceGroupProductUpdateAssigned extends Response {
 /** 
  * API Response for ProductImage_Add.
  * @see https://docs.miva.com/json-api/functions/productimage_add
+ * @class
  */
 class ProductImageAdd extends Response {
   /**
@@ -1123,6 +1170,7 @@ class ProductImageAdd extends Response {
 /** 
  * API Response for ProductImage_Delete.
  * @see https://docs.miva.com/json-api/functions/productimage_delete
+ * @class
  */
 class ProductImageDelete extends Response {
   /**
@@ -1139,6 +1187,7 @@ class ProductImageDelete extends Response {
 /** 
  * API Response for ProductList_Adjust_Inventory.
  * @see https://docs.miva.com/json-api/functions/productlist_adjust_inventory
+ * @class
  */
 class ProductListAdjustInventory extends Response {
   /**
@@ -1155,6 +1204,7 @@ class ProductListAdjustInventory extends Response {
 /** 
  * API Response for ProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/productlist_load_query
+ * @class
  */
 class ProductListLoadQuery extends ListQueryResponse {
   /**
@@ -1193,6 +1243,7 @@ class ProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ProductVariantList_Load_Product.
  * @see https://docs.miva.com/json-api/functions/productvariantlist_load_product
+ * @class
  */
 class ProductVariantListLoadProduct extends Response {
   /**
@@ -1230,6 +1281,7 @@ class ProductVariantListLoadProduct extends Response {
 /** 
  * API Response for Product_Insert.
  * @see https://docs.miva.com/json-api/functions/product_insert
+ * @class
  */
 class ProductInsert extends Response {
   /**
@@ -1246,6 +1298,7 @@ class ProductInsert extends Response {
 /** 
  * API Response for Product_Delete.
  * @see https://docs.miva.com/json-api/functions/product_delete
+ * @class
  */
 class ProductDelete extends Response {
   /**
@@ -1262,6 +1315,7 @@ class ProductDelete extends Response {
 /** 
  * API Response for Product_Update.
  * @see https://docs.miva.com/json-api/functions/product_update
+ * @class
  */
 class ProductUpdate extends Response {
   /**
@@ -1278,6 +1332,7 @@ class ProductUpdate extends Response {
 /** 
  * API Response for Provision_Domain.
  * @see https://docs.miva.com/json-api/functions/provision_domain
+ * @class
  */
 class ProvisionDomain extends Response {
   /**
@@ -1315,6 +1370,7 @@ class ProvisionDomain extends Response {
 /** 
  * API Response for Provision_Store.
  * @see https://docs.miva.com/json-api/functions/provision_store
+ * @class
  */
 class ProvisionStore extends Response {
   /**
@@ -1352,6 +1408,7 @@ class ProvisionStore extends Response {
 /** 
  * API Response for CustomerAddressList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/customeraddresslist_load_query
+ * @class
  */
 class CustomerAddressListLoadQuery extends ListQueryResponse {
   /**
@@ -1390,6 +1447,7 @@ class CustomerAddressListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PrintQueueList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/printqueuelist_load_query
+ * @class
  */
 class PrintQueueListLoadQuery extends ListQueryResponse {
   /**
@@ -1428,6 +1486,7 @@ class PrintQueueListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PrintQueueJobList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/printqueuejoblist_load_query
+ * @class
  */
 class PrintQueueJobListLoadQuery extends ListQueryResponse {
   /**
@@ -1466,6 +1525,7 @@ class PrintQueueJobListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PrintQueueJob_Delete.
  * @see https://docs.miva.com/json-api/functions/printqueuejob_delete
+ * @class
  */
 class PrintQueueJobDelete extends Response {
   /**
@@ -1482,6 +1542,7 @@ class PrintQueueJobDelete extends Response {
 /** 
  * API Response for PrintQueueJob_Insert.
  * @see https://docs.miva.com/json-api/functions/printqueuejob_insert
+ * @class
  */
 class PrintQueueJobInsert extends Response {
   /**
@@ -1510,6 +1571,7 @@ class PrintQueueJobInsert extends Response {
 /** 
  * API Response for PrintQueueJob_Status.
  * @see https://docs.miva.com/json-api/functions/printqueuejob_status
+ * @class
  */
 class PrintQueueJobStatus extends Response {
   /**
@@ -1538,6 +1600,7 @@ class PrintQueueJobStatus extends Response {
 /** 
  * API Response for PaymentMethodList_Load.
  * @see https://docs.miva.com/json-api/functions/paymentmethodlist_load
+ * @class
  */
 class PaymentMethodListLoad extends Response {
   /**
@@ -1575,6 +1638,7 @@ class PaymentMethodListLoad extends Response {
 /** 
  * API Response for Order_Create_FromOrder.
  * @see https://docs.miva.com/json-api/functions/order_create_fromorder
+ * @class
  */
 class OrderCreateFromOrder extends Response {
   /**
@@ -1606,6 +1670,7 @@ class OrderCreateFromOrder extends Response {
 /** 
  * API Response for Order_Authorize.
  * @see https://docs.miva.com/json-api/functions/order_authorize
+ * @class
  */
 class OrderAuthorize extends Response {
   /**
@@ -1637,6 +1702,7 @@ class OrderAuthorize extends Response {
 /** 
  * API Response for CustomerPaymentCardList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/customerpaymentcardlist_load_query
+ * @class
  */
 class CustomerPaymentCardListLoadQuery extends ListQueryResponse {
   /**
@@ -1675,6 +1741,7 @@ class CustomerPaymentCardListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for Branch_Copy.
  * @see https://docs.miva.com/json-api/functions/branch_copy
+ * @class
  */
 class BranchCopy extends Response {
   /**
@@ -1706,6 +1773,7 @@ class BranchCopy extends Response {
 /** 
  * API Response for Branch_Create.
  * @see https://docs.miva.com/json-api/functions/branch_create
+ * @class
  */
 class BranchCreate extends Response {
   /**
@@ -1737,6 +1805,7 @@ class BranchCreate extends Response {
 /** 
  * API Response for Branch_Delete.
  * @see https://docs.miva.com/json-api/functions/branch_delete
+ * @class
  */
 class BranchDelete extends Response {
   /**
@@ -1753,6 +1822,7 @@ class BranchDelete extends Response {
 /** 
  * API Response for Changeset_Create.
  * @see https://docs.miva.com/json-api/functions/changeset_create
+ * @class
  */
 class ChangesetCreate extends Response {
   /**
@@ -1784,6 +1854,7 @@ class ChangesetCreate extends Response {
 /** 
  * API Response for ChangesetList_Merge.
  * @see https://docs.miva.com/json-api/functions/changesetlist_merge
+ * @class
  */
 class ChangesetListMerge extends Response {
   /**
@@ -1815,6 +1886,7 @@ class ChangesetListMerge extends Response {
 /** 
  * API Response for ChangesetChangeList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesetchangelist_load_query
+ * @class
  */
 class ChangesetChangeListLoadQuery extends ListQueryResponse {
   /**
@@ -1853,6 +1925,7 @@ class ChangesetChangeListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BranchList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/branchlist_load_query
+ * @class
  */
 class BranchListLoadQuery extends ListQueryResponse {
   /**
@@ -1891,6 +1964,7 @@ class BranchListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BranchTemplateVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/branchtemplateversionlist_load_query
+ * @class
  */
 class BranchTemplateVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -1929,6 +2003,7 @@ class BranchTemplateVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BranchCSSResourceVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/branchcssresourceversionlist_load_query
+ * @class
  */
 class BranchCSSResourceVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -1967,6 +2042,7 @@ class BranchCSSResourceVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BranchJavaScriptResourceVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/branchjavascriptresourceversionlist_load_query
+ * @class
  */
 class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2005,6 +2081,7 @@ class BranchJavaScriptResourceVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChangesetList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesetlist_load_query
+ * @class
  */
 class ChangesetListLoadQuery extends ListQueryResponse {
   /**
@@ -2043,6 +2120,7 @@ class ChangesetListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChangesetTemplateVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesettemplateversionlist_load_query
+ * @class
  */
 class ChangesetTemplateVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2081,6 +2159,7 @@ class ChangesetTemplateVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChangesetCSSResourceVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesetcssresourceversionlist_load_query
+ * @class
  */
 class ChangesetCSSResourceVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2119,6 +2198,7 @@ class ChangesetCSSResourceVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChangesetJavaScriptResourceVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesetjavascriptresourceversionlist_load_query
+ * @class
  */
 class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2157,6 +2237,7 @@ class ChangesetJavaScriptResourceVersionListLoadQuery extends ListQueryResponse 
 /** 
  * API Response for CustomerCreditHistoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/customercredithistorylist_load_query
+ * @class
  */
 class CustomerCreditHistoryListLoadQuery extends ListQueryResponse {
   /**
@@ -2195,6 +2276,7 @@ class CustomerCreditHistoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CustomerCreditHistory_Insert.
  * @see https://docs.miva.com/json-api/functions/customercredithistory_insert
+ * @class
  */
 class CustomerCreditHistoryInsert extends Response {
   /**
@@ -2211,6 +2293,7 @@ class CustomerCreditHistoryInsert extends Response {
 /** 
  * API Response for CustomerCreditHistory_Delete.
  * @see https://docs.miva.com/json-api/functions/customercredithistory_delete
+ * @class
  */
 class CustomerCreditHistoryDelete extends Response {
   /**
@@ -2227,6 +2310,7 @@ class CustomerCreditHistoryDelete extends Response {
 /** 
  * API Response for OrderCoupon_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/ordercoupon_update_assigned
+ * @class
  */
 class OrderCouponUpdateAssigned extends Response {
   /**
@@ -2243,6 +2327,7 @@ class OrderCouponUpdateAssigned extends Response {
 /** 
  * API Response for OrderPriceGroup_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/orderpricegroup_update_assigned
+ * @class
  */
 class OrderPriceGroupUpdateAssigned extends Response {
   /**
@@ -2259,6 +2344,7 @@ class OrderPriceGroupUpdateAssigned extends Response {
 /** 
  * API Response for OrderItemList_CreateReturn.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_createreturn
+ * @class
  */
 class OrderItemListCreateReturn extends Response {
   /**
@@ -2290,6 +2376,7 @@ class OrderItemListCreateReturn extends Response {
 /** 
  * API Response for OrderReturnList_Received.
  * @see https://docs.miva.com/json-api/functions/orderreturnlist_received
+ * @class
  */
 class OrderReturnListReceived extends Response {
   /**
@@ -2306,6 +2393,7 @@ class OrderReturnListReceived extends Response {
 /** 
  * API Response for BranchPropertyVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/branchpropertyversionlist_load_query
+ * @class
  */
 class BranchPropertyVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2344,6 +2432,7 @@ class BranchPropertyVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChangesetPropertyVersionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/changesetpropertyversionlist_load_query
+ * @class
  */
 class ChangesetPropertyVersionListLoadQuery extends ListQueryResponse {
   /**
@@ -2382,6 +2471,7 @@ class ChangesetPropertyVersionListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ResourceGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/resourcegrouplist_load_query
+ * @class
  */
 class ResourceGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -2420,6 +2510,7 @@ class ResourceGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BranchList_Delete.
  * @see https://docs.miva.com/json-api/functions/branchlist_delete
+ * @class
  */
 class BranchListDelete extends Response {
   /**
@@ -2448,6 +2539,7 @@ class BranchListDelete extends Response {
 /** 
  * API Response for MivaMerchantVersion.
  * @see https://docs.miva.com/json-api/functions/mivamerchantversion
+ * @class
  */
 class MivaMerchantVersion extends Response {
   /**
@@ -2479,6 +2571,7 @@ class MivaMerchantVersion extends Response {
 /** 
  * API Response for Attribute_Load_Code.
  * @see https://docs.miva.com/json-api/functions/attribute_load_code
+ * @class
  */
 class AttributeLoadCode extends Response {
   /**
@@ -2510,6 +2603,7 @@ class AttributeLoadCode extends Response {
 /** 
  * API Response for Attribute_Insert.
  * @see https://docs.miva.com/json-api/functions/attribute_insert
+ * @class
  */
 class AttributeInsert extends Response {
   /**
@@ -2526,6 +2620,7 @@ class AttributeInsert extends Response {
 /** 
  * API Response for Attribute_Update.
  * @see https://docs.miva.com/json-api/functions/attribute_update
+ * @class
  */
 class AttributeUpdate extends Response {
   /**
@@ -2542,6 +2637,7 @@ class AttributeUpdate extends Response {
 /** 
  * API Response for Attribute_Delete.
  * @see https://docs.miva.com/json-api/functions/attribute_delete
+ * @class
  */
 class AttributeDelete extends Response {
   /**
@@ -2558,6 +2654,7 @@ class AttributeDelete extends Response {
 /** 
  * API Response for OptionList_Load_Attribute.
  * @see https://docs.miva.com/json-api/functions/optionlist_load_attribute
+ * @class
  */
 class OptionListLoadAttribute extends Response {
   /**
@@ -2594,6 +2691,7 @@ class OptionListLoadAttribute extends Response {
 /** 
  * API Response for Option_Delete.
  * @see https://docs.miva.com/json-api/functions/option_delete
+ * @class
  */
 class OptionDelete extends Response {
   /**
@@ -2610,6 +2708,7 @@ class OptionDelete extends Response {
 /** 
  * API Response for Option_Insert.
  * @see https://docs.miva.com/json-api/functions/option_insert
+ * @class
  */
 class OptionInsert extends Response {
   /**
@@ -2626,6 +2725,7 @@ class OptionInsert extends Response {
 /** 
  * API Response for Option_Update.
  * @see https://docs.miva.com/json-api/functions/option_update
+ * @class
  */
 class OptionUpdate extends Response {
   /**
@@ -2642,6 +2742,7 @@ class OptionUpdate extends Response {
 /** 
  * API Response for Option_Load_Code.
  * @see https://docs.miva.com/json-api/functions/option_load_code
+ * @class
  */
 class OptionLoadCode extends Response {
   /**
@@ -2673,6 +2774,7 @@ class OptionLoadCode extends Response {
 /** 
  * API Response for Option_Set_Default.
  * @see https://docs.miva.com/json-api/functions/option_set_default
+ * @class
  */
 class OptionSetDefault extends Response {
   /**
@@ -2689,6 +2791,7 @@ class OptionSetDefault extends Response {
 /** 
  * API Response for AttributeAndOptionList_Load_Product.
  * @see https://docs.miva.com/json-api/functions/attributeandoptionlist_load_product
+ * @class
  */
 class AttributeAndOptionListLoadProduct extends Response {
   /**
@@ -2725,6 +2828,7 @@ class AttributeAndOptionListLoadProduct extends Response {
 /** 
  * API Response for OrderShipmentList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/ordershipmentlist_load_query
+ * @class
  */
 class OrderShipmentListLoadQuery extends ListQueryResponse {
   /**
@@ -2763,6 +2867,7 @@ class OrderShipmentListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for OrderItem_Split.
  * @see https://docs.miva.com/json-api/functions/orderitem_split
+ * @class
  */
 class OrderItemSplit extends Response {
   /**
@@ -2779,6 +2884,7 @@ class OrderItemSplit extends Response {
 /** 
  * API Response for OrderItemList_RemoveFromShipment.
  * @see https://docs.miva.com/json-api/functions/orderitemlist_removefromshipment
+ * @class
  */
 class OrderItemListRemoveFromShipment extends Response {
   /**
@@ -2795,6 +2901,7 @@ class OrderItemListRemoveFromShipment extends Response {
 /** 
  * API Response for CustomerAddress_Insert.
  * @see https://docs.miva.com/json-api/functions/customeraddress_insert
+ * @class
  */
 class CustomerAddressInsert extends Response {
   /**
@@ -2811,6 +2918,7 @@ class CustomerAddressInsert extends Response {
 /** 
  * API Response for CustomerAddress_Update.
  * @see https://docs.miva.com/json-api/functions/customeraddress_update
+ * @class
  */
 class CustomerAddressUpdate extends Response {
   /**
@@ -2827,6 +2935,7 @@ class CustomerAddressUpdate extends Response {
 /** 
  * API Response for CustomerAddress_Delete.
  * @see https://docs.miva.com/json-api/functions/customeraddress_delete
+ * @class
  */
 class CustomerAddressDelete extends Response {
   /**
@@ -2843,6 +2952,7 @@ class CustomerAddressDelete extends Response {
 /** 
  * API Response for CustomerAddressList_Delete.
  * @see https://docs.miva.com/json-api/functions/customeraddresslist_delete
+ * @class
  */
 class CustomerAddressListDelete extends Response {
   /**
@@ -2859,6 +2969,7 @@ class CustomerAddressListDelete extends Response {
 /** 
  * API Response for CustomerAddress_Update_Residential.
  * @see https://docs.miva.com/json-api/functions/customeraddress_update_residential
+ * @class
  */
 class CustomerAddressUpdateResidential extends Response {
   /**
@@ -2875,6 +2986,7 @@ class CustomerAddressUpdateResidential extends Response {
 /** 
  * API Response for URIList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/urilist_load_query
+ * @class
  */
 class URIListLoadQuery extends ListQueryResponse {
   /**
@@ -2913,6 +3025,7 @@ class URIListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for URI_Insert.
  * @see https://docs.miva.com/json-api/functions/uri_insert
+ * @class
  */
 class URIInsert extends Response {
   /**
@@ -2929,6 +3042,7 @@ class URIInsert extends Response {
 /** 
  * API Response for ProductURI_Insert.
  * @see https://docs.miva.com/json-api/functions/producturi_insert
+ * @class
  */
 class ProductURIInsert extends Response {
   /**
@@ -2945,6 +3059,7 @@ class ProductURIInsert extends Response {
 /** 
  * API Response for CategoryURI_Insert.
  * @see https://docs.miva.com/json-api/functions/categoryuri_insert
+ * @class
  */
 class CategoryURIInsert extends Response {
   /**
@@ -2961,6 +3076,7 @@ class CategoryURIInsert extends Response {
 /** 
  * API Response for PageURI_Insert.
  * @see https://docs.miva.com/json-api/functions/pageuri_insert
+ * @class
  */
 class PageURIInsert extends Response {
   /**
@@ -2977,6 +3093,7 @@ class PageURIInsert extends Response {
 /** 
  * API Response for FeedURI_Insert.
  * @see https://docs.miva.com/json-api/functions/feeduri_insert
+ * @class
  */
 class FeedURIInsert extends Response {
   /**
@@ -2993,6 +3110,7 @@ class FeedURIInsert extends Response {
 /** 
  * API Response for URI_Update.
  * @see https://docs.miva.com/json-api/functions/uri_update
+ * @class
  */
 class URIUpdate extends Response {
   /**
@@ -3009,6 +3127,7 @@ class URIUpdate extends Response {
 /** 
  * API Response for ProductURI_Update.
  * @see https://docs.miva.com/json-api/functions/producturi_update
+ * @class
  */
 class ProductURIUpdate extends Response {
   /**
@@ -3025,6 +3144,7 @@ class ProductURIUpdate extends Response {
 /** 
  * API Response for CategoryURI_Update.
  * @see https://docs.miva.com/json-api/functions/categoryuri_update
+ * @class
  */
 class CategoryURIUpdate extends Response {
   /**
@@ -3041,6 +3161,7 @@ class CategoryURIUpdate extends Response {
 /** 
  * API Response for PageURI_Update.
  * @see https://docs.miva.com/json-api/functions/pageuri_update
+ * @class
  */
 class PageURIUpdate extends Response {
   /**
@@ -3057,6 +3178,7 @@ class PageURIUpdate extends Response {
 /** 
  * API Response for FeedURI_Update.
  * @see https://docs.miva.com/json-api/functions/feeduri_update
+ * @class
  */
 class FeedURIUpdate extends Response {
   /**
@@ -3073,6 +3195,7 @@ class FeedURIUpdate extends Response {
 /** 
  * API Response for URI_Delete.
  * @see https://docs.miva.com/json-api/functions/uri_delete
+ * @class
  */
 class URIDelete extends Response {
   /**
@@ -3089,6 +3212,7 @@ class URIDelete extends Response {
 /** 
  * API Response for ProductURIList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/producturilist_load_query
+ * @class
  */
 class ProductURIListLoadQuery extends ListQueryResponse {
   /**
@@ -3127,6 +3251,7 @@ class ProductURIListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CategoryURIList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryurilist_load_query
+ * @class
  */
 class CategoryURIListLoadQuery extends ListQueryResponse {
   /**
@@ -3165,6 +3290,7 @@ class CategoryURIListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PageURIList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pageurilist_load_query
+ * @class
  */
 class PageURIListLoadQuery extends ListQueryResponse {
   /**
@@ -3203,6 +3329,7 @@ class PageURIListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for FeedURIList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/feedurilist_load_query
+ * @class
  */
 class FeedURIListLoadQuery extends ListQueryResponse {
   /**
@@ -3241,6 +3368,7 @@ class FeedURIListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ProductURIList_Delete.
  * @see https://docs.miva.com/json-api/functions/producturilist_delete
+ * @class
  */
 class ProductURIListDelete extends Response {
   /**
@@ -3278,6 +3406,7 @@ class ProductURIListDelete extends Response {
 /** 
  * API Response for PageURIList_Delete.
  * @see https://docs.miva.com/json-api/functions/pageurilist_delete
+ * @class
  */
 class PageURIListDelete extends Response {
   /**
@@ -3315,6 +3444,7 @@ class PageURIListDelete extends Response {
 /** 
  * API Response for CategoryURIList_Delete.
  * @see https://docs.miva.com/json-api/functions/categoryurilist_delete
+ * @class
  */
 class CategoryURIListDelete extends Response {
   /**
@@ -3352,6 +3482,7 @@ class CategoryURIListDelete extends Response {
 /** 
  * API Response for FeedURIList_Delete.
  * @see https://docs.miva.com/json-api/functions/feedurilist_delete
+ * @class
  */
 class FeedURIListDelete extends Response {
   /**
@@ -3389,6 +3520,7 @@ class FeedURIListDelete extends Response {
 /** 
  * API Response for URIList_Delete.
  * @see https://docs.miva.com/json-api/functions/urilist_delete
+ * @class
  */
 class URIListDelete extends Response {
   /**
@@ -3426,6 +3558,7 @@ class URIListDelete extends Response {
 /** 
  * API Response for PageURI_Redirect.
  * @see https://docs.miva.com/json-api/functions/pageuri_redirect
+ * @class
  */
 class PageURIRedirect extends ListQueryResponse {
   /**
@@ -3464,6 +3597,7 @@ class PageURIRedirect extends ListQueryResponse {
 /** 
  * API Response for ProductURI_Redirect.
  * @see https://docs.miva.com/json-api/functions/producturi_redirect
+ * @class
  */
 class ProductURIRedirect extends ListQueryResponse {
   /**
@@ -3502,6 +3636,7 @@ class ProductURIRedirect extends ListQueryResponse {
 /** 
  * API Response for CategoryURI_Redirect.
  * @see https://docs.miva.com/json-api/functions/categoryuri_redirect
+ * @class
  */
 class CategoryURIRedirect extends ListQueryResponse {
   /**
@@ -3540,6 +3675,7 @@ class CategoryURIRedirect extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroup_Delete.
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_delete
+ * @class
  */
 class AvailabilityGroupDelete extends Response {
   /**
@@ -3556,6 +3692,7 @@ class AvailabilityGroupDelete extends Response {
 /** 
  * API Response for AvailabilityGroup_Insert.
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_insert
+ * @class
  */
 class AvailabilityGroupInsert extends Response {
   /**
@@ -3572,6 +3709,7 @@ class AvailabilityGroupInsert extends Response {
 /** 
  * API Response for AvailabilityGroup_Update.
  * @see https://docs.miva.com/json-api/functions/availabilitygroup_update
+ * @class
  */
 class AvailabilityGroupUpdate extends Response {
   /**
@@ -3588,6 +3726,7 @@ class AvailabilityGroupUpdate extends Response {
 /** 
  * API Response for AvailabilityGroupCategory_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcategory_update_assigned
+ * @class
  */
 class AvailabilityGroupCategoryUpdateAssigned extends Response {
   /**
@@ -3604,6 +3743,7 @@ class AvailabilityGroupCategoryUpdateAssigned extends Response {
 /** 
  * API Response for AvailabilityGroupShippingMethodList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupshippingmethodlist_load_query
+ * @class
  */
 class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryResponse {
   /**
@@ -3642,6 +3782,7 @@ class AvailabilityGroupShippingMethodListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupBusinessAccount_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccount_update_assigned
+ * @class
  */
 class PriceGroupBusinessAccountUpdateAssigned extends Response {
   /**
@@ -3658,6 +3799,7 @@ class PriceGroupBusinessAccountUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroupCategory_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupcategory_update_assigned
+ * @class
  */
 class PriceGroupCategoryUpdateAssigned extends Response {
   /**
@@ -3674,6 +3816,7 @@ class PriceGroupCategoryUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroupExcludedCategory_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategory_update_assigned
+ * @class
  */
 class PriceGroupExcludedCategoryUpdateAssigned extends Response {
   /**
@@ -3690,6 +3833,7 @@ class PriceGroupExcludedCategoryUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroupExcludedProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproduct_update_assigned
+ * @class
  */
 class PriceGroupExcludedProductUpdateAssigned extends Response {
   /**
@@ -3727,6 +3871,7 @@ class PriceGroupExcludedProductUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroupQualifyingProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproduct_update_assigned
+ * @class
  */
 class PriceGroupQualifyingProductUpdateAssigned extends Response {
   /**
@@ -3743,6 +3888,7 @@ class PriceGroupQualifyingProductUpdateAssigned extends Response {
 /** 
  * API Response for PriceGroup_Delete.
  * @see https://docs.miva.com/json-api/functions/pricegroup_delete
+ * @class
  */
 class PriceGroupDelete extends Response {
   /**
@@ -3759,6 +3905,7 @@ class PriceGroupDelete extends Response {
 /** 
  * API Response for PriceGroup_Insert.
  * @see https://docs.miva.com/json-api/functions/pricegroup_insert
+ * @class
  */
 class PriceGroupInsert extends Response {
   /**
@@ -3787,6 +3934,7 @@ class PriceGroupInsert extends Response {
 /** 
  * API Response for PriceGroup_Update.
  * @see https://docs.miva.com/json-api/functions/pricegroup_update
+ * @class
  */
 class PriceGroupUpdate extends Response {
   /**
@@ -3803,6 +3951,7 @@ class PriceGroupUpdate extends Response {
 /** 
  * API Response for CouponCustomer_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/couponcustomer_update_assigned
+ * @class
  */
 class CouponCustomerUpdateAssigned extends Response {
   /**
@@ -3819,6 +3968,7 @@ class CouponCustomerUpdateAssigned extends Response {
 /** 
  * API Response for BusinessAccountList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/businessaccountlist_load_query
+ * @class
  */
 class BusinessAccountListLoadQuery extends ListQueryResponse {
   /**
@@ -3857,6 +4007,7 @@ class BusinessAccountListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BusinessAccount_Insert.
  * @see https://docs.miva.com/json-api/functions/businessaccount_insert
+ * @class
  */
 class BusinessAccountInsert extends Response {
   /**
@@ -3873,6 +4024,7 @@ class BusinessAccountInsert extends Response {
 /** 
  * API Response for BusinessAccount_Update.
  * @see https://docs.miva.com/json-api/functions/businessaccount_update
+ * @class
  */
 class BusinessAccountUpdate extends Response {
   /**
@@ -3889,6 +4041,7 @@ class BusinessAccountUpdate extends Response {
 /** 
  * API Response for BusinessAccountList_Delete.
  * @see https://docs.miva.com/json-api/functions/businessaccountlist_delete
+ * @class
  */
 class BusinessAccountListDelete extends Response {
   /**
@@ -3917,6 +4070,7 @@ class BusinessAccountListDelete extends Response {
 /** 
  * API Response for BusinessAccountCustomer_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/businessaccountcustomer_update_assigned
+ * @class
  */
 class BusinessAccountCustomerUpdateAssigned extends Response {
   /**
@@ -3933,6 +4087,7 @@ class BusinessAccountCustomerUpdateAssigned extends Response {
 /** 
  * API Response for StoreList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/storelist_load_query
+ * @class
  */
 class StoreListLoadQuery extends ListQueryResponse {
   /**
@@ -3971,6 +4126,7 @@ class StoreListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for Store_Load.
  * @see https://docs.miva.com/json-api/functions/store_load
+ * @class
  */
 class StoreLoad extends Response {
   /**
@@ -4002,6 +4158,7 @@ class StoreLoad extends Response {
 /** 
  * API Response for ProductVariantList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/productvariantlist_load_query
+ * @class
  */
 class ProductVariantListLoadQuery extends ListQueryResponse {
   /**
@@ -4040,6 +4197,7 @@ class ProductVariantListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ProductVariant_Insert.
  * @see https://docs.miva.com/json-api/functions/productvariant_insert
+ * @class
  */
 class ProductVariantInsert extends Response {
   /**
@@ -4080,6 +4238,7 @@ class ProductVariantInsert extends Response {
 /** 
  * API Response for ProductVariant_Update.
  * @see https://docs.miva.com/json-api/functions/productvariant_update
+ * @class
  */
 class ProductVariantUpdate extends Response {
   /**
@@ -4120,6 +4279,7 @@ class ProductVariantUpdate extends Response {
 /** 
  * API Response for ProductVariant_Generate.
  * @see https://docs.miva.com/json-api/functions/productvariant_generate
+ * @class
  */
 class ProductVariantGenerate extends Response {
   /**
@@ -4136,6 +4296,7 @@ class ProductVariantGenerate extends Response {
 /** 
  * API Response for ProductVariant_Generate_Delimiter.
  * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
+ * @class
  */
 class ProductVariantGenerateDelimiter extends Response {
   /**
@@ -4152,6 +4313,7 @@ class ProductVariantGenerateDelimiter extends Response {
 /** 
  * API Response for ProductKitList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/productkitlist_load_query
+ * @class
  */
 class ProductKitListLoadQuery extends ListQueryResponse {
   /**
@@ -4190,6 +4352,7 @@ class ProductKitListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ProductKit_Generate_Variants.
  * @see https://docs.miva.com/json-api/functions/productkit_generate_variants
+ * @class
  */
 class ProductKitGenerateVariants extends Response {
   /**
@@ -4206,6 +4369,7 @@ class ProductKitGenerateVariants extends Response {
 /** 
  * API Response for ProductKit_Update_Parts.
  * @see https://docs.miva.com/json-api/functions/productkit_update_parts
+ * @class
  */
 class ProductKitUpdateParts extends Response {
   /**
@@ -4222,6 +4386,7 @@ class ProductKitUpdateParts extends Response {
 /** 
  * API Response for ProductKit_Variant_Count.
  * @see https://docs.miva.com/json-api/functions/productkit_variant_count
+ * @class
  */
 class ProductKitVariantCount extends Response {
   /**
@@ -4250,6 +4415,7 @@ class ProductKitVariantCount extends Response {
 /** 
  * API Response for RelatedProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/relatedproduct_update_assigned
+ * @class
  */
 class RelatedProductUpdateAssigned extends Response {
   /**
@@ -4287,6 +4453,7 @@ class RelatedProductUpdateAssigned extends Response {
 /** 
  * API Response for InventoryProductSettings_Update.
  * @see https://docs.miva.com/json-api/functions/inventoryproductsettings_update
+ * @class
  */
 class InventoryProductSettingsUpdate extends Response {
   /**
@@ -4303,6 +4470,7 @@ class InventoryProductSettingsUpdate extends Response {
 /** 
  * API Response for ProductVariantList_Delete.
  * @see https://docs.miva.com/json-api/functions/productvariantlist_delete
+ * @class
  */
 class ProductVariantListDelete extends Response {
   /**
@@ -4331,6 +4499,7 @@ class ProductVariantListDelete extends Response {
 /** 
  * API Response for ImageTypeList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/imagetypelist_load_query
+ * @class
  */
 class ImageTypeListLoadQuery extends ListQueryResponse {
   /**
@@ -4369,6 +4538,7 @@ class ImageTypeListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ProductImage_Update_Type.
  * @see https://docs.miva.com/json-api/functions/productimage_update_type
+ * @class
  */
 class ProductImageUpdateType extends Response {
   /**
@@ -4385,6 +4555,7 @@ class ProductImageUpdateType extends Response {
 /** 
  * API Response for AttributeTemplateList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/attributetemplatelist_load_query
+ * @class
  */
 class AttributeTemplateListLoadQuery extends ListQueryResponse {
   /**
@@ -4423,6 +4594,7 @@ class AttributeTemplateListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AttributeTemplateAttributeList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/attributetemplateattributelist_load_query
+ * @class
  */
 class AttributeTemplateAttributeListLoadQuery extends ListQueryResponse {
   /**
@@ -4461,6 +4633,7 @@ class AttributeTemplateAttributeListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AttributeTemplateOptionList_Load_Attribute.
  * @see https://docs.miva.com/json-api/functions/attributetemplateoptionlist_load_attribute
+ * @class
  */
 class AttributeTemplateOptionListLoadAttribute extends ListQueryResponse {
   /**
@@ -4498,6 +4671,7 @@ class AttributeTemplateOptionListLoadAttribute extends ListQueryResponse {
 /** 
  * API Response for AttributeTemplateAttribute_Delete.
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_delete
+ * @class
  */
 class AttributeTemplateAttributeDelete extends Response {
   /**
@@ -4514,6 +4688,7 @@ class AttributeTemplateAttributeDelete extends Response {
 /** 
  * API Response for AttributeTemplateAttribute_Insert.
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_insert
+ * @class
  */
 class AttributeTemplateAttributeInsert extends Response {
   /**
@@ -4530,6 +4705,7 @@ class AttributeTemplateAttributeInsert extends Response {
 /** 
  * API Response for AttributeTemplateAttribute_Update.
  * @see https://docs.miva.com/json-api/functions/attributetemplateattribute_update
+ * @class
  */
 class AttributeTemplateAttributeUpdate extends Response {
   /**
@@ -4546,6 +4722,7 @@ class AttributeTemplateAttributeUpdate extends Response {
 /** 
  * API Response for AttributeTemplateOption_Delete.
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_delete
+ * @class
  */
 class AttributeTemplateOptionDelete extends Response {
   /**
@@ -4562,6 +4739,7 @@ class AttributeTemplateOptionDelete extends Response {
 /** 
  * API Response for AttributeTemplateOption_Insert.
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_insert
+ * @class
  */
 class AttributeTemplateOptionInsert extends Response {
   /**
@@ -4578,6 +4756,7 @@ class AttributeTemplateOptionInsert extends Response {
 /** 
  * API Response for AttributeTemplateOption_Update.
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_update
+ * @class
  */
 class AttributeTemplateOptionUpdate extends Response {
   /**
@@ -4594,6 +4773,7 @@ class AttributeTemplateOptionUpdate extends Response {
 /** 
  * API Response for AttributeTemplate_Insert.
  * @see https://docs.miva.com/json-api/functions/attributetemplate_insert
+ * @class
  */
 class AttributeTemplateInsert extends Response {
   /**
@@ -4610,6 +4790,7 @@ class AttributeTemplateInsert extends Response {
 /** 
  * API Response for AttributeTemplate_Update.
  * @see https://docs.miva.com/json-api/functions/attributetemplate_update
+ * @class
  */
 class AttributeTemplateUpdate extends Response {
   /**
@@ -4626,6 +4807,7 @@ class AttributeTemplateUpdate extends Response {
 /** 
  * API Response for AttributeTemplate_Delete.
  * @see https://docs.miva.com/json-api/functions/attributetemplate_delete
+ * @class
  */
 class AttributeTemplateDelete extends Response {
   /**
@@ -4642,6 +4824,7 @@ class AttributeTemplateDelete extends Response {
 /** 
  * API Response for AttributeTemplateOption_Set_Default.
  * @see https://docs.miva.com/json-api/functions/attributetemplateoption_set_default
+ * @class
  */
 class AttributeTemplateOptionSetDefault extends Response {
   /**
@@ -4658,6 +4841,7 @@ class AttributeTemplateOptionSetDefault extends Response {
 /** 
  * API Response for AttributeTemplateProduct_Update_Assigned.
  * @see https://docs.miva.com/json-api/functions/attributetemplateproduct_update_assigned
+ * @class
  */
 class AttributeTemplateProductUpdateAssigned extends Response {
   /**
@@ -4674,6 +4858,7 @@ class AttributeTemplateProductUpdateAssigned extends Response {
 /** 
  * API Response for Branch_SetPrimary.
  * @see https://docs.miva.com/json-api/functions/branch_setprimary
+ * @class
  */
 class BranchSetPrimary extends Response {
   /**
@@ -4690,6 +4875,7 @@ class BranchSetPrimary extends Response {
 /** 
  * API Response for Branch_Update.
  * @see https://docs.miva.com/json-api/functions/branch_update
+ * @class
  */
 class BranchUpdate extends Response {
   /**
@@ -4706,6 +4892,7 @@ class BranchUpdate extends Response {
 /** 
  * API Response for Attribute_CopyTemplate.
  * @see https://docs.miva.com/json-api/functions/attribute_copytemplate
+ * @class
  */
 class AttributeCopyTemplate extends Response {
   /**
@@ -4722,6 +4909,7 @@ class AttributeCopyTemplate extends Response {
 /** 
  * API Response for Attribute_CopyLinkedTemplate.
  * @see https://docs.miva.com/json-api/functions/attribute_copylinkedtemplate
+ * @class
  */
 class AttributeCopyLinkedTemplate extends Response {
   /**
@@ -4738,6 +4926,7 @@ class AttributeCopyLinkedTemplate extends Response {
 /** 
  * API Response for ProductAttributeAndOptionList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/productattributeandoptionlist_load_query
+ * @class
  */
 class ProductAttributeAndOptionListLoadQuery extends ListQueryResponse {
   /**
@@ -4774,8 +4963,289 @@ class ProductAttributeAndOptionListLoadQuery extends ListQueryResponse {
 }
 
 /** 
+ * API Response for CustomerSubscriptionList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * @class
+ */
+class CustomerSubscriptionListLoadQuery extends ListQueryResponse {
+  /**
+   * CustomerSubscriptionListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.CustomerSubscription(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get customerSubscriptions.
+   * @returns {CustomerSubscription[]}
+   */
+  getCustomerSubscriptions() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductSubscriptionTermList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/productsubscriptiontermlist_load_query
+ * @class
+ */
+class ProductSubscriptionTermListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductSubscriptionTermListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ProductSubscriptionTerm(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productSubscriptionTerms.
+   * @returns {ProductSubscriptionTerm[]}
+   */
+  getProductSubscriptionTerms() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for SubscriptionShippingMethodList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/subscriptionshippingmethodlist_load_query
+ * @class
+ */
+class SubscriptionShippingMethodListLoadQuery extends ListQueryResponse {
+  /**
+   * SubscriptionShippingMethodListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.SubscriptionShippingMethod(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get subscriptionShippingMethods.
+   * @returns {SubscriptionShippingMethod[]}
+   */
+  getSubscriptionShippingMethods() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for Subscription_Insert.
+ * @see https://docs.miva.com/json-api/functions/subscription_insert
+ * @class
+ */
+class SubscriptionInsert extends Response {
+  /**
+   * SubscriptionInsert Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Subscription(this.data['data']);
+  }
+
+  /**
+   * Get subscription.
+   * @returns {?Subscription}
+   */
+  getSubscription() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for Subscription_Update.
+ * @see https://docs.miva.com/json-api/functions/subscription_update
+ * @class
+ */
+class SubscriptionUpdate extends Response {
+  /**
+   * SubscriptionUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Subscription(this.data['data']);
+  }
+
+  /**
+   * Get subscription.
+   * @returns {?Subscription}
+   */
+  getSubscription() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
+  }
+}
+
+/** 
+ * API Response for SubscriptionList_Delete.
+ * @see https://docs.miva.com/json-api/functions/subscriptionlist_delete
+ * @class
+ */
+class SubscriptionListDelete extends Response {
+  /**
+   * SubscriptionListDelete Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
+/** 
+ * API Response for SubscriptionAndOrderItem_Add.
+ * @see https://docs.miva.com/json-api/functions/subscriptionandorderitem_add
+ * @class
+ */
+class SubscriptionAndOrderItemAdd extends Response {
+  /**
+   * SubscriptionAndOrderItemAdd Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get total.
+   * @returns {number}
+   */
+  getTotal() {
+    if (!util.isNullOrUndefined(this.data['total'])) {
+      return this.data['total'];
+    }
+
+    return 0.00;
+  }
+
+  /**
+   * Get formatted_total.
+   * @returns {string}
+   */
+  getFormattedTotal() {
+    if (!util.isNullOrUndefined(this.data['formatted_total'])) {
+      return this.data['formatted_total'];
+    }
+
+    return null;
+  }
+}
+
+/** 
+ * API Response for SubscriptionAndOrderItem_Update.
+ * @see https://docs.miva.com/json-api/functions/subscriptionandorderitem_update
+ * @class
+ */
+class SubscriptionAndOrderItemUpdate extends Response {
+  /**
+   * SubscriptionAndOrderItemUpdate Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+
+  /**
+   * Get total.
+   * @returns {number}
+   */
+  getTotal() {
+    if (!util.isNullOrUndefined(this.data['total'])) {
+      return this.data['total'];
+    }
+
+    return 0.00;
+  }
+
+  /**
+   * Get formatted_total.
+   * @returns {string}
+   */
+  getFormattedTotal() {
+    if (!util.isNullOrUndefined(this.data['formatted_total'])) {
+      return this.data['formatted_total'];
+    }
+
+    return null;
+  }
+}
+
+/** 
  * API Response for CategoryProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/categoryproductlist_load_query
+ * @class
  */
 class CategoryProductListLoadQuery extends ListQueryResponse {
   /**
@@ -4814,6 +5284,7 @@ class CategoryProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CouponPriceGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/couponpricegrouplist_load_query
+ * @class
  */
 class CouponPriceGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -4852,6 +5323,7 @@ class CouponPriceGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupCustomerList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupcustomerlist_load_query
+ * @class
  */
 class PriceGroupCustomerListLoadQuery extends ListQueryResponse {
   /**
@@ -4890,6 +5362,7 @@ class PriceGroupCustomerListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupproductlist_load_query
+ * @class
  */
 class PriceGroupProductListLoadQuery extends ListQueryResponse {
   /**
@@ -4928,6 +5401,7 @@ class PriceGroupProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CustomerPriceGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/customerpricegrouplist_load_query
+ * @class
  */
 class CustomerPriceGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -4966,6 +5440,7 @@ class CustomerPriceGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for OrderPriceGroupList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/orderpricegrouplist_load_query
+ * @class
  */
 class OrderPriceGroupListLoadQuery extends ListQueryResponse {
   /**
@@ -5004,6 +5479,7 @@ class OrderPriceGroupListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for OrderCouponList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/ordercouponlist_load_query
+ * @class
  */
 class OrderCouponListLoadQuery extends ListQueryResponse {
   /**
@@ -5042,6 +5518,7 @@ class OrderCouponListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for ChildCategoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/childcategorylist_load_query
+ * @class
  */
 class ChildCategoryListLoadQuery extends ListQueryResponse {
   /**
@@ -5080,6 +5557,7 @@ class ChildCategoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroupCustomerList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcustomerlist_load_query
+ * @class
  */
 class AvailabilityGroupCustomerListLoadQuery extends ListQueryResponse {
   /**
@@ -5118,6 +5596,7 @@ class AvailabilityGroupCustomerListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroupProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupproductlist_load_query
+ * @class
  */
 class AvailabilityGroupProductListLoadQuery extends ListQueryResponse {
   /**
@@ -5156,6 +5635,7 @@ class AvailabilityGroupProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroupCategoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupcategorylist_load_query
+ * @class
  */
 class AvailabilityGroupCategoryListLoadQuery extends ListQueryResponse {
   /**
@@ -5194,6 +5674,7 @@ class AvailabilityGroupCategoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AvailabilityGroupBusinessAccountList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/availabilitygroupbusinessaccountlist_load_query
+ * @class
  */
 class AvailabilityGroupBusinessAccountListLoadQuery extends ListQueryResponse {
   /**
@@ -5232,6 +5713,7 @@ class AvailabilityGroupBusinessAccountListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupBusinessAccountList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupbusinessaccountlist_load_query
+ * @class
  */
 class PriceGroupBusinessAccountListLoadQuery extends ListQueryResponse {
   /**
@@ -5270,6 +5752,7 @@ class PriceGroupBusinessAccountListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupCategoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupcategorylist_load_query
+ * @class
  */
 class PriceGroupCategoryListLoadQuery extends ListQueryResponse {
   /**
@@ -5308,6 +5791,7 @@ class PriceGroupCategoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupExcludedCategoryList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedcategorylist_load_query
+ * @class
  */
 class PriceGroupExcludedCategoryListLoadQuery extends ListQueryResponse {
   /**
@@ -5346,6 +5830,7 @@ class PriceGroupExcludedCategoryListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupExcludedProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupexcludedproductlist_load_query
+ * @class
  */
 class PriceGroupExcludedProductListLoadQuery extends ListQueryResponse {
   /**
@@ -5384,6 +5869,7 @@ class PriceGroupExcludedProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for PriceGroupQualifyingProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/pricegroupqualifyingproductlist_load_query
+ * @class
  */
 class PriceGroupQualifyingProductListLoadQuery extends ListQueryResponse {
   /**
@@ -5422,6 +5908,7 @@ class PriceGroupQualifyingProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for CouponCustomerList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/couponcustomerlist_load_query
+ * @class
  */
 class CouponCustomerListLoadQuery extends ListQueryResponse {
   /**
@@ -5460,6 +5947,7 @@ class CouponCustomerListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for BusinessAccountCustomerList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/businessaccountcustomerlist_load_query
+ * @class
  */
 class BusinessAccountCustomerListLoadQuery extends ListQueryResponse {
   /**
@@ -5498,6 +5986,7 @@ class BusinessAccountCustomerListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for RelatedProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/relatedproductlist_load_query
+ * @class
  */
 class RelatedProductListLoadQuery extends ListQueryResponse {
   /**
@@ -5536,6 +6025,7 @@ class RelatedProductListLoadQuery extends ListQueryResponse {
 /** 
  * API Response for AttributeTemplateProductList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/attributetemplateproductlist_load_query
+ * @class
  */
 class AttributeTemplateProductListLoadQuery extends ListQueryResponse {
   /**
@@ -5565,6 +6055,45 @@ class AttributeTemplateProductListLoadQuery extends ListQueryResponse {
    * @returns {AttributeTemplateProduct[]}
    */
   getAttributeTemplateProducts() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
+ * API Response for ProductAndSubscriptionTermList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/productandsubscriptiontermlist_load_query
+ * @class
+ */
+class ProductAndSubscriptionTermListLoadQuery extends ListQueryResponse {
+  /**
+   * ProductAndSubscriptionTermListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.ProductAndSubscriptionTerm(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get productAndSubscriptionTerms.
+   * @returns {ProductAndSubscriptionTerm[]}
+   */
+  getProductAndSubscriptionTerms() {
     return (util.isNullOrUndefined(this.data['data']) || 
       !util.isArray(this.data['data']['data'])) ?
         [] : this.data['data']['data'];
@@ -5780,6 +6309,14 @@ module.exports = {
   AttributeCopyTemplate,
   AttributeCopyLinkedTemplate,
   ProductAttributeAndOptionListLoadQuery,
+  CustomerSubscriptionListLoadQuery,
+  ProductSubscriptionTermListLoadQuery,
+  SubscriptionShippingMethodListLoadQuery,
+  SubscriptionInsert,
+  SubscriptionUpdate,
+  SubscriptionListDelete,
+  SubscriptionAndOrderItemAdd,
+  SubscriptionAndOrderItemUpdate,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,
@@ -5800,5 +6337,6 @@ module.exports = {
   CouponCustomerListLoadQuery,
   BusinessAccountCustomerListLoadQuery,
   RelatedProductListLoadQuery,
-  AttributeTemplateProductListLoadQuery
+  AttributeTemplateProductListLoadQuery,
+  ProductAndSubscriptionTermListLoadQuery
 };

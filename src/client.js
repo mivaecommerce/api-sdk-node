@@ -28,6 +28,7 @@ const CLIENT_DEFAULT_OPERATION_TIMEOUT = 60;
 
 /** 
  * BaseClient - All clients extend this class
+ * @class
  */
 class BaseClient {
   /**
@@ -411,6 +412,7 @@ class BaseClient {
 /** 
  * Handles sending API requests
  * @see https://docs.miva.com/json-api/#authentication
+ * @class
  */
 class Client extends BaseClient {
   /**
@@ -538,7 +540,10 @@ class Client extends BaseClient {
   }
 }
 
-
+/**
+ * SSHClient
+ * @class
+ */ 
 class SSHClient extends BaseClient {
   /**
    * Client Constructor.
@@ -626,7 +631,10 @@ class SSHClient extends BaseClient {
   }
 }
 
-
+/**
+ * SSHAgentClient
+ * @class
+ */ 
 class SSHAgentClient extends BaseClient {
   /**
    * Client Constructor.

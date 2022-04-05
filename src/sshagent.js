@@ -12,6 +12,10 @@ const SSH_AGENT_SIGN_RESPONSE = 14;
 const SSH_AGENT_RSA_SHA2_256 = 2;
 const SSH_AGENT_RSA_SHA2_512 = 4;
 
+/**
+ * SSHAgentMessage
+ * @class
+ */ 
 class SSHAgentMessage {
   constructor() {
     this.responseSize = 0;
@@ -82,6 +86,10 @@ class SSHAgentKeyListRequest extends SSHAgentMessage {
   }
 }
 
+/**
+ * SSHAgentSignRequest
+ * @class
+ */ 
 class SSHAgentSignRequest extends SSHAgentMessage {
   constructor() {
     super();
@@ -193,6 +201,10 @@ class SSHAgentSignRequest extends SSHAgentMessage {
   }
 }
 
+/**
+ * SSHAgentKey
+ * @class
+ */ 
 class SSHAgentKey {
   constructor(keyBlob, comment) {
     this.keyBlob = keyBlob;
@@ -208,6 +220,10 @@ class SSHAgentKey {
   }
 }
 
+/**
+ * SSHAgentSignClient
+ * @class
+ */ 
 class SSHAgentSignClient {
 
   /**

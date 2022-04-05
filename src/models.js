@@ -10,7 +10,10 @@ const { Model } = require('./abstract');
 
 /** @module Model */
 
-/** AvailabilityGroup data model. */
+/** 
+ * AvailabilityGroup data model.
+ * @class
+ */
 class AvailabilityGroup extends Model {
   /**
    * AvailabilityGroup Constructor.
@@ -46,7 +49,10 @@ class AvailabilityGroup extends Model {
   }
 }
 
-/** AvailabilityGroupShippingMethod data model. */
+/** 
+ * AvailabilityGroupShippingMethod data model.
+ * @class
+ */
 class AvailabilityGroupShippingMethod extends Model {
   /**
    * AvailabilityGroupShippingMethod Constructor.
@@ -90,7 +96,10 @@ class AvailabilityGroupShippingMethod extends Model {
   }
 }
 
-/** BusinessAccount data model. */
+/** 
+ * BusinessAccount data model.
+ * @class
+ */
 class BusinessAccount extends Model {
   /**
    * BusinessAccount Constructor.
@@ -174,7 +183,10 @@ class BusinessAccount extends Model {
   }
 }
 
-/** Customer data model. */
+/** 
+ * Customer data model.
+ * @class
+ */
 class Customer extends Model {
   /**
    * Customer Constructor.
@@ -578,7 +590,10 @@ const CUSTOMER_SCOPE_SPECIFIC_CUSTOMERS = 'X';
 /** @ignore */
 const CUSTOMER_SCOPE_ALL_LOGGED_IN = 'L';
 
-/** Coupon data model. */
+/** 
+ * Coupon data model.
+ * @class
+ */
 class Coupon extends Model {
   /**
    * Coupon Constructor.
@@ -700,7 +715,10 @@ class Coupon extends Model {
   }
 }
 
-/** CustomFieldValues data model. */
+/** 
+ * CustomFieldValues data model.
+ * @class
+ */
 class CustomFieldValues extends Model {
   /**
    * CustomFieldValues Constructor.
@@ -765,7 +783,10 @@ class CustomFieldValues extends Model {
   }
 }
 
-/** Module data model. */
+/** 
+ * Module data model.
+ * @class
+ */
 class Module extends Model {
   /**
    * Module Constructor.
@@ -849,7 +870,10 @@ class Module extends Model {
   }
 }
 
-/** Note data model. */
+/** 
+ * Note data model.
+ * @class
+ */
 class Note extends Model {
   /**
    * Note Constructor.
@@ -961,7 +985,10 @@ const DISCOUNT_TYPE_DISCOUNT_RETAIL = 'D';
 /** @ignore */
 const DISCOUNT_TYPE_MARKUP_COST = 'M';
 
-/** PriceGroup data model. */
+/** 
+ * PriceGroup data model.
+ * @class
+ */
 class PriceGroup extends Model {
   /**
    * PriceGroup Constructor.
@@ -1299,7 +1326,10 @@ class PriceGroup extends Model {
   }
 }
 
-/** DiscountModuleCapabilities data model. */
+/** 
+ * DiscountModuleCapabilities data model.
+ * @class
+ */
 class DiscountModuleCapabilities extends Model {
   /**
    * DiscountModuleCapabilities Constructor.
@@ -1359,7 +1389,10 @@ class DiscountModuleCapabilities extends Model {
   }
 }
 
-/** Product data model. */
+/** 
+ * Product data model.
+ * @class
+ */
 class Product extends Model {
   /**
    * Product Constructor.
@@ -1712,6 +1745,22 @@ class Product extends Model {
   }
   
   /**
+   * Get url.
+   * @returns {string}
+   */
+  getUrl() {
+    return this.getField('url');
+  }
+  
+  /**
+   * Get imagetypes.
+   * @returns {imagetypes}
+   */
+  getImageTypes() {
+    // Missing imagetypes [5]
+  }
+  
+  /**
    * @override
    */
   toObject() {
@@ -1775,7 +1824,10 @@ class Product extends Model {
   }
 }
 
-/** RelatedProduct data model. */
+/** 
+ * RelatedProduct data model.
+ * @class
+ */
 class RelatedProduct extends Model {
   /**
    * RelatedProduct Constructor.
@@ -1923,7 +1975,10 @@ class RelatedProduct extends Model {
   }
 }
 
-/** ProductImageData data model. */
+/** 
+ * ProductImageData data model.
+ * @class
+ */
 class ProductImageData extends Model {
   /**
    * ProductImageData Constructor.
@@ -2031,7 +2086,10 @@ const PRODUCT_ATTRIBUTE_TYPE_TEMPLATE = 'template';
 /** @ignore */
 const PRODUCT_ATTRIBUTE_TYPE_SWATCH_SELECT = 'swatch-select';
 
-/** ProductAttribute data model. */
+/** 
+ * ProductAttribute data model.
+ * @class
+ */
 class ProductAttribute extends Model {
   /**
    * ProductAttribute Constructor.
@@ -2302,7 +2360,10 @@ class ProductAttribute extends Model {
   }
 }
 
-/** ProductOption data model. */
+/** 
+ * ProductOption data model.
+ * @class
+ */
 class ProductOption extends Model {
   /**
    * ProductOption Constructor.
@@ -2431,7 +2492,10 @@ class ProductOption extends Model {
   }
 }
 
-/** ProductShippingMethod data model. */
+/** 
+ * ProductShippingMethod data model.
+ * @class
+ */
 class ProductShippingMethod extends Model {
   /**
    * ProductShippingMethod Constructor.
@@ -2459,7 +2523,10 @@ class ProductShippingMethod extends Model {
   }
 }
 
-/** ProductShippingRules data model. */
+/** 
+ * ProductShippingRules data model.
+ * @class
+ */
 class ProductShippingRules extends Model {
   /**
    * ProductShippingRules Constructor.
@@ -2574,7 +2641,10 @@ const DESTINATION_TYPE_PRODUCT = 'product';
 /** @ignore */
 const DESTINATION_TYPE_FEED = 'feed';
 
-/** Uri data model. */
+/** 
+ * Uri data model.
+ * @class
+ */
 class Uri extends Model {
   /**
    * Uri Constructor.
@@ -2840,7 +2910,10 @@ class Uri extends Model {
   }
 }
 
-/** UriDetail data model. */
+/** 
+ * UriDetail data model.
+ * @class
+ */
 class UriDetail extends Model {
   /**
    * UriDetail Constructor.
@@ -2876,7 +2949,10 @@ class UriDetail extends Model {
   }
 }
 
-/** ProductVariant data model. */
+/** 
+ * ProductVariant data model.
+ * @class
+ */
 class ProductVariant extends Model {
   /**
    * ProductVariant Constructor.
@@ -2976,7 +3052,10 @@ class ProductVariant extends Model {
   }
 }
 
-/** ProductKit data model. */
+/** 
+ * ProductKit data model.
+ * @class
+ */
 class ProductKit extends Model {
   /**
    * ProductKit Constructor.
@@ -3095,7 +3174,10 @@ class ProductKit extends Model {
   }
 }
 
-/** ProductKitPart data model. */
+/** 
+ * ProductKitPart data model.
+ * @class
+ */
 class ProductKitPart extends Model {
   /**
    * ProductKitPart Constructor.
@@ -3139,7 +3221,10 @@ class ProductKitPart extends Model {
   }
 }
 
-/** KitPart data model. */
+/** 
+ * KitPart data model.
+ * @class
+ */
 class KitPart extends Model {
   /**
    * KitPart Constructor.
@@ -3185,7 +3270,10 @@ class KitPart extends Model {
   }
 }
 
-/** Category data model. */
+/** 
+ * Category data model.
+ * @class
+ */
 class Category extends Model {
   /**
    * Category Constructor.
@@ -3411,7 +3499,10 @@ const ORDER_STOCK_STATUS_UNAVAILABLE = 200;
 /** @ignore */
 const ORDER_STOCK_STATUS_PARTIAL = 201;
 
-/** Order data model. */
+/** 
+ * Order data model.
+ * @class
+ */
 class Order extends Model {
   /**
    * Order Constructor.
@@ -3535,6 +3626,32 @@ class Order extends Model {
       }
     } else {
       this.CustomField_Values = {};
+    }
+
+    if (!util.isUndefined(this.shipments) && util.isArray(this.shipments)) {
+      for (i = 0, l = this.shipments.length; i < l; i++) {
+        if (!util.isInstanceOf(this.shipments[i], OrderShipment) && util.isObject(data['shipments'][i])) {
+          this.shipments[i] = new OrderShipment(this.shipments[i]);
+        } else if (!util.isInstanceOf(this.shipments[i], OrderShipment)) {
+          throw new Error(util.format('Expected array of OrderShipment or an array of Objects but got %s',
+            typeof this.shipments[i]));
+        }
+      }
+    } else {
+      this.shipments = [];
+    }
+
+    if (!util.isUndefined(this.returns) && util.isArray(this.returns)) {
+      for (i = 0, l = this.returns.length; i < l; i++) {
+        if (!util.isInstanceOf(this.returns[i], OrderReturn) && util.isObject(data['returns'][i])) {
+          this.returns[i] = new OrderReturn(this.returns[i]);
+        } else if (!util.isInstanceOf(this.returns[i], OrderReturn)) {
+          throw new Error(util.format('Expected array of OrderReturn or an array of Objects but got %s',
+            typeof this.returns[i]));
+        }
+      }
+    } else {
+      this.returns = [];
     }
   }
 
@@ -4239,6 +4356,30 @@ class Order extends Model {
   }
   
   /**
+   * Get dt_updated.
+   * @returns {number}
+   */
+  getDtUpdated() {
+    return this.getField('dt_updated', 0);
+  }
+  
+  /**
+   * Get shipments.
+   * @returns {OrderShipment[]}
+   */
+  getShipments() {
+    return this.getField('shipments', []);
+  }
+  
+  /**
+   * Get returns.
+   * @returns {OrderReturn[]}
+   */
+  getReturns() {
+    return this.getField('returns', []);
+  }
+  
+  /**
    * @override
    */
   toObject() {
@@ -4310,6 +4451,22 @@ class Order extends Model {
       ret['CustomField_Values'] = ret['CustomField_Values'].toObject();
     }
 
+    if (util.isArray(ret['shipments'])) {
+      for (i = 0, l = ret['shipments'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['shipments'][i], OrderShipment)) {
+          ret['shipments'][i] = ret['shipments'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isArray(ret['returns'])) {
+      for (i = 0, l = ret['returns'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['returns'][i], OrderReturn)) {
+          ret['returns'][i] = ret['returns'][i].toObject();
+        }
+      }
+    }
+
     return ret;
   }
 }
@@ -4322,7 +4479,10 @@ const ORDER_SHIPMENT_STATUS_PICKING = 100;
 /** @ignore */
 const ORDER_SHIPMENT_STATUS_SHIPPED = 200;
 
-/** OrderShipment data model. */
+/** 
+ * OrderShipment data model.
+ * @class
+ */
 class OrderShipment extends Model {
   /**
    * OrderShipment Constructor.
@@ -4534,7 +4694,10 @@ class OrderShipment extends Model {
   }
 }
 
-/** OrderItemOption data model. */
+/** 
+ * OrderItemOption data model.
+ * @class
+ */
 class OrderItemOption extends Model {
   /**
    * OrderItemOption Constructor.
@@ -4825,7 +4988,10 @@ const ORDER_ITEM_STATUS_RMA_ISSUED = 500;
 /** @ignore */
 const ORDER_ITEM_STATUS_RETURNED = 600;
 
-/** OrderItem data model. */
+/** 
+ * OrderItem data model.
+ * @class
+ */
 class OrderItem extends Model {
   /**
    * OrderItem Constructor.
@@ -5428,7 +5594,10 @@ class OrderItem extends Model {
   }
 }
 
-/** OrderCharge data model. */
+/** 
+ * OrderCharge data model.
+ * @class
+ */
 class OrderCharge extends Model {
   /**
    * OrderCharge Constructor.
@@ -5581,7 +5750,10 @@ class OrderCharge extends Model {
   }
 }
 
-/** OrderCoupon data model. */
+/** 
+ * OrderCoupon data model.
+ * @class
+ */
 class OrderCoupon extends Model {
   /**
    * OrderCoupon Constructor.
@@ -5641,7 +5813,10 @@ class OrderCoupon extends Model {
   }
 }
 
-/** OrderItemDiscount data model. */
+/** 
+ * OrderItemDiscount data model.
+ * @class
+ */
 class OrderItemDiscount extends Model {
   /**
    * OrderItemDiscount Constructor.
@@ -5701,7 +5876,10 @@ class OrderItemDiscount extends Model {
   }
 }
 
-/** OrderDiscountTotal data model. */
+/** 
+ * OrderDiscountTotal data model.
+ * @class
+ */
 class OrderDiscountTotal extends Model {
   /**
    * OrderDiscountTotal Constructor.
@@ -5771,7 +5949,10 @@ const ORDER_PAYMENT_TYPE_REFUND = 6;
 /** @ignore */
 const ORDER_PAYMENT_TYPE_VOID = 7;
 
-/** OrderPayment data model. */
+/** 
+ * OrderPayment data model.
+ * @class
+ */
 class OrderPayment extends Model {
   /**
    * OrderPayment Constructor.
@@ -5991,7 +6172,10 @@ class OrderPayment extends Model {
   }
 }
 
-/** Subscription data model. */
+/** 
+ * Subscription data model.
+ * @class
+ */
 class Subscription extends Model {
   /**
    * Subscription Constructor.
@@ -5999,7 +6183,23 @@ class Subscription extends Model {
    * @returns {void}
    */
   constructor(data = {}) {
+    var i;
+    var l;
+
     super(data);
+
+    if (!util.isUndefined(this.options) && util.isArray(this.options)) {
+      for (i = 0, l = this.options.length; i < l; i++) {
+        if (!util.isInstanceOf(this.options[i], SubscriptionOption) && util.isObject(data['options'][i])) {
+          this.options[i] = new SubscriptionOption(this.options[i]);
+        } else if (!util.isInstanceOf(this.options[i], SubscriptionOption)) {
+          throw new Error(util.format('Expected array of SubscriptionOption or an array of Objects but got %s',
+            typeof this.options[i]));
+        }
+      }
+    } else {
+      this.options = [];
+    }
   }
 
   /**
@@ -6148,10 +6348,10 @@ class Subscription extends Model {
   
   /**
    * Get cncldate.
-   * @returns {string}
+   * @returns {number}
    */
   getCancelDate() {
-    return this.getField('cncldate');
+    return this.getField('cncldate', 0);
   }
   
   /**
@@ -6217,6 +6417,49 @@ class Subscription extends Model {
   getFormattedTotal() {
     return this.getField('formatted_total');
   }
+  
+  /**
+   * Get authfails.
+   * @returns {number}
+   */
+  getAuthorizationFailureCount() {
+    return this.getField('authfails', 0);
+  }
+  
+  /**
+   * Get lastafail.
+   * @returns {number}
+   */
+  getLastAuthorizationFailure() {
+    return this.getField('lastafail', 0);
+  }
+  
+  /**
+   * Get options.
+   * @returns {SubscriptionOption[]}
+   */
+  getOptions() {
+    return this.getField('options', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['options'])) {
+      for (i = 0, l = ret['options'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['options'][i], SubscriptionOption)) {
+          ret['options'][i] = ret['options'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
 }
 
 /** TERM_FREQUENCY constants. */
@@ -6243,7 +6486,10 @@ const TERM_FREQUENCY_FIXED_MONTHLY = 'fixedmonthly';
 /** @ignore */
 const TERM_FREQUENCY_DATES = 'dates';
 
-/** ProductSubscriptionTerm data model. */
+/** 
+ * ProductSubscriptionTerm data model.
+ * @class
+ */
 class ProductSubscriptionTerm extends Model {
   /**
    * ProductSubscriptionTerm Constructor.
@@ -6251,7 +6497,23 @@ class ProductSubscriptionTerm extends Model {
    * @returns {void}
    */
   constructor(data = {}) {
+    var i;
+    var l;
+
     super(data);
+
+    if (!util.isUndefined(this.dates) && util.isArray(this.dates)) {
+      for (i = 0, l = this.dates.length; i < l; i++) {
+        if (!util.isInstanceOf(this.dates[i], ProductSubscriptionTermDate) && util.isObject(data['dates'][i])) {
+          this.dates[i] = new ProductSubscriptionTermDate(this.dates[i]);
+        } else if (!util.isInstanceOf(this.dates[i], ProductSubscriptionTermDate)) {
+          throw new Error(util.format('Expected array of ProductSubscriptionTermDate or an array of Objects but got %s',
+            typeof this.dates[i]));
+        }
+      }
+    } else {
+      this.dates = [];
+    }
   }
 
   /**
@@ -6435,9 +6697,39 @@ class ProductSubscriptionTerm extends Model {
   getSubscriptionCount() {
     return this.getField('sub_count', 0);
   }
+  
+  /**
+   * Get dates.
+   * @returns {ProductSubscriptionTermDate[]}
+   */
+  getDates() {
+    return this.getField('dates', []);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var i;
+    var l;
+    var ret = Object.assign(this);
+
+    if (util.isArray(ret['dates'])) {
+      for (i = 0, l = ret['dates'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['dates'][i], ProductSubscriptionTermDate)) {
+          ret['dates'][i] = ret['dates'][i].toObject();
+        }
+      }
+    }
+
+    return ret;
+  }
 }
 
-/** OrderCustomField data model. */
+/** 
+ * OrderCustomField data model.
+ * @class
+ */
 class OrderCustomField extends Model {
   /**
    * OrderCustomField Constructor.
@@ -6529,7 +6821,10 @@ class OrderCustomField extends Model {
   }
 }
 
-/** CustomerPaymentCard data model. */
+/** 
+ * CustomerPaymentCard data model.
+ * @class
+ */
 class CustomerPaymentCard extends Model {
   /**
    * CustomerPaymentCard Constructor.
@@ -6701,7 +6996,10 @@ class CustomerPaymentCard extends Model {
   }
 }
 
-/** OrderProductAttribute data model. */
+/** 
+ * OrderProductAttribute data model.
+ * @class
+ */
 class OrderProductAttribute extends Model {
   /**
    * OrderProductAttribute Constructor.
@@ -6764,7 +7062,10 @@ class OrderProductAttribute extends Model {
   }
 }
 
-/** OrderProduct data model. */
+/** 
+ * OrderProduct data model.
+ * @class
+ */
 class OrderProduct extends Model {
   /**
    * OrderProduct Constructor.
@@ -6968,7 +7269,10 @@ class OrderProduct extends Model {
   }
 }
 
-/** ProductInventorySettings data model. */
+/** 
+ * ProductInventorySettings data model.
+ * @class
+ */
 class ProductInventorySettings extends Model {
   /**
    * ProductInventorySettings Constructor.
@@ -7100,7 +7404,10 @@ class ProductInventorySettings extends Model {
   }
 }
 
-/** ProductVariantPart data model. */
+/** 
+ * ProductVariantPart data model.
+ * @class
+ */
 class ProductVariantPart extends Model {
   /**
    * ProductVariantPart Constructor.
@@ -7160,7 +7467,10 @@ class ProductVariantPart extends Model {
   }
 }
 
-/** ProductVariantDimension data model. */
+/** 
+ * ProductVariantDimension data model.
+ * @class
+ */
 class ProductVariantDimension extends Model {
   /**
    * ProductVariantDimension Constructor.
@@ -7204,93 +7514,10 @@ class ProductVariantDimension extends Model {
   }
 }
 
-/** OrderItemSubscription data model. */
-class OrderItemSubscription extends Model {
-  /**
-   * OrderItemSubscription Constructor.
-   * @param {Object} data
-   * @returns {void}
-   */
-  constructor(data = {}) {
-    var i;
-    var l;
-
-    super(data);
-
-    if (!util.isUndefined(this.productsubscriptionterm)) {
-      if (!util.isInstanceOf(this.productsubscriptionterm, ProductSubscriptionTerm) && util.isObject(this.productsubscriptionterm)) {
-        this.productsubscriptionterm = new ProductSubscriptionTerm(this.productsubscriptionterm);
-      } else if (!util.isInstanceOf(this.productsubscriptionterm, ProductSubscriptionTerm)) {
-        throw new Error(util.format('Expected ProductSubscriptionTerm or an Object but got %s',
-          typeof this.productsubscriptionterm));
-      }
-    } else {
-      this.productsubscriptionterm = {};
-    }
-
-    if (!util.isUndefined(this.options) && util.isArray(this.options)) {
-      for (i = 0, l = this.options.length; i < l; i++) {
-        if (!util.isInstanceOf(this.options[i], SubscriptionOption) && util.isObject(data['options'][i])) {
-          this.options[i] = new SubscriptionOption(this.options[i]);
-        } else if (!util.isInstanceOf(this.options[i], SubscriptionOption)) {
-          throw new Error(util.format('Expected array of SubscriptionOption or an array of Objects but got %s',
-            typeof this.options[i]));
-        }
-      }
-    } else {
-      this.options = [];
-    }
-  }
-
-  /**
-   * Get method.
-   * @returns {string}
-   */
-  getMethod() {
-    return this.getField('method');
-  }
-  
-  /**
-   * Get productsubscriptionterm.
-   * @returns {ProductSubscriptionTerm|*}
-   */
-  getProductSubscriptionTerm() {
-    return this.getField('productsubscriptionterm', null);
-  }
-  
-  /**
-   * Get options.
-   * @returns {SubscriptionOption[]}
-   */
-  getOptions() {
-    return this.getField('options', []);
-  }
-  
-  /**
-   * @override
-   */
-  toObject() {
-    var i;
-    var l;
-    var ret = Object.assign(this);
-
-    if (util.isInstanceOf(ret['productsubscriptionterm'], ProductSubscriptionTerm)) {
-      ret['productsubscriptionterm'] = ret['productsubscriptionterm'].toObject();
-    }
-
-    if (util.isArray(ret['options'])) {
-      for (i = 0, l = ret['options'].length; i < l; i++) {
-        if (util.isInstanceOf(ret['options'][i], SubscriptionOption)) {
-          ret['options'][i] = ret['options'][i].toObject();
-        }
-      }
-    }
-
-    return ret;
-  }
-}
-
-/** SubscriptionOption data model. */
+/** 
+ * SubscriptionOption data model.
+ * @class
+ */
 class SubscriptionOption extends Model {
   /**
    * SubscriptionOption Constructor.
@@ -7334,7 +7561,10 @@ class SubscriptionOption extends Model {
   }
 }
 
-/** ProductInventoryAdjustment data model. */
+/** 
+ * ProductInventoryAdjustment data model.
+ * @class
+ */
 class ProductInventoryAdjustment extends Model {
   /**
    * ProductInventoryAdjustment Constructor.
@@ -7414,7 +7644,10 @@ class ProductInventoryAdjustment extends Model {
   }
 }
 
-/** OrderShipmentUpdate data model. */
+/** 
+ * OrderShipmentUpdate data model.
+ * @class
+ */
 class OrderShipmentUpdate extends Model {
   /**
    * OrderShipmentUpdate Constructor.
@@ -7511,7 +7744,10 @@ class OrderShipmentUpdate extends Model {
   }
 }
 
-/** ProductVariantLimit data model. */
+/** 
+ * ProductVariantLimit data model.
+ * @class
+ */
 class ProductVariantLimit extends Model {
   /**
    * ProductVariantLimit Constructor.
@@ -7574,7 +7810,10 @@ class ProductVariantLimit extends Model {
   }
 }
 
-/** ProductVariantExclusion data model. */
+/** 
+ * ProductVariantExclusion data model.
+ * @class
+ */
 class ProductVariantExclusion extends Model {
   /**
    * ProductVariantExclusion Constructor.
@@ -7637,7 +7876,10 @@ class ProductVariantExclusion extends Model {
   }
 }
 
-/** ProvisionMessage data model. */
+/** 
+ * ProvisionMessage data model.
+ * @class
+ */
 class ProvisionMessage extends Model {
   /**
    * ProvisionMessage Constructor.
@@ -7681,7 +7923,10 @@ class ProvisionMessage extends Model {
   }
 }
 
-/** CustomerAddress data model. */
+/** 
+ * CustomerAddress data model.
+ * @class
+ */
 class CustomerAddress extends Model {
   /**
    * CustomerAddress Constructor.
@@ -7821,7 +8066,10 @@ class CustomerAddress extends Model {
   }
 }
 
-/** OrderTotal data model. */
+/** 
+ * OrderTotal data model.
+ * @class
+ */
 class OrderTotal extends Model {
   /**
    * OrderTotal Constructor.
@@ -7849,7 +8097,10 @@ class OrderTotal extends Model {
   }
 }
 
-/** OrderPaymentTotal data model. */
+/** 
+ * OrderPaymentTotal data model.
+ * @class
+ */
 class OrderPaymentTotal extends Model {
   /**
    * OrderPaymentTotal Constructor.
@@ -7933,7 +8184,10 @@ class OrderPaymentTotal extends Model {
   }
 }
 
-/** PrintQueue data model. */
+/** 
+ * PrintQueue data model.
+ * @class
+ */
 class PrintQueue extends Model {
   /**
    * PrintQueue Constructor.
@@ -7961,7 +8215,10 @@ class PrintQueue extends Model {
   }
 }
 
-/** PrintQueueJob data model. */
+/** 
+ * PrintQueueJob data model.
+ * @class
+ */
 class PrintQueueJob extends Model {
   /**
    * PrintQueueJob Constructor.
@@ -8069,7 +8326,10 @@ class PrintQueueJob extends Model {
   }
 }
 
-/** PaymentMethod data model. */
+/** 
+ * PaymentMethod data model.
+ * @class
+ */
 class PaymentMethod extends Model {
   /**
    * PaymentMethod Constructor.
@@ -8199,7 +8459,10 @@ class PaymentMethod extends Model {
   }
 }
 
-/** PaymentCardType data model. */
+/** 
+ * PaymentCardType data model.
+ * @class
+ */
 class PaymentCardType extends Model {
   /**
    * PaymentCardType Constructor.
@@ -8251,7 +8514,10 @@ class PaymentCardType extends Model {
   }
 }
 
-/** OrderPaymentAuthorize data model. */
+/** 
+ * OrderPaymentAuthorize data model.
+ * @class
+ */
 class OrderPaymentAuthorize extends Model {
   /**
    * OrderPaymentAuthorize Constructor.
@@ -8335,7 +8601,10 @@ class OrderPaymentAuthorize extends Model {
   }
 }
 
-/** Branch data model. */
+/** 
+ * Branch data model.
+ * @class
+ */
 class Branch extends Model {
   /**
    * Branch Constructor.
@@ -8419,7 +8688,10 @@ class Branch extends Model {
   }
 }
 
-/** BranchTemplateVersion data model. */
+/** 
+ * BranchTemplateVersion data model.
+ * @class
+ */
 class BranchTemplateVersion extends Model {
   /**
    * BranchTemplateVersion Constructor.
@@ -8430,8 +8702,8 @@ class BranchTemplateVersion extends Model {
     super(data);
 
     if (!util.isUndefined(this.settings)) {
-      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
-        this.settings = new TemplateVersionSettings(this.settings);
+      if (!util.isInstanceOf(this.settings, VersionSettings)) {
+        this.settings = new VersionSettings(this.settings);
       }
     }
   }
@@ -8542,7 +8814,7 @@ class BranchTemplateVersion extends Model {
   
   /**
    * Get settings.
-   * @returns {TemplateVersionSettings|*}
+   * @returns {VersionSettings|*}
    */
   getSettings() {
     return this.getField('settings', null);
@@ -8554,7 +8826,7 @@ class BranchTemplateVersion extends Model {
   toObject() {
     var ret = Object.assign(this);
 
-    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+    if (util.isInstanceOf(ret['settings'], VersionSettings)) {
       ret['settings'] = ret['settings'].toObject();
     }
 
@@ -8562,10 +8834,13 @@ class BranchTemplateVersion extends Model {
   }
 }
 
-/** TemplateVersionSettings data model. */
-class TemplateVersionSettings extends Model {
+/** 
+ * VersionSettings data model.
+ * @class
+ */
+class VersionSettings extends Model {
   /**
-   * TemplateVersionSettings Constructor.
+   * VersionSettings Constructor.
    * @param {Object} data
    * @returns {void}
    */
@@ -8576,7 +8851,7 @@ class TemplateVersionSettings extends Model {
 
   /**
    * Set an items value
-   * @return {TemplateVersionSettings}
+   * @return {VersionSettings}
    */
   setItem(item, value) {
     if (!this.data || this.isObject()) {
@@ -8588,7 +8863,7 @@ class TemplateVersionSettings extends Model {
 
   /**
    * Set an items property value
-   * @return {TemplateVersionSettings}
+   * @return {VersionSettings}
    */
   setItemProperty(item, property, value) {
     if (!this.data || this.isObject()) {
@@ -8693,10 +8968,12 @@ class TemplateVersionSettings extends Model {
   toObject() {
     return this.getData();
   }
-
 }
 
-/** Changeset data model. */
+/** 
+ * Changeset data model.
+ * @class
+ */
 class Changeset extends Model {
   /**
    * Changeset Constructor.
@@ -8780,7 +9057,10 @@ class Changeset extends Model {
   }
 }
 
-/** TemplateChange data model. */
+/** 
+ * TemplateChange data model.
+ * @class
+ */
 class TemplateChange extends Model {
   /**
    * TemplateChange Constructor.
@@ -8791,8 +9071,8 @@ class TemplateChange extends Model {
     super(data);
 
     if (!util.isUndefined(this.Settings)) {
-      if (!util.isInstanceOf(this.Settings, TemplateVersionSettings)) {
-        this.Settings = new TemplateVersionSettings(this.Settings);
+      if (!util.isInstanceOf(this.Settings, VersionSettings)) {
+        this.Settings = new VersionSettings(this.Settings);
       }
     }
   }
@@ -8823,7 +9103,7 @@ class TemplateChange extends Model {
   
   /**
    * Get Settings.
-   * @returns {TemplateVersionSettings|*}
+   * @returns {VersionSettings|*}
    */
   getSettings() {
     return this.getField('Settings', null);
@@ -8866,18 +9146,18 @@ class TemplateChange extends Model {
 
   /**
    * Set Settings.
-   * @param {TemplateVersionSettings|Object} settings
+   * @param {VersionSettings|Object} settings
    * @returns {TemplateChange}
    * @throws {Error}
    */
   setSettings(settings) {
-    if (util.isInstanceOf(settings, TemplateVersionSettings) || util.isNull(settings)) {
+    if (util.isInstanceOf(settings, VersionSettings) || util.isNull(settings)) {
       return this.setField('Settings', settings);
     } else if (util.isObject(settings)) {
-      return this.setField('Settings', new TemplateVersionSettings(settings));
+      return this.setField('Settings', new VersionSettings(settings));
     }
 
-    throw new Error(util.format('Expected instance of TemplateVersionSettings, Object, or null but got %s',
+    throw new Error(util.format('Expected instance of VersionSettings, Object, or null but got %s',
       typeof settings));
   }
 
@@ -8896,7 +9176,7 @@ class TemplateChange extends Model {
   toObject() {
     var ret = Object.assign(this);
 
-    if (util.isInstanceOf(ret['Settings'], TemplateVersionSettings)) {
+    if (util.isInstanceOf(ret['Settings'], VersionSettings)) {
       ret['Settings'] = ret['Settings'].toObject();
     }
 
@@ -8904,7 +9184,10 @@ class TemplateChange extends Model {
   }
 }
 
-/** ResourceGroupChange data model. */
+/** 
+ * ResourceGroupChange data model.
+ * @class
+ */
 class ResourceGroupChange extends Model {
   /**
    * ResourceGroupChange Constructor.
@@ -8984,7 +9267,10 @@ class ResourceGroupChange extends Model {
   }
 }
 
-/** CSSResourceChange data model. */
+/** 
+ * CSSResourceChange data model.
+ * @class
+ */
 class CSSResourceChange extends Model {
   /**
    * CSSResourceChange Constructor.
@@ -9233,7 +9519,6 @@ class CSSResourceChange extends Model {
   setNotes(notes) {
     return this.setField('Notes', notes);
   }
-
   /**
    * Add a CSSResourceVersionAttribute.
    * @param {CSSResourceVersionAttribute} attribute
@@ -9273,7 +9558,10 @@ class CSSResourceChange extends Model {
   }
 }
 
-/** JavaScriptResourceChange data model. */
+/** 
+ * JavaScriptResourceChange data model.
+ * @class
+ */
 class JavaScriptResourceChange extends Model {
   /**
    * JavaScriptResourceChange Constructor.
@@ -9522,7 +9810,6 @@ class JavaScriptResourceChange extends Model {
   setNotes(notes) {
     return this.setField('Notes', notes);
   }
-
   /**
    * Add a JavaScriptResourceVersionAttribute.
    * @param {JavaScriptResourceVersionAttribute} attribute
@@ -9562,7 +9849,10 @@ class JavaScriptResourceChange extends Model {
   }
 }
 
-/** ChangesetChange data model. */
+/** 
+ * ChangesetChange data model.
+ * @class
+ */
 class ChangesetChange extends Model {
   /**
    * ChangesetChange Constructor.
@@ -9606,7 +9896,10 @@ class ChangesetChange extends Model {
   }
 }
 
-/** PropertyChange data model. */
+/** 
+ * PropertyChange data model.
+ * @class
+ */
 class PropertyChange extends Model {
   /**
    * PropertyChange Constructor.
@@ -9617,8 +9910,8 @@ class PropertyChange extends Model {
     super(data);
 
     if (!util.isUndefined(this.Settings)) {
-      if (!util.isInstanceOf(this.Settings, TemplateVersionSettings)) {
-        this.Settings = new TemplateVersionSettings(this.Settings);
+      if (!util.isInstanceOf(this.Settings, VersionSettings)) {
+        this.Settings = new VersionSettings(this.Settings);
       }
     }
   }
@@ -9705,10 +9998,26 @@ class PropertyChange extends Model {
   
   /**
    * Get Settings.
-   * @returns {TemplateVersionSettings|*}
+   * @returns {VersionSettings|*}
    */
   getSettings() {
     return this.getField('Settings', null);
+  }
+  
+  /**
+   * Get Image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.getField('Image');
+  }
+  
+  /**
+   * Get Image_ID.
+   * @returns {number}
+   */
+  getImageId() {
+    return this.getField('Image_ID', 0);
   }
   
   /**
@@ -9811,19 +10120,37 @@ class PropertyChange extends Model {
 
   /**
    * Set Settings.
-   * @param {TemplateVersionSettings|Object} settings
+   * @param {VersionSettings|Object} settings
    * @returns {PropertyChange}
    * @throws {Error}
    */
   setSettings(settings) {
-    if (util.isInstanceOf(settings, TemplateVersionSettings) || util.isNull(settings)) {
+    if (util.isInstanceOf(settings, VersionSettings) || util.isNull(settings)) {
       return this.setField('Settings', settings);
     } else if (util.isObject(settings)) {
-      return this.setField('Settings', new TemplateVersionSettings(settings));
+      return this.setField('Settings', new VersionSettings(settings));
     }
 
-    throw new Error(util.format('Expected instance of TemplateVersionSettings, Object, or null but got %s',
+    throw new Error(util.format('Expected instance of VersionSettings, Object, or null but got %s',
       typeof settings));
+  }
+
+  /**
+   * Set Image.
+   * @param {string} image
+   * @returns {PropertyChange}
+   */
+  setImage(image) {
+    return this.setField('Image', image);
+  }
+
+  /**
+   * Set Image_ID.
+   * @param {number} imageId
+   * @returns {PropertyChange}
+   */
+  setImageId(imageId) {
+    return this.setField('Image_ID', imageId);
   }
 
   /**
@@ -9841,7 +10168,7 @@ class PropertyChange extends Model {
   toObject() {
     var ret = Object.assign(this);
 
-    if (util.isInstanceOf(ret['Settings'], TemplateVersionSettings)) {
+    if (util.isInstanceOf(ret['Settings'], VersionSettings)) {
       ret['Settings'] = ret['Settings'].toObject();
     }
 
@@ -9849,7 +10176,10 @@ class PropertyChange extends Model {
   }
 }
 
-/** ChangesetTemplateVersion data model. */
+/** 
+ * ChangesetTemplateVersion data model.
+ * @class
+ */
 class ChangesetTemplateVersion extends Model {
   /**
    * ChangesetTemplateVersion Constructor.
@@ -9860,8 +10190,8 @@ class ChangesetTemplateVersion extends Model {
     super(data);
 
     if (!util.isUndefined(this.settings)) {
-      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
-        this.settings = new TemplateVersionSettings(this.settings);
+      if (!util.isInstanceOf(this.settings, VersionSettings)) {
+        this.settings = new VersionSettings(this.settings);
       }
     }
   }
@@ -9972,7 +10302,7 @@ class ChangesetTemplateVersion extends Model {
   
   /**
    * Get settings.
-   * @returns {TemplateVersionSettings|*}
+   * @returns {VersionSettings|*}
    */
   getSettings() {
     return this.getField('settings', null);
@@ -9984,7 +10314,7 @@ class ChangesetTemplateVersion extends Model {
   toObject() {
     var ret = Object.assign(this);
 
-    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+    if (util.isInstanceOf(ret['settings'], VersionSettings)) {
       ret['settings'] = ret['settings'].toObject();
     }
 
@@ -9992,7 +10322,10 @@ class ChangesetTemplateVersion extends Model {
   }
 }
 
-/** CSSResourceVersion data model. */
+/** 
+ * CSSResourceVersion data model.
+ * @class
+ */
 class CSSResourceVersion extends Model {
   /**
    * CSSResourceVersion Constructor.
@@ -10241,7 +10574,10 @@ class CSSResourceVersion extends Model {
   }
 }
 
-/** CSSResource data model. */
+/** 
+ * CSSResource data model.
+ * @class
+ */
 class CSSResource extends Model {
   /**
    * CSSResource Constructor.
@@ -10352,7 +10688,10 @@ class CSSResource extends Model {
   }
 }
 
-/** Page data model. */
+/** 
+ * Page data model.
+ * @class
+ */
 class Page extends Model {
   /**
    * Page Constructor.
@@ -10412,7 +10751,10 @@ class Page extends Model {
   }
 }
 
-/** JavaScriptResourceVersion data model. */
+/** 
+ * JavaScriptResourceVersion data model.
+ * @class
+ */
 class JavaScriptResourceVersion extends Model {
   /**
    * JavaScriptResourceVersion Constructor.
@@ -10661,7 +11003,10 @@ class JavaScriptResourceVersion extends Model {
   }
 }
 
-/** JavaScriptResource data model. */
+/** 
+ * JavaScriptResource data model.
+ * @class
+ */
 class JavaScriptResource extends Model {
   /**
    * JavaScriptResource Constructor.
@@ -10772,7 +11117,10 @@ class JavaScriptResource extends Model {
   }
 }
 
-/** ResourceAttribute data model. */
+/** 
+ * ResourceAttribute data model.
+ * @class
+ */
 class ResourceAttribute extends Model {
   /**
    * ResourceAttribute Constructor.
@@ -10818,7 +11166,10 @@ class ResourceAttribute extends Model {
   }
 }
 
-/** CustomerCreditHistory data model. */
+/** 
+ * CustomerCreditHistory data model.
+ * @class
+ */
 class CustomerCreditHistory extends Model {
   /**
    * CustomerCreditHistory Constructor.
@@ -10908,7 +11259,10 @@ const ORDER_RETURN_STATUS_ISSUED = 500;
 /** @ignore */
 const ORDER_RETURN_STATUS_RECEIVED = 600;
 
-/** OrderReturn data model. */
+/** 
+ * OrderReturn data model.
+ * @class
+ */
 class OrderReturn extends Model {
   /**
    * OrderReturn Constructor.
@@ -10988,7 +11342,10 @@ class OrderReturn extends Model {
   }
 }
 
-/** ReceivedReturn data model. */
+/** 
+ * ReceivedReturn data model.
+ * @class
+ */
 class ReceivedReturn extends Model {
   /**
    * ReceivedReturn Constructor.
@@ -11034,7 +11391,10 @@ class ReceivedReturn extends Model {
   }
 }
 
-/** PropertyVersion data model. */
+/** 
+ * PropertyVersion data model.
+ * @class
+ */
 class PropertyVersion extends Model {
   /**
    * PropertyVersion Constructor.
@@ -11045,8 +11405,8 @@ class PropertyVersion extends Model {
     super(data);
 
     if (!util.isUndefined(this.settings)) {
-      if (!util.isInstanceOf(this.settings, TemplateVersionSettings)) {
-        this.settings = new TemplateVersionSettings(this.settings);
+      if (!util.isInstanceOf(this.settings, VersionSettings)) {
+        this.settings = new VersionSettings(this.settings);
       }
     }
 
@@ -11187,7 +11547,7 @@ class PropertyVersion extends Model {
   
   /**
    * Get settings.
-   * @returns {TemplateVersionSettings|*}
+   * @returns {VersionSettings|*}
    */
   getSettings() {
     return this.getField('settings', null);
@@ -11234,12 +11594,44 @@ class PropertyVersion extends Model {
   }
   
   /**
+   * Get image_id.
+   * @returns {number}
+   */
+  getImageId() {
+    return this.getField('image_id', 0);
+  }
+  
+  /**
+   * Get image.
+   * @returns {string}
+   */
+  getImage() {
+    return this.getField('image');
+  }
+  
+  /**
+   * Get image_refcount.
+   * @returns {number}
+   */
+  getImageRefcount() {
+    return this.getField('image_refcount', 0);
+  }
+  
+  /**
+   * Get image_head_count.
+   * @returns {number}
+   */
+  getImageHeadCount() {
+    return this.getField('image_head_count', 0);
+  }
+  
+  /**
    * @override
    */
   toObject() {
     var ret = Object.assign(this);
 
-    if (util.isInstanceOf(ret['settings'], TemplateVersionSettings)) {
+    if (util.isInstanceOf(ret['settings'], VersionSettings)) {
       ret['settings'] = ret['settings'].toObject();
     }
 
@@ -11255,7 +11647,10 @@ class PropertyVersion extends Model {
   }
 }
 
-/** ResourceGroup data model. */
+/** 
+ * ResourceGroup data model.
+ * @class
+ */
 class ResourceGroup extends Model {
   /**
    * ResourceGroup Constructor.
@@ -11355,7 +11750,10 @@ class ResourceGroup extends Model {
   }
 }
 
-/** MerchantVersion data model. */
+/** 
+ * MerchantVersion data model.
+ * @class
+ */
 class MerchantVersion extends Model {
   /**
    * MerchantVersion Constructor.
@@ -11405,7 +11803,10 @@ const CACHE_TYPE_NONE = '';
 /** @ignore */
 const CACHE_TYPE_REDIS = 'redis';
 
-/** Store data model. */
+/** 
+ * Store data model.
+ * @class
+ */
 class Store extends Model {
   /**
    * Store Constructor.
@@ -11765,7 +12166,10 @@ class Store extends Model {
   }
 }
 
-/** CustomerAddressList data model. */
+/** 
+ * CustomerAddressList data model.
+ * @class
+ */
 class CustomerAddressList extends Model {
   /**
    * CustomerAddressList Constructor.
@@ -11836,7 +12240,10 @@ class CustomerAddressList extends Model {
   }
 }
 
-/** VariantAttribute data model. */
+/** 
+ * VariantAttribute data model.
+ * @class
+ */
 class VariantAttribute extends Model {
   /**
    * VariantAttribute Constructor.
@@ -11899,7 +12306,10 @@ class VariantAttribute extends Model {
   }
 }
 
-/** VariantPart data model. */
+/** 
+ * VariantPart data model.
+ * @class
+ */
 class VariantPart extends Model {
   /**
    * VariantPart Constructor.
@@ -11945,7 +12355,10 @@ class VariantPart extends Model {
   }
 }
 
-/** ImageType data model. */
+/** 
+ * ImageType data model.
+ * @class
+ */
 class ImageType extends Model {
   /**
    * ImageType Constructor.
@@ -11989,7 +12402,10 @@ const EXCLUSION_SCOPE_GROUP = 'group';
 /** @ignore */
 const EXCLUSION_SCOPE_ITEM = 'item';
 
-/** PriceGroupExclusion data model. */
+/** 
+ * PriceGroupExclusion data model.
+ * @class
+ */
 class PriceGroupExclusion extends Model {
   /**
    * PriceGroupExclusion Constructor.
@@ -12065,7 +12481,10 @@ class PriceGroupExclusion extends Model {
   }
 }
 
-/** AttributeTemplate data model. */
+/** 
+ * AttributeTemplate data model.
+ * @class
+ */
 class AttributeTemplate extends Model {
   /**
    * AttributeTemplate Constructor.
@@ -12125,7 +12544,10 @@ const TEMPLATE_ATTRIBUTE_TYPE_TEMPLATE = 'template';
 /** @ignore */
 const TEMPLATE_ATTRIBUTE_TYPE_SWATCH_SELECT = 'swatch-select';
 
-/** AttributeTemplateAttribute data model. */
+/** 
+ * AttributeTemplateAttribute data model.
+ * @class
+ */
 class AttributeTemplateAttribute extends Model {
   /**
    * AttributeTemplateAttribute Constructor.
@@ -12359,7 +12781,10 @@ class AttributeTemplateAttribute extends Model {
   }
 }
 
-/** AttributeTemplateOption data model. */
+/** 
+ * AttributeTemplateOption data model.
+ * @class
+ */
 class AttributeTemplateOption extends Model {
   /**
    * AttributeTemplateOption Constructor.
@@ -12480,7 +12905,10 @@ class AttributeTemplateOption extends Model {
   }
 }
 
-/** OrderPart data model. */
+/** 
+ * OrderPart data model.
+ * @class
+ */
 class OrderPart extends Model {
   /**
    * OrderPart Constructor.
@@ -12540,7 +12968,10 @@ class OrderPart extends Model {
   }
 }
 
-/** ProductAttributeListAttribute data model. */
+/** 
+ * ProductAttributeListAttribute data model.
+ * @class
+ */
 class ProductAttributeListAttribute extends Model {
   /**
    * ProductAttributeListAttribute Constructor.
@@ -12772,7 +13203,10 @@ class ProductAttributeListAttribute extends Model {
   }
 }
 
-/** ProductAttributeListOption data model. */
+/** 
+ * ProductAttributeListOption data model.
+ * @class
+ */
 class ProductAttributeListOption extends Model {
   /**
    * ProductAttributeListOption Constructor.
@@ -12893,7 +13327,10 @@ class ProductAttributeListOption extends Model {
   }
 }
 
-/** ProductAttributeListTemplate data model. */
+/** 
+ * ProductAttributeListTemplate data model.
+ * @class
+ */
 class ProductAttributeListTemplate extends Model {
   /**
    * ProductAttributeListTemplate Constructor.
@@ -12937,7 +13374,194 @@ class ProductAttributeListTemplate extends Model {
   }
 }
 
-/** AvailabilityGroupCustomer data model. */
+/** 
+ * ProductSubscriptionTermDate data model.
+ * @class
+ */
+class ProductSubscriptionTermDate extends Model {
+  /**
+   * ProductSubscriptionTermDate Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get subterm_id.
+   * @returns {number}
+   */
+  getSubscriptionTermId() {
+    return this.getField('subterm_id', 0);
+  }
+  
+  /**
+   * Get term_dom.
+   * @returns {number}
+   */
+  getTermDayOfMonth() {
+    return this.getField('term_dom', 0);
+  }
+  
+  /**
+   * Get term_mon.
+   * @returns {number}
+   */
+  getTermMonth() {
+    return this.getField('term_mon', 0);
+  }
+}
+
+/** 
+ * SubscriptionAttribute data model.
+ * @class
+ */
+class SubscriptionAttribute extends Model {
+  /**
+   * SubscriptionAttribute Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get code.
+   * @returns {string}
+   */
+  getCode() {
+    return this.getField('code');
+  }
+  
+  /**
+   * Get template_code.
+   * @returns {string}
+   */
+  getTemplateCode() {
+    return this.getField('template_code');
+  }
+  
+  /**
+   * Get value.
+   * @returns {string}
+   */
+  getValue() {
+    return this.getField('value');
+  }
+  
+  /**
+   * Set code.
+   * @param {string} code
+   * @returns {SubscriptionAttribute}
+   */
+  setCode(code) {
+    return this.setField('code', code);
+  }
+
+  /**
+   * Set template_code.
+   * @param {string} templateCode
+   * @returns {SubscriptionAttribute}
+   */
+  setTemplateCode(templateCode) {
+    return this.setField('template_code', templateCode);
+  }
+
+  /**
+   * Set value.
+   * @param {string} value
+   * @returns {SubscriptionAttribute}
+   */
+  setValue(value) {
+    return this.setField('value', value);
+  }
+}
+
+/** 
+ * SubscriptionShippingMethod data model.
+ * @class
+ */
+class SubscriptionShippingMethod extends Model {
+  /**
+   * SubscriptionShippingMethod Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.module)) {
+      if (!util.isInstanceOf(this.module, Module) && util.isObject(this.module)) {
+        this.module = new Module(this.module);
+      } else if (!util.isInstanceOf(this.module, Module)) {
+        throw new Error(util.format('Expected Module or an Object but got %s',
+          typeof this.module));
+      }
+    } else {
+      this.module = {};
+    }
+  }
+
+  /**
+   * Get module.
+   * @returns {Module|*}
+   */
+  getModule() {
+    return this.getField('module', null);
+  }
+  
+  /**
+   * Get method_code.
+   * @returns {string}
+   */
+  getMethodCode() {
+    return this.getField('method_code');
+  }
+  
+  /**
+   * Get method_name.
+   * @returns {string}
+   */
+  getMethodName() {
+    return this.getField('method_name');
+  }
+  
+  /**
+   * Get price.
+   * @returns {number}
+   */
+  getPrice() {
+    return this.getField('price', 0.00);
+  }
+  
+  /**
+   * Get formatted_price.
+   * @returns {string}
+   */
+  getFormattedPrice() {
+    return this.getField('formatted_price');
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['module'], Module)) {
+      ret['module'] = ret['module'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** 
+ * AvailabilityGroupCustomer data model.
+ * @class
+ */
 class AvailabilityGroupCustomer extends Customer {
   /**
    * AvailabilityGroupCustomer Constructor.
@@ -12957,7 +13581,10 @@ class AvailabilityGroupCustomer extends Customer {
   }
 }
 
-/** AvailabilityGroupCategory data model. */
+/** 
+ * AvailabilityGroupCategory data model.
+ * @class
+ */
 class AvailabilityGroupCategory extends Category {
   /**
    * AvailabilityGroupCategory Constructor.
@@ -12977,7 +13604,10 @@ class AvailabilityGroupCategory extends Category {
   }
 }
 
-/** AvailabilityGroupProduct data model. */
+/** 
+ * AvailabilityGroupProduct data model.
+ * @class
+ */
 class AvailabilityGroupProduct extends Product {
   /**
    * AvailabilityGroupProduct Constructor.
@@ -12997,7 +13627,10 @@ class AvailabilityGroupProduct extends Product {
   }
 }
 
-/** AvailabilityGroupBusinessAccount data model. */
+/** 
+ * AvailabilityGroupBusinessAccount data model.
+ * @class
+ */
 class AvailabilityGroupBusinessAccount extends BusinessAccount {
   /**
    * AvailabilityGroupBusinessAccount Constructor.
@@ -13017,7 +13650,10 @@ class AvailabilityGroupBusinessAccount extends BusinessAccount {
   }
 }
 
-/** BusinessAccountCustomer data model. */
+/** 
+ * BusinessAccountCustomer data model.
+ * @class
+ */
 class BusinessAccountCustomer extends Customer {
   /**
    * BusinessAccountCustomer Constructor.
@@ -13037,7 +13673,10 @@ class BusinessAccountCustomer extends Customer {
   }
 }
 
-/** OrderNote data model. */
+/** 
+ * OrderNote data model.
+ * @class
+ */
 class OrderNote extends Note {
   /**
    * OrderNote Constructor.
@@ -13049,7 +13688,10 @@ class OrderNote extends Note {
   }
 }
 
-/** CategoryProduct data model. */
+/** 
+ * CategoryProduct data model.
+ * @class
+ */
 class CategoryProduct extends Product {
   /**
    * CategoryProduct Constructor.
@@ -13069,7 +13711,10 @@ class CategoryProduct extends Product {
   }
 }
 
-/** AttributeTemplateProduct data model. */
+/** 
+ * AttributeTemplateProduct data model.
+ * @class
+ */
 class AttributeTemplateProduct extends Product {
   /**
    * AttributeTemplateProduct Constructor.
@@ -13089,7 +13734,10 @@ class AttributeTemplateProduct extends Product {
   }
 }
 
-/** CouponPriceGroup data model. */
+/** 
+ * CouponPriceGroup data model.
+ * @class
+ */
 class CouponPriceGroup extends PriceGroup {
   /**
    * CouponPriceGroup Constructor.
@@ -13109,7 +13757,10 @@ class CouponPriceGroup extends PriceGroup {
   }
 }
 
-/** CouponCustomer data model. */
+/** 
+ * CouponCustomer data model.
+ * @class
+ */
 class CouponCustomer extends Customer {
   /**
    * CouponCustomer Constructor.
@@ -13129,7 +13780,10 @@ class CouponCustomer extends Customer {
   }
 }
 
-/** OrderPaymentCard data model. */
+/** 
+ * OrderPaymentCard data model.
+ * @class
+ */
 class OrderPaymentCard extends CustomerPaymentCard {
   /**
    * OrderPaymentCard Constructor.
@@ -13141,7 +13795,10 @@ class OrderPaymentCard extends CustomerPaymentCard {
   }
 }
 
-/** PriceGroupCustomer data model. */
+/** 
+ * PriceGroupCustomer data model.
+ * @class
+ */
 class PriceGroupCustomer extends Customer {
   /**
    * PriceGroupCustomer Constructor.
@@ -13161,7 +13818,10 @@ class PriceGroupCustomer extends Customer {
   }
 }
 
-/** PriceGroupProduct data model. */
+/** 
+ * PriceGroupProduct data model.
+ * @class
+ */
 class PriceGroupProduct extends Product {
   /**
    * PriceGroupProduct Constructor.
@@ -13181,7 +13841,10 @@ class PriceGroupProduct extends Product {
   }
 }
 
-/** PriceGroupCategory data model. */
+/** 
+ * PriceGroupCategory data model.
+ * @class
+ */
 class PriceGroupCategory extends Category {
   /**
    * PriceGroupCategory Constructor.
@@ -13201,7 +13864,10 @@ class PriceGroupCategory extends Category {
   }
 }
 
-/** PriceGroupBusinessAccount data model. */
+/** 
+ * PriceGroupBusinessAccount data model.
+ * @class
+ */
 class PriceGroupBusinessAccount extends BusinessAccount {
   /**
    * PriceGroupBusinessAccount Constructor.
@@ -13221,7 +13887,65 @@ class PriceGroupBusinessAccount extends BusinessAccount {
   }
 }
 
-/** CustomerPriceGroup data model. */
+/** 
+ * OrderItemSubscription data model.
+ * @class
+ */
+class OrderItemSubscription extends Subscription {
+  /**
+   * OrderItemSubscription Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.productsubscriptionterm)) {
+      if (!util.isInstanceOf(this.productsubscriptionterm, ProductSubscriptionTerm) && util.isObject(this.productsubscriptionterm)) {
+        this.productsubscriptionterm = new ProductSubscriptionTerm(this.productsubscriptionterm);
+      } else if (!util.isInstanceOf(this.productsubscriptionterm, ProductSubscriptionTerm)) {
+        throw new Error(util.format('Expected ProductSubscriptionTerm or an Object but got %s',
+          typeof this.productsubscriptionterm));
+      }
+    } else {
+      this.productsubscriptionterm = {};
+    }
+  }
+
+  /**
+   * Get method.
+   * @returns {string}
+   */
+  getMethod() {
+    return this.getField('method');
+  }
+  
+  /**
+   * Get productsubscriptionterm.
+   * @returns {ProductSubscriptionTerm|*}
+   */
+  getProductSubscriptionTerm() {
+    return this.getField('productsubscriptionterm', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['productsubscriptionterm'], ProductSubscriptionTerm)) {
+      ret['productsubscriptionterm'] = ret['productsubscriptionterm'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** 
+ * CustomerPriceGroup data model.
+ * @class
+ */
 class CustomerPriceGroup extends PriceGroup {
   /**
    * CustomerPriceGroup Constructor.
@@ -13241,7 +13965,10 @@ class CustomerPriceGroup extends PriceGroup {
   }
 }
 
-/** BranchCSSResourceVersion data model. */
+/** 
+ * BranchCSSResourceVersion data model.
+ * @class
+ */
 class BranchCSSResourceVersion extends CSSResourceVersion {
   /**
    * BranchCSSResourceVersion Constructor.
@@ -13253,7 +13980,10 @@ class BranchCSSResourceVersion extends CSSResourceVersion {
   }
 }
 
-/** ChangesetCSSResourceVersion data model. */
+/** 
+ * ChangesetCSSResourceVersion data model.
+ * @class
+ */
 class ChangesetCSSResourceVersion extends CSSResourceVersion {
   /**
    * ChangesetCSSResourceVersion Constructor.
@@ -13265,7 +13995,10 @@ class ChangesetCSSResourceVersion extends CSSResourceVersion {
   }
 }
 
-/** BranchCSSResource data model. */
+/** 
+ * BranchCSSResource data model.
+ * @class
+ */
 class BranchCSSResource extends CSSResource {
   /**
    * BranchCSSResource Constructor.
@@ -13277,7 +14010,10 @@ class BranchCSSResource extends CSSResource {
   }
 }
 
-/** ChangesetCSSResource data model. */
+/** 
+ * ChangesetCSSResource data model.
+ * @class
+ */
 class ChangesetCSSResource extends CSSResource {
   /**
    * ChangesetCSSResource Constructor.
@@ -13289,7 +14025,10 @@ class ChangesetCSSResource extends CSSResource {
   }
 }
 
-/** BranchJavaScriptResourceVersion data model. */
+/** 
+ * BranchJavaScriptResourceVersion data model.
+ * @class
+ */
 class BranchJavaScriptResourceVersion extends JavaScriptResourceVersion {
   /**
    * BranchJavaScriptResourceVersion Constructor.
@@ -13301,7 +14040,10 @@ class BranchJavaScriptResourceVersion extends JavaScriptResourceVersion {
   }
 }
 
-/** ChangesetJavaScriptResourceVersion data model. */
+/** 
+ * ChangesetJavaScriptResourceVersion data model.
+ * @class
+ */
 class ChangesetJavaScriptResourceVersion extends JavaScriptResourceVersion {
   /**
    * ChangesetJavaScriptResourceVersion Constructor.
@@ -13313,7 +14055,10 @@ class ChangesetJavaScriptResourceVersion extends JavaScriptResourceVersion {
   }
 }
 
-/** CSSResourceVersionAttribute data model. */
+/** 
+ * CSSResourceVersionAttribute data model.
+ * @class
+ */
 class CSSResourceVersionAttribute extends ResourceAttribute {
   /**
    * CSSResourceVersionAttribute Constructor.
@@ -13325,7 +14070,10 @@ class CSSResourceVersionAttribute extends ResourceAttribute {
   }
 }
 
-/** CSSResourceAttribute data model. */
+/** 
+ * CSSResourceAttribute data model.
+ * @class
+ */
 class CSSResourceAttribute extends ResourceAttribute {
   /**
    * CSSResourceAttribute Constructor.
@@ -13337,7 +14085,10 @@ class CSSResourceAttribute extends ResourceAttribute {
   }
 }
 
-/** JavaScriptResourceVersionAttribute data model. */
+/** 
+ * JavaScriptResourceVersionAttribute data model.
+ * @class
+ */
 class JavaScriptResourceVersionAttribute extends ResourceAttribute {
   /**
    * JavaScriptResourceVersionAttribute Constructor.
@@ -13349,7 +14100,10 @@ class JavaScriptResourceVersionAttribute extends ResourceAttribute {
   }
 }
 
-/** JavaScriptResourceAttribute data model. */
+/** 
+ * JavaScriptResourceAttribute data model.
+ * @class
+ */
 class JavaScriptResourceAttribute extends ResourceAttribute {
   /**
    * JavaScriptResourceAttribute Constructor.
@@ -13361,7 +14115,10 @@ class JavaScriptResourceAttribute extends ResourceAttribute {
   }
 }
 
-/** OrderPriceGroup data model. */
+/** 
+ * OrderPriceGroup data model.
+ * @class
+ */
 class OrderPriceGroup extends PriceGroup {
   /**
    * OrderPriceGroup Constructor.
@@ -13381,7 +14138,10 @@ class OrderPriceGroup extends PriceGroup {
   }
 }
 
-/** BranchPropertyVersion data model. */
+/** 
+ * BranchPropertyVersion data model.
+ * @class
+ */
 class BranchPropertyVersion extends PropertyVersion {
   /**
    * BranchPropertyVersion Constructor.
@@ -13393,7 +14153,10 @@ class BranchPropertyVersion extends PropertyVersion {
   }
 }
 
-/** ChangesetPropertyVersion data model. */
+/** 
+ * ChangesetPropertyVersion data model.
+ * @class
+ */
 class ChangesetPropertyVersion extends PropertyVersion {
   /**
    * ChangesetPropertyVersion Constructor.
@@ -13402,6 +14165,500 @@ class ChangesetPropertyVersion extends PropertyVersion {
    */
   constructor(data = {}) {
     super(data);
+  }
+}
+
+/** 
+ * CustomerSubscription data model.
+ * @class
+ */
+class CustomerSubscription extends Subscription {
+  /**
+   * CustomerSubscription Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get frequency.
+   * @returns {string}
+   */
+  getFrequency() {
+    return this.getField('frequency');
+  }
+  
+  /**
+   * Get term.
+   * @returns {number}
+   */
+  getTerm() {
+    return this.getField('term', 0);
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+  
+  /**
+   * Get n.
+   * @returns {number}
+   */
+  getN() {
+    return this.getField('n', 0);
+  }
+  
+  /**
+   * Get fixed_dow.
+   * @returns {number}
+   */
+  getFixedDayOfWeek() {
+    return this.getField('fixed_dow', 0);
+  }
+  
+  /**
+   * Get fixed_dom.
+   * @returns {number}
+   */
+  getFixedDayOfMonth() {
+    return this.getField('fixed_dom', 0);
+  }
+  
+  /**
+   * Get sub_count.
+   * @returns {number}
+   */
+  getSubscriptionCount() {
+    return this.getField('sub_count', 0);
+  }
+  
+  /**
+   * Get method.
+   * @returns {string}
+   */
+  getMethod() {
+    return this.getField('method');
+  }
+  
+  /**
+   * Get product_code.
+   * @returns {string}
+   */
+  getProductCode() {
+    return this.getField('product_code');
+  }
+  
+  /**
+   * Get product_name.
+   * @returns {string}
+   */
+  getProductName() {
+    return this.getField('product_name');
+  }
+  
+  /**
+   * Get product_sku.
+   * @returns {string}
+   */
+  getProductSku() {
+    return this.getField('product_sku');
+  }
+  
+  /**
+   * Get product_price.
+   * @returns {number}
+   */
+  getProductPrice() {
+    return this.getField('product_price', 0.00);
+  }
+  
+  /**
+   * Get product_formatted_price.
+   * @returns {string}
+   */
+  getProductFormattedPrice() {
+    return this.getField('product_formatted_price');
+  }
+  
+  /**
+   * Get product_cost.
+   * @returns {number}
+   */
+  getProductCost() {
+    return this.getField('product_cost', 0.00);
+  }
+  
+  /**
+   * Get product_formatted_cost.
+   * @returns {string}
+   */
+  getProductFormattedCost() {
+    return this.getField('product_formatted_cost');
+  }
+  
+  /**
+   * Get product_weight.
+   * @returns {number}
+   */
+  getProductWeight() {
+    return this.getField('product_weight', 0.00);
+  }
+  
+  /**
+   * Get product_taxable.
+   * @returns {boolean}
+   */
+  getProductTaxable() {
+    return this.getField('product_taxable', false);
+  }
+  
+  /**
+   * Get product_thumbnail.
+   * @returns {string}
+   */
+  getProductThumbnail() {
+    return this.getField('product_thumbnail');
+  }
+  
+  /**
+   * Get product_image.
+   * @returns {string}
+   */
+  getProductImage() {
+    return this.getField('product_image');
+  }
+  
+  /**
+   * Get product_active.
+   * @returns {boolean}
+   */
+  getProductActive() {
+    return this.getField('product_active', false);
+  }
+  
+  /**
+   * Get product_dt_created.
+   * @returns {number}
+   */
+  getProductDateTimeCreated() {
+    return this.getField('product_dt_created', 0);
+  }
+  
+  /**
+   * Get product_dt_updated.
+   * @returns {number}
+   */
+  getProductDateTimeUpdated() {
+    return this.getField('product_dt_updated', 0);
+  }
+  
+  /**
+   * Get product_page_title.
+   * @returns {string}
+   */
+  getProductPageTitle() {
+    return this.getField('product_page_title');
+  }
+  
+  /**
+   * Get product_page_id.
+   * @returns {number}
+   */
+  getProductPageId() {
+    return this.getField('product_page_id', 0);
+  }
+  
+  /**
+   * Get product_page_code.
+   * @returns {string}
+   */
+  getProductPageCode() {
+    return this.getField('product_page_code');
+  }
+  
+  /**
+   * Get product_cancat_id.
+   * @returns {number}
+   */
+  getProductCanonicalCategoryId() {
+    return this.getField('product_cancat_id', 0);
+  }
+  
+  /**
+   * Get product_cancat_code.
+   * @returns {string}
+   */
+  getProductCanonicalCategoryCode() {
+    return this.getField('product_cancat_code');
+  }
+  
+  /**
+   * Get product_inventory_active.
+   * @returns {boolean}
+   */
+  getProductInventoryActive() {
+    return this.getField('product_inventory_active', false);
+  }
+  
+  /**
+   * Get product_inventory.
+   * @returns {number}
+   */
+  getProductInventory() {
+    return this.getField('product_inventory', 0);
+  }
+  
+  /**
+   * Get imagetypes.
+   * @returns {imagetypes}
+   */
+  getImageTypes() {
+    // Missing imagetypes [5]
+  }
+  
+  /**
+   * Get paymentcard_lastfour.
+   * @returns {string}
+   */
+  getPaymentCardLastFour() {
+    return this.getField('paymentcard_lastfour');
+  }
+  
+  /**
+   * Get paymentcard_type.
+   * @returns {string}
+   */
+  getPaymentCardType() {
+    return this.getField('paymentcard_type');
+  }
+  
+  /**
+   * Get address_descrip.
+   * @returns {string}
+   */
+  getAddressDescrip() {
+    return this.getField('address_descrip');
+  }
+  
+  /**
+   * Get address_fname.
+   * @returns {string}
+   */
+  getAddressFirstName() {
+    return this.getField('address_fname');
+  }
+  
+  /**
+   * Get address_lname.
+   * @returns {string}
+   */
+  getAddressLastName() {
+    return this.getField('address_lname');
+  }
+  
+  /**
+   * Get address_email.
+   * @returns {string}
+   */
+  getAddressEmail() {
+    return this.getField('address_email');
+  }
+  
+  /**
+   * Get address_comp.
+   * @returns {string}
+   */
+  getAddressCompany() {
+    return this.getField('address_comp');
+  }
+  
+  /**
+   * Get address_phone.
+   * @returns {string}
+   */
+  getAddressPhone() {
+    return this.getField('address_phone');
+  }
+  
+  /**
+   * Get address_fax.
+   * @returns {string}
+   */
+  getAddressFax() {
+    return this.getField('address_fax');
+  }
+  
+  /**
+   * Get address_addr.
+   * @returns {string}
+   */
+  getAddressAdress() {
+    return this.getField('address_addr');
+  }
+  
+  /**
+   * Get address_addr1.
+   * @returns {string}
+   */
+  getAddressAddress_1() {
+    return this.getField('address_addr1');
+  }
+  
+  /**
+   * Get address_addr2.
+   * @returns {string}
+   */
+  getAddressAddress_2() {
+    return this.getField('address_addr2');
+  }
+  
+  /**
+   * Get address_city.
+   * @returns {string}
+   */
+  getAddressCity() {
+    return this.getField('address_city');
+  }
+  
+  /**
+   * Get address_state.
+   * @returns {string}
+   */
+  getAddressState() {
+    return this.getField('address_state');
+  }
+  
+  /**
+   * Get address_zip.
+   * @returns {string}
+   */
+  getAddressZip() {
+    return this.getField('address_zip');
+  }
+  
+  /**
+   * Get address_cntry.
+   * @returns {string}
+   */
+  getAddressCountry() {
+    return this.getField('address_cntry');
+  }
+  
+  /**
+   * Get address_resdntl.
+   * @returns {boolean}
+   */
+  getAddressResidential() {
+    return this.getField('address_resdntl', false);
+  }
+  
+  /**
+   * Get customer_login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.getField('customer_login');
+  }
+  
+  /**
+   * Get customer_pw_email.
+   * @returns {string}
+   */
+  getCustomerPasswordEmail() {
+    return this.getField('customer_pw_email');
+  }
+  
+  /**
+   * Get customer_business_title.
+   * @returns {string}
+   */
+  getCustomerBusinessTitle() {
+    return this.getField('customer_business_title');
+  }
+}
+
+/** 
+ * ProductAndSubscriptionTerm data model.
+ * @class
+ */
+class ProductAndSubscriptionTerm extends Product {
+  /**
+   * ProductAndSubscriptionTerm Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get term_id.
+   * @returns {number}
+   */
+  getTermId() {
+    return this.getField('term_id', 0);
+  }
+  
+  /**
+   * Get term_frequency.
+   * @returns {string}
+   */
+  getTermFrequency() {
+    return this.getField('term_frequency');
+  }
+  
+  /**
+   * Get term_term.
+   * @returns {number}
+   */
+  getTermTerm() {
+    return this.getField('term_term', 0);
+  }
+  
+  /**
+   * Get term_descrip.
+   * @returns {string}
+   */
+  getTermDescrip() {
+    return this.getField('term_descrip');
+  }
+  
+  /**
+   * Get term_n.
+   * @returns {number}
+   */
+  getTermN() {
+    return this.getField('term_n', 0);
+  }
+  
+  /**
+   * Get term_fixed_dow.
+   * @returns {number}
+   */
+  getTermFixedDayOfWeek() {
+    return this.getField('term_fixed_dow', 0);
+  }
+  
+  /**
+   * Get term_fixed_dom.
+   * @returns {number}
+   */
+  getTermFixedDayOfMonth() {
+    return this.getField('term_fixed_dom', 0);
+  }
+  
+  /**
+   * Get term_sub_count.
+   * @returns {number}
+   */
+  getTermSubscriptionCount() {
+    return this.getField('term_sub_count', 0);
   }
 }
 
@@ -13448,7 +14705,6 @@ module.exports = {
   ProductInventorySettings,
   ProductVariantPart,
   ProductVariantDimension,
-  OrderItemSubscription,
   SubscriptionOption,
   ProductInventoryAdjustment,
   OrderShipmentUpdate,
@@ -13465,7 +14721,7 @@ module.exports = {
   OrderPaymentAuthorize,
   Branch,
   BranchTemplateVersion,
-  TemplateVersionSettings,
+  VersionSettings,
   Changeset,
   TemplateChange,
   ResourceGroupChange,
@@ -13499,6 +14755,9 @@ module.exports = {
   ProductAttributeListAttribute,
   ProductAttributeListOption,
   ProductAttributeListTemplate,
+  ProductSubscriptionTermDate,
+  SubscriptionAttribute,
+  SubscriptionShippingMethod,
   AvailabilityGroupCustomer,
   AvailabilityGroupCategory,
   AvailabilityGroupProduct,
@@ -13514,6 +14773,7 @@ module.exports = {
   PriceGroupProduct,
   PriceGroupCategory,
   PriceGroupBusinessAccount,
+  OrderItemSubscription,
   CustomerPriceGroup,
   BranchCSSResourceVersion,
   ChangesetCSSResourceVersion,
@@ -13527,5 +14787,7 @@ module.exports = {
   JavaScriptResourceAttribute,
   OrderPriceGroup,
   BranchPropertyVersion,
-  ChangesetPropertyVersion
+  ChangesetPropertyVersion,
+  CustomerSubscription,
+  ProductAndSubscriptionTerm
 };

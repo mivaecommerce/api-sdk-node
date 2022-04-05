@@ -21,7 +21,10 @@ const BINARY_ENCODING_DEFAULT = 'json';
 /** @ignore */
 const BINARY_ENCODING_BASE64 = 'base64';
 
-/** Abstract data model */
+/**
+ * Abstract data model
+ * @class
+ */
 class Model {
   /**
    * @param {object} data
@@ -76,7 +79,10 @@ class Model {
   }
 }
 
-/** Abstract request all api requests inherit from. */
+/**
+ * Abstract request all api requests inherit from.
+ * @class
+ */
 class Request {
   /**
    * Request Constructor.
@@ -280,7 +286,10 @@ class Request {
   }
 }
 
-/** Abstract response all api responses inherit from. */
+/**
+ * Abstract response all api responses inherit from.
+ * @class
+ */
 class Response {
   /**
    * Response constructor.
