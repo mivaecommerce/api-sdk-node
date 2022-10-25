@@ -28706,6 +28706,14 @@ class ProductVariantUpdate extends Request {
   }
 }
 
+/** VARIANT_PRICING_METHOD constants. */
+/** @ignore */
+const VARIANT_PRICING_METHOD_MASTER = 'master';
+/** @ignore */
+const VARIANT_PRICING_METHOD_SPECIFIC = 'specific';
+/** @ignore */
+const VARIANT_PRICING_METHOD_SUM = 'sum';
+
 /** 
  * Handles API Request ProductVariant_Generate. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productvariant_generate
@@ -28738,6 +28746,35 @@ class ProductVariantGenerate extends Request {
   }
 
   /**
+   * Constant VARIANT_PRICING_METHOD_MASTER
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_MASTER() {
+    return VARIANT_PRICING_METHOD_MASTER;
+  }
+
+  /**
+   * Constant VARIANT_PRICING_METHOD_SPECIFIC
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_SPECIFIC() {
+    return VARIANT_PRICING_METHOD_SPECIFIC;
+  }
+
+  /**
+   * Constant VARIANT_PRICING_METHOD_SUM
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_SUM() {
+    return VARIANT_PRICING_METHOD_SUM;
+  }
+  /**
    * Get Product_ID.
    * @returns {number}
    */
@@ -28763,7 +28800,7 @@ class ProductVariantGenerate extends Request {
 
   /**
    * Get Pricing_Method.
-   * @returns {number}
+   * @returns {string}
    */
   getPricingMethod() {
     return this.pricingMethod;
@@ -28801,7 +28838,7 @@ class ProductVariantGenerate extends Request {
 
   /**
    * Set Pricing_Method.
-   * @param {number} pricingMethod
+   * @param {string} pricingMethod
    * @returns {ProductVariantGenerate}
    */
   setPricingMethod(pricingMethod) {
@@ -28837,163 +28874,6 @@ class ProductVariantGenerate extends Request {
    */
   createResponse(httpResponse, data) {
     return new responses.ProductVariantGenerate(this, httpResponse, data);
-  }
-}
-
-/** 
- * Handles API Request ProductVariant_Generate_Delimiter. Scope: Store. 
- * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
- * @class
- */
-class ProductVariantGenerateDelimiter extends Request {
-  /**
-   * ProductVariantGenerateDelimiter Constructor.
-   * @param {?BaseClient} client
-   * @param {?Product} product
-   */
-  constructor(client, product = null) {
-    super(client);
-    this.function = 'ProductVariant_Generate_Delimiter';
-    this.scope = Request.REQUEST_SCOPE_STORE;
-    this.productId = null;
-    this.productCode = null;
-    this.editProduct = null;
-    this.pricingMethod = null;
-    this.delimiter = null;
-
-    if (util.isInstanceOf(product, models.Product)) {
-      if (product.getId()) {
-        this.setProductId(product.getId());
-      } else if (product.getCode()) {
-        this.setProductCode(product.getCode());
-      } else if (product.getCode()) {
-        this.setEditProduct(product.getCode());
-      }
-    }
-  }
-
-  /**
-   * Get Product_ID.
-   * @returns {number}
-   */
-  getProductId() {
-    return this.productId;
-  }
-
-  /**
-   * Get Product_Code.
-   * @returns {string}
-   */
-  getProductCode() {
-    return this.productCode;
-  }
-
-  /**
-   * Get Edit_Product.
-   * @returns {string}
-   */
-  getEditProduct() {
-    return this.editProduct;
-  }
-
-  /**
-   * Get Pricing_Method.
-   * @returns {number}
-   */
-  getPricingMethod() {
-    return this.pricingMethod;
-  }
-
-  /**
-   * Get Delimiter.
-   * @returns {string}
-   */
-  getDelimiter() {
-    return this.delimiter;
-  }
-
-  /**
-   * Set Product_ID.
-   * @param {number} productId
-   * @returns {ProductVariantGenerateDelimiter}
-   */
-  setProductId(productId) {
-    this.productId = productId;
-    return this;
-  }
-
-  /**
-   * Set Product_Code.
-   * @param {string} productCode
-   * @returns {ProductVariantGenerateDelimiter}
-   */
-  setProductCode(productCode) {
-    this.productCode = productCode;
-    return this;
-  }
-
-  /**
-   * Set Edit_Product.
-   * @param {string} editProduct
-   * @returns {ProductVariantGenerateDelimiter}
-   */
-  setEditProduct(editProduct) {
-    this.editProduct = editProduct;
-    return this;
-  }
-
-  /**
-   * Set Pricing_Method.
-   * @param {number} pricingMethod
-   * @returns {ProductVariantGenerateDelimiter}
-   */
-  setPricingMethod(pricingMethod) {
-    this.pricingMethod = pricingMethod;
-    return this;
-  }
-
-  /**
-   * Set Delimiter.
-   * @param {string} delimiter
-   * @returns {ProductVariantGenerateDelimiter}
-   */
-  setDelimiter(delimiter) {
-    this.delimiter = delimiter;
-    return this;
-  }
-
-  /**
-   * Reduce the request to a an object.
-   * @override
-   * @returns {Object}
-   */
-  toObject() {
-    var data = super.toObject();
-
-    if (!util.isNullOrUndefined(this.productId)) {
-      data['Product_ID'] = this.productId;
-    } else if (!util.isNullOrUndefined(this.productCode)) {
-      data['Product_Code'] = this.productCode;
-    } else if (!util.isNullOrUndefined(this.editProduct)) {
-      data['Edit_Product'] = this.editProduct;
-    }
-
-    data['Pricing_Method'] = this.pricingMethod;
-
-    if (!util.isNullOrUndefined(this.delimiter)) {
-      data['Delimiter'] = this.delimiter;
-    }
-
-    return data;
-  }
-
-  /**
-   * Create a response object from the response data.
-   * @override
-   * @returns {Response}
-   */
-  createResponse(httpResponse, data) {
-    return new responses.ProductVariantGenerateDelimiter(this, httpResponse, data);
   }
 }
 
@@ -29151,6 +29031,35 @@ class ProductKitGenerateVariants extends Request {
   }
 
   /**
+   * Constant VARIANT_PRICING_METHOD_MASTER
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_MASTER() {
+    return VARIANT_PRICING_METHOD_MASTER;
+  }
+
+  /**
+   * Constant VARIANT_PRICING_METHOD_SPECIFIC
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_SPECIFIC() {
+    return VARIANT_PRICING_METHOD_SPECIFIC;
+  }
+
+  /**
+   * Constant VARIANT_PRICING_METHOD_SUM
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get VARIANT_PRICING_METHOD_SUM() {
+    return VARIANT_PRICING_METHOD_SUM;
+  }
+  /**
    * Get Product_ID.
    * @returns {number}
    */
@@ -29176,7 +29085,7 @@ class ProductKitGenerateVariants extends Request {
 
   /**
    * Get Pricing_Method.
-   * @returns {number}
+   * @returns {string}
    */
   getPricingMethod() {
     return this.pricingMethod;
@@ -29214,7 +29123,7 @@ class ProductKitGenerateVariants extends Request {
 
   /**
    * Set Pricing_Method.
-   * @param {number} pricingMethod
+   * @param {string} pricingMethod
    * @returns {ProductKitGenerateVariants}
    */
   setPricingMethod(pricingMethod) {
@@ -34425,19 +34334,18 @@ class ProductAttributeAndOptionListLoadQuery extends ListQueryRequest {
 }
 
 /** 
- * Handles API Request CustomerSubscriptionList_Load_Query. Scope: Store. 
- * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * Handles API Request SubscriptionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/subscriptionlist_load_query
  * @class
  */
-class CustomerSubscriptionListLoadQuery extends ListQueryRequest {
+class SubscriptionListLoadQuery extends ListQueryRequest {
   /**
-   * CustomerSubscriptionListLoadQuery Constructor.
+   * SubscriptionListLoadQuery Constructor.
    * @param {?BaseClient} client
-   * @param {?Customer} customer
    */
-  constructor(client, customer = null) {
+  constructor(client) {
     super(client);
-    this.function = 'CustomerSubscriptionList_Load_Query';
+    this.function = 'SubscriptionList_Load_Query';
     this.scope = Request.REQUEST_SCOPE_STORE;
 
     this.availableSearchFields = [
@@ -34495,9 +34403,7 @@ class CustomerSubscriptionListLoadQuery extends ListQueryRequest {
       'address_state',
       'address_zip',
       'address_cntry',
-      'product_inventory',
-      'product_inventory_active',
-      'product_inventory'
+      'product_inventory_active'
     ];
 
     this.availableSortFields = [
@@ -34564,124 +34470,6 @@ class CustomerSubscriptionListLoadQuery extends ListQueryRequest {
       'imagetype_count',
       'product_descrip'
     ];
-    this.customerId = null;
-    this.editCustomer = null;
-    this.customerLogin = null;
-    this.customFieldValues = new models.CustomFieldValues();
-
-    if (util.isInstanceOf(customer, models.Customer)) {
-      if (customer.getId()) {
-        this.setCustomerId(customer.getId());
-      } else if (customer.getLogin()) {
-        this.setEditCustomer(customer.getLogin());
-      }
-      if (customer.getCustomFieldValues()) {
-        this.setCustomFieldValues(customer.getCustomFieldValues());
-      }
-    }
-  }
-
-  /**
-   * Get Customer_ID.
-   * @returns {number}
-   */
-  getCustomerId() {
-    return this.customerId;
-  }
-
-  /**
-   * Get Edit_Customer.
-   * @returns {string}
-   */
-  getEditCustomer() {
-    return this.editCustomer;
-  }
-
-  /**
-   * Get Customer_Login.
-   * @returns {string}
-   */
-  getCustomerLogin() {
-    return this.customerLogin;
-  }
-
-  /**
-   * Get CustomField_Values.
-   * @returns {?CustomFieldValues}
-   */
-  getCustomFieldValues() {
-    return this.customFieldValues;
-  }
-
-  /**
-   * Set Customer_ID.
-   * @param {number} customerId
-   * @returns {CustomerSubscriptionListLoadQuery}
-   */
-  setCustomerId(customerId) {
-    this.customerId = customerId;
-    return this;
-  }
-
-  /**
-   * Set Edit_Customer.
-   * @param {string} editCustomer
-   * @returns {CustomerSubscriptionListLoadQuery}
-   */
-  setEditCustomer(editCustomer) {
-    this.editCustomer = editCustomer;
-    return this;
-  }
-
-  /**
-   * Set Customer_Login.
-   * @param {string} customerLogin
-   * @returns {CustomerSubscriptionListLoadQuery}
-   */
-  setCustomerLogin(customerLogin) {
-    this.customerLogin = customerLogin;
-    return this;
-  }
-
-  /**
-   * Set CustomField_Values.
-   * @param {?CustomFieldValues} customFieldValues
-   * @throws {Error}
-   * @returns {CustomerSubscriptionListLoadQuery}
-   */
-  setCustomFieldValues(customFieldValues) {
-    if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues) && util.isObject(customFieldValues)) {
-      customFieldValues = new models.CustomFieldValues(customFieldValues);
-    } else if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues)) {
-      throw new Error(util.format('Expected instance of CustomFieldValues or an Object but got %s',
-        typeof customFieldValues));
-    }
-
-    this.customFieldValues = customFieldValues;
-    return this;
-  }
-
-  /**
-   * Reduce the request to a an object.
-   * @override
-   * @returns {Object}
-   */
-  toObject() {
-    var data = super.toObject();
-
-    if (!util.isNullOrUndefined(this.customerId)) {
-      data['Customer_ID'] = this.customerId;
-    } else if (!util.isNullOrUndefined(this.editCustomer)) {
-      data['Edit_Customer'] = this.editCustomer;
-    } else if (!util.isNullOrUndefined(this.customerLogin)) {
-      data['Customer_Login'] = this.customerLogin;
-    }
-
-    if (this.customFieldValues && util.isObject(this.customFieldValues)) {
-      data['CustomField_Values'] = this.customFieldValues.toObject();
-    }
-
-    return data;
   }
 
   /**
@@ -34690,7 +34478,7 @@ class CustomerSubscriptionListLoadQuery extends ListQueryRequest {
    * @returns {Response}
    */
   createResponse(httpResponse, data) {
-    return new responses.CustomerSubscriptionListLoadQuery(this, httpResponse, data);
+    return new responses.SubscriptionListLoadQuery(this, httpResponse, data);
   }
 }
 
@@ -40165,6 +39953,67 @@ class BusinessAccountCustomerListLoadQuery extends CustomerListLoadQuery {
 }
 
 /** 
+ * Handles API Request ProductVariant_Generate_Delimiter. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/productvariant_generate_delimiter
+ * @class
+ */
+class ProductVariantGenerateDelimiter extends ProductVariantGenerate {
+  /**
+   * ProductVariantGenerateDelimiter Constructor.
+   * @param {?BaseClient} client
+   * @param {?Product} product
+   */
+  constructor(client, product = null) {
+    super(client);
+    this.function = 'ProductVariant_Generate_Delimiter';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.delimiter = null;
+  }
+
+  /**
+   * Get Delimiter.
+   * @returns {string}
+   */
+  getDelimiter() {
+    return this.delimiter;
+  }
+
+  /**
+   * Set Delimiter.
+   * @param {string} delimiter
+   * @returns {ProductVariantGenerateDelimiter}
+   */
+  setDelimiter(delimiter) {
+    this.delimiter = delimiter;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.delimiter)) {
+      data['Delimiter'] = this.delimiter;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ProductVariantGenerateDelimiter(this, httpResponse, data);
+  }
+}
+
+/** 
  * Handles API Request RelatedProductList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/relatedproductlist_load_query
  * @class
@@ -40481,6 +40330,151 @@ class AttributeTemplateProductListLoadQuery extends ProductListLoadQuery {
 }
 
 /** 
+ * Handles API Request CustomerSubscriptionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * @class
+ */
+class CustomerSubscriptionListLoadQuery extends SubscriptionListLoadQuery {
+  /**
+   * CustomerSubscriptionListLoadQuery Constructor.
+   * @param {?BaseClient} client
+   * @param {?Customer} customer
+   */
+  constructor(client, customer = null) {
+    super(client);
+    this.function = 'CustomerSubscriptionList_Load_Query';
+    this.scope = Request.REQUEST_SCOPE_STORE;
+    this.customerId = null;
+    this.editCustomer = null;
+    this.customerLogin = null;
+    this.customFieldValues = new models.CustomFieldValues();
+
+    if (util.isInstanceOf(customer, models.Customer)) {
+      if (customer.getId()) {
+        this.setCustomerId(customer.getId());
+      } else if (customer.getLogin()) {
+        this.setEditCustomer(customer.getLogin());
+      }
+      if (customer.getCustomFieldValues()) {
+        this.setCustomFieldValues(customer.getCustomFieldValues());
+      }
+    }
+  }
+
+  /**
+   * Get Customer_ID.
+   * @returns {number}
+   */
+  getCustomerId() {
+    return this.customerId;
+  }
+
+  /**
+   * Get Edit_Customer.
+   * @returns {string}
+   */
+  getEditCustomer() {
+    return this.editCustomer;
+  }
+
+  /**
+   * Get Customer_Login.
+   * @returns {string}
+   */
+  getCustomerLogin() {
+    return this.customerLogin;
+  }
+
+  /**
+   * Get CustomField_Values.
+   * @returns {?CustomFieldValues}
+   */
+  getCustomFieldValues() {
+    return this.customFieldValues;
+  }
+
+  /**
+   * Set Customer_ID.
+   * @param {number} customerId
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomerId(customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Customer.
+   * @param {string} editCustomer
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setEditCustomer(editCustomer) {
+    this.editCustomer = editCustomer;
+    return this;
+  }
+
+  /**
+   * Set Customer_Login.
+   * @param {string} customerLogin
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomerLogin(customerLogin) {
+    this.customerLogin = customerLogin;
+    return this;
+  }
+
+  /**
+   * Set CustomField_Values.
+   * @param {?CustomFieldValues} customFieldValues
+   * @throws {Error}
+   * @returns {CustomerSubscriptionListLoadQuery}
+   */
+  setCustomFieldValues(customFieldValues) {
+    if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues) && util.isObject(customFieldValues)) {
+      customFieldValues = new models.CustomFieldValues(customFieldValues);
+    } else if (!util.isInstanceOf(customFieldValues, models.CustomFieldValues)) {
+      throw new Error(util.format('Expected instance of CustomFieldValues or an Object but got %s',
+        typeof customFieldValues));
+    }
+
+    this.customFieldValues = customFieldValues;
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {
+    var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.customerId)) {
+      data['Customer_ID'] = this.customerId;
+    } else if (!util.isNullOrUndefined(this.editCustomer)) {
+      data['Edit_Customer'] = this.editCustomer;
+    } else if (!util.isNullOrUndefined(this.customerLogin)) {
+      data['Customer_Login'] = this.customerLogin;
+    }
+
+    if (this.customFieldValues && util.isObject(this.customFieldValues)) {
+      data['CustomField_Values'] = this.customFieldValues.toObject();
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.CustomerSubscriptionListLoadQuery(this, httpResponse, data);
+  }
+}
+
+/** 
  * Handles API Request ProductAndSubscriptionTermList_Load_Query. Scope: Store. 
  * @see https://docs.miva.com/json-api/functions/productandsubscriptiontermlist_load_query
  * @class
@@ -40666,12 +40660,173 @@ class RequestBuilder extends Request
   }
 }
 
+/** 
+ * This class is a utility to create custom list query requests.
+ */
+class ListQueryRequestBuilder extends ListQueryRequest
+{
+  /**
+   * RequestBuilder Constructor.
+   * @param {?BaseClient} client
+   * @param {string} apiFunction
+   * @param {?Object} data
+   */
+  constructor(client, apiFunction, data = {}) {
+    super(client);
+    this.setScope(Request.REQUEST_SCOPE_STORE);
+    this.setFunction(apiFunction);
+
+    if (util.isObject(data)) {
+      this.data = data;
+    }
+  }
+
+  /**
+   * Set the api function name to call.
+   * @param {string} apiFunction
+   * @returns {ListQueryRequestBuilder}
+   */
+  setFunction(apiFunction) {
+    this.function = apiFunction;
+    return this;
+  }
+
+  /**
+   * Set the request scope. Use store or domain.
+   * @param {string} apiFunction
+   * @throws Error
+   * @returns {ListQueryRequestBuilder}
+   */
+  setScope(scope) {
+    if (!util.isString(scope)) {
+      throw new Error(util.format('Expected a string but got %s', typeof scope));
+    }
+
+    scope = scope.toLowerCase();
+
+    if (scope != Request.REQUEST_SCOPE_DOMAIN && scope != Request.REQUEST_SCOPE_STORE) {
+      throw new Error('Invalid Request Scope Value');
+    }
+
+    this.scope = scope;
+    return this;
+  }
+
+  /**
+   * Set a field value.
+   * @param {string} field
+   * @param {*} value
+   * @returns {ListQueryRequestBuilder}
+   */
+  set(field, value) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function') {
+      return this.setFunction(value);
+    } else if (nameLower == 'store_code') {
+      return this.setStoreCode(value);
+    }
+
+    this.data[field] = value;
+
+    return this;
+  }
+
+  /**
+   * Get a defined field value or defaultValue if it does not exist.
+   * @param {string} field
+   * @param {*} defaultValue
+   * @returns {*}
+   */
+  get(field, defaultValue = null) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function') {
+      return this.getFunction();
+    } else if (nameLower == 'store_code') {
+      return this.getStoreCode();
+    }
+
+    return field in this.data ?
+      this.data[field] : defaultValue;
+  }
+
+  /**
+   * Check if a field is defined in the request data.
+   * @param {string} field
+   * @returns {bool}
+   */
+  has(field) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function' || nameLower == 'store_code') {
+      return true;
+    }
+
+    return field in this.data;
+  }
+
+  /**
+   * Remove a field from the request data.
+   * @param {string} field
+   * @returns {ListQueryRequestBuilder}
+   */
+  remove(field) {
+    if (!util.isString(field)) {
+      throw new Error(util.format('Expected string but got %s', typeof field));
+    }
+
+    var nameLower = field.toLowerCase();
+
+    if (nameLower == 'function' || nameLower == 'store_code') {
+      return this;
+    }
+
+    if (field in this.data) {
+      delete this.data[field];
+    }
+
+    return this;
+  }
+
+  /**
+   * Reduce the request to a an object.
+   * @override
+   * @returns {Object}
+   */
+  toObject() {    
+    return Object.assign(super.toObject(), this.data);
+  }
+
+  /**
+   * Create a response object from the response data.
+   * @override
+   * @returns {Response}
+   */
+  createResponse(httpResponse, data) {
+    return new responses.ListQueryRequestBuilder(this, httpResponse, data);
+  }
+}
+
 module.exports = {
   Request,
   ListQueryRequest,
   MultiCallRequest,
   MultiCallOperation,
   RequestBuilder,
+  ListQueryRequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
   AvailabilityGroupListLoadQuery,
@@ -40832,7 +40987,6 @@ module.exports = {
   ProductVariantInsert,
   ProductVariantUpdate,
   ProductVariantGenerate,
-  ProductVariantGenerateDelimiter,
   ProductKitListLoadQuery,
   ProductKitGenerateVariants,
   ProductKitUpdateParts,
@@ -40861,7 +41015,7 @@ module.exports = {
   AttributeCopyTemplate,
   AttributeCopyLinkedTemplate,
   ProductAttributeAndOptionListLoadQuery,
-  CustomerSubscriptionListLoadQuery,
+  SubscriptionListLoadQuery,
   ProductSubscriptionTermListLoadQuery,
   SubscriptionShippingMethodListLoadQuery,
   SubscriptionInsert,
@@ -40888,7 +41042,9 @@ module.exports = {
   PriceGroupQualifyingProductListLoadQuery,
   CouponCustomerListLoadQuery,
   BusinessAccountCustomerListLoadQuery,
+  ProductVariantGenerateDelimiter,
   RelatedProductListLoadQuery,
   AttributeTemplateProductListLoadQuery,
+  CustomerSubscriptionListLoadQuery,
   ProductAndSubscriptionTermListLoadQuery
 };

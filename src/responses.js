@@ -245,6 +245,21 @@ class CategoryInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Category(this.data['data']);
+  }
+
+  /**
+   * Get category.
+   * @returns {?Category}
+   */
+  getCategory() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -381,18 +396,21 @@ class CouponInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Coupon(this.data['data']);
   }
 
   /**
-   * Get id.
-   * @returns {number}
+   * Get coupon.
+   * @returns {?Coupon}
    */
-  getId() {
-    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['id'])) {
-      return this.data['data']['id'];
-    }
-
-    return 0;
+  getCoupon() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -637,6 +655,21 @@ class NoteInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Note(this.data['data']);
+  }
+
+  /**
+   * Get note.
+   * @returns {?Note}
+   */
+  getNote() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -814,14 +847,14 @@ class OrderItemAdd extends Response {
       return;
     }
 
-    this.data['data'] = new models.OrderTotal(this.data['data']);
+    this.data['data'] = new models.OrderTotalAndItem(this.data['data']);
   }
 
   /**
-   * Get orderTotal.
-   * @returns {?OrderTotal}
+   * Get orderTotalAndItem.
+   * @returns {?OrderTotalAndItem}
    */
-  getOrderTotal() {
+  getOrderTotalAndItem() {
     return util.isNullOrUndefined(this.data['data']) ?
       {} : this.data['data'];
   }
@@ -1164,6 +1197,21 @@ class ProductImageAdd extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductImageData(this.data['data']);
+  }
+
+  /**
+   * Get productImageData.
+   * @returns {?ProductImageData}
+   */
+  getProductImageData() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -1292,6 +1340,21 @@ class ProductInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Product(this.data['data']);
+  }
+
+  /**
+   * Get product.
+   * @returns {?Product}
+   */
+  getProduct() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -1553,18 +1616,21 @@ class PrintQueueJobInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.PrintQueueJob(this.data['data']);
   }
 
   /**
-   * Get id.
-   * @returns {number}
+   * Get printQueueJob.
+   * @returns {?PrintQueueJob}
    */
-  getId() {
-    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['id'])) {
-      return this.data['data']['id'];
-    }
-
-    return 0;
+  getPrintQueueJob() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -2287,6 +2353,21 @@ class CustomerCreditHistoryInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.CustomerCreditHistory(this.data['data']);
+  }
+
+  /**
+   * Get customerCreditHistory.
+   * @returns {?CustomerCreditHistory}
+   */
+  getCustomerCreditHistory() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -2614,6 +2695,21 @@ class AttributeInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductAttribute(this.data['data']);
+  }
+
+  /**
+   * Get productAttribute.
+   * @returns {?ProductAttribute}
+   */
+  getProductAttribute() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -2719,6 +2815,21 @@ class OptionInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductOption(this.data['data']);
+  }
+
+  /**
+   * Get productOption.
+   * @returns {?ProductOption}
+   */
+  getProductOption() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -2912,6 +3023,21 @@ class CustomerAddressInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.CustomerAddress(this.data['data']);
+  }
+
+  /**
+   * Get customerAddress.
+   * @returns {?CustomerAddress}
+   */
+  getCustomerAddress() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3036,6 +3162,21 @@ class URIInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Uri(this.data['data']);
+  }
+
+  /**
+   * Get uri.
+   * @returns {?Uri}
+   */
+  getUri() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3053,6 +3194,21 @@ class ProductURIInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Uri(this.data['data']);
+  }
+
+  /**
+   * Get uri.
+   * @returns {?Uri}
+   */
+  getUri() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3070,6 +3226,21 @@ class CategoryURIInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Uri(this.data['data']);
+  }
+
+  /**
+   * Get uri.
+   * @returns {?Uri}
+   */
+  getUri() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3087,6 +3258,21 @@ class PageURIInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Uri(this.data['data']);
+  }
+
+  /**
+   * Get uri.
+   * @returns {?Uri}
+   */
+  getUri() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3104,6 +3290,21 @@ class FeedURIInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.Uri(this.data['data']);
+  }
+
+  /**
+   * Get uri.
+   * @returns {?Uri}
+   */
+  getUri() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3703,6 +3904,21 @@ class AvailabilityGroupInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.AvailabilityGroup(this.data['data']);
+  }
+
+  /**
+   * Get availabilityGroup.
+   * @returns {?AvailabilityGroup}
+   */
+  getAvailabilityGroup() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -3916,18 +4132,21 @@ class PriceGroupInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.PriceGroup(this.data['data']);
   }
 
   /**
-   * Get id.
-   * @returns {number}
+   * Get priceGroup.
+   * @returns {?PriceGroup}
    */
-  getId() {
-    if (!util.isNullOrUndefined(this.data['id'])) {
-      return this.data['id'];
-    }
-
-    return 0;
+  getPriceGroup() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4018,6 +4237,21 @@ class BusinessAccountInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.BusinessAccount(this.data['data']);
+  }
+
+  /**
+   * Get businessAccount.
+   * @returns {?BusinessAccount}
+   */
+  getBusinessAccount() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4208,30 +4442,21 @@ class ProductVariantInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.ProductVariant(this.data['data']);
   }
 
   /**
-   * Get product_id.
-   * @returns {number}
+   * Get productVariant.
+   * @returns {?ProductVariant}
    */
-  getProductId() {
-    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['product_id'])) {
-      return this.data['data']['product_id'];
-    }
-
-    return 0;
-  }
-
-  /**
-   * Get variant_id.
-   * @returns {number}
-   */
-  getVariantId() {
-    if (!util.isNullOrUndefined(this.data['data']) && !util.isNullOrUndefined(this.data['data']['variant_id'])) {
-      return this.data['data']['variant_id'];
-    }
-
-    return 0;
+  getProductVariant() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4249,30 +4474,6 @@ class ProductVariantUpdate extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
-  }
-
-  /**
-   * Get product_id.
-   * @returns {number}
-   */
-  getProductId() {
-    if (!util.isNullOrUndefined(this.data['product_id'])) {
-      return this.data['product_id'];
-    }
-
-    return 0;
-  }
-
-  /**
-   * Get variant_id.
-   * @returns {number}
-   */
-  getVariantId() {
-    if (!util.isNullOrUndefined(this.data['variant_id'])) {
-      return this.data['variant_id'];
-    }
-
-    return 0;
   }
 }
 
@@ -4699,6 +4900,21 @@ class AttributeTemplateAttributeInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.AttributeTemplateAttribute(this.data['data']);
+  }
+
+  /**
+   * Get attributeTemplateAttribute.
+   * @returns {?AttributeTemplateAttribute}
+   */
+  getAttributeTemplateAttribute() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4750,6 +4966,21 @@ class AttributeTemplateOptionInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.AttributeTemplateOption(this.data['data']);
+  }
+
+  /**
+   * Get attributeTemplateOption.
+   * @returns {?AttributeTemplateOption}
+   */
+  getAttributeTemplateOption() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4784,6 +5015,21 @@ class AttributeTemplateInsert extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.AttributeTemplate(this.data['data']);
+  }
+
+  /**
+   * Get attributeTemplate.
+   * @returns {?AttributeTemplate}
+   */
+  getAttributeTemplate() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -4963,13 +5209,13 @@ class ProductAttributeAndOptionListLoadQuery extends ListQueryResponse {
 }
 
 /** 
- * API Response for CustomerSubscriptionList_Load_Query.
- * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * API Response for SubscriptionList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/subscriptionlist_load_query
  * @class
  */
-class CustomerSubscriptionListLoadQuery extends ListQueryResponse {
+class SubscriptionListLoadQuery extends ListQueryResponse {
   /**
-   * CustomerSubscriptionListLoadQuery Constructor.
+   * SubscriptionListLoadQuery Constructor.
    * @param {Request} request
    * @param {http.IncomingMessage} httpResponse
    * @param {Object} data
@@ -4985,16 +5231,16 @@ class CustomerSubscriptionListLoadQuery extends ListQueryResponse {
 
     if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
       for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
-        this.data['data']['data'][i] = new models.CustomerSubscription(this.data['data']['data'][i]);
+        this.data['data']['data'][i] = new models.Subscription(this.data['data']['data'][i]);
       }
     }
   }
 
   /**
-   * Get customerSubscriptions.
-   * @returns {CustomerSubscription[]}
+   * Get subscriptions.
+   * @returns {Subscription[]}
    */
-  getCustomerSubscriptions() {
+  getSubscriptions() {
     return (util.isNullOrUndefined(this.data['data']) || 
       !util.isArray(this.data['data']['data'])) ?
         [] : this.data['data']['data'];
@@ -5174,30 +5420,21 @@ class SubscriptionAndOrderItemAdd extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.OrderTotalAndItem(this.data['data']);
   }
 
   /**
-   * Get total.
-   * @returns {number}
+   * Get orderTotalAndItem.
+   * @returns {?OrderTotalAndItem}
    */
-  getTotal() {
-    if (!util.isNullOrUndefined(this.data['total'])) {
-      return this.data['total'];
-    }
-
-    return 0.00;
-  }
-
-  /**
-   * Get formatted_total.
-   * @returns {string}
-   */
-  getFormattedTotal() {
-    if (!util.isNullOrUndefined(this.data['formatted_total'])) {
-      return this.data['formatted_total'];
-    }
-
-    return null;
+  getOrderTotalAndItem() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -5215,30 +5452,21 @@ class SubscriptionAndOrderItemUpdate extends Response {
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    this.data['data'] = new models.OrderTotal(this.data['data']);
   }
 
   /**
-   * Get total.
-   * @returns {number}
+   * Get orderTotal.
+   * @returns {?OrderTotal}
    */
-  getTotal() {
-    if (!util.isNullOrUndefined(this.data['total'])) {
-      return this.data['total'];
-    }
-
-    return 0.00;
-  }
-
-  /**
-   * Get formatted_total.
-   * @returns {string}
-   */
-  getFormattedTotal() {
-    if (!util.isNullOrUndefined(this.data['formatted_total'])) {
-      return this.data['formatted_total'];
-    }
-
-    return null;
+  getOrderTotal() {
+    return util.isNullOrUndefined(this.data['data']) ?
+      {} : this.data['data'];
   }
 }
 
@@ -6062,6 +6290,45 @@ class AttributeTemplateProductListLoadQuery extends ListQueryResponse {
 }
 
 /** 
+ * API Response for CustomerSubscriptionList_Load_Query.
+ * @see https://docs.miva.com/json-api/functions/customersubscriptionlist_load_query
+ * @class
+ */
+class CustomerSubscriptionListLoadQuery extends ListQueryResponse {
+  /**
+   * CustomerSubscriptionListLoadQuery Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+    var i;
+    var l;
+
+    if (!this.isSuccess()) {
+      return;
+    }
+
+    if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
+      for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
+        this.data['data']['data'][i] = new models.CustomerSubscription(this.data['data']['data'][i]);
+      }
+    }
+  }
+
+  /**
+   * Get customerSubscriptions.
+   * @returns {CustomerSubscription[]}
+   */
+  getCustomerSubscriptions() {
+    return (util.isNullOrUndefined(this.data['data']) || 
+      !util.isArray(this.data['data']['data'])) ?
+        [] : this.data['data']['data'];
+  }
+}
+
+/** 
  * API Response for ProductAndSubscriptionTermList_Load_Query.
  * @see https://docs.miva.com/json-api/functions/productandsubscriptiontermlist_load_query
  * @class
@@ -6115,11 +6382,27 @@ class RequestBuilder extends Response {
   }
 }
 
+/** 
+ * Response for ListQueryRequestBuilder.
+ */
+class ListQueryRequestBuilder extends Response {
+  /**
+   * RequestBuilder Constructor.
+   * @param {Request} request
+   * @param {http.IncomingMessage} httpResponse
+   * @param {Object} data
+   */
+  constructor(request, httpResponse, data = {}) {
+    super(request, httpResponse, data);
+  }
+}
+
 module.exports = {
   Response,
   ListQueryResponse,
   MultiCallResponse,
   RequestBuilder,
+  ListQueryRequestBuilder,
   AvailabilityGroupBusinessAccountUpdateAssigned,
   AvailabilityGroupCustomerUpdateAssigned,
   AvailabilityGroupListLoadQuery,
@@ -6309,7 +6592,7 @@ module.exports = {
   AttributeCopyTemplate,
   AttributeCopyLinkedTemplate,
   ProductAttributeAndOptionListLoadQuery,
-  CustomerSubscriptionListLoadQuery,
+  SubscriptionListLoadQuery,
   ProductSubscriptionTermListLoadQuery,
   SubscriptionShippingMethodListLoadQuery,
   SubscriptionInsert,
@@ -6338,5 +6621,6 @@ module.exports = {
   BusinessAccountCustomerListLoadQuery,
   RelatedProductListLoadQuery,
   AttributeTemplateProductListLoadQuery,
+  CustomerSubscriptionListLoadQuery,
   ProductAndSubscriptionTermListLoadQuery
 };

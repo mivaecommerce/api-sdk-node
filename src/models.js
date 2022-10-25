@@ -4705,7 +4705,23 @@ class OrderItemOption extends Model {
    * @returns {void}
    */
   constructor(data = {}) {
+    var i;
+    var l;
+
     super(data);
+
+    if (!util.isUndefined(this.discounts) && util.isArray(this.discounts)) {
+      for (i = 0, l = this.discounts.length; i < l; i++) {
+        if (!util.isInstanceOf(this.discounts[i], OrderItemOptionDiscount) && util.isObject(data['discounts'][i])) {
+          this.discounts[i] = new OrderItemOptionDiscount(this.discounts[i]);
+        } else if (!util.isInstanceOf(this.discounts[i], OrderItemOptionDiscount)) {
+          throw new Error(util.format('Expected array of OrderItemOptionDiscount or an array of Objects but got %s',
+            typeof this.discounts[i]));
+        }
+      }
+    } else {
+      this.discounts = [];
+    }
   }
 
   /**
@@ -4842,6 +4858,14 @@ class OrderItemOption extends Model {
    */
   getOptionPrompt() {
     return this.getField('opt_prompt');
+  }
+  
+  /**
+   * Get discounts.
+   * @returns {OrderItemOptionDiscount[]}
+   */
+  getDiscounts() {
+    return this.getField('discounts', []);
   }
   
   /**
@@ -5877,6 +5901,85 @@ class OrderItemDiscount extends Model {
 }
 
 /** 
+ * OrderItemOptionDiscount data model.
+ * @class
+ */
+class OrderItemOptionDiscount extends Model {
+  /**
+   * OrderItemOptionDiscount Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+  }
+
+  /**
+   * Get order_id.
+   * @returns {number}
+   */
+  getOrderId() {
+    return this.getField('order_id', 0);
+  }
+  
+  /**
+   * Get line_id.
+   * @returns {number}
+   */
+  getLineId() {
+    return this.getField('line_id', 0);
+  }
+  
+  /**
+   * Get attr_id.
+   * @returns {number}
+   */
+  getAttributeId() {
+    return this.getField('attr_id', 0);
+  }
+  
+  /**
+   * Get attmpat_id.
+   * @returns {number}
+   */
+  getAttributeTemplateAttributeId() {
+    return this.getField('attmpat_id', 0);
+  }
+  
+  /**
+   * Get pgrp_id.
+   * @returns {number}
+   */
+  getPriceGroupId() {
+    return this.getField('pgrp_id', 0);
+  }
+  
+  /**
+   * Get display.
+   * @returns {boolean}
+   */
+  getDisplay() {
+    return this.getField('display', false);
+  }
+  
+  /**
+   * Get descrip.
+   * @returns {string}
+   */
+  getDescription() {
+    return this.getField('descrip');
+  }
+  
+  /**
+   * Get discount.
+   * @returns {number}
+   */
+  getDiscount() {
+    return this.getField('discount', 0.00);
+  }
+}
+
+/** 
  * OrderDiscountTotal data model.
  * @class
  */
@@ -6117,10 +6220,10 @@ class OrderPayment extends Model {
   
   /**
    * Get expires.
-   * @returns {string}
+   * @returns {number}
    */
   getExpires() {
-    return this.getField('expires');
+    return this.getField('expires', 0);
   }
   
   /**
@@ -7783,6 +7886,30 @@ class ProductVariantLimit extends Model {
   }
   
   /**
+   * Get attr_code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.getField('attr_code');
+  }
+  
+  /**
+   * Get attmpat_code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.getField('attmpat_code');
+  }
+  
+  /**
+   * Get option_code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.getField('option_code');
+  }
+  
+  /**
    * Set attr_id.
    * @param {number} attributeId
    * @returns {ProductVariantLimit}
@@ -7807,6 +7934,33 @@ class ProductVariantLimit extends Model {
    */
   setOptionId(optionId) {
     return this.setField('option_id', optionId);
+  }
+
+  /**
+   * Set attr_code.
+   * @param {string} attributeCode
+   * @returns {ProductVariantLimit}
+   */
+  setAttributeCode(attributeCode) {
+    return this.setField('attr_code', attributeCode);
+  }
+
+  /**
+   * Set attmpat_code.
+   * @param {string} attributeTemplateCode
+   * @returns {ProductVariantLimit}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    return this.setField('attmpat_code', attributeTemplateCode);
+  }
+
+  /**
+   * Set option_code.
+   * @param {string} optionCode
+   * @returns {ProductVariantLimit}
+   */
+  setOptionCode(optionCode) {
+    return this.setField('option_code', optionCode);
   }
 }
 
@@ -7849,6 +8003,30 @@ class ProductVariantExclusion extends Model {
   }
   
   /**
+   * Get attr_code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.getField('attr_code');
+  }
+  
+  /**
+   * Get attmpat_code.
+   * @returns {string}
+   */
+  getAttributeTemplateCode() {
+    return this.getField('attmpat_code');
+  }
+  
+  /**
+   * Get option_code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.getField('option_code');
+  }
+  
+  /**
    * Set attr_id.
    * @param {number} attributeId
    * @returns {ProductVariantExclusion}
@@ -7873,6 +8051,33 @@ class ProductVariantExclusion extends Model {
    */
   setOptionId(optionId) {
     return this.setField('option_id', optionId);
+  }
+
+  /**
+   * Set attr_code.
+   * @param {string} attributeCode
+   * @returns {ProductVariantExclusion}
+   */
+  setAttributeCode(attributeCode) {
+    return this.setField('attr_code', attributeCode);
+  }
+
+  /**
+   * Set attmpat_code.
+   * @param {string} attributeTemplateCode
+   * @returns {ProductVariantExclusion}
+   */
+  setAttributeTemplateCode(attributeTemplateCode) {
+    return this.setField('attmpat_code', attributeTemplateCode);
+  }
+
+  /**
+   * Set option_code.
+   * @param {string} optionCode
+   * @returns {ProductVariantExclusion}
+   */
+  setOptionCode(optionCode) {
+    return this.setField('option_code', optionCode);
   }
 }
 
@@ -8291,14 +8496,6 @@ class PrintQueueJob extends Model {
    */
   getDateTimeCreated() {
     return this.getField('dt_created', 0);
-  }
-  
-  /**
-   * Get printqueue_descrip.
-   * @returns {string}
-   */
-  getPrintQueueDescription() {
-    return this.getField('printqueue_descrip');
   }
   
   /**
@@ -12279,6 +12476,30 @@ class VariantAttribute extends Model {
   }
   
   /**
+   * Get attr_code.
+   * @returns {string}
+   */
+  getAttributeCode() {
+    return this.getField('attr_code');
+  }
+  
+  /**
+   * Get attmpat_code.
+   * @returns {string}
+   */
+  getAttributeTemplateAttributeCode() {
+    return this.getField('attmpat_code');
+  }
+  
+  /**
+   * Get option_code.
+   * @returns {string}
+   */
+  getOptionCode() {
+    return this.getField('option_code');
+  }
+  
+  /**
    * Set attr_id.
    * @param {number} attributeId
    * @returns {VariantAttribute}
@@ -12303,6 +12524,33 @@ class VariantAttribute extends Model {
    */
   setOptionId(optionId) {
     return this.setField('option_id', optionId);
+  }
+
+  /**
+   * Set attr_code.
+   * @param {string} attributeCode
+   * @returns {VariantAttribute}
+   */
+  setAttributeCode(attributeCode) {
+    return this.setField('attr_code', attributeCode);
+  }
+
+  /**
+   * Set attmpat_code.
+   * @param {string} attributeTemplateAttributeCode
+   * @returns {VariantAttribute}
+   */
+  setAttributeTemplateAttributeCode(attributeTemplateAttributeCode) {
+    return this.setField('attmpat_code', attributeTemplateAttributeCode);
+  }
+
+  /**
+   * Set option_code.
+   * @param {string} optionCode
+   * @returns {VariantAttribute}
+   */
+  setOptionCode(optionCode) {
+    return this.setField('option_code', optionCode);
   }
 }
 
@@ -12329,6 +12577,14 @@ class VariantPart extends Model {
   }
   
   /**
+   * Get part_code.
+   * @returns {string}
+   */
+  getPartCode() {
+    return this.getField('part_code');
+  }
+  
+  /**
    * Get quantity.
    * @returns {number}
    */
@@ -12343,6 +12599,15 @@ class VariantPart extends Model {
    */
   setPartId(partId) {
     return this.setField('part_id', partId);
+  }
+
+  /**
+   * Set part_code.
+   * @param {string} partCode
+   * @returns {VariantPart}
+   */
+  setPartCode(partCode) {
+    return this.setField('part_code', partCode);
   }
 
   /**
@@ -13966,6 +14231,53 @@ class CustomerPriceGroup extends PriceGroup {
 }
 
 /** 
+ * OrderTotalAndItem data model.
+ * @class
+ */
+class OrderTotalAndItem extends OrderTotal {
+  /**
+   * OrderTotalAndItem Constructor.
+   * @param {Object} data
+   * @returns {void}
+   */
+  constructor(data = {}) {
+    super(data);
+
+    if (!util.isUndefined(this.orderitem)) {
+      if (!util.isInstanceOf(this.orderitem, OrderItem) && util.isObject(this.orderitem)) {
+        this.orderitem = new OrderItem(this.orderitem);
+      } else if (!util.isInstanceOf(this.orderitem, OrderItem)) {
+        throw new Error(util.format('Expected OrderItem or an Object but got %s',
+          typeof this.orderitem));
+      }
+    } else {
+      this.orderitem = {};
+    }
+  }
+
+  /**
+   * Get orderitem.
+   * @returns {OrderItem|*}
+   */
+  getOrderItem() {
+    return this.getField('orderitem', null);
+  }
+  
+  /**
+   * @override
+   */
+  toObject() {
+    var ret = Object.assign(this);
+
+    if (util.isInstanceOf(ret['orderitem'], OrderItem)) {
+      ret['orderitem'] = ret['orderitem'].toObject();
+    }
+
+    return ret;
+  }
+}
+
+/** 
  * BranchCSSResourceVersion data model.
  * @class
  */
@@ -14442,7 +14754,7 @@ class CustomerSubscription extends Subscription {
    * Get address_descrip.
    * @returns {string}
    */
-  getAddressDescrip() {
+  getAddressDescription() {
     return this.getField('address_descrip');
   }
   
@@ -14498,7 +14810,7 @@ class CustomerSubscription extends Subscription {
    * Get address_addr.
    * @returns {string}
    */
-  getAddressAdress() {
+  getAddressAddress() {
     return this.getField('address_addr');
   }
   
@@ -14506,7 +14818,7 @@ class CustomerSubscription extends Subscription {
    * Get address_addr1.
    * @returns {string}
    */
-  getAddressAddress_1() {
+  getAddressAddress1() {
     return this.getField('address_addr1');
   }
   
@@ -14514,7 +14826,7 @@ class CustomerSubscription extends Subscription {
    * Get address_addr2.
    * @returns {string}
    */
-  getAddressAddress_2() {
+  getAddressAddress2() {
     return this.getField('address_addr2');
   }
   
@@ -14625,7 +14937,7 @@ class ProductAndSubscriptionTerm extends Product {
    * Get term_descrip.
    * @returns {string}
    */
-  getTermDescrip() {
+  getTermDescription() {
     return this.getField('term_descrip');
   }
   
@@ -14775,6 +15087,7 @@ module.exports = {
   PriceGroupBusinessAccount,
   OrderItemSubscription,
   CustomerPriceGroup,
+  OrderTotalAndItem,
   BranchCSSResourceVersion,
   ChangesetCSSResourceVersion,
   BranchCSSResource,
