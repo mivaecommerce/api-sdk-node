@@ -51,6 +51,21 @@ class Model {
   }
 
   /**
+   * Get a timestamp field value.
+   * @param {string} field
+   * @returns {*}
+   */
+  getTimestampField(field) {
+    var value = this.getField(field)
+
+    if (util.isObject(value) && !util.isNullOrUndefined(value.time_t)) {
+      return value.time_t;
+    }
+
+    return value;
+  }
+
+  /**
    * Check if a field is defined.
    * @param {string} field
    * @returns {boolean}
