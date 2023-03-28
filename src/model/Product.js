@@ -122,6 +122,30 @@ class Product extends Model {
     } else {
       this.attributes = [];
     }
+
+    if (!util.isUndefined(this.subscriptionsettings)) {
+      if (!util.isInstanceOf(this.subscriptionsettings, models.ProductSubscriptionSettings) && util.isObject(this.subscriptionsettings)) {
+        this.subscriptionsettings = new models.ProductSubscriptionSettings(this.subscriptionsettings);
+      } else if (!util.isInstanceOf(this.subscriptionsettings, models.ProductSubscriptionSettings)) {
+        throw new Error(util.format('Expected ProductSubscriptionSettings or an Object but got %s',
+          typeof this.subscriptionsettings));
+      }
+    } else {
+      this.subscriptionsettings = {};
+    }
+
+    if (!util.isUndefined(this.subscriptionterms) && util.isArray(this.subscriptionterms)) {
+      for (i = 0, l = this.subscriptionterms.length; i < l; i++) {
+        if (!util.isInstanceOf(this.subscriptionterms[i], models.ProductSubscriptionTerm) && util.isObject(data['subscriptionterms'][i])) {
+          this.subscriptionterms[i] = new models.ProductSubscriptionTerm(this.subscriptionterms[i]);
+        } else if (!util.isInstanceOf(this.subscriptionterms[i], models.ProductSubscriptionTerm)) {
+          throw new Error(util.format('Expected array of ProductSubscriptionTerm or an array of Objects but got %s',
+            typeof this.subscriptionterms[i]));
+        }
+      }
+    } else {
+      this.subscriptionterms = [];
+    }
   }
 
   /**
@@ -389,6 +413,22 @@ class Product extends Model {
   }
   
   /**
+   * Get subscriptionsettings.
+   * @returns {ProductSubscriptionSettings|*}
+   */
+  getSubscriptionSettings() {
+    return this.getField('subscriptionsettings', null);
+  }
+  
+  /**
+   * Get subscriptionterms.
+   * @returns {ProductSubscriptionTerm[]}
+   */
+  getSubscriptionTerms() {
+    return this.getField('subscriptionterms', []);
+  }
+  
+  /**
    * @override
    */
   toObject() {
@@ -444,6 +484,18 @@ class Product extends Model {
       for (i = 0, l = ret['attributes'].length; i < l; i++) {
         if (util.isInstanceOf(ret['attributes'][i], models.ProductAttribute)) {
           ret['attributes'][i] = ret['attributes'][i].toObject();
+        }
+      }
+    }
+
+    if (util.isInstanceOf(ret['subscriptionsettings'], models.ProductSubscriptionSettings)) {
+      ret['subscriptionsettings'] = ret['subscriptionsettings'].toObject();
+    }
+
+    if (util.isArray(ret['subscriptionterms'])) {
+      for (i = 0, l = ret['subscriptionterms'].length; i < l; i++) {
+        if (util.isInstanceOf(ret['subscriptionterms'][i], models.ProductSubscriptionTerm)) {
+          ret['subscriptionterms'][i] = ret['subscriptionterms'][i].toObject();
         }
       }
     }

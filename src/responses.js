@@ -216,6 +216,24 @@ const { PageInsert } = require('./response/PageInsert');
 const { PageUpdate } = require('./response/PageUpdate');
 const { PageDelete } = require('./response/PageDelete');
 const { PageCopy } = require('./response/PageCopy');
+const { PageListLoadQuery } = require('./response/PageListLoadQuery');
+const { CSSResourceListLoadQuery } = require('./response/CSSResourceListLoadQuery');
+const { JavaScriptResourceListLoadQuery } = require('./response/JavaScriptResourceListLoadQuery');
+const { CopyPageRulesListLoadQuery } = require('./response/CopyPageRulesListLoadQuery');
+const { CopyPageRulesInsert } = require('./response/CopyPageRulesInsert');
+const { CopyPageRulesUpdate } = require('./response/CopyPageRulesUpdate');
+const { CopyPageRulesListDelete } = require('./response/CopyPageRulesListDelete');
+const { CopyPageRulesSettingsListLoadQuery } = require('./response/CopyPageRulesSettingsListLoadQuery');
+const { CopyPageRulesSettingsUpdateAssigned } = require('./response/CopyPageRulesSettingsUpdateAssigned');
+const { ProductCopy } = require('./response/ProductCopy');
+const { CopyProductRulesInsert } = require('./response/CopyProductRulesInsert');
+const { CopyProductRulesUpdate } = require('./response/CopyProductRulesUpdate');
+const { CopyProductRulesListDelete } = require('./response/CopyProductRulesListDelete');
+const { CopyProductRulesListLoadQuery } = require('./response/CopyProductRulesListLoadQuery');
+const { CopyProductRulesModuleListLoadQuery } = require('./response/CopyProductRulesModuleListLoadQuery');
+const { CopyProductRulesModuleUpdateAssigned } = require('./response/CopyProductRulesModuleUpdateAssigned');
+const { CopyProductRulesCustomFieldListLoadQuery } = require('./response/CopyProductRulesCustomFieldListLoadQuery');
+const { CopyProductRulesCustomFieldUpdateAssigned } = require('./response/CopyProductRulesCustomFieldUpdateAssigned');
 const { CategoryProductListLoadQuery } = require('./response/CategoryProductListLoadQuery');
 const { CouponPriceGroupListLoadQuery } = require('./response/CouponPriceGroupListLoadQuery');
 const { PriceGroupCustomerListLoadQuery } = require('./response/PriceGroupCustomerListLoadQuery');
@@ -456,6 +474,24 @@ module.exports = {
   PageUpdate,
   PageDelete,
   PageCopy,
+  PageListLoadQuery,
+  CSSResourceListLoadQuery,
+  JavaScriptResourceListLoadQuery,
+  CopyPageRulesListLoadQuery,
+  CopyPageRulesInsert,
+  CopyPageRulesUpdate,
+  CopyPageRulesListDelete,
+  CopyPageRulesSettingsListLoadQuery,
+  CopyPageRulesSettingsUpdateAssigned,
+  ProductCopy,
+  CopyProductRulesInsert,
+  CopyProductRulesUpdate,
+  CopyProductRulesListDelete,
+  CopyProductRulesListLoadQuery,
+  CopyProductRulesModuleListLoadQuery,
+  CopyProductRulesModuleUpdateAssigned,
+  CopyProductRulesCustomFieldListLoadQuery,
+  CopyProductRulesCustomFieldUpdateAssigned,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,

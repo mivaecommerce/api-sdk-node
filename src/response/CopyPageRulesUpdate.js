@@ -10,35 +10,20 @@ const models = require('./../models');
 const { Response }  = require('./../abstract');
 
 /** 
- * API Response for CSSResource_Insert.
- * @see https://docs.miva.com/json-api/functions/cssresource_insert
+ * API Response for CopyPageRules_Update.
+ * @see https://docs.miva.com/json-api/functions/copypagerules_update
  * @class
  */
-class CSSResourceInsert extends Response {
+class CopyPageRulesUpdate extends Response {
   /**
-   * CSSResourceInsert Constructor.
+   * CopyPageRulesUpdate Constructor.
    * @param {Request} request
    * @param {http.IncomingMessage} httpResponse
    * @param {Object} data
    */
   constructor(request, httpResponse, data = {}) {
     super(request, httpResponse, data);
-
-    if (!this.isSuccess()) {
-      return;
-    }
-
-    this.data['data'] = new models.CSSResource(this.data['data']);
-  }
-
-  /**
-   * Get CSSResource.
-   * @returns {?CSSResource}
-   */
-  getCSSResource() {
-    return util.isNullOrUndefined(this.data['data']) ?
-      {} : this.data['data'];
   }
 }
 
-module.exports.CSSResourceInsert = CSSResourceInsert;
+module.exports.CopyPageRulesUpdate = CopyPageRulesUpdate;

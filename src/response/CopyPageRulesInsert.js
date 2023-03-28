@@ -10,13 +10,13 @@ const models = require('./../models');
 const { Response }  = require('./../abstract');
 
 /** 
- * API Response for JavaScriptResource_Insert.
- * @see https://docs.miva.com/json-api/functions/javascriptresource_insert
+ * API Response for CopyPageRules_Insert.
+ * @see https://docs.miva.com/json-api/functions/copypagerules_insert
  * @class
  */
-class JavaScriptResourceInsert extends Response {
+class CopyPageRulesInsert extends Response {
   /**
-   * JavaScriptResourceInsert Constructor.
+   * CopyPageRulesInsert Constructor.
    * @param {Request} request
    * @param {http.IncomingMessage} httpResponse
    * @param {Object} data
@@ -28,17 +28,17 @@ class JavaScriptResourceInsert extends Response {
       return;
     }
 
-    this.data['data'] = new models.JavaScriptResource(this.data['data']);
+    this.data['data'] = new models.CopyPageRule(this.data['data']);
   }
 
   /**
-   * Get javaScriptResource.
-   * @returns {?JavaScriptResource}
+   * Get copyPageRule.
+   * @returns {?CopyPageRule}
    */
-  getJavaScriptResource() {
+  getCopyPageRule() {
     return util.isNullOrUndefined(this.data['data']) ?
       {} : this.data['data'];
   }
 }
 
-module.exports.JavaScriptResourceInsert = JavaScriptResourceInsert;
+module.exports.CopyPageRulesInsert = CopyPageRulesInsert;

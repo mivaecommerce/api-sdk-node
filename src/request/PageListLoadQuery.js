@@ -55,16 +55,14 @@ class PageListLoadQuery extends ListQueryRequest {
       'uris'
     ];
     this.branchId = null;
-    this.editBranch = null;
     this.branchName = null;
+    this.editBranch = null;
 
     if (util.isInstanceOf(branch, models.Branch)) {
-      if (branch.get()) {
-        this.setBranchId(branch.get());
-      } else if (branch.get()) {
-        this.setEditBranch(branch.get());
-      } else if (branch.get()) {
-        this.setBranchName(branch.get());
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      } else if (branch.getName()) {
+        this.setEditBranch(branch.getName());
       }
     }
   }
@@ -78,19 +76,19 @@ class PageListLoadQuery extends ListQueryRequest {
   }
 
   /**
-   * Get Edit_Branch.
-   * @returns {string}
-   */
-  getEditBranch() {
-    return this.editBranch;
-  }
-
-  /**
    * Get Branch_Name.
    * @returns {string}
    */
   getBranchName() {
     return this.branchName;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
   }
 
   /**
@@ -100,16 +98,6 @@ class PageListLoadQuery extends ListQueryRequest {
    */
   setBranchId(branchId) {
     this.branchId = branchId;
-    return this;
-  }
-
-  /**
-   * Set Edit_Branch.
-   * @param {string} editBranch
-   * @returns {PageListLoadQuery}
-   */
-  setEditBranch(editBranch) {
-    this.editBranch = editBranch;
     return this;
   }
 
@@ -124,6 +112,16 @@ class PageListLoadQuery extends ListQueryRequest {
   }
 
   /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {PageListLoadQuery}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
@@ -133,10 +131,10 @@ class PageListLoadQuery extends ListQueryRequest {
 
     if (!util.isNullOrUndefined(this.branchId)) {
       data['Branch_ID'] = this.branchId;
-    } else if (!util.isNullOrUndefined(this.editBranch)) {
-      data['Edit_Branch'] = this.editBranch;
     } else if (!util.isNullOrUndefined(this.branchName)) {
       data['Branch_Name'] = this.branchName;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
     }
 
     return data;

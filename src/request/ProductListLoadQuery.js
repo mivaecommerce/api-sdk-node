@@ -89,7 +89,9 @@ class ProductListLoadQuery extends ListQueryRequest {
       'productshippingrules',
       'relatedproducts',
       'uris',
-      'url'
+      'url',
+      'subscriptionsettings',
+      'subscriptionterms'
     ];
 
     this.availableCustomFilters = {
