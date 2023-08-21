@@ -469,6 +469,14 @@ class OrderItem extends Model {
   }
   
   /**
+   * Get group_id.
+   * @returns {number}
+   */
+  getGroupId() {
+    return this.getField('group_id', 0);
+  }
+  
+  /**
    * Set code.
    * @param {string} code
    * @returns {OrderItem}

@@ -153,7 +153,8 @@ class OrderListLoadQuery extends ListQueryRequest {
       'notes',
       'parts',
       'shipments',
-      'returns'
+      'returns',
+      'payment_data'
     ];
 
     this.availableCustomFilters = {

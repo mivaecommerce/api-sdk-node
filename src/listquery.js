@@ -753,18 +753,7 @@ class FilterExpression {
    * @throws {Error}
    */
   andX(expression) {
-    if (!util.isInstanceOf(expression, FilterExpression)) {
-      throw new Error('Expecting an instance of FilterExpression');
-    }
-
-    expression.setParent(this);
-
-    this.expressions.push({
-        type  : FILTER_SEARCH_AND,
-        entry : expression
-    });
-
-    return this;
+    return this.subX(FILTER_SEARCH_AND, expression);
   }
 
   /**
@@ -774,6 +763,17 @@ class FilterExpression {
    * @throws {Error}
    */
   orX(expression) {
+    return this.subX(FILTER_SEARCH_OR, expression);
+  }
+
+  /**
+   * Add a sub expression.
+   * @param {string} type
+   * @param {FilterExpression} expression
+   * @returns {FilterExpression}
+   * @throws {Error}
+   */
+  subX(type, expression) {
     if (!util.isInstanceOf(expression, FilterExpression)) {
       throw new Error('Expecting an instance of FilterExpression');
     }
@@ -781,7 +781,7 @@ class FilterExpression {
     expression.setParent(this);
 
     this.expressions.push({
-        type  : FILTER_SEARCH_OR,
+        type  : type,
         entry : expression
     });
 
@@ -1235,46 +1235,56 @@ class FilterExpression {
    * @returns {Array}
    */
   toArray() {
-    var i;
-    var l;
+    if (this.isChild()) {
+      return this._toArray();
+    }
+
+    return [
+        {
+          name: FILTER_SEARCH,
+          value: this._toArray()
+        }
+    ];
+
+    return ret;
+  }
+
+  _toArray() {
+    var i, l, entry;
     var entry;
     var ret = [];
+    var lastType = null;
 
     for (i = 0, l = this.expressions.length; i < l; i++) {
-        entry = {};
+      entry = {};
 
       if (util.isInstanceOf(this.expressions[i]['entry'], FilterExpression)) {
         entry = {
-          name  : this.expressions[i]['type'],
-          value : this.expressions[i]['entry'].toArray()
+          field:     this.expressions[i]['type'],
+          operator:  OPERATOR_SUBWHERE,
+          value:     this.expressions[i]['entry'].toArray()
+        };
+      } else if (this.isChild() || (lastType != null && this.expressions[i]['type'] != lastType)) {
+        entry = {
+          field:    this.expressions[i]['type'],
+          operator: OPERATOR_SUBWHERE,
+          value:
+          [
+            {
+              field:    this.expressions[i]['entry'].getLeft(),
+              operator: this.expressions[i]['entry'].getOperator(),
+              value:    util.isArray(this.expressions[i]['entry'].getRight()) ? this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
+            }
+          ]
         };
       } else {
-        if (this.isChild()) {
-          entry = {
-              field: this.expressions[i]['type'],
-              operator: 'SUBWHERE',
-              value: [
-                {
-                  field     : this.expressions[i]['entry'].getLeft(),
-                  operator  : this.expressions[i]['entry'].getOperator(),
-                  value     : util.isArray(this.expressions[i]['entry'].getRight()) ?
-                    this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
-                },
-              ]
-          };
-        } else {
-          entry = {
-            name  : this.expressions[i]['type'],
-            value : [
-              {
-                field     : this.expressions[i]['entry'].getLeft(),
-                operator  : this.expressions[i]['entry'].getOperator(),
-                value     : util.isArray(this.expressions[i]['entry'].getRight()) ?
-                  this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
-              }
-            ]
-          };
-        }
+        lastType = this.expressions[i]['type'];
+
+        entry = {
+          field:    this.expressions[i]['entry'].getLeft(),
+          operator: this.expressions[i]['entry'].getOperator(),
+          value:    util.isArray(this.expressions[i]['entry'].getRight()) ? this.expressions[i]['entry'].getRight().join(',') : this.expressions[i]['entry'].getRight()
+        };
       }
 
       ret.push(entry);

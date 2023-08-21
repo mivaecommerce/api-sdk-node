@@ -30,6 +30,8 @@ class JavaScriptResourceInsert extends Request {
     this.javaScriptResourceActive = null;
     this.javaScriptResourceFilePath = null;
     this.javaScriptResourceAttributes = [];
+    this.javaScriptResourceModuleCode = null;
+    this.javaScriptResourceModuleData = null;
   }
 
   /**
@@ -78,6 +80,22 @@ class JavaScriptResourceInsert extends Request {
    */
   getJavaScriptResourceAttributes() {
     return this.javaScriptResourceAttributes;
+  }
+
+  /**
+   * Get JavaScriptResource_Module_Code.
+   * @returns {string}
+   */
+  getJavaScriptResourceModuleCode() {
+    return this.javaScriptResourceModuleCode;
+  }
+
+  /**
+   * Get JavaScriptResource_Module_Data.
+   * @returns {string}
+   */
+  getJavaScriptResourceModuleData() {
+    return this.javaScriptResourceModuleData;
   }
 
   /**
@@ -154,6 +172,26 @@ class JavaScriptResourceInsert extends Request {
     }
 
     this.javaScriptResourceAttributes = javaScriptResourceAttributes;
+    return this;
+  }
+
+  /**
+   * Set JavaScriptResource_Module_Code.
+   * @param {string} javaScriptResourceModuleCode
+   * @returns {JavaScriptResourceInsert}
+   */
+  setJavaScriptResourceModuleCode(javaScriptResourceModuleCode) {
+    this.javaScriptResourceModuleCode = javaScriptResourceModuleCode;
+    return this;
+  }
+
+  /**
+   * Set JavaScriptResource_Module_Data.
+   * @param {string} javaScriptResourceModuleData
+   * @returns {JavaScriptResourceInsert}
+   */
+  setJavaScriptResourceModuleData(javaScriptResourceModuleData) {
+    this.javaScriptResourceModuleData = javaScriptResourceModuleData;
     return this;
   }
 
@@ -237,6 +275,14 @@ class JavaScriptResourceInsert extends Request {
             data['JavaScriptResource_Attributes'].push(this.javaScriptResourceAttributes[i].toObject());
         }
       }
+    }
+
+    if (!util.isNullOrUndefined(this.javaScriptResourceModuleCode)) {
+      data['JavaScriptResource_Module_Code'] = this.javaScriptResourceModuleCode;
+    }
+
+    if (!util.isNullOrUndefined(this.javaScriptResourceModuleData)) {
+      data['JavaScriptResource_Module_Data'] = this.javaScriptResourceModuleData;
     }
 
     return data;

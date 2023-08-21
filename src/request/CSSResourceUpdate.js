@@ -32,6 +32,8 @@ class CSSResourceUpdate extends Request {
     this.CSSResourceActive = null;
     this.CSSResourceFilePath = null;
     this.CSSResourceAttributes = [];
+    this.CSSResourceModuleCode = null;
+    this.CSSResourceModuleData = null;
 
     if (util.isInstanceOf(CSSResource, models.CSSResource)) {
       if (CSSResource.getId()) {
@@ -98,6 +100,22 @@ class CSSResourceUpdate extends Request {
    */
   getCSSResourceAttributes() {
     return this.CSSResourceAttributes;
+  }
+
+  /**
+   * Get CSSResource_Module_Code.
+   * @returns {string}
+   */
+  getCSSResourceModuleCode() {
+    return this.CSSResourceModuleCode;
+  }
+
+  /**
+   * Get CSSResource_Module_Data.
+   * @returns {string}
+   */
+  getCSSResourceModuleData() {
+    return this.CSSResourceModuleData;
   }
 
   /**
@@ -184,6 +202,26 @@ class CSSResourceUpdate extends Request {
     }
 
     this.CSSResourceAttributes = CSSResourceAttributes;
+    return this;
+  }
+
+  /**
+   * Set CSSResource_Module_Code.
+   * @param {string} CSSResourceModuleCode
+   * @returns {CSSResourceUpdate}
+   */
+  setCSSResourceModuleCode(CSSResourceModuleCode) {
+    this.CSSResourceModuleCode = CSSResourceModuleCode;
+    return this;
+  }
+
+  /**
+   * Set CSSResource_Module_Data.
+   * @param {string} CSSResourceModuleData
+   * @returns {CSSResourceUpdate}
+   */
+  setCSSResourceModuleData(CSSResourceModuleData) {
+    this.CSSResourceModuleData = CSSResourceModuleData;
     return this;
   }
 
@@ -275,6 +313,14 @@ class CSSResourceUpdate extends Request {
             data['CSSResource_Attributes'].push(this.CSSResourceAttributes[i].toObject());
         }
       }
+    }
+
+    if (!util.isNullOrUndefined(this.CSSResourceModuleCode)) {
+      data['CSSResource_Module_Code'] = this.CSSResourceModuleCode;
+    }
+
+    if (!util.isNullOrUndefined(this.CSSResourceModuleData)) {
+      data['CSSResource_Module_Data'] = this.CSSResourceModuleData;
     }
 
     return data;

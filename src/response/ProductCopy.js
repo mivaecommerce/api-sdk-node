@@ -28,9 +28,7 @@ class ProductCopy extends Response {
       return;
     }
 
-    if (!util.isNullOrUndefined(this.data['data'])) {
-      this.data['data'] = new models.Product(this.data['data']);
-    }    
+    this.data['data'] = new models.Product(this.data['data']);
   }
 
   /**
@@ -63,7 +61,7 @@ class ProductCopy extends Response {
    */
   getProduct() {
     return util.isNullOrUndefined(this.data['data']) ?
-      null : this.data['data'];
+      {} : this.data['data'];
   }
 }
 

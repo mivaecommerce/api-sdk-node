@@ -375,6 +375,22 @@ class Store extends Model {
   getRedisExpiration() {
     return this.getField('redisex', 0);
   }
+  
+  /**
+   * Get boxpack_id.
+   * @returns {number}
+   */
+  getBoxPackingId() {
+    return this.getField('boxpack_id', 0);
+  }
+  
+  /**
+   * Get addrval_id.
+   * @returns {number}
+   */
+  getAddressValidationId() {
+    return this.getField('addrval_id', 0);
+  }
 }
 
 module.exports.Store = Store;

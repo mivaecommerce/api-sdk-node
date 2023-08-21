@@ -30,15 +30,22 @@ class ChangesetChangeListLoadQuery extends ListQueryRequest {
     this.availableSearchFields = [
       'item_type',
       'item_id',
+      'item_user_id',
+      'item_user_name',
+      'item_user_icon',
       'item_version_id',
-      'item_identifier'
+      'item_identifier',
+      'item_change_type'
     ];
 
     this.availableSortFields = [
       'item_type',
       'item_id',
+      'item_user_id',
+      'item_user_name',
       'item_version_id',
-      'item_identifier'
+      'item_identifier',
+      'item_change_type'
     ];
 
     this.changesetId = null;

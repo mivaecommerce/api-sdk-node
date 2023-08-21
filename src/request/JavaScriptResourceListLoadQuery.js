@@ -31,7 +31,9 @@ class JavaScriptResourceListLoadQuery extends ListQueryRequest {
       'type',
       'is_global',
       'active',
-      'file'
+      'file',
+      'mod_code',
+      'mod_data'
     ];
 
     this.availableSortFields = [
@@ -40,7 +42,9 @@ class JavaScriptResourceListLoadQuery extends ListQueryRequest {
       'type',
       'is_global',
       'active',
-      'file'
+      'file',
+      'mod_code',
+      'mod_data'
     ];
   }
 

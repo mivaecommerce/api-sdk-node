@@ -171,6 +171,14 @@ class Category extends Model {
   }
   
   /**
+   * Get url.
+   * @returns {string}
+   */
+  getUrl() {
+    return this.getField('url');
+  }
+  
+  /**
    * Get CustomField_Values.
    * @returns {CustomFieldValues|*}
    */

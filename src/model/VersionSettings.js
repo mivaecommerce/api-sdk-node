@@ -6,21 +6,20 @@
  */
 
 const util = require('./../util');
-const { Model } = require('./../abstract');
+const { VariableValue } = require('./VariableValue');
 
 /** 
  * VersionSettings data model.
  * @class
  */
-class VersionSettings extends Model {
+class VersionSettings extends VariableValue {
   /**
    * VersionSettings Constructor.
    * @param {Object} data
    * @returns {void}
    */
   constructor(data = {}) {
-    super({});
-    this.data = data;
+    super(data);
   }
 
   /**
@@ -49,30 +48,6 @@ class VersionSettings extends Model {
     }
 
     return this;
-  }
-
-  /**
-   * Check if the underlying data is a scalar value
-   * @return {bool}
-   */
-  isScalar() {
-    return !util.isArray(this.data) && !util.isObject(this.data);
-  }
-
-  /**
-   * Check if the underlying data is an array
-   * @return {bool}
-   */
-  isArray() {
-    return util.isArray(this.data);
-  }
-
-  /**
-   * Check if the underlying data is an object
-   * @return {bool}
-   */
-  isObject() {
-    return util.isObject(this.data);
   }
 
   /**
@@ -125,22 +100,6 @@ class VersionSettings extends Model {
     }
 
     return null;
-  }
-
-  /**
-   * Get the underlying data.
-   * @return {*}
-   */
-  getData() {
-    return this.data;
-  }
-
-  /**
-   * Get the data for the request.
-   * @return {Object}
-   */
-  toObject() {
-    return this.getData();
   }
 }
 

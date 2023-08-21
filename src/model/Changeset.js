@@ -80,7 +80,7 @@ class Changeset extends Model {
   
   /**
    * Get tags.
-   * @returns {array}
+   * @returns {Array}
    */
   getTags() {
     return this.getField('tags', []);

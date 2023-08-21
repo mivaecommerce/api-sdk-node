@@ -35,6 +35,7 @@ class ChangesetCreate extends Request {
     this.CSSResourceChanges = [];
     this.javaScriptResourceChanges = [];
     this.propertyChanges = [];
+    this.moduleChanges = [];
 
     if (util.isInstanceOf(branch, models.Branch)) {
       if (branch.getId()) {
@@ -123,6 +124,14 @@ class ChangesetCreate extends Request {
    */
   getPropertyChanges() {
     return this.propertyChanges;
+  }
+
+  /**
+   * Get Module_Changes.
+   * @returns {ModuleChange[]}
+   */
+  getModuleChanges() {
+    return this.moduleChanges;
   }
 
   /**
@@ -307,6 +316,33 @@ class ChangesetCreate extends Request {
     }
 
     this.propertyChanges = propertyChanges;
+    return this;
+  }
+
+  /**
+   * Set Module_Changes.
+   * @param {ModuleChange[]} moduleChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  setModuleChanges(moduleChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(moduleChanges)) {
+      throw new Error(util.format('Expected an array but got %s', typeof moduleChanges));
+    }
+
+    for (i = 0, l = moduleChanges.length; i < l; i++) {
+      if (!util.isInstanceOf(moduleChanges[i], models.ModuleChange) && util.isObject(moduleChanges[i])) {
+        moduleChanges[i] = new models.ModuleChange(moduleChanges[i]);
+      } else if (!util.isInstanceOf(moduleChanges[i], models.ModuleChange)) {
+        throw new Error(util.format('Expected instance of ModuleChange or an Object but got %s',
+          typeof moduleChanges[i]));
+      }
+    }
+
+    this.moduleChanges = moduleChanges;
     return this;
   }
 
@@ -551,6 +587,54 @@ class ChangesetCreate extends Request {
   }
 
   /**
+   * Add Module_Changes.
+   * @param {ModuleChange} moduleChange
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addModuleChange(moduleChange) {
+    if (util.isInstanceOf(moduleChange, models.ModuleChange)) {
+      this.moduleChanges.push(moduleChange);
+    } else if (util.isObject(moduleChange)) {
+      this.moduleChanges.push(new models.ModuleChange(moduleChange));
+    } else {
+      throw new Error(util.format('Expected instance of ModuleChange or Object but got %s',
+        typeof moduleChange));
+    }
+
+    return this;
+  }
+
+  /**
+   * Add many ModuleChange.
+   * @param {ModuleChange[]} moduleChanges
+   * @throws {Error}
+   * @returns {ChangesetCreate}
+   */
+  addModuleChanges(moduleChanges) {
+    var i;
+    var l;
+
+    if (!util.isArray(moduleChanges)) {
+      throw new Error(util.format('Expecting an array of ModuleChange but got %s',
+        typeof moduleChanges));
+    }
+
+    for (i = 0, l = moduleChanges.length; i < l; i++) {
+      if (util.isInstanceOf(moduleChanges[i], models.ModuleChange)) {
+        this.moduleChanges.push(moduleChanges[i]);
+      } else if (util.isObject(moduleChanges[i])) {
+        this.moduleChanges.push(new models.ModuleChange(moduleChanges[i]));
+      } else {
+        throw new Error(util.format('Expected array of ModuleChange or an array of Object but got %s',
+          typeof moduleChanges[i]));
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
@@ -626,6 +710,16 @@ class ChangesetCreate extends Request {
       for (i = 0, l = this.propertyChanges.length; i < l; i++) {
         if (util.isObject(this.propertyChanges[i])) {
             data['Property_Changes'].push(this.propertyChanges[i].toObject());
+        }
+      }
+    }
+
+    if (util.isArray(this.moduleChanges)) {
+      data['Module_Changes'] = [];
+
+      for (i = 0, l = this.moduleChanges.length; i < l; i++) {
+        if (util.isObject(this.moduleChanges[i])) {
+            data['Module_Changes'].push(this.moduleChanges[i].toObject());
         }
       }
     }

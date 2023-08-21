@@ -59,7 +59,8 @@ class CategoryListLoadQuery extends ListQueryRequest {
     ];
 
     this.availableOnDemandColumns = [
-      'uris'
+      'uris',
+      'url'
     ];
 
     this.availableCustomFilters = {

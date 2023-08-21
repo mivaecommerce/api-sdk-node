@@ -39,6 +39,30 @@ class ChangesetChange extends Model {
   }
   
   /**
+   * Get item_user_id.
+   * @returns {number}
+   */
+  getItemUserId() {
+    return this.getField('item_user_id', 0);
+  }
+  
+  /**
+   * Get item_user_name.
+   * @returns {string}
+   */
+  getItemUserName() {
+    return this.getField('item_user_name');
+  }
+  
+  /**
+   * Get item_user_icon.
+   * @returns {string}
+   */
+  getItemUserIcon() {
+    return this.getField('item_user_icon');
+  }
+  
+  /**
    * Get item_version_id.
    * @returns {number}
    */
@@ -52,6 +76,14 @@ class ChangesetChange extends Model {
    */
   getItemIdentifier() {
     return this.getField('item_identifier');
+  }
+  
+  /**
+   * Get item_change_type.
+   * @returns {string}
+   */
+  getItemChangeType() {
+    return this.getField('item_change_type');
   }
 }
 

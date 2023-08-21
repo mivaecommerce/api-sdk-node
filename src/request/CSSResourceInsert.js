@@ -30,6 +30,8 @@ class CSSResourceInsert extends Request {
     this.CSSResourceActive = null;
     this.CSSResourceFilePath = null;
     this.CSSResourceAttributes = [];
+    this.CSSResourceModuleCode = null;
+    this.CSSResourceModuleData = null;
   }
 
   /**
@@ -78,6 +80,22 @@ class CSSResourceInsert extends Request {
    */
   getCSSResourceAttributes() {
     return this.CSSResourceAttributes;
+  }
+
+  /**
+   * Get CSSResource_Module_Code.
+   * @returns {string}
+   */
+  getCSSResourceModuleCode() {
+    return this.CSSResourceModuleCode;
+  }
+
+  /**
+   * Get CSSResource_Module_Data.
+   * @returns {string}
+   */
+  getCSSResourceModuleData() {
+    return this.CSSResourceModuleData;
   }
 
   /**
@@ -154,6 +172,26 @@ class CSSResourceInsert extends Request {
     }
 
     this.CSSResourceAttributes = CSSResourceAttributes;
+    return this;
+  }
+
+  /**
+   * Set CSSResource_Module_Code.
+   * @param {string} CSSResourceModuleCode
+   * @returns {CSSResourceInsert}
+   */
+  setCSSResourceModuleCode(CSSResourceModuleCode) {
+    this.CSSResourceModuleCode = CSSResourceModuleCode;
+    return this;
+  }
+
+  /**
+   * Set CSSResource_Module_Data.
+   * @param {string} CSSResourceModuleData
+   * @returns {CSSResourceInsert}
+   */
+  setCSSResourceModuleData(CSSResourceModuleData) {
+    this.CSSResourceModuleData = CSSResourceModuleData;
     return this;
   }
 
@@ -237,6 +275,14 @@ class CSSResourceInsert extends Request {
             data['CSSResource_Attributes'].push(this.CSSResourceAttributes[i].toObject());
         }
       }
+    }
+
+    if (!util.isNullOrUndefined(this.CSSResourceModuleCode)) {
+      data['CSSResource_Module_Code'] = this.CSSResourceModuleCode;
+    }
+
+    if (!util.isNullOrUndefined(this.CSSResourceModuleData)) {
+      data['CSSResource_Module_Data'] = this.CSSResourceModuleData;
     }
 
     return data;

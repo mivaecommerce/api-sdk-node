@@ -18,6 +18,12 @@ const RESOURCE_TYPE_INLINE = 'I';
 const RESOURCE_TYPE_EXTERNAL = 'E';
 /** @ignore */
 const RESOURCE_TYPE_LOCAL = 'L';
+/** @ignore */
+const RESOURCE_TYPE_MODULE = 'M';
+/** @ignore */
+const RESOURCE_TYPE_MODULE_INLINE = 'Y';
+/** @ignore */
+const RESOURCE_TYPE_MODULE_MANAGED = 'Z';
 
 /** 
  * CSSResource data model.
@@ -90,6 +96,36 @@ class CSSResource extends Model {
   }
 
   /**
+   * Constant RESOURCE_TYPE_MODULE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get RESOURCE_TYPE_MODULE() {
+    return RESOURCE_TYPE_MODULE;
+  }
+
+  /**
+   * Constant RESOURCE_TYPE_MODULE_INLINE
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get RESOURCE_TYPE_MODULE_INLINE() {
+    return RESOURCE_TYPE_MODULE_INLINE;
+  }
+
+  /**
+   * Constant RESOURCE_TYPE_MODULE_MANAGED
+   * @returns {string}
+   * @const
+   * @static
+   */
+  static get RESOURCE_TYPE_MODULE_MANAGED() {
+    return RESOURCE_TYPE_MODULE_MANAGED;
+  }
+
+  /**
    * Get id.
    * @returns {number}
    */
@@ -151,6 +187,22 @@ class CSSResource extends Model {
    */
   getAttributes() {
     return this.getField('attributes', []);
+  }
+  
+  /**
+   * Get mod_code.
+   * @returns {string}
+   */
+  getModuleCode() {
+    return this.getField('mod_code');
+  }
+  
+  /**
+   * Get mod_data.
+   * @returns {string}
+   */
+  getModuleData() {
+    return this.getField('mod_data');
   }
   
   /**

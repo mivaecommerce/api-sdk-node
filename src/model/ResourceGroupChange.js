@@ -40,7 +40,7 @@ class ResourceGroupChange extends Model {
   
   /**
    * Get LinkedCSSResources.
-   * @returns {array}
+   * @returns {Array}
    */
   getLinkedCSSResources() {
     return this.getField('LinkedCSSResources', []);
@@ -48,7 +48,7 @@ class ResourceGroupChange extends Model {
   
   /**
    * Get LinkedJavaScriptResources.
-   * @returns {array}
+   * @returns {Array}
    */
   getLinkedJavaScriptResources() {
     return this.getField('LinkedJavaScriptResources', []);

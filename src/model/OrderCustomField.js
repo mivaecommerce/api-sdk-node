@@ -84,7 +84,7 @@ class OrderCustomField extends Model {
   
   /**
    * Get choices.
-   * @returns {array}
+   * @returns {Array}
    */
   getChoices() {
     return this.getField('choices', []);

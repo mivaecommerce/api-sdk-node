@@ -237,6 +237,7 @@ const { CopyProductRulesModuleListLoadQuery } = require('./request/CopyProductRu
 const { CopyProductRulesModuleUpdateAssigned } = require('./request/CopyProductRulesModuleUpdateAssigned');
 const { CopyProductRulesCustomFieldListLoadQuery } = require('./request/CopyProductRulesCustomFieldListLoadQuery');
 const { CopyProductRulesCustomFieldUpdateAssigned } = require('./request/CopyProductRulesCustomFieldUpdateAssigned');
+const { OrderListArchive } = require('./request/OrderListArchive');
 const { CategoryProductListLoadQuery } = require('./request/CategoryProductListLoadQuery');
 const { CouponPriceGroupListLoadQuery } = require('./request/CouponPriceGroupListLoadQuery');
 const { PriceGroupCustomerListLoadQuery } = require('./request/PriceGroupCustomerListLoadQuery');
@@ -496,6 +497,7 @@ module.exports = {
   CopyProductRulesModuleUpdateAssigned,
   CopyProductRulesCustomFieldListLoadQuery,
   CopyProductRulesCustomFieldUpdateAssigned,
+  OrderListArchive,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,

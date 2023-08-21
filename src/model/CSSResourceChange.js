@@ -105,7 +105,7 @@ class CSSResourceChange extends Model {
   
   /**
    * Get LinkedPages.
-   * @returns {array}
+   * @returns {Array}
    */
   getLinkedPages() {
     return this.getField('LinkedPages', []);
@@ -113,7 +113,7 @@ class CSSResourceChange extends Model {
   
   /**
    * Get LinkedResources.
-   * @returns {array}
+   * @returns {Array}
    */
   getLinkedResources() {
     return this.getField('LinkedResources', []);
