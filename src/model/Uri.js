@@ -181,6 +181,14 @@ class Uri extends Model {
   }
   
   /**
+   * Get page_code.
+   * @returns {string}
+   */
+  getPageCode() {
+    return this.getField('page_code');
+  }
+  
+  /**
    * Get cat_id.
    * @returns {number}
    */

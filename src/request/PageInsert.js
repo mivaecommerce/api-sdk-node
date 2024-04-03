@@ -34,6 +34,9 @@ class PageInsert extends Request {
     this.changesetNotes = null;
     this.pageUri = null;
     this.customFieldValues = new models.CustomFieldValues();
+    this.branchId = null;
+    this.editBranch = null;
+    this.branchName = null;
   }
 
   /**
@@ -114,6 +117,30 @@ class PageInsert extends Request {
    */
   getCustomFieldValues() {
     return this.customFieldValues;
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
   }
 
   /**
@@ -225,12 +252,50 @@ class PageInsert extends Request {
   }
 
   /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {PageInsert}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {PageInsert}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {PageInsert}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
    */
   toObject() {
     var data = super.toObject();
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
+    }
 
     data['Page_Code'] = this.pageCode;
 

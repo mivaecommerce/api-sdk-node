@@ -325,6 +325,14 @@ class Product extends Model {
   }
   
   /**
+   * Get page_id.
+   * @returns {number}
+   */
+  getPageId() {
+    return this.getField('page_id', 0);
+  }
+  
+  /**
    * Get page_code.
    * @returns {string}
    */

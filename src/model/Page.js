@@ -247,6 +247,14 @@ class Page extends Model {
   }
   
   /**
+   * Get version_id.
+   * @returns {number}
+   */
+  getVersionId() {
+    return this.getField('version_id', 0);
+  }
+  
+  /**
    * @override
    */
   toObject() {

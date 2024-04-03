@@ -1,3 +1,17 @@
+v2.6.0
+	New Functions:
+			BranchPageVersionList_Load_Query [MMAPI-267]
+			BranchItemVersionList_Load_Query [MMAPI-293]
+			ChangesetItemVersionList_Load_Query [MMAPI-298]
+			Page_Copy_Branch [MMAPI-303]
+			ProductShippingRules_Update [MMAPI-315]
+			ProductVariantPricing_Update [MMAPI-320]
+			CouponBusinessAccountList_Load_Query [MMAPI-288]
+			CouponBusinessAccount_Update_Assigned [MMAPI-288]
+	MMAPI-272 - Add support for branch loaders on page related functions
+	MMAPI-277 - New field version_id on Page object
+	MMAPI-283 - New field page_id on Product model
+	MMAPI-308 - New field priority on Module object
 v2.5.0
 	New Functions:
 		OrderListArchive [MMAPI-249]

@@ -110,6 +110,10 @@ const { CopyProductRule } = require('./model/CopyProductRule')
 const { CopyProductRulesModule } = require('./model/CopyProductRulesModule')
 const { CopyProductRulesCustomField } = require('./model/CopyProductRulesCustomField')
 const { ProductSubscriptionSettings } = require('./model/ProductSubscriptionSettings')
+const { BranchItemVersion } = require('./model/BranchItemVersion')
+const { ChangesetItemVersion } = require('./model/ChangesetItemVersion')
+const { BranchPageVersion } = require('./model/BranchPageVersion')
+const { ShippingRuleMethod } = require('./model/ShippingRuleMethod')
 const { AvailabilityGroupCustomer } = require('./model/AvailabilityGroupCustomer')
 const { AvailabilityGroupCategory } = require('./model/AvailabilityGroupCategory')
 const { AvailabilityGroupProduct } = require('./model/AvailabilityGroupProduct')
@@ -145,6 +149,7 @@ const { ChangesetPropertyVersion } = require('./model/ChangesetPropertyVersion')
 const { CustomerSubscription } = require('./model/CustomerSubscription')
 const { ProductAndSubscriptionTerm } = require('./model/ProductAndSubscriptionTerm')
 const { AllOrderPayment } = require('./model/AllOrderPayment')
+const { CouponBusinessAccount } = require('./model/CouponBusinessAccount')
 
 /**
  * Prevent circular dependency/load errors by assigning members to the existing
@@ -256,6 +261,10 @@ module.exports.CopyProductRule = CopyProductRule;
 module.exports.CopyProductRulesModule = CopyProductRulesModule;
 module.exports.CopyProductRulesCustomField = CopyProductRulesCustomField;
 module.exports.ProductSubscriptionSettings = ProductSubscriptionSettings;
+module.exports.BranchItemVersion = BranchItemVersion;
+module.exports.ChangesetItemVersion = ChangesetItemVersion;
+module.exports.BranchPageVersion = BranchPageVersion;
+module.exports.ShippingRuleMethod = ShippingRuleMethod;
 module.exports.AvailabilityGroupCustomer = AvailabilityGroupCustomer;
 module.exports.AvailabilityGroupCategory = AvailabilityGroupCategory;
 module.exports.AvailabilityGroupProduct = AvailabilityGroupProduct;
@@ -291,3 +300,4 @@ module.exports.ChangesetPropertyVersion = ChangesetPropertyVersion;
 module.exports.CustomerSubscription = CustomerSubscription;
 module.exports.ProductAndSubscriptionTerm = ProductAndSubscriptionTerm;
 module.exports.AllOrderPayment = AllOrderPayment;
+module.exports.CouponBusinessAccount = CouponBusinessAccount;

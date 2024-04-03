@@ -35,6 +35,9 @@ class PageUpdate extends Request {
     this.changesetNotes = null;
     this.pageUri = null;
     this.customFieldValues = new models.CustomFieldValues();
+    this.branchId = null;
+    this.editBranch = null;
+    this.branchName = null;
 
     if (util.isInstanceOf(page, models.Page)) {
       if (page.getId()) {
@@ -129,6 +132,30 @@ class PageUpdate extends Request {
    */
   getCustomFieldValues() {
     return this.customFieldValues;
+  }
+
+  /**
+   * Get Branch_ID.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.branchId;
+  }
+
+  /**
+   * Get Edit_Branch.
+   * @returns {string}
+   */
+  getEditBranch() {
+    return this.editBranch;
+  }
+
+  /**
+   * Get Branch_Name.
+   * @returns {string}
+   */
+  getBranchName() {
+    return this.branchName;
   }
 
   /**
@@ -240,6 +267,36 @@ class PageUpdate extends Request {
   }
 
   /**
+   * Set Branch_ID.
+   * @param {number} branchId
+   * @returns {PageUpdate}
+   */
+  setBranchId(branchId) {
+    this.branchId = branchId;
+    return this;
+  }
+
+  /**
+   * Set Edit_Branch.
+   * @param {string} editBranch
+   * @returns {PageUpdate}
+   */
+  setEditBranch(editBranch) {
+    this.editBranch = editBranch;
+    return this;
+  }
+
+  /**
+   * Set Branch_Name.
+   * @param {string} branchName
+   * @returns {PageUpdate}
+   */
+  setBranchName(branchName) {
+    this.branchName = branchName;
+    return this;
+  }
+
+  /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
@@ -253,6 +310,14 @@ class PageUpdate extends Request {
       data['Edit_Page'] = this.editPage;
     } else if (!util.isNullOrUndefined(this.pageCode)) {
       data['Page_Code'] = this.pageCode;
+    }
+
+    if (!util.isNullOrUndefined(this.branchId)) {
+      data['Branch_ID'] = this.branchId;
+    } else if (!util.isNullOrUndefined(this.editBranch)) {
+      data['Edit_Branch'] = this.editBranch;
+    } else if (!util.isNullOrUndefined(this.branchName)) {
+      data['Branch_Name'] = this.branchName;
     }
 
     if (!util.isNullOrUndefined(this.pageCode)) {

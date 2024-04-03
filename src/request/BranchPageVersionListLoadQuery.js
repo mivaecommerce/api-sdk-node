@@ -9,62 +9,75 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const { ListQueryRequest }  = require('./../listquery');
 
 /** 
- * Handles API Request Page_Delete. Scope: Store. 
- * @see https://docs.miva.com/json-api/functions/page_delete
+ * Handles API Request BranchPageVersionList_Load_Query. Scope: Store. 
+ * @see https://docs.miva.com/json-api/functions/branchpageversionlist_load_query
  * @class
  */
-class PageDelete extends Request {
+class BranchPageVersionListLoadQuery extends ListQueryRequest {
   /**
-   * PageDelete Constructor.
+   * BranchPageVersionListLoadQuery Constructor.
    * @param {?BaseClient} client
-   * @param {?Page} page
+   * @param {?Branch} branch
    */
-  constructor(client, page = null) {
+  constructor(client, branch = null) {
     super(client);
-    this.function = 'Page_Delete';
+    this.function = 'BranchPageVersionList_Load_Query';
     this.scope = Request.REQUEST_SCOPE_STORE;
-    this.pageId = null;
-    this.editPage = null;
-    this.pageCode = null;
+
+    this.availableSearchFields = [
+      'id',
+      'page_id',
+      'user_id',
+      'user_name',
+      'code',
+      'name',
+      'secure',
+      'title',
+      'cache',
+      'admin',
+      'layout',
+      'templ_id',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableSortFields = [
+      'id',
+      'page_id',
+      'user_id',
+      'user_name',
+      'code',
+      'name',
+      'secure',
+      'title',
+      'cache',
+      'admin',
+      'layout',
+      'templ_id',
+      'source_user_id',
+      'source_user_name'
+    ];
+
+    this.availableOnDemandColumns = [
+      'notes',
+      'source',
+      'settings'
+    ];
     this.branchId = null;
     this.editBranch = null;
     this.branchName = null;
+    this.changesetId = null;
 
-    if (util.isInstanceOf(page, models.Page)) {
-      if (page.getId()) {
-        this.setPageId(page.getId());
-      } else if (page.getCode()) {
-        this.setEditPage(page.getCode());
-      } else if (page.getCode()) {
-        this.setPageCode(page.getCode());
+    if (util.isInstanceOf(branch, models.Branch)) {
+      if (branch.getId()) {
+        this.setBranchId(branch.getId());
+      } else if (branch.getName()) {
+        this.setEditBranch(branch.getName());
       }
     }
-  }
-
-  /**
-   * Get Page_ID.
-   * @returns {number}
-   */
-  getPageId() {
-    return this.pageId;
-  }
-
-  /**
-   * Get Edit_Page.
-   * @returns {string}
-   */
-  getEditPage() {
-    return this.editPage;
-  }
-
-  /**
-   * Get Page_Code.
-   * @returns {string}
-   */
-  getPageCode() {
-    return this.pageCode;
   }
 
   /**
@@ -92,39 +105,17 @@ class PageDelete extends Request {
   }
 
   /**
-   * Set Page_ID.
-   * @param {number} pageId
-   * @returns {PageDelete}
+   * Get Changeset_ID.
+   * @returns {number}
    */
-  setPageId(pageId) {
-    this.pageId = pageId;
-    return this;
-  }
-
-  /**
-   * Set Edit_Page.
-   * @param {string} editPage
-   * @returns {PageDelete}
-   */
-  setEditPage(editPage) {
-    this.editPage = editPage;
-    return this;
-  }
-
-  /**
-   * Set Page_Code.
-   * @param {string} pageCode
-   * @returns {PageDelete}
-   */
-  setPageCode(pageCode) {
-    this.pageCode = pageCode;
-    return this;
+  getChangesetId() {
+    return this.changesetId;
   }
 
   /**
    * Set Branch_ID.
    * @param {number} branchId
-   * @returns {PageDelete}
+   * @returns {BranchPageVersionListLoadQuery}
    */
   setBranchId(branchId) {
     this.branchId = branchId;
@@ -134,7 +125,7 @@ class PageDelete extends Request {
   /**
    * Set Edit_Branch.
    * @param {string} editBranch
-   * @returns {PageDelete}
+   * @returns {BranchPageVersionListLoadQuery}
    */
   setEditBranch(editBranch) {
     this.editBranch = editBranch;
@@ -144,10 +135,20 @@ class PageDelete extends Request {
   /**
    * Set Branch_Name.
    * @param {string} branchName
-   * @returns {PageDelete}
+   * @returns {BranchPageVersionListLoadQuery}
    */
   setBranchName(branchName) {
     this.branchName = branchName;
+    return this;
+  }
+
+  /**
+   * Set Changeset_ID.
+   * @param {number} changesetId
+   * @returns {BranchPageVersionListLoadQuery}
+   */
+  setChangesetId(changesetId) {
+    this.changesetId = changesetId;
     return this;
   }
 
@@ -158,14 +159,6 @@ class PageDelete extends Request {
    */
   toObject() {
     var data = super.toObject();
-
-    if (!util.isNullOrUndefined(this.pageId)) {
-      data['Page_ID'] = this.pageId;
-    } else if (!util.isNullOrUndefined(this.editPage)) {
-      data['Edit_Page'] = this.editPage;
-    } else if (!util.isNullOrUndefined(this.pageCode)) {
-      data['Page_Code'] = this.pageCode;
-    }
 
     if (!util.isNullOrUndefined(this.branchId)) {
       data['Branch_ID'] = this.branchId;
@@ -184,8 +177,8 @@ class PageDelete extends Request {
    * @returns {Response}
    */
   createResponse(httpResponse, data) {
-    return new responses.PageDelete(this, httpResponse, data);
+    return new responses.BranchPageVersionListLoadQuery(this, httpResponse, data);
   }
 }
 
-module.exports.PageDelete = PageDelete;
+module.exports.BranchPageVersionListLoadQuery = BranchPageVersionListLoadQuery;

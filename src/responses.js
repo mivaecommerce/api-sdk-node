@@ -235,6 +235,14 @@ const { CopyProductRulesModuleUpdateAssigned } = require('./response/CopyProduct
 const { CopyProductRulesCustomFieldListLoadQuery } = require('./response/CopyProductRulesCustomFieldListLoadQuery');
 const { CopyProductRulesCustomFieldUpdateAssigned } = require('./response/CopyProductRulesCustomFieldUpdateAssigned');
 const { OrderListArchive } = require('./response/OrderListArchive');
+const { PageCopyBranch } = require('./response/PageCopyBranch');
+const { BranchItemVersionListLoadQuery } = require('./response/BranchItemVersionListLoadQuery');
+const { ChangesetItemVersionListLoadQuery } = require('./response/ChangesetItemVersionListLoadQuery');
+const { BranchPageVersionListLoadQuery } = require('./response/BranchPageVersionListLoadQuery');
+const { CouponBusinessAccountListLoadQuery } = require('./response/CouponBusinessAccountListLoadQuery');
+const { CouponBusinessAccountUpdateAssigned } = require('./response/CouponBusinessAccountUpdateAssigned');
+const { ProductVariantPricingUpdate } = require('./response/ProductVariantPricingUpdate');
+const { ProductShippingRulesUpdate } = require('./response/ProductShippingRulesUpdate');
 const { CategoryProductListLoadQuery } = require('./response/CategoryProductListLoadQuery');
 const { CouponPriceGroupListLoadQuery } = require('./response/CouponPriceGroupListLoadQuery');
 const { PriceGroupCustomerListLoadQuery } = require('./response/PriceGroupCustomerListLoadQuery');
@@ -494,6 +502,14 @@ module.exports = {
   CopyProductRulesCustomFieldListLoadQuery,
   CopyProductRulesCustomFieldUpdateAssigned,
   OrderListArchive,
+  PageCopyBranch,
+  BranchItemVersionListLoadQuery,
+  ChangesetItemVersionListLoadQuery,
+  BranchPageVersionListLoadQuery,
+  CouponBusinessAccountListLoadQuery,
+  CouponBusinessAccountUpdateAssigned,
+  ProductVariantPricingUpdate,
+  ProductShippingRulesUpdate,
   CategoryProductListLoadQuery,
   CouponPriceGroupListLoadQuery,
   PriceGroupCustomerListLoadQuery,

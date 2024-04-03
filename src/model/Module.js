@@ -93,6 +93,14 @@ class Module extends Model {
   getActive() {
     return this.getField('active', false);
   }
+  
+  /**
+   * Get priority.
+   * @returns {number}
+   */
+  getPriority() {
+    return this.getField('priority', 0);
+  }
 }
 
 module.exports.Module = Module;
