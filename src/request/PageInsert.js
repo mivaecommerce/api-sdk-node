@@ -29,6 +29,8 @@ class PageInsert extends Request {
     this.pageTitle = null;
     this.pageTemplate = null;
     this.pageLayout = null;
+    this.pageFragment = null;
+    this.pagePublic = null;
     this.pageSecure = null;
     this.pageCache = null;
     this.changesetNotes = null;
@@ -77,6 +79,22 @@ class PageInsert extends Request {
    */
   getPageLayout() {
     return this.pageLayout;
+  }
+
+  /**
+   * Get Page_Fragment.
+   * @returns {boolean}
+   */
+  getPageFragment() {
+    return this.pageFragment;
+  }
+
+  /**
+   * Get Page_Public.
+   * @returns {boolean}
+   */
+  getPagePublic() {
+    return this.pagePublic;
   }
 
   /**
@@ -190,6 +208,26 @@ class PageInsert extends Request {
    */
   setPageLayout(pageLayout) {
     this.pageLayout = pageLayout;
+    return this;
+  }
+
+  /**
+   * Set Page_Fragment.
+   * @param {boolean} pageFragment
+   * @returns {PageInsert}
+   */
+  setPageFragment(pageFragment) {
+    this.pageFragment = pageFragment;
+    return this;
+  }
+
+  /**
+   * Set Page_Public.
+   * @param {boolean} pagePublic
+   * @returns {PageInsert}
+   */
+  setPagePublic(pagePublic) {
+    this.pagePublic = pagePublic;
     return this;
   }
 
@@ -311,6 +349,14 @@ class PageInsert extends Request {
 
     if (!util.isNullOrUndefined(this.pageLayout)) {
       data['Page_Layout'] = this.pageLayout;
+    }
+
+    if (!util.isNullOrUndefined(this.pageFragment)) {
+      data['Page_Fragment'] = this.pageFragment;
+    }
+
+    if (!util.isNullOrUndefined(this.pagePublic)) {
+      data['Page_Public'] = this.pagePublic;
     }
 
     if (!util.isNullOrUndefined(this.pageSecure)) {

@@ -36,7 +36,8 @@ class CopyPageRulesListLoadQuery extends ListQueryRequest {
       'settings',
       'jsres',
       'cssres',
-      'cacheset'
+      'cacheset',
+      'public'
     ];
 
     this.availableSortFields = [
@@ -49,7 +50,8 @@ class CopyPageRulesListLoadQuery extends ListQueryRequest {
       'settings',
       'jsres',
       'cssres',
-      'cacheset'
+      'cacheset',
+      'public'
     ];
   }
 

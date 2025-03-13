@@ -8,6 +8,7 @@
 const util = require('./../util');
 const models = require('./../models');
 const { Model } = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** ORDER_ITEM_STATUS constants. */
 /** @ignore */
@@ -98,6 +99,11 @@ class OrderItem extends Model {
     } else {
       this.subscription = {};
     }
+
+    if (!util.isNullOrUndefined(this.retail))  this.retail = new Decimal(this.retail);
+    if (!util.isNullOrUndefined(this.base_price))  this.base_price = new Decimal(this.base_price);
+    if (!util.isNullOrUndefined(this.price))  this.price = new Decimal(this.price);
+    if (!util.isNullOrUndefined(this.weight))  this.weight = new Decimal(this.weight);
   }
 
   /**
@@ -326,26 +332,42 @@ class OrderItem extends Model {
   
   /**
    * Get retail.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getRetail() {
-    return this.getField('retail', 0.00);
+    return this.getField('retail', new Decimal(0.00));
   }
   
   /**
    * Get base_price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getBasePrice() {
-    return this.getField('base_price', 0.00);
+    return this.getField('base_price', new Decimal(0.00));
   }
   
   /**
    * Get price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
-    return this.getField('price', 0.00);
+    return this.getField('price', new Decimal(0.00));
+  }
+  
+  /**
+   * Get total.
+   * @returns {number}
+   */
+  getTotal() {
+    return this.getField('total', 0.00);
+  }
+  
+  /**
+   * Get formatted_total.
+   * @returns {string}
+   */
+  getFormattedTotal() {
+    return this.getField('formatted_total');
   }
   
   /**
@@ -366,10 +388,18 @@ class OrderItem extends Model {
   
   /**
    * Get weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
-    return this.getField('weight', 0.00);
+    return this.getField('weight', new Decimal(0.00));
+  }
+  
+  /**
+   * Get formatted_weight.
+   * @returns {string}
+   */
+  getFormattedWeight() {
+    return this.getField('formatted_weight');
   }
   
   /**
@@ -418,14 +448,6 @@ class OrderItem extends Model {
    */
   getOptions() {
     return this.getField('options', []);
-  }
-  
-  /**
-   * Get total.
-   * @returns {number}
-   */
-  getTotal() {
-    return this.getField('total', 0.00);
   }
   
   /**
@@ -505,10 +527,14 @@ class OrderItem extends Model {
 
   /**
    * Set price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {OrderItem}
    */
   setPrice(price) {
+    if (!util.isInstanceOf(price, Decimal)) {
+        return this.setField('price', new Decimal(price));
+    }
+
     return this.setField('price', price);
   }
 
@@ -523,10 +549,14 @@ class OrderItem extends Model {
 
   /**
    * Set weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {OrderItem}
    */
   setWeight(weight) {
+    if (!util.isInstanceOf(weight, Decimal)) {
+        return this.setField('weight', new Decimal(weight));
+    }
+
     return this.setField('weight', weight);
   }
 

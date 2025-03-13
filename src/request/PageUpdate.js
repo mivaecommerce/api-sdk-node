@@ -31,6 +31,7 @@ class PageUpdate extends Request {
     this.pageName = null;
     this.pageTitle = null;
     this.pageSecure = null;
+    this.pagePublic = null;
     this.pageCache = null;
     this.changesetNotes = null;
     this.pageUri = null;
@@ -100,6 +101,14 @@ class PageUpdate extends Request {
    */
   getPageSecure() {
     return this.pageSecure;
+  }
+
+  /**
+   * Get Page_Public.
+   * @returns {boolean}
+   */
+  getPagePublic() {
+    return this.pagePublic;
   }
 
   /**
@@ -219,6 +228,16 @@ class PageUpdate extends Request {
   }
 
   /**
+   * Set Page_Public.
+   * @param {boolean} pagePublic
+   * @returns {PageUpdate}
+   */
+  setPagePublic(pagePublic) {
+    this.pagePublic = pagePublic;
+    return this;
+  }
+
+  /**
    * Set Page_Cache.
    * @param {string} pageCache
    * @returns {PageUpdate}
@@ -332,6 +351,10 @@ class PageUpdate extends Request {
 
     if (!util.isNullOrUndefined(this.pageSecure)) {
       data['Page_Secure'] = this.pageSecure;
+    }
+
+    if (!util.isNullOrUndefined(this.pagePublic)) {
+      data['Page_Public'] = this.pagePublic;
     }
 
     data['Page_Cache'] = this.pageCache;

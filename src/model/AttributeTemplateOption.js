@@ -7,6 +7,7 @@
 
 const util = require('./../util');
 const { Model } = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * AttributeTemplateOption data model.
@@ -20,6 +21,10 @@ class AttributeTemplateOption extends Model {
    */
   constructor(data = {}) {
     super(data);
+
+    if (!util.isNullOrUndefined(this.price))  this.price = new Decimal(this.price);
+    if (!util.isNullOrUndefined(this.cost))  this.cost = new Decimal(this.cost);
+    if (!util.isNullOrUndefined(this.weight))  this.weight = new Decimal(this.weight);
   }
 
   /**
@@ -77,26 +82,26 @@ class AttributeTemplateOption extends Model {
   
   /**
    * Get price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
-    return this.getField('price', 0.00);
+    return this.getField('price', new Decimal(0.00));
   }
   
   /**
    * Get cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getCost() {
-    return this.getField('cost', 0.00);
+    return this.getField('cost', new Decimal(0.00));
   }
   
   /**
    * Get weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
-    return this.getField('weight', 0.00);
+    return this.getField('weight', new Decimal(0.00));
   }
   
   /**
@@ -121,6 +126,14 @@ class AttributeTemplateOption extends Model {
    */
   getFormattedCost() {
     return this.getField('formatted_cost');
+  }
+  
+  /**
+   * Get formatted_weight.
+   * @returns {string}
+   */
+  getFormattedWeight() {
+    return this.getField('formatted_weight');
   }
   
   /**

@@ -5,12 +5,13 @@
  * file that was distributed with this source code.
  */
 
-const http            = require('http');
-const https           = require('https');
-const util            = require('./util');
-const abstract        = require('./abstract');
-const requests        = require('./requests');
-const { Logger }      = require('./logger');
+const http        = require('http');
+const https       = require('https');
+const util        = require('./util');
+const abstract    = require('./abstract');
+const requests    = require('./requests');
+const { Logger }  = require('./logger');
+const Version     = require('./version');
 const { MultiCallRequest, MultiCallOperation } = require('./multicall');
 const { Authenticator, TokenAuthenticator, SSHPrivateKeyAuthenticator, SSHAgentAuthenticator }  = require('./authenticator');
 
@@ -321,7 +322,17 @@ class BaseClient {
     var body;
     var options;
     var proto;
+    var uakey;
+    var ua = `MerchantAPI/${Version.VERSION_STRING} node/${process.versions.node} ${process.platform}`;
 
+    if ((uakey = Object.keys(headers).find(k => k.toUpperCase() === 'USER-AGENT'))) {
+      if (headers[uakey].length) {
+        ua = headers[uakey];
+      }
+
+      delete headers[uakey];
+    }
+  
     if (this.endpoint.protocol.toLowerCase() === 'https:') {
       proto = https;
     } else {
@@ -338,7 +349,8 @@ class BaseClient {
       method: 'POST',
       headers: Object.assign(headers, {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body, 'utf8')
+        'Content-Length': Buffer.byteLength(body, 'utf8'),
+        'User-Agent': ua
       })
     };
 

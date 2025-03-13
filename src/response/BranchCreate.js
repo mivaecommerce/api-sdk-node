@@ -28,7 +28,33 @@ class BranchCreate extends Response {
       return;
     }
 
-    this.data['data'] = new models.Branch(this.data['data']);
+    if (this.data.hasOwnProperty('data')){
+        this.data['data'] = new models.Branch(this.data['data']);
+    }
+  }
+
+  /**
+   * Get completed.
+   * @returns {boolean}
+   */
+  getCompleted() {
+    if (!util.isNullOrUndefined(this.data['completed'])) {
+      return this.data['completed'];
+    }
+
+    return false;
+  }
+
+  /**
+   * Get branch_create_session_id.
+   * @returns {string}
+   */
+  getBranchCreateSessionId() {
+    if (!util.isNullOrUndefined(this.data['branch_create_session_id'])) {
+      return this.data['branch_create_session_id'];
+    }
+
+    return null;
   }
 
   /**

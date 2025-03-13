@@ -6,21 +6,29 @@
  */
 
 const util = require('./../util');
-const { Subscription } = require('./Subscription');
+const { Category } = require('./Category');
 
 /** 
- * CustomerSubscription data model.
+ * ChildCategory data model.
  * @class
  */
-class CustomerSubscription extends Subscription {
+class ChildCategory extends Category {
   /**
-   * CustomerSubscription Constructor.
+   * ChildCategory Constructor.
    * @param {Object} data
    * @returns {void}
    */
   constructor(data = {}) {
     super(data);
   }
+
+  /**
+   * Get assigned.
+   * @returns {boolean}
+   */
+  getAssigned() {
+    return this.getField('assigned', false);
+  }
 }
 
-module.exports.CustomerSubscription = CustomerSubscription;
+module.exports.ChildCategory = ChildCategory;

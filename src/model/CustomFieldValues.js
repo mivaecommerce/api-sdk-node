@@ -6,7 +6,6 @@
  */
 
 const util = require('./../util');
-const models = require('./../models');
 const { Model } = require('./../abstract');
 
 /** 

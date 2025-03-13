@@ -8,6 +8,7 @@
 const util = require('./../util');
 const models = require('./../models');
 const { Model } = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * OrderItemOption data model.
@@ -37,6 +38,11 @@ class OrderItemOption extends Model {
     } else {
       this.discounts = [];
     }
+
+    if (!util.isNullOrUndefined(this.weight))  this.weight = new Decimal(this.weight);
+    if (!util.isNullOrUndefined(this.retail))  this.retail = new Decimal(this.retail);
+    if (!util.isNullOrUndefined(this.base_price))  this.base_price = new Decimal(this.base_price);
+    if (!util.isNullOrUndefined(this.price))  this.price = new Decimal(this.price);
   }
 
   /**
@@ -113,34 +119,42 @@ class OrderItemOption extends Model {
   
   /**
    * Get weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
-    return this.getField('weight', 0.00);
+    return this.getField('weight', new Decimal(0.00));
+  }
+  
+  /**
+   * Get formatted_weight.
+   * @returns {string}
+   */
+  getFormattedWeight() {
+    return this.getField('formatted_weight');
   }
   
   /**
    * Get retail.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getRetail() {
-    return this.getField('retail', 0.00);
+    return this.getField('retail', new Decimal(0.00));
   }
   
   /**
    * Get base_price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getBasePrice() {
-    return this.getField('base_price', 0.00);
+    return this.getField('base_price', new Decimal(0.00));
   }
   
   /**
    * Get price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
-    return this.getField('price', 0.00);
+    return this.getField('price', new Decimal(0.00));
   }
   
   /**
@@ -221,37 +235,53 @@ class OrderItemOption extends Model {
 
   /**
    * Set weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {OrderItemOption}
    */
   setWeight(weight) {
+    if (!util.isInstanceOf(weight, Decimal)) {
+        return this.setField('weight', new Decimal(weight));
+    }
+
     return this.setField('weight', weight);
   }
 
   /**
    * Set retail.
-   * @param {number} retail
+   * @param {Decimal} retail
    * @returns {OrderItemOption}
    */
   setRetail(retail) {
+    if (!util.isInstanceOf(retail, Decimal)) {
+        return this.setField('retail', new Decimal(retail));
+    }
+
     return this.setField('retail', retail);
   }
 
   /**
    * Set base_price.
-   * @param {number} basePrice
+   * @param {Decimal} basePrice
    * @returns {OrderItemOption}
    */
   setBasePrice(basePrice) {
+    if (!util.isInstanceOf(basePrice, Decimal)) {
+        return this.setField('base_price', new Decimal(basePrice));
+    }
+
     return this.setField('base_price', basePrice);
   }
 
   /**
    * Set price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {OrderItemOption}
    */
   setPrice(price) {
+    if (!util.isInstanceOf(price, Decimal)) {
+        return this.setField('price', new Decimal(price));
+    }
+
     return this.setField('price', price);
   }
   

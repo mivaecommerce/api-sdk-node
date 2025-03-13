@@ -51,7 +51,7 @@ class ProductInventoryAdjustment extends Model {
    * @returns {number}
    */
   getAdjustment() {
-    return this.getField('adjustment', 0.00);
+    return this.getField('adjustment', 0);
   }
   
   /**

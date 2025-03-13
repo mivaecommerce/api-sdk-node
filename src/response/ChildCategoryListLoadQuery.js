@@ -33,14 +33,14 @@ class ChildCategoryListLoadQuery extends ListQueryResponse {
 
     if (!util.isNullOrUndefined(this.data['data']) && util.isArray(this.data['data']['data'])) {
       for (i = 0, l = this.data['data']['data'].length; i < l; i++) {
-        this.data['data']['data'][i] = new models.Category(this.data['data']['data'][i]);
+        this.data['data']['data'][i] = new models.ChildCategory(this.data['data']['data'][i]);
       }
     }
   }
 
   /**
    * Get categories.
-   * @returns {Category[]}
+   * @returns {ChildCategory[]}
    */
   getCategories() {
     return (util.isNullOrUndefined(this.data['data']) || 

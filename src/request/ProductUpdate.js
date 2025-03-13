@@ -9,6 +9,7 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Handles API Request Product_Update. Scope: Store. 
@@ -163,7 +164,7 @@ class ProductUpdate extends Request {
 
   /**
    * Get Product_Price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getProductPrice() {
     return this.productPrice;
@@ -171,7 +172,7 @@ class ProductUpdate extends Request {
 
   /**
    * Get Product_Cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getProductCost() {
     return this.productCost;
@@ -179,7 +180,7 @@ class ProductUpdate extends Request {
 
   /**
    * Get Product_Weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getProductWeight() {
     return this.productWeight;
@@ -329,31 +330,43 @@ class ProductUpdate extends Request {
 
   /**
    * Set Product_Price.
-   * @param {number} productPrice
+   * @param {Decimal} productPrice
    * @returns {ProductUpdate}
    */
   setProductPrice(productPrice) {
-    this.productPrice = productPrice;
+    if (util.isInstanceOf(productPrice, Decimal)) {
+      this.productPrice = productPrice;
+    } else {
+      this.productPrice = new Decimal(productPrice);
+    }
     return this;
   }
 
   /**
    * Set Product_Cost.
-   * @param {number} productCost
+   * @param {Decimal} productCost
    * @returns {ProductUpdate}
    */
   setProductCost(productCost) {
-    this.productCost = productCost;
+    if (util.isInstanceOf(productCost, Decimal)) {
+      this.productCost = productCost;
+    } else {
+      this.productCost = new Decimal(productCost);
+    }
     return this;
   }
 
   /**
    * Set Product_Weight.
-   * @param {number} productWeight
+   * @param {Decimal} productWeight
    * @returns {ProductUpdate}
    */
   setProductWeight(productWeight) {
-    this.productWeight = productWeight;
+    if (util.isInstanceOf(productWeight, Decimal)) {
+      this.productWeight = productWeight;
+    } else {
+      this.productWeight = new Decimal(productWeight);
+    }
     return this;
   }
 

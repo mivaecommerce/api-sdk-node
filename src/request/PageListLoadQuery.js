@@ -34,7 +34,9 @@ class PageListLoadQuery extends ListQueryRequest {
       'title',
       'cache',
       'admin',
-      'layout'
+      'layout',
+      'public',
+      'fragment'
     ];
 
     this.availableSortFields = [
@@ -44,7 +46,9 @@ class PageListLoadQuery extends ListQueryRequest {
       'title',
       'cache',
       'admin',
-      'layout'
+      'layout',
+      'public',
+      'fragment'
     ];
 
     this.availableOnDemandColumns = [

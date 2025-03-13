@@ -26,7 +26,9 @@ class BranchCopy extends Request {
     this.function = 'Branch_Copy';
     this.scope = Request.REQUEST_SCOPE_STORE;
     this.sourceBranchId = null;
+    this.sourceChangesetId = null;
     this.destinationBranchId = null;
+    this.branchCopySessionId = null;
     this.notes = null;
 
     if (util.isInstanceOf(branch, models.Branch)) {
@@ -45,11 +47,27 @@ class BranchCopy extends Request {
   }
 
   /**
+   * Get Source_Changeset_ID.
+   * @returns {number}
+   */
+  getSourceChangesetId() {
+    return this.sourceChangesetId;
+  }
+
+  /**
    * Get Destination_Branch_ID.
    * @returns {number}
    */
   getDestinationBranchId() {
     return this.destinationBranchId;
+  }
+
+  /**
+   * Get Branch_Copy_Session_ID.
+   * @returns {string}
+   */
+  getBranchCopySessionId() {
+    return this.branchCopySessionId;
   }
 
   /**
@@ -71,12 +89,32 @@ class BranchCopy extends Request {
   }
 
   /**
+   * Set Source_Changeset_ID.
+   * @param {number} sourceChangesetId
+   * @returns {BranchCopy}
+   */
+  setSourceChangesetId(sourceChangesetId) {
+    this.sourceChangesetId = sourceChangesetId;
+    return this;
+  }
+
+  /**
    * Set Destination_Branch_ID.
    * @param {number} destinationBranchId
    * @returns {BranchCopy}
    */
   setDestinationBranchId(destinationBranchId) {
     this.destinationBranchId = destinationBranchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Copy_Session_ID.
+   * @param {string} branchCopySessionId
+   * @returns {BranchCopy}
+   */
+  setBranchCopySessionId(branchCopySessionId) {
+    this.branchCopySessionId = branchCopySessionId;
     return this;
   }
 
@@ -104,6 +142,14 @@ class BranchCopy extends Request {
 
     if (!util.isNullOrUndefined(this.destinationBranchId)) {
       data['Destination_Branch_ID'] = this.destinationBranchId;
+    }
+
+    if (!util.isNullOrUndefined(this.sourceChangesetId)) {
+      data['Source_Changeset_ID'] = this.sourceChangesetId;
+    }
+
+    if (!util.isNullOrUndefined(this.branchCopySessionId)) {
+      data['Branch_Copy_Session_ID'] = this.branchCopySessionId;
     }
 
     if (!util.isNullOrUndefined(this.notes)) {

@@ -9,6 +9,7 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Handles API Request AttributeTemplateOption_Update. Scope: Store. 
@@ -147,7 +148,7 @@ class AttributeTemplateOptionUpdate extends Request {
 
   /**
    * Get Price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
     return this.price;
@@ -155,7 +156,7 @@ class AttributeTemplateOptionUpdate extends Request {
 
   /**
    * Get Cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getCost() {
     return this.cost;
@@ -163,7 +164,7 @@ class AttributeTemplateOptionUpdate extends Request {
 
   /**
    * Get Weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
     return this.weight;
@@ -299,31 +300,43 @@ class AttributeTemplateOptionUpdate extends Request {
 
   /**
    * Set Price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {AttributeTemplateOptionUpdate}
    */
   setPrice(price) {
-    this.price = price;
+    if (util.isInstanceOf(price, Decimal)) {
+      this.price = price;
+    } else {
+      this.price = new Decimal(price);
+    }
     return this;
   }
 
   /**
    * Set Cost.
-   * @param {number} cost
+   * @param {Decimal} cost
    * @returns {AttributeTemplateOptionUpdate}
    */
   setCost(cost) {
-    this.cost = cost;
+    if (util.isInstanceOf(cost, Decimal)) {
+      this.cost = cost;
+    } else {
+      this.cost = new Decimal(cost);
+    }
     return this;
   }
 
   /**
    * Set Weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {AttributeTemplateOptionUpdate}
    */
   setWeight(weight) {
-    this.weight = weight;
+    if (util.isInstanceOf(weight, Decimal)) {
+      this.weight = weight;
+    } else {
+      this.weight = new Decimal(weight);
+    }
     return this;
   }
 
@@ -369,9 +382,13 @@ class AttributeTemplateOptionUpdate extends Request {
       data['Edit_AttributeTemplateOption'] = this.editAttributeTemplateOption;
     }
 
-    data['Code'] = this.code;
+    if (!util.isNullOrUndefined(this.code)) {
+      data['Code'] = this.code;
+    }
 
-    data['Prompt'] = this.prompt;
+    if (!util.isNullOrUndefined(this.prompt)) {
+      data['Prompt'] = this.prompt;
+    }
 
     if (!util.isNullOrUndefined(this.image)) {
       data['Image'] = this.image;

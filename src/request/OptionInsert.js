@@ -9,6 +9,7 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Handles API Request Option_Insert. Scope: Store. 
@@ -128,7 +129,7 @@ class OptionInsert extends Request {
 
   /**
    * Get Price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
     return this.price;
@@ -136,7 +137,7 @@ class OptionInsert extends Request {
 
   /**
    * Get Cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getCost() {
     return this.cost;
@@ -144,7 +145,7 @@ class OptionInsert extends Request {
 
   /**
    * Get Weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
     return this.weight;
@@ -250,31 +251,43 @@ class OptionInsert extends Request {
 
   /**
    * Set Price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {OptionInsert}
    */
   setPrice(price) {
-    this.price = price;
+    if (util.isInstanceOf(price, Decimal)) {
+      this.price = price;
+    } else {
+      this.price = new Decimal(price);
+    }
     return this;
   }
 
   /**
    * Set Cost.
-   * @param {number} cost
+   * @param {Decimal} cost
    * @returns {OptionInsert}
    */
   setCost(cost) {
-    this.cost = cost;
+    if (util.isInstanceOf(cost, Decimal)) {
+      this.cost = cost;
+    } else {
+      this.cost = new Decimal(cost);
+    }
     return this;
   }
 
   /**
    * Set Weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {OptionInsert}
    */
   setWeight(weight) {
-    this.weight = weight;
+    if (util.isInstanceOf(weight, Decimal)) {
+      this.weight = weight;
+    } else {
+      this.weight = new Decimal(weight);
+    }
     return this;
   }
 

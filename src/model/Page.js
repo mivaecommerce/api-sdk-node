@@ -191,6 +191,22 @@ class Page extends Model {
   }
   
   /**
+   * Get fragment.
+   * @returns {boolean}
+   */
+  getFragment() {
+    return this.getField('fragment', false);
+  }
+  
+  /**
+   * Get public.
+   * @returns {boolean}
+   */
+  getPublic() {
+    return this.getField('public', false);
+  }
+  
+  /**
    * Get notes.
    * @returns {string}
    */

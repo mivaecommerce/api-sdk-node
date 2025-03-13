@@ -88,6 +88,14 @@ class OrderProduct extends Model {
   }
   
   /**
+   * Get tax.
+   * @returns {number}
+   */
+  getTax() {
+    return this.getField('tax', 0.00);
+  }
+  
+  /**
    * Get attributes.
    * @returns {OrderProductAttribute[]}
    */
@@ -147,6 +155,15 @@ class OrderProduct extends Model {
    */
   setQuantity(quantity) {
     return this.setField('quantity', quantity);
+  }
+
+  /**
+   * Set tax.
+   * @param {number} tax
+   * @returns {OrderProduct}
+   */
+  setTax(tax) {
+    return this.setField('tax', tax);
   }
 
   /**

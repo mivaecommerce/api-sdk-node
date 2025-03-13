@@ -32,6 +32,7 @@ class CopyPageRulesUpdate extends Request {
     this.title = null;
     this.template = null;
     this.items = null;
+    this.public = null;
     this.settings = null;
     this.javaScriptResourceAssignments = null;
     this.CSSResourceAssignments = null;
@@ -100,6 +101,14 @@ class CopyPageRulesUpdate extends Request {
    */
   getItems() {
     return this.items;
+  }
+
+  /**
+   * Get Public.
+   * @returns {boolean}
+   */
+  getPublic() {
+    return this.public;
   }
 
   /**
@@ -205,6 +214,16 @@ class CopyPageRulesUpdate extends Request {
   }
 
   /**
+   * Set Public.
+   * @param {boolean} _public
+   * @returns {CopyPageRulesUpdate}
+   */
+  setPublic(_public) {
+    this.public = _public;
+    return this;
+  }
+
+  /**
    * Set Settings.
    * @param {string} settings
    * @returns {CopyPageRulesUpdate}
@@ -276,6 +295,10 @@ class CopyPageRulesUpdate extends Request {
 
     if (!util.isNullOrUndefined(this.items)) {
       data['Items'] = this.items;
+    }
+
+    if (!util.isNullOrUndefined(this.public)) {
+      data['Public'] = this.public;
     }
 
     if (!util.isNullOrUndefined(this.settings)) {

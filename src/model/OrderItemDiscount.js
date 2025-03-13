@@ -7,6 +7,7 @@
 
 const util = require('./../util');
 const { Model } = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * OrderItemDiscount data model.
@@ -20,6 +21,8 @@ class OrderItemDiscount extends Model {
    */
   constructor(data = {}) {
     super(data);
+
+    if (!util.isNullOrUndefined(this.discount))  this.discount = new Decimal(this.discount);
   }
 
   /**
@@ -64,10 +67,10 @@ class OrderItemDiscount extends Model {
   
   /**
    * Get discount.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getDiscount() {
-    return this.getField('discount', 0.00);
+    return this.getField('discount', new Decimal(0.00));
   }
 }
 

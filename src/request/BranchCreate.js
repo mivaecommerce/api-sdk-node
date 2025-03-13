@@ -26,6 +26,7 @@ class BranchCreate extends Request {
     this.function = 'Branch_Create';
     this.scope = Request.REQUEST_SCOPE_STORE;
     this.parentBranchId = null;
+    this.branchCreateSessionId = null;
     this.name = null;
     this.color = null;
     this.changesetId = null;
@@ -44,6 +45,14 @@ class BranchCreate extends Request {
    */
   getParentBranchId() {
     return this.parentBranchId;
+  }
+
+  /**
+   * Get Branch_Create_Session_ID.
+   * @returns {string}
+   */
+  getBranchCreateSessionId() {
+    return this.branchCreateSessionId;
   }
 
   /**
@@ -85,6 +94,16 @@ class BranchCreate extends Request {
    */
   setParentBranchId(parentBranchId) {
     this.parentBranchId = parentBranchId;
+    return this;
+  }
+
+  /**
+   * Set Branch_Create_Session_ID.
+   * @param {string} branchCreateSessionId
+   * @returns {BranchCreate}
+   */
+  setBranchCreateSessionId(branchCreateSessionId) {
+    this.branchCreateSessionId = branchCreateSessionId;
     return this;
   }
 
@@ -138,6 +157,10 @@ class BranchCreate extends Request {
 
     if (!util.isNullOrUndefined(this.parentBranchId)) {
       data['Parent_Branch_ID'] = this.parentBranchId;
+    }
+
+    if (!util.isNullOrUndefined(this.branchCreateSessionId)) {
+      data['Branch_Create_Session_ID'] = this.branchCreateSessionId;
     }
 
     if (!util.isNullOrUndefined(this.name)) {

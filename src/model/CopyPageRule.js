@@ -139,6 +139,14 @@ class CopyPageRule extends Model {
   getCacheSettings() {
     return this.getField('cacheset', false);
   }
+  
+  /**
+   * Get public.
+   * @returns {boolean}
+   */
+  getPublic() {
+    return this.getField('public', false);
+  }
 }
 
 module.exports.CopyPageRule = CopyPageRule;

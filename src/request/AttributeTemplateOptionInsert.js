@@ -9,6 +9,7 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Handles API Request AttributeTemplateOption_Insert. Scope: Store. 
@@ -120,7 +121,7 @@ class AttributeTemplateOptionInsert extends Request {
 
   /**
    * Get Price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
     return this.price;
@@ -128,7 +129,7 @@ class AttributeTemplateOptionInsert extends Request {
 
   /**
    * Get Cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getCost() {
     return this.cost;
@@ -136,7 +137,7 @@ class AttributeTemplateOptionInsert extends Request {
 
   /**
    * Get Weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
     return this.weight;
@@ -242,31 +243,43 @@ class AttributeTemplateOptionInsert extends Request {
 
   /**
    * Set Price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {AttributeTemplateOptionInsert}
    */
   setPrice(price) {
-    this.price = price;
+    if (util.isInstanceOf(price, Decimal)) {
+      this.price = price;
+    } else {
+      this.price = new Decimal(price);
+    }
     return this;
   }
 
   /**
    * Set Cost.
-   * @param {number} cost
+   * @param {Decimal} cost
    * @returns {AttributeTemplateOptionInsert}
    */
   setCost(cost) {
-    this.cost = cost;
+    if (util.isInstanceOf(cost, Decimal)) {
+      this.cost = cost;
+    } else {
+      this.cost = new Decimal(cost);
+    }
     return this;
   }
 
   /**
    * Set Weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {AttributeTemplateOptionInsert}
    */
   setWeight(weight) {
-    this.weight = weight;
+    if (util.isInstanceOf(weight, Decimal)) {
+      this.weight = weight;
+    } else {
+      this.weight = new Decimal(weight);
+    }
     return this;
   }
 

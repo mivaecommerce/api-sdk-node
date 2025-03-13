@@ -8,6 +8,7 @@
 const util = require('./../util');
 const models = require('./../models');
 const { Model } = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Product data model.
@@ -146,6 +147,10 @@ class Product extends Model {
     } else {
       this.subscriptionterms = [];
     }
+
+    if (!util.isNullOrUndefined(this.price))  this.price = new Decimal(this.price);
+    if (!util.isNullOrUndefined(this.cost))  this.cost = new Decimal(this.cost);
+    if (!util.isNullOrUndefined(this.weight))  this.weight = new Decimal(this.weight);
   }
 
   /**
@@ -198,10 +203,10 @@ class Product extends Model {
   
   /**
    * Get price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
-    return this.getField('price', 0.00);
+    return this.getField('price', new Decimal(0.00));
   }
   
   /**
@@ -214,10 +219,10 @@ class Product extends Model {
   
   /**
    * Get cost.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getCost() {
-    return this.getField('cost', 0.00);
+    return this.getField('cost', new Decimal(0.00));
   }
   
   /**
@@ -246,10 +251,18 @@ class Product extends Model {
   
   /**
    * Get weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
-    return this.getField('weight', 0.00);
+    return this.getField('weight', new Decimal(0.00));
+  }
+  
+  /**
+   * Get formatted_weight.
+   * @returns {string}
+   */
+  getFormattedWeight() {
+    return this.getField('formatted_weight');
   }
   
   /**

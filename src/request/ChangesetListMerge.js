@@ -27,7 +27,9 @@ class ChangesetListMerge extends Request {
     this.scope = Request.REQUEST_SCOPE_STORE;
     this.sourceChangesetIds = [];
     this.destinationBranchId = null;
+    this.changesetListMergeSessionId = null;
     this.notes = null;
+    this.tags = null;
 
     if (util.isInstanceOf(branch, models.Branch)) {
       if (branch.getId()) {
@@ -53,11 +55,27 @@ class ChangesetListMerge extends Request {
   }
 
   /**
+   * Get ChangesetList_Merge_Session_ID.
+   * @returns {string}
+   */
+  getChangesetListMergeSessionId() {
+    return this.changesetListMergeSessionId;
+  }
+
+  /**
    * Get Notes.
    * @returns {string}
    */
   getNotes() {
     return this.notes;
+  }
+
+  /**
+   * Get Tags.
+   * @returns {string}
+   */
+  getTags() {
+    return this.tags;
   }
 
   /**
@@ -71,12 +89,32 @@ class ChangesetListMerge extends Request {
   }
 
   /**
+   * Set ChangesetList_Merge_Session_ID.
+   * @param {string} changesetListMergeSessionId
+   * @returns {ChangesetListMerge}
+   */
+  setChangesetListMergeSessionId(changesetListMergeSessionId) {
+    this.changesetListMergeSessionId = changesetListMergeSessionId;
+    return this;
+  }
+
+  /**
    * Set Notes.
    * @param {string} notes
    * @returns {ChangesetListMerge}
    */
   setNotes(notes) {
     this.notes = notes;
+    return this;
+  }
+
+  /**
+   * Set Tags.
+   * @param {string} tags
+   * @returns {ChangesetListMerge}
+   */
+  setTags(tags) {
+    this.tags = tags;
     return this;
   }
 
@@ -123,8 +161,16 @@ class ChangesetListMerge extends Request {
 
     data['Source_Changeset_IDs'] = this.sourceChangesetIds;
 
+    if (!util.isNullOrUndefined(this.changesetListMergeSessionId)) {
+      data['ChangesetList_Merge_Session_ID'] = this.changesetListMergeSessionId;
+    }
+
     if (!util.isNullOrUndefined(this.notes)) {
       data['Notes'] = this.notes;
+    }
+
+    if (!util.isNullOrUndefined(this.tags)) {
+      data['Tags'] = this.tags;
     }
 
     return data;

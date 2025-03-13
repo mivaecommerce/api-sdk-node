@@ -89,6 +89,14 @@ class Store extends Model {
   }
   
   /**
+   * Get icon.
+   * @returns {string}
+   */
+  getIcon() {
+    return this.getField('icon');
+  }
+  
+  /**
    * Get owner.
    * @returns {string}
    */
@@ -182,6 +190,30 @@ class Store extends Model {
    */
   getWeightUnitCode() {
     return this.getField('wtunitcode');
+  }
+  
+  /**
+   * Get wtdispmix.
+   * @returns {boolean}
+   */
+  getDisplayMixedWeightUnits() {
+    return this.getField('wtdispmix', false);
+  }
+  
+  /**
+   * Get wtdisplow.
+   * @returns {boolean}
+   */
+  getDisplayWeightLessThan() {
+    return this.getField('wtdisplow', false);
+  }
+  
+  /**
+   * Get wtdispdig.
+   * @returns {number}
+   */
+  getWeightDigits() {
+    return this.getField('wtdispdig', 0);
   }
   
   /**
@@ -345,6 +377,38 @@ class Store extends Model {
   }
   
   /**
+   * Get cache_exp.
+   * @returns {number}
+   */
+  getCacheExpiration() {
+    return this.getField('cache_exp', 0);
+  }
+  
+  /**
+   * Get cache_ver.
+   * @returns {number}
+   */
+  getCacheVersion() {
+    return this.getField('cache_ver', 0);
+  }
+  
+  /**
+   * Get cache_comp.
+   * @returns {boolean}
+   */
+  getCacheCompression() {
+    return this.getField('cache_comp', false);
+  }
+  
+  /**
+   * Get cacheset.
+   * @returns {number}
+   */
+  getCacheSet() {
+    return this.getField('cacheset', 0);
+  }
+  
+  /**
    * Get redishost.
    * @returns {string}
    */
@@ -390,6 +454,62 @@ class Store extends Model {
    */
   getAddressValidationId() {
     return this.getField('addrval_id', 0);
+  }
+  
+  /**
+   * Get deferbask.
+   * @returns {boolean}
+   */
+  getDeferBaskets() {
+    return this.getField('deferbask', false);
+  }
+  
+  /**
+   * Get trackhits.
+   * @returns {boolean}
+   */
+  getTrackPageHits() {
+    return this.getField('trackhits', false);
+  }
+  
+  /**
+   * Get mnt_ips.
+   * @returns {string}
+   */
+  getMaintenanceAllowedIps() {
+    return this.getField('mnt_ips');
+  }
+  
+  /**
+   * Get branch_id.
+   * @returns {number}
+   */
+  getBranchId() {
+    return this.getField('branch_id', 0);
+  }
+  
+  /**
+   * Get charset.
+   * @returns {string}
+   */
+  getCharacterSet() {
+    return this.getField('charset');
+  }
+  
+  /**
+   * Get schtsk_adv.
+   * @returns {number}
+   */
+  getScheduledTaskAdvance() {
+    return this.getField('schtsk_adv', 0);
+  }
+  
+  /**
+   * Get schtsk_min.
+   * @returns {number}
+   */
+  getScheduledTaskTimeout() {
+    return this.getField('schtsk_min', 0);
   }
 }
 

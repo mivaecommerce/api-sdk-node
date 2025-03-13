@@ -128,10 +128,10 @@ class CustomerPaymentCard extends Model {
   
   /**
    * Get lastused.
-   * @returns {string}
+   * @returns {number}
    */
   getLastUsed() {
-    return this.getField('lastused');
+    return this.getField('lastused', 0);
   }
   
   /**

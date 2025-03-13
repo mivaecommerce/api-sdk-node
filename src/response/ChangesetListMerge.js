@@ -28,7 +28,33 @@ class ChangesetListMerge extends Response {
       return;
     }
 
-    this.data['data'] = new models.Changeset(this.data['data']);
+    if (this.data.hasOwnProperty('data')){
+        this.data['data'] = new models.Changeset(this.data['data']);
+    }
+  }
+
+  /**
+   * Get completed.
+   * @returns {boolean}
+   */
+  getCompleted() {
+    if (!util.isNullOrUndefined(this.data['completed'])) {
+      return this.data['completed'];
+    }
+
+    return false;
+  }
+
+  /**
+   * Get changesetlist_merge_session_id.
+   * @returns {string}
+   */
+  getChangesetlistMergeSessionId() {
+    if (!util.isNullOrUndefined(this.data['changesetlist_merge_session_id'])) {
+      return this.data['changesetlist_merge_session_id'];
+    }
+
+    return null;
   }
 
   /**

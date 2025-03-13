@@ -9,6 +9,7 @@ const util = require('./../util');
 const models = require('./../models');
 const responses = require('./../responses');
 const { Request }  = require('./../abstract');
+const Decimal = require('decimal.js-light');
 
 /** 
  * Handles API Request OrderItem_Add. Scope: Store. 
@@ -82,7 +83,7 @@ class OrderItemAdd extends Request {
 
   /**
    * Get Price.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getPrice() {
     return this.price;
@@ -90,7 +91,7 @@ class OrderItemAdd extends Request {
 
   /**
    * Get Weight.
-   * @returns {number}
+   * @returns {Decimal}
    */
   getWeight() {
     return this.weight;
@@ -164,21 +165,29 @@ class OrderItemAdd extends Request {
 
   /**
    * Set Price.
-   * @param {number} price
+   * @param {Decimal} price
    * @returns {OrderItemAdd}
    */
   setPrice(price) {
-    this.price = price;
+    if (util.isInstanceOf(price, Decimal)) {
+      this.price = price;
+    } else {
+      this.price = new Decimal(price);
+    }
     return this;
   }
 
   /**
    * Set Weight.
-   * @param {number} weight
+   * @param {Decimal} weight
    * @returns {OrderItemAdd}
    */
   setWeight(weight) {
-    this.weight = weight;
+    if (util.isInstanceOf(weight, Decimal)) {
+      this.weight = weight;
+    } else {
+      this.weight = new Decimal(weight);
+    }
     return this;
   }
 

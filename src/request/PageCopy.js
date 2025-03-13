@@ -37,6 +37,7 @@ class PageCopy extends Request {
     this.changesetNotes = null;
     this.destinationPageName = null;
     this.destinationPageLayout = null;
+    this.destinationPageFragment = null;
 
     if (util.isInstanceOf(page, models.Page)) {
       if (page.getId()) {
@@ -143,6 +144,14 @@ class PageCopy extends Request {
    */
   getDestinationPageLayout() {
     return this.destinationPageLayout;
+  }
+
+  /**
+   * Get destination_page_fragment.
+   * @returns {boolean}
+   */
+  getDestinationPageFragment() {
+    return this.destinationPageFragment;
   }
 
   /**
@@ -256,6 +265,16 @@ class PageCopy extends Request {
   }
 
   /**
+   * Set destination_page_fragment.
+   * @param {boolean} destinationPageFragment
+   * @returns {PageCopy}
+   */
+  setDestinationPageFragment(destinationPageFragment) {
+    this.destinationPageFragment = destinationPageFragment;
+    return this;
+  }
+
+  /**
    * Reduce the request to a an object.
    * @override
    * @returns {Object}
@@ -297,6 +316,10 @@ class PageCopy extends Request {
 
     if (!util.isNullOrUndefined(this.destinationPageLayout)) {
       data['Dest_Page_Layout'] = this.destinationPageLayout;
+    }
+
+    if (!util.isNullOrUndefined(this.destinationPageFragment)) {
+      data['Dest_Page_Fragment'] = this.destinationPageFragment;
     }
 
     return data;
